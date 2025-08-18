@@ -5,10 +5,271 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InterfazDeUsuarioUI"
         mc:Ignorable="d"
-        Title="VentanaCita" Height="450" Width="800">
-       
-    
-    <Grid>
-        
+        Title="VentanaCita" Height="911" Width="810">
+    <Window.Resources>
+        <!-- Estilos para TextBox -->
+        <Style x:Key="ModernTextBox" TargetType="TextBox">
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="Padding" Value="12,8"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="BorderBrush" Value="#E9ECEF"/>
+            <Setter Property="Background" Value="#F8F9FA"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border CornerRadius="18" BorderThickness="{TemplateBinding BorderThickness}" 
+                                BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}">
+                            <ScrollViewer x:Name="PART_ContentHost" Margin="{TemplateBinding Padding}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsFocused" Value="True">
+                                <Setter Property="BorderBrush" Value="#FF9A9E"/>
+                                <Setter Property="Background" Value="White"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Estilos para DatePicker -->
+        <Style x:Key="ModernDatePicker" TargetType="DatePicker">
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="Padding" Value="12,8"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="BorderBrush" Value="#E9ECEF"/>
+            <Setter Property="Background" Value="#F8F9FA"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="DatePicker">
+                        <Border CornerRadius="18" BorderThickness="{TemplateBinding BorderThickness}" 
+                                BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}">
+                            <Grid>
+                                <DatePickerTextBox x:Name="PART_TextBox" Margin="{TemplateBinding Padding}" 
+                                                   Background="Transparent" BorderThickness="0"/>
+                                <Button x:Name="PART_Button" HorizontalAlignment="Right" Margin="0,0,8,0"
+                                        Background="#FF9A9E" BorderThickness="0" Width="25" Height="25"
+                                        Content="📅" FontSize="12" Foreground="White">
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border CornerRadius="12" Background="{TemplateBinding Background}">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsFocused" Value="True">
+                                <Setter Property="BorderBrush" Value="#FF9A9E"/>
+                                <Setter Property="Background" Value="White"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Estilos para Botones -->
+        <Style x:Key="ModernButton" TargetType="Button">
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Padding" Value="20,0"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="20" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="0.9"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="RenderTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform ScaleX="0.95" ScaleY="0.95"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="SearchButton" TargetType="Button" BasedOn="{StaticResource ModernButton}">
+            <Setter Property="Background" Value="#74B9FF"/>
+        </Style>
+
+        <Style x:Key="ResetButton" TargetType="Button" BasedOn="{StaticResource ModernButton}">
+            <Setter Property="Background" Value="#A29BFE"/>
+        </Style>
+
+        <Style x:Key="SaveButton" TargetType="Button" BasedOn="{StaticResource ModernButton}">
+            <Setter Property="Background" Value="#00B894"/>
+        </Style>
+
+        <Style x:Key="ModifyButton" TargetType="Button" BasedOn="{StaticResource ModernButton}">
+            <Setter Property="Background" Value="#FDCB6E"/>
+        </Style>
+
+        <Style x:Key="AccessButton" TargetType="Button" BasedOn="{StaticResource ModernButton}">
+            <Setter Property="Background" Value="#E17055"/>
+        </Style>
+
+        <Style x:Key="DeleteButton" TargetType="Button" BasedOn="{StaticResource ModernButton}">
+            <Setter Property="Background" Value="#FF7675"/>
+        </Style>
+
+        <!-- Estilo para Labels -->
+        <Style x:Key="ModernLabel" TargetType="Label">
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="Foreground" Value="#555555"/>
+            <Setter Property="Margin" Value="0,0,0,5"/>
+        </Style>
+
+        <!-- Estilo para DataGrid -->
+        <Style x:Key="ModernDataGrid" TargetType="DataGrid">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="#E9ECEF"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="GridLinesVisibility" Value="Horizontal"/>
+            <Setter Property="HorizontalGridLinesBrush" Value="#F1F3F4"/>
+            <Setter Property="AlternatingRowBackground" Value="#F8F9FA"/>
+            <Setter Property="RowBackground" Value="White"/>
+            <Setter Property="HeadersVisibility" Value="Column"/>
+            <Setter Property="AutoGenerateColumns" Value="False"/>
+            <Setter Property="CanUserAddRows" Value="False"/>
+            <Setter Property="SelectionMode" Value="Single"/>
+        </Style>
+
+        <Style x:Key="DataGridHeader" TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="#6C5CE7"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="0,0,0,-16">
+        <!-- Header -->
+        <Border Height="70" VerticalAlignment="Top" CornerRadius="0,0,15,15">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#FF9A9E" Offset="0"/>
+                    <GradientStop Color="#FAD0C4" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="📅" FontSize="24" Margin="0,0,10,0" VerticalAlignment="Center"/>
+                <TextBlock Text="GESTIÓN DE CITAS" FontSize="24" FontWeight="SemiBold" 
+                          Foreground="White" VerticalAlignment="Center"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Contenido Principal -->
+        <ScrollViewer Margin="0,72,0,137" VerticalScrollBarVisibility="Auto">
+            <Grid Margin="30">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- Formulario de Datos -->
+                <Border Grid.Row="0" Background="White" CornerRadius="15" Padding="25" Margin="0,0,0,20">
+                    <Border.Effect>
+                        <DropShadowEffect Color="Gray" Direction="270" ShadowDepth="3" Opacity="0.1" BlurRadius="10"/>
+                    </Border.Effect>
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="20"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="20"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Primera fila -->
+                        <StackPanel Grid.Row="0" Grid.Column="0">
+                            <Label Content="Num Cita:" Style="{StaticResource ModernLabel}"/>
+                            <TextBox Style="{StaticResource ModernTextBox}"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="0" Grid.Column="2">
+                            <Label Content="Fecha de la Cita:" Style="{StaticResource ModernLabel}"/>
+                            <DatePicker Style="{StaticResource ModernDatePicker}"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="0" Grid.Column="4">
+                            <Label Content="Buscar Cita (Por Nombre):" Style="{StaticResource ModernLabel}"/>
+                            <TextBox Style="{StaticResource ModernTextBox}"/>
+                        </StackPanel>
+
+                        <!-- Segunda fila -->
+                        <StackPanel Grid.Row="1" Grid.Column="0" Margin="0,15,0,0">
+                            <Label Content="Num Expediente:" Style="{StaticResource ModernLabel}"/>
+                            <TextBox Style="{StaticResource ModernTextBox}"/>
+                        </StackPanel>
+
+                        <!-- Tercera fila -->
+                        <StackPanel Grid.Row="2" Grid.Column="0" Margin="0,15,0,0">
+                            <Label Content="Hora:" Style="{StaticResource ModernLabel}"/>
+                            <TextBox Style="{StaticResource ModernTextBox}" Text="Hora.."/>
+                        </StackPanel>
+                        <Button Content="📋 Expediente" Style="{StaticResource AccessButton}" Margin="127,15,10,28" Grid.Row="1" Grid.Column="2"/>
+                        <Button Content="🐾 Mascota" Style="{StaticResource AccessButton}" Margin="4,16,4,27" Grid.Row="1" Grid.Column="4"/>
+                        <Button Content="👤 Cliente" Style="{StaticResource AccessButton}" Margin="257,21,171,22" Grid.ColumnSpan="3" Grid.Row="1"/>
+                        <Button Content="📅 Ver Calendario" Style="{StaticResource AccessButton}" Margin="5,2,159,41" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2"/>
+                        <Button Content="🗑 Eliminar" Style="{StaticResource DeleteButton}" Grid.Column="2" Margin="144,2,0,41" Grid.Row="2"/>
+                    </Grid>
+                </Border>
+
+                <!-- Botones de Acción -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="386,0,0,0" Height="201" VerticalAlignment="Center"/>
+
+
+                <!-- Tabla de Datos -->
+                <Border Grid.Row="2" Background="White" CornerRadius="15" Padding="20" Margin="0,158,0,190" Grid.RowSpan="2">
+
+
+                    <DataGrid Style="{StaticResource ModernDataGrid}" ColumnHeaderStyle="{StaticResource DataGridHeader}" Margin="0,-79,0,-79" SelectionChanged="DataGrid_SelectionChanged">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="SampleInt" Width="80" Binding="{Binding SampleInt}"/>
+                            <DataGridTextColumn Header="SampleStringA" Width="*" Binding="{Binding SampleStringA}"/>
+                            <DataGridTextColumn Header="SampleStringB" Width="*" Binding="{Binding SampleStringB}"/>
+                            <DataGridCheckBoxColumn Header="SampleBool" Width="100" Binding="{Binding SampleBool}"/>
+                        </DataGrid.Columns>
+
+
+                    </DataGrid>
+                </Border>
+                <Button Content="🔍 Buscar" Style="{StaticResource SearchButton}" Margin="219,288,429,457" Grid.RowSpan="4"/>
+                <Button Content="🔄 Reiniciar" Style="{StaticResource ResetButton}" RenderTransformOrigin="1.695,4.119" Click="Button_Click" Margin="357,288,285,457" Grid.RowSpan="4"/>
+                <Button Content="✏ Modificar" Style="{StaticResource ModifyButton}" RenderTransformOrigin="1.074,0.558" Margin="481,288,156,462" Grid.RowSpan="4"/>
+                <Button Content="💾 Guardar" Style="{StaticResource SaveButton}" Margin="600,290,27,460" Grid.RowSpan="4"/>
+            </Grid>
+        </ScrollViewer>
     </Grid>
+
+
+
 </Window>
