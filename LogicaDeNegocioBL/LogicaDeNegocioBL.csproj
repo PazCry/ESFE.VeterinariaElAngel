@@ -41,7 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CitaBl.cs" />
+    <Compile Include="CitaCalendarioBL.cs" />
+    <Compile Include="ClienteBL.cs" />
+    <Compile Include="EspecieBL.cs" />
+    <Compile Include="ExpedeinteBL.cs" />
+    <Compile Include="GeneroBL.cs" />
+    <Compile Include="MascotaBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RazaBL.cs" />
+    <Compile Include="RolBL.cs" />
+    <Compile Include="UsuarioBL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EntidadDeNegociosEN\EntidadDeNegociosEN.csproj">
