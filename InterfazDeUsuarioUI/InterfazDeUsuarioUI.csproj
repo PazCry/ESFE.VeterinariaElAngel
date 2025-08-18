@@ -12,4 +12,9 @@
     <PackageReference Include="MahApps.Metro" Version="2.4.10" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\EntidadDeNegociosEN\EntidadDeNegociosEN.csproj" />
+    <ProjectReference Include="..\LogicaDeNegocioBL\LogicaDeNegocioBL.csproj" />
+  </ItemGroup>
+
 </Project>

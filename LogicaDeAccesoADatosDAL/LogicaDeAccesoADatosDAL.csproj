@@ -44,6 +44,7 @@
     <Compile Include="CitaCalendarioDAL.cs" />
     <Compile Include="CitaDAL.cs" />
     <Compile Include="ClienteDAL.cs" />
+    <Compile Include="ComunBD.cs" />
     <Compile Include="EspecieDAL.cs" />
     <Compile Include="ExpedienteDAL.cs" />
     <Compile Include="GeneroDAL.cs" />
@@ -52,6 +53,12 @@
     <Compile Include="RazaDAL.cs" />
     <Compile Include="RolDAL.cs" />
     <Compile Include="UsuarioDAL.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EntidadDeNegociosEN\EntidadDeNegociosEN.csproj">
+      <Project>{cfd49e3f-8c67-42dd-93f7-84e7aca2b10a}</Project>
+      <Name>EntidadDeNegociosEN</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

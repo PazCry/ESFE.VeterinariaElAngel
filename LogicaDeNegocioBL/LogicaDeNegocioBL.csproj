@@ -43,5 +43,15 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EntidadDeNegociosEN\EntidadDeNegociosEN.csproj">
+      <Project>{cfd49e3f-8c67-42dd-93f7-84e7aca2b10a}</Project>
+      <Name>EntidadDeNegociosEN</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LogicaDeAccesoADatosDAL\LogicaDeAccesoADatosDAL.csproj">
+      <Project>{24da8cff-401b-4388-94d7-9afe0ca7f249}</Project>
+      <Name>LogicaDeAccesoADatosDAL</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
