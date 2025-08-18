@@ -6,6 +6,8 @@
         xmlns:local="clr-namespace:InterfazDeUsuarioUI"
         mc:Ignorable="d"
         Title="VentanaCita" Height="450" Width="800">
+       
+    
     <Grid>
         
     </Grid>

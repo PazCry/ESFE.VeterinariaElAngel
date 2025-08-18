@@ -6,7 +6,311 @@
         xmlns:local="clr-namespace:InterfazDeUsuarioUI"
         mc:Ignorable="d"
         Title="VentanaGenero" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+    <Window.Resources>
+        <!-- Colores Rosados Pastel -->
+        <SolidColorBrush x:Key="RosaPastelPrincipal" Color="#F8BBD9"/>
+        <SolidColorBrush x:Key="RosaPastelSecundario" Color="#E4A5C7"/>
+        <SolidColorBrush x:Key="RosaPastelClaro" Color="#FDE2F3"/>
+        <SolidColorBrush x:Key="RosaPastelMedio" Color="#F3E8FF"/>
+        <SolidColorBrush x:Key="AzulPastel" Color="#BFDBFE"/>
+        <SolidColorBrush x:Key="VerdePastel" Color="#BBF7D0"/>
+        <SolidColorBrush x:Key="NaranjaPastel" Color="#FED7AA"/>
+
+        <!-- Estilo para botones -->
+        <Style x:Key="BotonPastel" TargetType="Button">
+            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="15,8"/>
+            <Setter Property="Margin" Value="8,4"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="8"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" 
+                                            VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="0.8"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Estilo para TextBox -->
+        <Style x:Key="TextBoxPastel" TargetType="TextBox">
+            <Setter Property="Padding" Value="10,8"/>
+            <Setter Property="BorderBrush" Value="#E5E7EB"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="6">
+                            <ScrollViewer x:Name="PART_ContentHost"
+                                        Margin="{TemplateBinding Padding}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Estilo para Labels -->
+        <Style x:Key="LabelPastel" TargetType="Label">
+            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Foreground" Value="#6B7280"/>
+            <Setter Property="Padding" Value="0,0,0,5"/>
+        </Style>
+    </Window.Resources>
+
+    <!-- Contenedor principal con bordes punteados -->
+    <Border BorderBrush="#4F46E5" BorderThickness="2" 
+            Margin="15" CornerRadius="10">
+        <Grid Background="White" Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Header con gradiente rosado -->
+            <Border Grid.Row="0" CornerRadius="8,8,0,0" Margin="15,15,15,0">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Color="#F8BBD9" Offset="0"/>
+                        <GradientStop Color="#E4A5C7" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Icono -->
+                    <Border Grid.Column="0" Background="White" 
+                           Width="32" Height="32" CornerRadius="6" 
+                           Margin="20,12">
+                        <TextBlock Text="🐕" FontSize="18" 
+                                  HorizontalAlignment="Center" 
+                                  VerticalAlignment="Center"/>
+                    </Border>
+
+                    <!-- Título -->
+                    <TextBlock Grid.Column="1" Text="GESTIÓN DE GENERO" 
+                              FontSize="18" FontWeight="Bold" 
+                              Foreground="White" 
+                              VerticalAlignment="Center"
+                              Margin="10,0"/>
+                </Grid>
+            </Border>
+
+            <!-- Sección Formulario y Botones -->
+            <Grid Grid.Row="1" Margin="15,20,15,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Formulario de Datos -->
+                <StackPanel Grid.Column="0" Margin="0,0,20,0">
+                    <TextBlock Text="FORMULARIO DE DATOS" 
+                              FontWeight="Bold" FontSize="12" 
+                              Foreground="{StaticResource RosaPastelSecundario}" 
+                              Margin="0,0,0,15"/>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="20"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <!-- ID -->
+                        <StackPanel Grid.Column="0" Grid.Row="0">
+                            <Label Content="ID:" Style="{StaticResource LabelPastel}"/>
+                            <TextBox Style="{StaticResource TextBoxPastel}" 
+                                    Background="{StaticResource RosaPastelClaro}"/>
+                        </StackPanel>
+
+                        <!-- Tipo de Raza -->
+                        <StackPanel Grid.Column="2" Grid.Row="0">
+                            <Label Content="Tipo de Raza:" Style="{StaticResource LabelPastel}"/>
+                            <TextBox Style="{StaticResource TextBoxPastel}"
+                                    Background="{StaticResource RosaPastelClaro}"/>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+
+                <!-- Botones de Acción -->
+                <StackPanel Grid.Column="1">
+                    <TextBlock Text="BOTONES ACCIÓN" 
+                              FontWeight="Bold" FontSize="12" 
+                              Foreground="{StaticResource RosaPastelSecundario}" 
+                              Margin="0,0,0,15"/>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <!-- Primera fila de botones -->
+                        <Button Grid.Column="0" Grid.Row="0" 
+                               Content="💾 Guardar" 
+                               Style="{StaticResource BotonPastel}"
+                               Background="{StaticResource VerdePastel}"
+                               Margin="0,0,4,4"/>
+
+                        <Button Grid.Column="1" Grid.Row="0" 
+                               Content="🔍 Buscar" 
+                               Style="{StaticResource BotonPastel}"
+                               Background="{StaticResource AzulPastel}"
+                               Margin="4,0,0,4"/>
+
+                        <!-- Segunda fila de botones -->
+                        <Button Grid.Column="0" Grid.Row="1" 
+                               Content="✏️ Modificar" 
+                               Style="{StaticResource BotonPastel}"
+                               Background="{StaticResource NaranjaPastel}"
+                               Margin="0,4,4,0"/>
+
+                        <Button Grid.Column="1" Grid.Row="1" 
+                               Content="🗑️ Eliminar" 
+                               Style="{StaticResource BotonPastel}"
+                               Background="{StaticResource RosaPastelPrincipal}"
+                               Margin="4,4,0,0"/>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+
+            <!-- Barra de Búsqueda -->
+            <Grid Grid.Row="2" Margin="15,30,15,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0" Text="BARRA DE BÚSQUEDA" 
+                          FontWeight="Bold" FontSize="12" 
+                          Foreground="{StaticResource RosaPastelSecundario}" 
+                          VerticalAlignment="Center"
+                          Margin="0,0,20,0"/>
+
+                <TextBox Grid.Column="1" Style="{StaticResource TextBoxPastel}"
+                        Background="{StaticResource RosaPastelMedio}"
+                        Height="35"/>
+
+                <Button Grid.Column="2" 
+                       Background="{StaticResource RosaPastelPrincipal}"
+                       Style="{StaticResource BotonPastel}"
+                       Width="40" Height="35"
+                       Content="🔍"
+                       Margin="10,0,0,0"/>
+            </Grid>
+
+            <!-- DataGrid -->
+            <Border Grid.Row="3" Margin="15,20,15,15" 
+                   CornerRadius="8" BorderBrush="#E5E7EB" BorderThickness="1">
+
+                <!-- Header del DataGrid -->
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Header con gradiente -->
+                    <Border Grid.Row="0" CornerRadius="8,8,0,0">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                <GradientStop Color="#9333EA" Offset="0"/>
+                                <GradientStop Color="#C084FC" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <TextBlock Text="REGISTROS DE GENERO" 
+                                  FontWeight="Bold" FontSize="14" 
+                                  Foreground="White" 
+                                  HorizontalAlignment="Center"
+                                  Padding="0,12"/>
+                    </Border>
+
+                    <!-- Área del grid -->
+                    <Grid Grid.Row="1" Background="White">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <!-- Headers de columnas -->
+                        <Grid Grid.Row="0" Background="{StaticResource RosaPastelMedio}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="2*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Column="0" Text="ID" 
+                                      FontWeight="Medium" FontSize="12" 
+                                      Foreground="#4B5563"
+                                      Padding="20,12"
+                                      HorizontalAlignment="Left"/>
+
+                            <Border Grid.Column="0" BorderBrush="#E5E7EB" 
+                                   BorderThickness="0,0,1,0"/>
+
+                            <TextBlock Grid.Column="1" Text="Tipo de Raza" 
+                                      FontWeight="Medium" FontSize="12" 
+                                      Foreground="#4B5563"
+                                      Padding="20,12"
+                                      HorizontalAlignment="Center"/>
+
+                            <Border Grid.Column="1" BorderBrush="#E5E7EB" 
+                                   BorderThickness="0,0,1,0"/>
+
+                            <TextBlock Grid.Column="2" Text="Fecha Creación" 
+                                      FontWeight="Medium" FontSize="12" 
+                                      Foreground="#4B5563"
+                                      Padding="20,12"
+                                      HorizontalAlignment="Center"/>
+                        </Grid>
+
+                        <!-- Área de contenido vacía -->
+                        <Border Grid.Row="1" Background="#FAFAFA" 
+                               MinHeight="200">
+                            <TextBlock Text="No hay registros para mostrar" 
+                                      FontSize="14" 
+                                      Foreground="#9CA3AF"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"
+                                      FontStyle="Italic"/>
+                        </Border>
+                    </Grid>
+                </Grid>
+            </Border>
+        </Grid>
+    </Border>
+
 </Window>
