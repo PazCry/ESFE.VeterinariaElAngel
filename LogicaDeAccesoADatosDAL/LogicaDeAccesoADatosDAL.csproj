@@ -41,7 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CitaCalendarioDAL.cs" />
+    <Compile Include="CitaDAL.cs" />
+    <Compile Include="ClienteDAL.cs" />
+    <Compile Include="EspecieDAL.cs" />
+    <Compile Include="ExpedienteDAL.cs" />
+    <Compile Include="GeneroDAL.cs" />
+    <Compile Include="MascotaDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RazaDAL.cs" />
+    <Compile Include="RolDAL.cs" />
+    <Compile Include="UsuarioDAL.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
