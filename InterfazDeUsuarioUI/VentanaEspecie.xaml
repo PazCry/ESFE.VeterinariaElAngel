@@ -5,96 +5,53 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InterfazDeUsuarioUI"
         mc:Ignorable="d"
-        Title="VentanaEspecie" Height="450" Width="800">
+        Title="VentanaEspecie" Height="527" Width="800">
     <Window.Resources>
-        <!-- Estilos para TextBox -->
-        <Style x:Key="ModernTextBox" TargetType="TextBox">
-            <Setter Property="Height" Value="35"/>
-            <Setter Property="Padding" Value="12,8"/>
-            <Setter Property="FontSize" Value="13"/>
-            <Setter Property="BorderThickness" Value="2"/>
-            <Setter Property="BorderBrush" Value="#E9ECEF"/>
-            <Setter Property="Background" Value="#F8F9FA"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="TextBox">
-                        <Border CornerRadius="18" BorderThickness="{TemplateBinding BorderThickness}" 
-                                BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}">
-                            <ScrollViewer x:Name="PART_ContentHost" Margin="{TemplateBinding Padding}"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsFocused" Value="True">
-                                <Setter Property="BorderBrush" Value="#FF9A9E"/>
-                                <Setter Property="Background" Value="White"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
+        <!-- Gradientes y estilos -->
+        <LinearGradientBrush x:Key="HeaderGradient" StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#E91E63" Offset="0"/>
+            <GradientStop Color="#C2185B" Offset="1"/>
+        </LinearGradientBrush>
 
-        <!-- Estilos para ComboBox -->
-        <Style x:Key="ModernComboBox" TargetType="ComboBox">
-            <Setter Property="Height" Value="35"/>
-            <Setter Property="Padding" Value="12,8"/>
-            <Setter Property="FontSize" Value="13"/>
-            <Setter Property="BorderThickness" Value="2"/>
-            <Setter Property="BorderBrush" Value="#E9ECEF"/>
-            <Setter Property="Background" Value="#F8F9FA"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="ComboBox">
-                        <Border CornerRadius="18" BorderThickness="{TemplateBinding BorderThickness}" 
-                                BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}">
-                            <Grid>
-                                <ToggleButton x:Name="ToggleButton" Grid.Column="2" Focusable="false"
-                                            IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
-                                            ClickMode="Press" Background="Transparent" BorderThickness="0">
-                                    <Path x:Name="Arrow" Fill="#666" HorizontalAlignment="Right" Margin="0,0,10,0"
-                                          VerticalAlignment="Center" Data="M 0 0 L 4 4 L 8 0 Z"/>
-                                </ToggleButton>
-                                <ContentPresenter x:Name="ContentSite" IsHitTestVisible="False" Content="{TemplateBinding SelectionBoxItem}"
-                                                ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
-                                                ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
-                                                Margin="{TemplateBinding Padding}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                                <TextBox x:Name="PART_EditableTextBox" Style="{x:Null}"
-                                        
-                                        HorizontalAlignment="Left" VerticalAlignment="Center" Margin="{TemplateBinding Padding}"
-                                        Focusable="True" Background="Transparent" Visibility="Hidden" IsReadOnly="{TemplateBinding IsReadOnly}"/>
-                                <Popup x:Name="Popup" Placement="Bottom" IsOpen="{TemplateBinding IsDropDownOpen}"
-                                      AllowsTransparency="True" Focusable="False" PopupAnimation="Slide">
-                                    <Border CornerRadius="10" Background="White" BorderThickness="1" BorderBrush="#E9ECEF">
-                                        <ScrollViewer>
-                                            <StackPanel IsItemsHost="True"/>
-                                        </ScrollViewer>
-                                    </Border>
-                                </Popup>
-                            </Grid>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsFocused" Value="True">
-                                <Setter Property="BorderBrush" Value="#FF9A9E"/>
-                                <Setter Property="Background" Value="White"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
+        <LinearGradientBrush x:Key="ButtonGradient" StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#BA68C8" Offset="0"/>
+            <GradientStop Color="#9C27B0" Offset="1"/>
+        </LinearGradientBrush>
 
-        <!-- Estilos para Botones -->
+        <LinearGradientBrush x:Key="SaveButtonGradient" StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#66BB6A" Offset="0"/>
+            <GradientStop Color="#4CAF50" Offset="1"/>
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="EditButtonGradient" StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#FFA726" Offset="0"/>
+            <GradientStop Color="#FF9800" Offset="1"/>
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="DeleteButtonGradient" StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#EF5350" Offset="0"/>
+            <GradientStop Color="#F44336" Offset="1"/>
+        </LinearGradientBrush>
+
+        <!-- Estilo para botones principales -->
         <Style x:Key="ModernButton" TargetType="Button">
             <Setter Property="Height" Value="40"/>
-            <Setter Property="Padding" Value="20,0"/>
-            <Setter Property="FontSize" Value="13"/>
-            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="MinWidth" Value="120"/>
+            <Setter Property="Margin" Value="5"/>
             <Setter Property="Foreground" Value="White"/>
-            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="FontSize" Value="12"/>
             <Setter Property="Cursor" Value="Hand"/>
+
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border CornerRadius="20" Background="{TemplateBinding Background}">
+                        <Border Background="{TemplateBinding Background}" 
+                                CornerRadius="8" 
+                                BorderThickness="0">
+                            <Border.Effect>
+                                <DropShadowEffect Color="#40000000" Direction="270" ShadowDepth="2" BlurRadius="4"/>
+                            </Border.Effect>
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
                         <ControlTemplate.Triggers>
@@ -102,9 +59,10 @@
                                 <Setter Property="Opacity" Value="0.9"/>
                             </Trigger>
                             <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Opacity" Value="0.8"/>
                                 <Setter Property="RenderTransform">
                                     <Setter.Value>
-                                        <ScaleTransform ScaleX="0.95" ScaleY="0.95"/>
+                                        <ScaleTransform ScaleX="0.98" ScaleY="0.98"/>
                                     </Setter.Value>
                                 </Setter>
                             </Trigger>
@@ -114,200 +72,275 @@
             </Setter>
         </Style>
 
-        <Style x:Key="SearchButton" TargetType="Button" BasedOn="{StaticResource ModernButton}">
-            <Setter Property="Background" Value="#74B9FF"/>
+        <!-- Estilo para TextBox moderno -->
+        <Style x:Key="ModernTextBox" TargetType="TextBox">
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="Padding" Value="10,8"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="#E1BEE7"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="{TemplateBinding Background}" 
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="8">
+                            <ScrollViewer x:Name="PART_ContentHost" 
+                                        VerticalAlignment="Center"
+                                        Padding="{TemplateBinding Padding}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsFocused" Value="True">
+                                <Setter Property="BorderBrush" Value="#BA68C8"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
 
-        <Style x:Key="ResetButton" TargetType="Button" BasedOn="{StaticResource ModernButton}">
-            <Setter Property="Background" Value="#A29BFE"/>
-        </Style>
-
-        <Style x:Key="SaveButton" TargetType="Button" BasedOn="{StaticResource ModernButton}">
-            <Setter Property="Background" Value="#00B894"/>
-        </Style>
-
-        <Style x:Key="ModifyButton" TargetType="Button" BasedOn="{StaticResource ModernButton}">
-            <Setter Property="Background" Value="#FDCB6E"/>
-        </Style>
-
-        <Style x:Key="DeleteButton" TargetType="Button" BasedOn="{StaticResource ModernButton}">
-            <Setter Property="Background" Value="#FF7675"/>
-        </Style>
-
-        <!-- Estilo para Labels -->
-        <Style x:Key="ModernLabel" TargetType="Label">
-            <Setter Property="FontSize" Value="13"/>
-            <Setter Property="FontWeight" Value="Medium"/>
-            <Setter Property="Foreground" Value="#555555"/>
-            <Setter Property="Margin" Value="0,0,0,5"/>
+        <!-- Estilo para ComboBox -->
+        <Style x:Key="ModernComboBox" TargetType="ComboBox">
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="Padding" Value="10,8"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="#E1BEE7"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ComboBox">
+                        <Border Background="{TemplateBinding Background}" 
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="8">
+                            <Grid>
+                                <ToggleButton x:Name="ToggleButton" 
+                                            Background="Transparent"
+                                            BorderThickness="0"
+                                            IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                            ClickMode="Press">
+                                    <Path x:Name="Arrow" 
+                                          Fill="#9C27B0" 
+                                          Data="M 0 0 L 4 4 L 8 0 Z"
+                                          HorizontalAlignment="Right" 
+                                          Margin="0,0,10,0"/>
+                                </ToggleButton>
+                                <ContentPresenter x:Name="ContentSite"
+                                                IsHitTestVisible="False"
+                                                Content="{TemplateBinding SelectionBoxItem}"
+                                                ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                                ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                                                VerticalAlignment="Center"
+                                                HorizontalAlignment="Left"
+                                                Margin="10,0"/>
+                                <Popup x:Name="Popup"
+                                       Placement="Bottom"
+                                       IsOpen="{TemplateBinding IsDropDownOpen}"
+                                       AllowsTransparency="True">
+                                    <Border Background="White" 
+                                            BorderBrush="#E1BEE7" 
+                                            BorderThickness="1"
+                                            CornerRadius="8"
+                                            MaxHeight="200">
+                                        <ScrollViewer>
+                                            <StackPanel IsItemsHost="True"/>
+                                        </ScrollViewer>
+                                    </Border>
+                                </Popup>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsFocused" Value="True">
+                                <Setter Property="BorderBrush" Value="#BA68C8"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
 
         <!-- Estilo para DataGrid -->
         <Style x:Key="ModernDataGrid" TargetType="DataGrid">
             <Setter Property="Background" Value="White"/>
-            <Setter Property="BorderBrush" Value="#E9ECEF"/>
-            <Setter Property="BorderThickness" Value="2"/>
-            <Setter Property="GridLinesVisibility" Value="Horizontal"/>
-            <Setter Property="HorizontalGridLinesBrush" Value="#F1F3F4"/>
-            <Setter Property="AlternatingRowBackground" Value="#F8F9FA"/>
+            <Setter Property="BorderBrush" Value="#E1BEE7"/>
+            <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="RowBackground" Value="White"/>
+            <Setter Property="AlternatingRowBackground" Value="#FCE4EC"/>
+            <Setter Property="GridLinesVisibility" Value="None"/>
             <Setter Property="HeadersVisibility" Value="Column"/>
-            <Setter Property="AutoGenerateColumns" Value="False"/>
-            <Setter Property="CanUserAddRows" Value="False"/>
+            <Setter Property="CanUserReorderColumns" Value="False"/>
+            <Setter Property="CanUserResizeRows" Value="False"/>
             <Setter Property="SelectionMode" Value="Single"/>
         </Style>
 
-        <Style x:Key="DataGridHeader" TargetType="DataGridColumnHeader">
-            <Setter Property="Background" Value="#6C5CE7"/>
+        <!-- Estilo para encabezados de DataGrid -->
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="{StaticResource HeaderGradient}"/>
             <Setter Property="Foreground" Value="White"/>
-            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Height" Value="40"/>
-            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="10,0"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+
+        <!-- Estilo para filas de DataGrid -->
+        <Style TargetType="DataGridRow">
+            <Setter Property="Height" Value="35"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#F3E5F5"/>
+                </Trigger>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="#E1BEE7"/>
+                </Trigger>
+            </Style.Triggers>
         </Style>
     </Window.Resources>
 
-    <Grid>
-        <!-- Header -->
-        <Border Height="70" VerticalAlignment="Top" CornerRadius="0,0,15,15">
-            <Border.Background>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="#FF9A9E" Offset="0"/>
-                    <GradientStop Color="#FAD0C4" Offset="1"/>
-                </LinearGradientBrush>
-            </Border.Background>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <TextBlock Text="👤" FontSize="24" Margin="0,0,10,0" VerticalAlignment="Center"/>
-                <TextBlock Text="GESTIÓN DE USUARIOS" FontSize="24" FontWeight="SemiBold" 
-                          Foreground="White" VerticalAlignment="Center"/>
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Encabezado -->
+        <Border Grid.Row="0" 
+                Background="#FFE4A5C7" 
+                CornerRadius="12" 
+                Margin="0,0,0,20">
+            <Border.Effect>
+                <DropShadowEffect Color="#40000000" Direction="270" ShadowDepth="3" BlurRadius="6"/>
+            </Border.Effect>
+            <StackPanel Orientation="Horizontal" Margin="20,15">
+                <Path Fill="White" 
+                      Width="24" Height="24" 
+                      Margin="0,0,15,0"
+                      Data=""/>
+                <TextBlock Text="GESTIÓN DE ESPECIES" 
+                           FontSize="20" 
+                           FontWeight="Bold" 
+                           Foreground="White" 
+                           VerticalAlignment="Center"/>
             </StackPanel>
         </Border>
 
-        <!-- Contenido Principal -->
-        <ScrollViewer Margin="0,70,0,0" VerticalScrollBarVisibility="Auto">
-            <Grid Margin="30">
+        <!-- Formulario de datos -->
+        <Border Grid.Row="1" 
+                Background="White" 
+                CornerRadius="12" 
+                Padding="25" 
+                Margin="0,0,0,20">
+            <Border.Effect>
+                <DropShadowEffect Color="#20000000" Direction="270" ShadowDepth="2" BlurRadius="8"/>
+            </Border.Effect>
+
+            <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+
+                <!-- Campos del formulario -->
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Primera fila de campos -->
+                    <StackPanel Grid.Column="0" Margin="0,0,10,0">
+                        <TextBlock Text="ID Especie" FontWeight="SemiBold" Foreground="#666" Margin="0,0,0,5"/>
+                        <TextBox x:Name="txtIdEspecie" Style="{StaticResource ModernTextBox}"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1" Margin="5,0">
+                        <TextBlock Text="Tipo de Especie" FontWeight="SemiBold" Foreground="#666" Margin="0,0,0,5"/>
+                        <TextBox x:Name="txtNombre" Style="{StaticResource ModernTextBox}"/>
+                    </StackPanel>
+                </Grid>
+
+                <!-- Botones de acción -->
+                <StackPanel Grid.Row="2" 
+                            Orientation="Horizontal" 
+                            HorizontalAlignment="Center" 
+                            Margin="0,25,0,0"/>
+                <Button x:Name="btnGuardar" 
+                            Content="💾 Guardar" 
+                            Background="{StaticResource SaveButtonGradient}"
+                            Style="{StaticResource ModernButton}" Margin="11,24,535,11" Grid.Row="2"/>
+                <Button x:Name="btnEliminar" 
+                            Content="🗑️ Eliminar" 
+                            Background="{StaticResource DeleteButtonGradient}"
+                            Style="{StaticResource ModernButton}" Margin="531,25,26,10" Grid.Row="2"/>
+                <Button x:Name="btnModificar" 
+                            Content="✏️ Modificar" 
+                            Background="{StaticResource EditButtonGradient}"
+                            Style="{StaticResource ModernButton}" Margin="263,24,291,11" Grid.Row="2"/>
+            </Grid>
+        </Border>
+
+        <!-- DataGrid para mostrar especies -->
+        <Border Grid.Row="2" 
+                Background="White" 
+                CornerRadius="12" Margin="0,0,0,53">
+            <Border.Effect>
+                <DropShadowEffect Color="#20000000" Direction="270" ShadowDepth="2" BlurRadius="8"/>
+            </Border.Effect>
+
+            <Grid Margin="25">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="154*"/>
+                    <ColumnDefinition Width="24*"/>
+                    <ColumnDefinition Width="177*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <!-- Formulario de Datos -->
-                <Border Grid.Row="0" Background="White" CornerRadius="15" Padding="25" Margin="0,0,0,20">
-                    <Border.Effect>
-                        <DropShadowEffect Color="Gray" Direction="270" ShadowDepth="3" Opacity="0.1" BlurRadius="10"/>
-                    </Border.Effect>
+                <!-- Título de la tabla -->
+                <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,15" Grid.ColumnSpan="3">
+                    <Path Fill="#9C27B0" 
+                          Width="20" Height="20" 
+                          Margin="0,0,10,0"
+                          Data=""/>
 
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="200"/>
-                            <ColumnDefinition Width="20"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <!-- Usuario -->
-                        <Label Grid.Row="0" Grid.Column="0" Content="Usuario" Style="{StaticResource ModernLabel}"/>
-
-                        <!-- Nombre -->
-                        <Label Grid.Row="1" Grid.Column="0" Content="Nombre" Style="{StaticResource ModernLabel}" Margin="0,15,0,5"/>
-                        <TextBox Grid.Row="1" Grid.Column="2" Style="{StaticResource ModernTextBox}" Margin="0,15,0,0"/>
-
-                        <!-- Apellido -->
-                        <Label Grid.Row="2" Grid.Column="0" Content="Apellido" Style="{StaticResource ModernLabel}" Margin="0,15,0,5"/>
-                        <TextBox Grid.Row="2" Grid.Column="2" Style="{StaticResource ModernTextBox}" Margin="0,15,0,0"/>
-
-                        <!-- Correo -->
-                        <Label Grid.Row="3" Grid.Column="0" Content="Correo" Style="{StaticResource ModernLabel}" Margin="0,15,0,5"/>
-                        <TextBox Grid.Row="3" Grid.Column="2" Style="{StaticResource ModernTextBox}" Margin="0,15,0,0"/>
-
-                        <!-- Contraseña -->
-                        <Label Grid.Row="4" Grid.Column="0" Content="Contraseña" Style="{StaticResource ModernLabel}" Margin="0,15,0,5"/>
-                        <PasswordBox Grid.Row="4" Grid.Column="2" Height="35" Margin="0,15,0,0" FontSize="13" 
-                                   BorderThickness="2" BorderBrush="#E9ECEF" Background="#F8F9FA">
-                            <PasswordBox.Style>
-                                <Style TargetType="PasswordBox">
-                                    <Setter Property="Template">
-                                        <Setter.Value>
-                                            <ControlTemplate TargetType="PasswordBox">
-                                                <Border CornerRadius="18" BorderThickness="{TemplateBinding BorderThickness}" 
-                                                       BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}">
-                                                    <ScrollViewer x:Name="PART_ContentHost" Margin="12,8"/>
-                                                </Border>
-                                                <ControlTemplate.Triggers>
-                                                    <Trigger Property="IsFocused" Value="True">
-                                                        <Setter Property="BorderBrush" Value="#FF9A9E"/>
-                                                        <Setter Property="Background" Value="White"/>
-                                                    </Trigger>
-                                                </ControlTemplate.Triggers>
-                                            </ControlTemplate>
-                                        </Setter.Value>
-                                    </Setter>
-                                </Style>
-                            </PasswordBox.Style>
-                        </PasswordBox>
-
-                        <!-- Teléfono -->
-                        <Label Grid.Row="5" Grid.Column="0" Content="Teléfono" Style="{StaticResource ModernLabel}" Margin="0,15,0,5"/>
-                        <TextBox Grid.Row="5" Grid.Column="2" Style="{StaticResource ModernTextBox}" Margin="0,15,0,0"/>
-
-                        <!-- Nombre del Rol -->
-                        <Label Grid.Row="6" Grid.Column="0" Content="Nombre del Rol" Style="{StaticResource ModernLabel}" Margin="0,15,0,5"/>
-                        <ComboBox Grid.Row="6" Grid.Column="2" Style="{StaticResource ModernComboBox}" Margin="0,15,0,0">
-                            <ComboBoxItem Content="Administrador"/>
-                            <ComboBoxItem Content="Usuario"/>
-                            <ComboBoxItem Content="Veterinario"/>
-                            <ComboBoxItem Content="Asistente"/>
-                        </ComboBox>
-
-                        <!-- Campo Buscar (lado derecho) -->
-                        <StackPanel Grid.Row="1" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,15,0,0">
-                            <Label Content="Buscar" Style="{StaticResource ModernLabel}" VerticalAlignment="Center" Margin="0,0,10,5"/>
-                            <TextBox Style="{StaticResource ModernTextBox}" Width="200" VerticalAlignment="Top"/>
-                        </StackPanel>
-
-                        <!-- ID (campo pequeño abajo) -->
-                        <StackPanel Grid.Row="6" Grid.Column="0" Margin="0,60,0,0">
-                            <Label Content="ID" Style="{StaticResource ModernLabel}"/>
-                            <TextBox Style="{StaticResource ModernTextBox}" Width="80" HorizontalAlignment="Left"/>
-                        </StackPanel>
-                    </Grid>
-                </Border>
-
-                <!-- Botones de Acción -->
-                <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,20">
-                    <Button Content="🔍 Buscar" Style="{StaticResource SearchButton}" Margin="0,0,10,0"/>
-                    <Button Content="🔄 Reiniciar" Style="{StaticResource ResetButton}" Margin="0,0,10,0"/>
-                    <Button Content="💾 Guardar" Style="{StaticResource SaveButton}" Margin="0,0,10,0"/>
-                    <Button Content="✏️ Modificar" Style="{StaticResource ModifyButton}" Margin="0,0,10,0"/>
-                    <Button Content="🗑️ Eliminar" Style="{StaticResource DeleteButton}"/>
                 </StackPanel>
 
-                <!-- Tabla de Datos -->
-                <Border Grid.Row="2" Background="White" CornerRadius="15" Padding="20">
-                    <Border.Effect>
-                        <DropShadowEffect Color="Gray" Direction="270" ShadowDepth="3" Opacity="0.1" BlurRadius="10"/>
-                    </Border.Effect>
-
-                    <DataGrid Style="{StaticResource ModernDataGrid}" ColumnHeaderStyle="{StaticResource DataGridHeader}">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="SampleInt" Width="80"/>
-                            <DataGridTextColumn Header="SampleStringA" Width="*"/>
-                            <DataGridTextColumn Header="SampleStringB" Width="*"/>
-                            <DataGridCheckBoxColumn Header="SampleBool" Width="100"/>
-                        </DataGrid.Columns>
-                    </DataGrid>
-                </Border>
+                <!-- DataGrid -->
+                <DataGrid x:Name="dgEspecies"
+                          Style="{StaticResource ModernDataGrid}"
+                          AutoGenerateColumns="False" Margin="0,-19,0,0" Grid.ColumnSpan="3" Height="145" VerticalAlignment="Top" Grid.RowSpan="2">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" 
+                                            Binding="{Binding Id}" 
+                                            Width="80"
+                                            IsReadOnly="True"/>
+                        <DataGridTextColumn Header="SampleStringA" 
+                                            Binding="{Binding SampleStringA}" 
+                                            Width="*"
+                                            IsReadOnly="True"/>
+                        <DataGridTextColumn Header="SampleStringB" 
+                                            Binding="{Binding SampleStringB}" 
+                                            Width="*"
+                                            IsReadOnly="True"/>
+                        <DataGridCheckBoxColumn Header="Activo" 
+                                                Binding="{Binding IsActive}" 
+                                                Width="80"/>
+                    </DataGrid.Columns>
+                </DataGrid>
             </Grid>
-        </ScrollViewer>
+        </Border>
     </Grid>
-  
 </Window>

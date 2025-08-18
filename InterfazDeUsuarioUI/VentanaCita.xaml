@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InterfazDeUsuarioUI"
         mc:Ignorable="d"
-        Title="VentanaCita" Height="911" Width="810">
+        Title="VentanaCita" Height="747" Width="810">
     <Window.Resources>
         <!-- Estilos para TextBox -->
         <Style x:Key="ModernTextBox" TargetType="TextBox">
@@ -162,7 +162,7 @@
         </Style>
     </Window.Resources>
 
-    <Grid Margin="0,0,0,-16">
+    <Grid Height="745" VerticalAlignment="Top">
         <!-- Header -->
         <Border Height="70" VerticalAlignment="Top" CornerRadius="0,0,15,15">
             <Border.Background>

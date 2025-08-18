@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InterfazDeUsuarioUI"
         mc:Ignorable="d"
-        Title="VentanaExpediente" Height="1084" Width="843">
+        Title="VentanaExpediente" Height="838" Width="843">
     <Window.Resources>
         <!-- Estilos para botones con gradientes -->
         <Style x:Key="GradientButtonStyle" TargetType="Button">
@@ -372,7 +372,7 @@
                          Background="White"
                          BorderThickness="0"
                          FontSize="12"
-                         RowHeight="35">
+                         RowHeight="35" Height="185" VerticalAlignment="Top">
 
                     <DataGrid.ColumnHeaderStyle>
                         <Style TargetType="DataGridColumnHeader">
