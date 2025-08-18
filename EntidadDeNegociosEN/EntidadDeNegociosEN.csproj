@@ -41,7 +41,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CitaCalendarioEN.cs" />
+    <Compile Include="CitaEN.cs" />
+    <Compile Include="ClienteEN.cs" />
+    <Compile Include="EspecieEN.cs" />
+    <Compile Include="ExpedienteEN.cs" />
+    <Compile Include="GeneroEN.cs" />
+    <Compile Include="MascotaEN.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RazaEN.cs" />
+    <Compile Include="RolEN.cs" />
+    <Compile Include="UsuarioActualEN.cs" />
+    <Compile Include="UsuarioEN.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
