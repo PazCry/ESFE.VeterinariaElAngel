@@ -350,7 +350,6 @@
                         </StackPanel>
                     </Grid>
                 </Border>
-
                 <!-- Área de contenido principal -->
                 <Border Grid.Row="1" 
                   Background="White" 

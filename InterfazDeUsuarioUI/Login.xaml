@@ -125,13 +125,12 @@
 
     <Grid>
         <!-- Fondo con gradiente rosado pastel -->
-        <Rectangle Fill="{StaticResource BackgroundGradient}"/>
+        <Rectangle Fill="#F3E8FF"/>
 
         <!-- Panel principal de login -->
         <Border Background="White"
-                CornerRadius="20"
-                Margin="126,10,180,0"
-                Effect="{x:Null}" Height="567" VerticalAlignment="Top">
+                CornerRadius="5"
+                Effect="{x:Null}" Height="414" VerticalAlignment="Center" BorderBrush="Orchid" BorderThickness="5,5,5,5" HorizontalAlignment="Center" Width="444">
 
             <Grid Margin="40">
                 <Grid.RowDefinitions>
@@ -178,7 +177,7 @@
                 <!-- Campo de texto Usuario -->
                 <TextBox x:Name="txtUsuario"
                         Grid.Row="6"
-                        Style="{StaticResource ModernTextBox}" Height="70" VerticalAlignment="Top"/>
+                        Style="{StaticResource ModernTextBox}" Height="37" VerticalAlignment="Top" Grid.RowSpan="2" BorderBrush="Orchid" Background="{x:Null}"/>
 
                 <!-- Etiqueta Contraseña -->
                 <TextBlock Grid.Row="8"
@@ -187,18 +186,18 @@
                           FontWeight="SemiBold"
                           FontFamily="Segoe UI"
                           Foreground="#FF666666"
-                          Margin="0,0,0,5"/>
+                          Margin="0,5,0,15" Grid.RowSpan="2"/>
 
                 <!-- Campo de contraseña -->
                 <PasswordBox x:Name="txtPassword"
                             Grid.Row="9"
-                            Style="{StaticResource ModernPasswordBox}" Margin="0,15,0,165" Grid.RowSpan="3"/>
+                            Style="{StaticResource ModernPasswordBox}" Height="38" VerticalAlignment="Top" Margin="0,31,0,0" Grid.RowSpan="3" BorderBrush="Orchid" Background="{x:Null}"/>
 
                 <!-- Botón de inicio de sesión -->
                 <Button
                        Content="INICIAR SESIÓN"
                        Style="{StaticResource LoginButton}"
-                       Margin="196,1,26,15" Grid.RowSpan="2"/>
+                       Margin="46,50,46,0" Grid.Row="11" Height="54" VerticalAlignment="Top"/>
             </Grid>
         </Border>
 
