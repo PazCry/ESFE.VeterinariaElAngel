@@ -8,5 +8,8 @@ namespace EntidadDeNegociosEN
 {
     public class CitaCalendarioEN
     {
+        public DateTime FechaCita { get; set; }
+            public TimeSpan Hora { get; set; }
+            public string NombreCliente { get; set; }
     }
 }

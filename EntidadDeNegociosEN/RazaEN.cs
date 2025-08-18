@@ -8,5 +8,8 @@ namespace EntidadDeNegociosEN
 {
     public class RazaEN
     {
+            public byte Id { get; set; }
+            public string TipoRaza { get; set; } = string.Empty;
+            public DateTime FechaCreacion { get; set; }
     }
 }

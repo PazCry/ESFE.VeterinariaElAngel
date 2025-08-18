@@ -8,5 +8,11 @@ namespace EntidadDeNegociosEN
 {
     public class ExpedienteEN
     {
+            public byte Id { get; set; }
+            public byte IdCliente { get; set; }
+            public byte IdMascota { get; set; }
+            public string DescripcionConsulta { get; set; }
+            public string Estado { get; set; }
+            public DateTime Fecha { get; set; }
     }
 }

@@ -8,5 +8,6 @@ namespace EntidadDeNegociosEN
 {
     public class UsuarioActualEN
     {
+        public static string Correo { get; set; }
     }
 }
