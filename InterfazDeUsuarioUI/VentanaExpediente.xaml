@@ -5,8 +5,411 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InterfazDeUsuarioUI"
         mc:Ignorable="d"
-        Title="VentanaExpediente" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="VentanaExpediente" Height="1084" Width="843">
+    <Window.Resources>
+        <!-- Estilos para botones con gradientes -->
+        <Style x:Key="GradientButtonStyle" TargetType="Button">
+            <Setter Property="Padding" Value="15,8"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                                CornerRadius="15" 
+                                BorderThickness="0">
+                            <ContentPresenter HorizontalAlignment="Center" 
+                                            VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="RenderTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform ScaleX="1.05" ScaleY="1.05"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Estilo para TextBox con fondo rosa -->
+        <Style x:Key="PinkTextBoxStyle" TargetType="TextBox">
+            <Setter Property="Padding" Value="10,8"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="#FFB5C5" CornerRadius="15" BorderThickness="0">
+                            <ScrollViewer x:Name="PART_ContentHost" 
+                                        VerticalAlignment="Center" 
+                                        Margin="10,0"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Estilo para ComboBox -->
+        <Style x:Key="PinkComboBoxStyle" TargetType="ComboBox">
+            <Setter Property="Padding" Value="10,8"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ComboBox">
+                        <Border Background="#FFB5C5" CornerRadius="15" BorderThickness="0">
+                            <Grid>
+                                <ToggleButton x:Name="ToggleButton" 
+                                            Grid.Column="2" 
+                                            Focusable="false" 
+                                            ClickMode="Press" 
+                                            IsChecked="{Binding Path=IsDropDownOpen,Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}"
+                                            Background="Transparent" 
+                                            BorderThickness="0"/>
+                                <ContentPresenter x:Name="ContentSite" 
+                                                IsHitTestVisible="False" 
+                                                Content="{TemplateBinding SelectionBoxItem}" 
+                                                ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" 
+                                                ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" 
+                                                Margin="10,3,23,3" 
+                                                VerticalAlignment="Center" 
+                                                HorizontalAlignment="Left"/>
+                                <TextBox x:Name="PART_EditableTextBox" 
+                                        Style="{x:Null}" 
+                                        HorizontalAlignment="Left" 
+                                        VerticalAlignment="Center" 
+                                        Margin="3,3,23,3" 
+                                        Focusable="True" 
+                                        Background="Transparent" 
+                                        Visibility="Hidden" 
+                                        IsReadOnly="{TemplateBinding IsReadOnly}"/>
+                                <Popup x:Name="Popup" 
+                                      Placement="Bottom" 
+                                      IsOpen="{TemplateBinding IsDropDownOpen}" 
+                                      AllowsTransparency="True" 
+                                      Focusable="False" 
+                                      PopupAnimation="Slide">
+                                    <Grid x:Name="DropDown" 
+                                          SnapsToDevicePixels="True" 
+                                          MinWidth="{TemplateBinding ActualWidth}" 
+                                          MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                                        <Border x:Name="DropDownBorder" 
+                                               Background="White" 
+                                               BorderThickness="1" 
+                                               BorderBrush="#CCCCCC" 
+                                               CornerRadius="5"/>
+                                        <ScrollViewer Margin="4,6,4,6" SnapsToDevicePixels="True">
+                                            <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained"/>
+                                        </ScrollViewer>
+                                    </Grid>
+                                </Popup>
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Gradientes -->
+        <LinearGradientBrush x:Key="PinkHeaderGradient" StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#FF9BB5" Offset="0"/>
+            <GradientStop Color="#FFC1D4" Offset="1"/>
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="GreenGradient" StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#4CAF50" Offset="0"/>
+            <GradientStop Color="#66BB6A" Offset="1"/>
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="BlueGradient" StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#2196F3" Offset="0"/>
+            <GradientStop Color="#42A5F5" Offset="1"/>
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="OrangeGradient" StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#FF9800" Offset="0"/>
+            <GradientStop Color="#FFB74D" Offset="1"/>
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="RedGradient" StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#F44336" Offset="0"/>
+            <GradientStop Color="#EF5350" Offset="1"/>
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="PurpleGradient" StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#7B1FA2" Offset="0"/>
+            <GradientStop Color="#9C27B0" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Resources>
+
+    <Border Background="White" CornerRadius="8" Margin="10">
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Header -->
+            <Border Grid.Row="0" Background="{StaticResource PinkHeaderGradient}" CornerRadius="8,8,0,0" Padding="20">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock Text="📁" FontSize="20" Margin="0,0,10,0"/>
+                    <TextBlock Text="GESTIÓN DE EXPEDIENTES" 
+                              Foreground="White" 
+                              FontSize="16" 
+                              FontWeight="Bold"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Form Section -->
+            <Grid Grid.Row="1" Margin="25">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- Form Title -->
+                <TextBlock Grid.Row="0" Text="FORMULARIO DE DATOS" 
+                          Foreground="#666" 
+                          FontSize="11" 
+                          FontWeight="Bold" 
+                          Margin="0,0,0,15"/>
+
+                <!-- Form Fields -->
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Primera fila -->
+                    <StackPanel Grid.Row="0" Grid.Column="0" Margin="5">
+                        <TextBlock Text="Num Expediente:" Foreground="#666" FontSize="11" Margin="0,0,0,3"/>
+                        <TextBox Style="{StaticResource PinkTextBoxStyle}"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="0" Grid.Column="1" Margin="5">
+                        <TextBlock Text="Tipo:" Foreground="#666" FontSize="11" Margin="0,0,0,3"/>
+                        <ComboBox Style="{StaticResource PinkComboBoxStyle}"/>
+                    </StackPanel>
+
+                    <!-- Segunda fila -->
+                    <StackPanel Grid.Row="1" Grid.Column="0" Margin="5">
+                        <TextBlock Text="Cliente:" Foreground="#666" FontSize="11" Margin="0,0,0,3"/>
+                        <TextBox Style="{StaticResource PinkTextBoxStyle}"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="1" Grid.Column="1" Margin="5">
+                        <TextBlock Text="Estado:" Foreground="#666" FontSize="11" Margin="0,0,0,3"/>
+                        <ComboBox Style="{StaticResource PinkComboBoxStyle}"/>
+                    </StackPanel>
+
+                    <!-- Tercera fila -->
+                    <StackPanel Grid.Row="2" Grid.Column="0" Margin="5">
+                        <TextBlock Text="Fecha Inicio:" Foreground="#666" FontSize="11" Margin="0,0,0,3"/>
+                        <DatePicker Margin="5" Padding="10,8" BorderThickness="0" FontSize="12">
+                            <DatePicker.Template>
+                                <ControlTemplate TargetType="DatePicker">
+                                    <Border Background="#FFB5C5" CornerRadius="15" BorderThickness="0">
+                                        <Grid>
+                                            <Button x:Name="PART_Button" 
+                                                   HorizontalAlignment="Stretch" 
+                                                   VerticalAlignment="Stretch" 
+                                                   Background="Transparent" 
+                                                   BorderThickness="0"/>
+                                            <DatePickerTextBox x:Name="PART_TextBox" 
+                                                             Foreground="White" 
+                                                             Background="Transparent" 
+                                                             BorderThickness="0" 
+                                                             Margin="10,0"/>
+                                            <Popup x:Name="PART_Popup"/>
+                                        </Grid>
+                                    </Border>
+                                </ControlTemplate>
+                            </DatePicker.Template>
+                        </DatePicker>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="2" Grid.Column="1" Margin="5">
+                        <TextBlock Text="Prioridad:" Foreground="#666" FontSize="11" Margin="0,0,0,3"/>
+                        <ComboBox Style="{StaticResource PinkComboBoxStyle}"/>
+                    </StackPanel>
+
+                    <!-- Cuarta fila - Descripción (span completo) -->
+                    <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="5">
+                        <TextBlock Text="Descripción:" Foreground="#666" FontSize="11" Margin="0,0,0,3"/>
+                        <TextBox Height="60" 
+                                TextWrapping="Wrap" 
+                                AcceptsReturn="True" 
+                                VerticalScrollBarVisibility="Auto"
+                                Padding="10,8"
+                                Margin="5"
+                                BorderThickness="0"
+                                Foreground="White"
+                                FontSize="12">
+                            <TextBox.Template>
+                                <ControlTemplate TargetType="TextBox">
+                                    <Border Background="#FFB5C5" CornerRadius="10" BorderThickness="0">
+                                        <ScrollViewer x:Name="PART_ContentHost" 
+                                                    Margin="10"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </TextBox.Template>
+                        </TextBox>
+                    </StackPanel>
+                </Grid>
+
+                <!-- Action Buttons -->
+                <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0">
+                    <Button Content="✓ Guardar" 
+                           Background="{StaticResource GreenGradient}" 
+                           Style="{StaticResource GradientButtonStyle}" Height="44" Width="109"/>
+                    <Button Content="🔍 Buscar" 
+                           Background="{StaticResource BlueGradient}" 
+                           Style="{StaticResource GradientButtonStyle}" Height="42" Width="108"/>
+                    <Button Content="✏ Modificar" 
+                           Background="{StaticResource OrangeGradient}" 
+                           Style="{StaticResource GradientButtonStyle}" Width="101"/>
+                    <Button Content="🗑 Eliminar" 
+                           Background="{StaticResource RedGradient}" 
+                           Style="{StaticResource GradientButtonStyle}" Height="48" Width="101"/>
+                </StackPanel>
+            </Grid>
+
+            <!-- Search Bar -->
+            <Border Grid.Row="2" Background="#E8EAF6" CornerRadius="8" Margin="20,0,20,10" Padding="15">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBox Grid.Column="0" 
+                            x:Name="SearchTextBox"
+                            Background="White" 
+                            BorderThickness="0" 
+                            Padding="15,10" 
+                            FontSize="12"
+                            VerticalAlignment="Center">
+                        <TextBox.Template>
+                            <ControlTemplate TargetType="TextBox">
+                                <Border Background="{TemplateBinding Background}" 
+                                       CornerRadius="20" 
+                                       BorderThickness="0">
+                                    <ScrollViewer x:Name="PART_ContentHost" 
+                                                VerticalAlignment="Center" 
+                                                Margin="15,0"/>
+                                </Border>
+                            </ControlTemplate>
+                        </TextBox.Template>
+                    </TextBox>
+
+                    <Button Grid.Column="1" 
+                           Content="🔍" 
+                           Background="{StaticResource PurpleGradient}" 
+                           Foreground="White"
+                           BorderThickness="0" 
+                           Padding="15,10" 
+                           Margin="10,0,-13,0"
+                           Cursor="Hand">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="{TemplateBinding Background}" 
+                                       CornerRadius="20" 
+                                       BorderThickness="0">
+                                    <ContentPresenter HorizontalAlignment="Center" 
+                                                    VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+            </Border>
+
+            <!-- Records Section Header -->
+            <Border Grid.Row="3" Background="{StaticResource PurpleGradient}" Margin="20,0,20,10" CornerRadius="5" Padding="15">
+                <TextBlock Text="REGISTROS DE EXPEDIENTES" 
+                          Foreground="White" 
+                          FontWeight="Bold" 
+                          HorizontalAlignment="Center" 
+                          FontSize="14"/>
+            </Border>
+
+            <!-- Data Grid -->
+            <Border Grid.Row="4" Background="White" CornerRadius="5" Margin="20,0,20,20">
+                <Border.Effect>
+                    <DropShadowEffect Color="Gray" BlurRadius="5" ShadowDepth="2" Opacity="0.2"/>
+                </Border.Effect>
+
+                <DataGrid x:Name="ExpedientesDataGrid" 
+                         AutoGenerateColumns="False" 
+                         HeadersVisibility="Column"
+                         GridLinesVisibility="Horizontal"
+                         RowHeaderWidth="0"
+                         Background="White"
+                         BorderThickness="0"
+                         FontSize="12"
+                         RowHeight="35">
+
+                    <DataGrid.ColumnHeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="Background" Value="#F5F5F5"/>
+                            <Setter Property="Foreground" Value="#666"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="FontSize" Value="11"/>
+                            <Setter Property="Padding" Value="12,10"/>
+                            <Setter Property="BorderThickness" Value="0,0,1,1"/>
+                            <Setter Property="BorderBrush" Value="#DDD"/>
+                        </Style>
+                    </DataGrid.ColumnHeaderStyle>
+
+                    <DataGrid.RowStyle>
+                        <Style TargetType="DataGridRow">
+                            <Setter Property="Background" Value="White"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#F8F9FF"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGrid.RowStyle>
+
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="60"/>
+                        <DataGridTextColumn Header="Num Expediente" Binding="{Binding NumExpediente}" Width="120"/>
+                        <DataGridTextColumn Header="Cliente" Binding="{Binding Cliente}" Width="150"/>
+                        <DataGridTextColumn Header="Tipo" Binding="{Binding Tipo}" Width="100"/>
+                        <DataGridTextColumn Header="Estado" Binding="{Binding Estado}" Width="100"/>
+                        <DataGridTextColumn Header="Fecha Inicio" Binding="{Binding FechaInicio}" Width="100"/>
+                        <DataGridTextColumn Header="Prioridad" Binding="{Binding Prioridad}" Width="100"/>
+                        <DataGridTextColumn Header="Descripción" Binding="{Binding Descripcion}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Border>
+        </Grid>
+    </Border>
+
 </Window>
