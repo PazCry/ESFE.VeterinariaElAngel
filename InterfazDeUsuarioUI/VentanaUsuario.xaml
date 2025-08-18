@@ -277,10 +277,10 @@
                             <TextBox Style="{StaticResource ModernTextBox}" Width="80" HorizontalAlignment="Left" IsEnabled="False"/>
                         </StackPanel>
 
-                        <Button Content="🔍 Buscar" Style="{StaticResource SearchButton}" Margin="202,8,10,15" Grid.Column="3" Grid.RowSpan="2" Grid.Row="1"/>
-                        <Button Content="🔄 Reiniciar" Style="{StaticResource ResetButton}" Margin="92,1,136,7" Grid.Column="3" Grid.Row="2"/>
+                        <Button Content="🔍 Buscar" Style="{StaticResource SearchButton}" Margin="202,4,0,4" Grid.Column="3" Grid.Row="2"/>
+                        <Button Content="🔄 Reiniciar" Style="{StaticResource ResetButton}" Margin="92,1,107,7" Grid.Column="3" Grid.Row="2"/>
                         <Button Content="💾 Guardar" Style="{StaticResource SaveButton}" Margin="134,30,46,14" Grid.Column="3" Grid.Row="3"/>
-                        <Button Content="✏ Modificar" Style="{StaticResource ModifyButton}" Margin="134,22,54,27" Grid.Column="3" Grid.RowSpan="2" Grid.Row="4"/>
+                        <Button Content="✏ Modificar" Style="{StaticResource ModifyButton}" Margin="140,12,48,38" Grid.Column="3" Grid.RowSpan="2" Grid.Row="4"/>
                         <Button Content="🗑 Eliminar" Style="{StaticResource DeleteButton}" Grid.Column="3" Margin="134,39,46,103" Grid.Row="5" Grid.RowSpan="2"/>
                     </Grid>
                 </Border>
