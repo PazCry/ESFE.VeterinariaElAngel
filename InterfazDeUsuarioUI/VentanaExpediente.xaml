@@ -212,19 +212,18 @@
                     </StackPanel>
 
                     <StackPanel Grid.Row="0" Grid.Column="1" Margin="5">
-                        <TextBlock Text="Tipo:" Foreground="#666" FontSize="11" Margin="0,0,0,3"/>
-                        <ComboBox Style="{StaticResource PinkComboBoxStyle}"/>
+                        <TextBlock Foreground="#666" FontSize="11" Margin="0,0,0,3"><Run Language="es-sv" Text="Mascota"/><Run Text=":"/></TextBlock>
+
                     </StackPanel>
 
                     <!-- Segunda fila -->
                     <StackPanel Grid.Row="1" Grid.Column="0" Margin="5">
                         <TextBlock Text="Cliente:" Foreground="#666" FontSize="11" Margin="0,0,0,3"/>
-                        <TextBox x:Name="cbxIdCliente" Style="{StaticResource PinkTextBoxStyle}"/>
                     </StackPanel>
 
                     <StackPanel Grid.Row="1" Grid.Column="1" Margin="5">
                         <TextBlock Text="Estado:" Foreground="#666" FontSize="11" Margin="0,0,0,3"/>
-                        <ComboBox x:Name="txtEstado" Style="{StaticResource PinkComboBoxStyle}"/>
+
                     </StackPanel>
 
                     <!-- Tercera fila -->
@@ -280,6 +279,9 @@
                             </TextBox.Template>
                         </TextBox>
                     </StackPanel>
+
+                    <ComboBox x:Name="cbxEstado" Grid.Column="1" Margin="16,30,10,9" Grid.Row="1"/>
+                    <ComboBox x:Name="cbxIdCliente" HorizontalAlignment="Center" Margin="0,30,0,0" Grid.Row="1" VerticalAlignment="Top" Width="366"/>
                 </Grid>
 
                 <!-- Action Buttons -->
@@ -297,6 +299,7 @@
                            Background="{StaticResource RedGradient}" 
                            Style="{StaticResource GradientButtonStyle}" Height="48" Width="101"/>
                 </StackPanel>
+                <ComboBox x:Name="cbxIdMascota" Margin="402,33,10,235" Grid.Row="1" Background="#FFE5E5E5"/>
             </Grid>
 
             <!-- Search Bar -->

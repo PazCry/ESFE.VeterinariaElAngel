@@ -226,8 +226,13 @@
 
                     <!-- Segunda fila -->
                     <StackPanel Grid.Row="1" Grid.Column="0" Margin="5">
-                        <TextBlock Text="Especie:" Foreground="#666" FontSize="11" Margin="0,0,0,3"/>
-                        <ComboBox Style="{StaticResource PinkComboBoxStyle}">
+                        <TextBlock Text="Especie:" 
+               Foreground="#666" 
+               FontSize="11" 
+               Margin="0,0,0,3"/>
+                        
+                        <ComboBox x:Name="cbxEspecie"
+              Style="{StaticResource PinkComboBoxStyle}">
                             <ComboBoxItem Content="Perro" Foreground="Black"/>
                             <ComboBoxItem Content="Gato" Foreground="Black"/>
                             <ComboBoxItem Content="Ave" Foreground="Black"/>
@@ -236,6 +241,7 @@
                             <ComboBoxItem Content="Otro" Foreground="Black"/>
                         </ComboBox>
                     </StackPanel>
+
 
                     <StackPanel Grid.Row="1" Grid.Column="1" Margin="5">
                         <TextBlock Text="Raza:" Foreground="#666" FontSize="11" Margin="0,0,0,3"/>

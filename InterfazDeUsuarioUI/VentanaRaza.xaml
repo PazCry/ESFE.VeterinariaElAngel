@@ -281,7 +281,7 @@
                                       HorizontalAlignment="Left"/>
 
                                 <Border Grid.Column="0" BorderBrush="#E5E7EB" 
-                                   BorderThickness="0,0,1,0"/>
+                                   BorderThickness="0,0,1,0" Grid.ColumnSpan="2" Margin="67,-134,222,134"/>
 
                                 <TextBlock Grid.Column="1" Text="Tipo de Raza" 
                                       FontWeight="Medium" FontSize="12" 

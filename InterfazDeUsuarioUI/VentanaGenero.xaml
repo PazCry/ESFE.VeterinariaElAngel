@@ -264,38 +264,18 @@
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
 
-                        <!-- Headers de columnas -->
-                        <Grid x:Name="dgvListarGenero" Grid.Row="0" Background="{StaticResource RosaPastelMedio}">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="2*"/>
-                            </Grid.ColumnDefinitions>
-
-                            <TextBlock Grid.Column="0" Text="ID" 
-                                      FontWeight="Medium" FontSize="12" 
-                                      Foreground="#4B5563"
-                                      Padding="20,12"
-                                      HorizontalAlignment="Left"/>
-
-                            <Border Grid.Column="0" BorderBrush="#E5E7EB" 
-                                   BorderThickness="0,0,1,0"/>
-
-                            <TextBlock Grid.Column="1" Text="Tipo de Raza" 
-                                      FontWeight="Medium" FontSize="12" 
-                                      Foreground="#4B5563"
-                                      Padding="20,12"
-                                      HorizontalAlignment="Center"/>
-
-                            <Border Grid.Column="1" BorderBrush="#E5E7EB" 
-                                   BorderThickness="0,0,1,0"/>
-
-                            <TextBlock Grid.Column="2" Text="Fecha Creación" 
-                                      FontWeight="Medium" FontSize="12" 
-                                      Foreground="#4B5563"
-                                      Padding="20,12"
-                                      HorizontalAlignment="Center"/>
-                        </Grid>
+                        <DataGrid x:Name="dgvListarGenero"
+                          Grid.Row="0"
+                          AutoGenerateColumns="False"
+                          CanUserAddRows="False"
+                          HeadersVisibility="Column"
+                          Background="{StaticResource RosaPastelMedio}">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="*" />
+                                <DataGridTextColumn Header="Tipo de Género" Binding="{Binding TipoGenero}" Width="2*" />
+                                <DataGridTextColumn Header="Fecha Creación" Binding="{Binding FechaCreacion}" Width="2*" />
+                            </DataGrid.Columns>
+                        </DataGrid>
 
                         <!-- Área de contenido vacía -->
                         <Border Grid.Row="1" Background="#FAFAFA" 

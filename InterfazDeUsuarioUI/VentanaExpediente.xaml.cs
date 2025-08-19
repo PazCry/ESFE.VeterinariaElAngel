@@ -1,4 +1,5 @@
 ﻿using EntidadDeNegociosEN;
+using LogicaDeNegocioBL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,7 @@ namespace InterfazDeUsuarioUI
     /// </summary>
     public partial class VentanaExpediente : Window
     {
-        ExpedienteBL _expedienteBL = new ExpedienteBL();
+        ExpedeinteBL _expedienteBL = new ExpedeinteBL();
         ExpedienteEN _expedienteEN = new ExpedienteEN();
         private bool _modoModificacion = false;
         public VentanaExpediente()
@@ -30,44 +31,44 @@ namespace InterfazDeUsuarioUI
             ReiniciarEstadoInicial();
 
             // Eventos para detectar cambios
-            txtCliente.SelectionChanged += Campos_TextChanged;
-            cbxMascota.SelectionChanged += Campos_TextChanged;
-            txtEstado.SelectionChanged += Campos_TextChanged;
-            dpFechaInicio.SelectedDateChanged += Campos_TextChanged;
-            txtDescripcion.TextChanged += Campos_TextChanged;
+            cbxIdCliente.SelectionChanged += Campos_TextChanged;
+            cbxIdMascota.SelectionChanged += Campos_TextChanged;
+            cbxEstado.SelectionChanged += Campos_TextChanged;
+            dtpFechaAtencion.SelectedDateChanged += Campos_TextChanged;
+            txtDescripcionConsulta.TextChanged += Campos_TextChanged;
 
             dgvListarExpediente.SelectedIndex = -1;
         }
 
         public void CargarGrid()
         {
-            ExpedientesDataGrid.ItemsSource = _expedienteBL.MostrarExpe();
+            dgvListarExpediente.ItemsSource = _expedienteBL.MostrarExpe();
         }
 
         private void btnGuardar_Click(object sender, RoutedEventArgs e)
         {
-            if (txtCliente.SelectedIndex == -1 ||
+            if (cbxIdCliente.SelectedIndex == -1 ||
                 cbxIdMascota.SelectedIndex == -1 ||
-                string.IsNullOrWhiteSpace(txtEstado.Text) ||
-                string.IsNullOrWhiteSpace(txtDescripcion.Text))
+                string.IsNullOrWhiteSpace(cbxEstado.Text) ||
+                string.IsNullOrWhiteSpace(txtDescripcionConsulta.Text))
             {
                 MessageBox.Show("Por favor, complete todos los campos y seleccione todas las opciones.",
                                 "Campos incompletos", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
-            if (dpFechaInicio.SelectedDate.HasValue && dpFechaInicio.SelectedDate.Value.Date < DateTime.Today)
+            if (dtpFechaAtencion.SelectedDate.HasValue && dtpFechaAtencion.SelectedDate.Value.Date < DateTime.Today)
             {
                 MessageBox.Show("La fecha de atención no puede ser anterior a hoy.",
                                 "Fecha inválida", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
-            _expedienteEN.IdCliente = Convert.ToByte(txtCliente.Text);
+            _expedienteEN.IdCliente = Convert.ToByte(cbxIdCliente.Text);
             _expedienteEN.IdMascota = Convert.ToByte(cbxIdMascota.Text);
-            _expedienteEN.Estado = txtEstado.Text;
+            _expedienteEN.Estado = cbxEstado.Text;
             _expedienteEN.DescripcionConsulta = txtDescripcionConsulta.Text;
-            _expedienteEN.FechaAtencion = dtpFechaAtencion.SelectedDate.Value;
+            _expedienteEN.Fecha = dtpFechaAtencion.SelectedDate.Value;
 
             _expedienteBL.GuardarExpe(_expedienteEN);
 
@@ -142,8 +143,8 @@ namespace InterfazDeUsuarioUI
         private void btnBuscar_Click(object sender, RoutedEventArgs e)
         {
             string Id = SearchTextBox.Text;
-            List<ExpedienteEN> registros = ExpedienteBL.BuscarExpe(Id);
-            ExpedientesDataGrid.ItemsSource = registros;
+            List<ExpedienteEN> registros = ExpedeinteBL.BuscarExpe(Id);
+            dgvListarExpediente.ItemsSource = registros;
         }
 
         private void btnReiniciar_Click(object sender, RoutedEventArgs e)
@@ -181,7 +182,7 @@ namespace InterfazDeUsuarioUI
             btnEliminar.IsEnabled = false;
             _modoModificacion = false;
 
-            ExpedientesDataGrid.SelectedIndex = -1;
+            dgvListarExpediente.SelectedIndex = -1;
 
             cbxIdCliente.SelectionChanged += Campos_TextChanged;
             cbxIdMascota.SelectionChanged += Campos_TextChanged;
@@ -189,12 +190,12 @@ namespace InterfazDeUsuarioUI
 
         private void ExpedientesDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (ExpedientesDataGrid.SelectedItem is ExpedienteEN fila)
+            if (dgvListarExpediente.SelectedItem is ExpedienteEN fila)
             {
                 cbxIdCliente.SelectedValue = fila.IdCliente;
                 cbxIdMascota.SelectedValue = fila.IdMascota;
                 cbxEstado.SelectedItem = fila.Estado;
-                dtpFechaAtencion.SelectedDate = fila.FechaAtencion;
+                dtpFechaAtencion.SelectedDate = fila.Fecha;
                 txtDescripcionConsulta.Text = fila.DescripcionConsulta;
                 txtId.Text = fila.Id.ToString();
 
@@ -224,5 +225,4 @@ namespace InterfazDeUsuarioUI
         }
     }
 }
-    }
-}
+

@@ -47,7 +47,7 @@ namespace InterfazDeUsuarioUI
             string nuevoGenero = txtTipoGenero.Text.Trim().ToLower();
 
             // Verificar duplicados en DataGrid
-            if (dgvListarGenero.Items.Cast<GeneroEN>().Any(x => x.TipoGen.Trim().ToLower() == nuevoGenero))
+            if (dgvListarGenero.Items.Cast<GeneroEN>().Any(x => x.TipoGenero.Trim().ToLower() == nuevoGenero))
             {
                 MessageBox.Show("Este género ya está registrado.", "Duplicado", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
@@ -65,7 +65,7 @@ namespace InterfazDeUsuarioUI
 
         private void btnModificar_Click(object sender, RoutedEventArgs e)
         {
-            _generoEN.Id = Convert.ToInt32(txtId.Text);
+            _generoEN.Id = Convert.ToByte(txtId.Text);
             _generoEN.TipoGenero = txtTipoGenero.Text;
             _generoBL.ModificarGenero(_generoEN);
 
@@ -75,7 +75,7 @@ namespace InterfazDeUsuarioUI
 
         private void btnEliminar_Click(object sender, RoutedEventArgs e)
         {
-            _generoEN.Id = Convert.ToInt32(txtId.Text);
+            _generoEN.Id = Convert.ToByte(txtId.Text);
             _generoBL.EliminarGenero(_generoEN);
 
             CargarGrid();

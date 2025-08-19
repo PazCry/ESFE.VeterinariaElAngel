@@ -26,7 +26,7 @@ namespace InterfazDeUsuarioUI
         RazaEN _razaEN = new RazaEN();
         private bool _modoModificacion = false;
 
-        public CRUDRaza()
+        public VentanaRaza()
         {
             InitializeComponent();
             CargarGrid();
@@ -35,7 +35,7 @@ namespace InterfazDeUsuarioUI
 
         private void CargarGrid()
         {
-            dgvListarRaza.ItemsSource = _razaBL.MostrarRaza();
+            dgvListarRaza.ItemSource = _razaBL.MostrarRaza();
         }
 
         private void btnGuardar_Click(object sender, RoutedEventArgs e)
