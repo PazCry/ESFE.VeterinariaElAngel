@@ -286,7 +286,7 @@
                 <Button x:Name="btnModificar" 
                             Content="✏️ Modificar" 
                             Background="{StaticResource EditButtonGradient}"
-                            Style="{StaticResource ModernButton}" Margin="263,24,291,11" Grid.Row="2"/>
+                            Style="{StaticResource ModernButton}" Margin="263,24,291,11" Grid.Row="2" Cursor="Hand"/>
             </Grid>
         </Border>
 

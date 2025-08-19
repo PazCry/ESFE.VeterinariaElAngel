@@ -146,14 +146,14 @@
                         <!-- ID -->
                         <StackPanel Grid.Column="0" Grid.Row="0">
                             <Label Content="ID:" Style="{StaticResource LabelPastel}"/>
-                            <TextBox Style="{StaticResource TextBoxPastel}" 
+                            <TextBox x:Name="txtId" Style="{StaticResource TextBoxPastel}" 
                                     Background="{StaticResource RosaPastelClaro}"/>
                         </StackPanel>
 
                         <!-- Tipo de Raza -->
                         <StackPanel Grid.Column="2" Grid.Row="0">
-                            <Label Content="Tipo de Raza:" Style="{StaticResource LabelPastel}"/>
-                            <TextBox Style="{StaticResource TextBoxPastel}"
+                            <Label Content="Tipo de  Genero:" Style="{StaticResource LabelPastel}"/>
+                            <TextBox x:Name="txtTipoGenero" Style="{StaticResource TextBoxPastel}"
                                     Background="{StaticResource RosaPastelClaro}"/>
                         </StackPanel>
                     </Grid>
@@ -177,30 +177,30 @@
                         </Grid.RowDefinitions>
 
                         <!-- Primera fila de botones -->
-                        <Button Grid.Column="0" Grid.Row="0" 
+                        <Button x:Name="btnGuardar" Grid.Column="0" Grid.Row="0" 
                                Content="💾 Guardar" 
                                Style="{StaticResource BotonPastel}"
                                Background="{StaticResource VerdePastel}"
                                Margin="0,0,4,4"/>
 
-                        <Button Grid.Column="1" Grid.Row="0" 
+                        <Button x:Name="btnBuscar" Grid.Column="1" Grid.Row="0" 
                                Content="🔍 Buscar" 
                                Style="{StaticResource BotonPastel}"
                                Background="{StaticResource AzulPastel}"
-                               Margin="4,0,0,4"/>
+                               Margin="4,0,0,4" Cursor="Hand"/>
 
                         <!-- Segunda fila de botones -->
-                        <Button Grid.Column="0" Grid.Row="1" 
+                        <Button x:Name="btnModificar" Grid.Column="0" Grid.Row="1" 
                                Content="✏️ Modificar" 
                                Style="{StaticResource BotonPastel}"
                                Background="{StaticResource NaranjaPastel}"
-                               Margin="0,4,4,0"/>
+                               Margin="0,4,4,0" Cursor="Hand"/>
 
-                        <Button Grid.Column="1" Grid.Row="1" 
+                        <Button x:Name="btnEliminar" Grid.Column="1" Grid.Row="1" 
                                Content="🗑️ Eliminar" 
                                Style="{StaticResource BotonPastel}"
                                Background="{StaticResource RosaPastelPrincipal}"
-                               Margin="4,4,0,0"/>
+                               Margin="4,4,0,0" Cursor="Hand"/>
                     </Grid>
                 </StackPanel>
             </Grid>
@@ -265,7 +265,7 @@
                         </Grid.RowDefinitions>
 
                         <!-- Headers de columnas -->
-                        <Grid Grid.Row="0" Background="{StaticResource RosaPastelMedio}">
+                        <Grid x:Name="dgvListarGenero" Grid.Row="0" Background="{StaticResource RosaPastelMedio}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="2*"/>
