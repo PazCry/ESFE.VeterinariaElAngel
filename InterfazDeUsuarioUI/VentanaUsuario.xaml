@@ -213,7 +213,8 @@
                             <ColumnDefinition Width="200"/>
                             <ColumnDefinition Width="20"/>
                             <ColumnDefinition Width="158*"/>
-                            <ColumnDefinition Width="295*"/>
+                            <ColumnDefinition Width="236*"/>
+                            <ColumnDefinition Width="59*"/>
                         </Grid.ColumnDefinitions>
 
 
@@ -223,15 +224,15 @@
 
                         <!-- Apellido -->
                         <Label Grid.Row="2" Grid.Column="0" Content="Apellido" Style="{StaticResource ModernLabel}" Margin="-4,9,4,11"/>
-                        <TextBox Grid.Row="2" Style="{StaticResource ModernTextBox}" Margin="96,6,258,7" Grid.ColumnSpan="4"/>
+                        <TextBox x:Name="txtApellido" Grid.Row="2" Style="{StaticResource ModernTextBox}" Margin="96,6,199,7" Grid.ColumnSpan="4"/>
 
                         <!-- Correo -->
                         <Label Grid.Row="3" Grid.Column="0" Content="Correo" Style="{StaticResource ModernLabel}" Margin="-4,7,4,13"/>
-                        <TextBox Grid.Row="3" Style="{StaticResource ModernTextBox}" Margin="100,16,258,33" Grid.ColumnSpan="4"/>
+                        <TextBox x:Name="txtCorreo" Grid.Row="3" Style="{StaticResource ModernTextBox}" Margin="100,17,199,34" Grid.ColumnSpan="4"/>
 
                         <!-- Contraseña -->
                         <Label Grid.Row="3" Grid.Column="0" Content="Contraseña" Style="{StaticResource ModernLabel}" Margin="-4,67,4,15" Grid.RowSpan="2"/>
-                        <PasswordBox Grid.Row="3" Height="35" Margin="110,70,258,15" FontSize="13" 
+                        <PasswordBox x:Name="txtContra" Grid.Row="3" Height="35" Margin="110,70,199,15" FontSize="13" 
                                    BorderThickness="2" BorderBrush="#E9ECEF" Background="#F8F9FA" Grid.ColumnSpan="4" Grid.RowSpan="2">
                             <PasswordBox.Style>
                                 <Style TargetType="PasswordBox">
@@ -257,11 +258,11 @@
 
                         <!-- Teléfono -->
                         <Label Grid.Row="5" Grid.Column="0" Content="Teléfono" Style="{StaticResource ModernLabel}" Margin="-2,9,2,11"/>
-                        <TextBox Grid.Row="5" Style="{StaticResource ModernTextBox}" Margin="114,10,258,8" Grid.ColumnSpan="4"/>
+                        <TextBox x:Name="txtTelefono" Grid.Row="5" Style="{StaticResource ModernTextBox}" Margin="114,11,199,9" Grid.ColumnSpan="4"/>
 
                         <!-- Nombre del Rol -->
                         <Label Grid.Row="6" Grid.Column="0" Content="Nombre del Rol" Style="{StaticResource ModernLabel}" Margin="-2,7,2,13"/>
-                        <ComboBox Grid.Row="6" Style="{StaticResource ModernComboBox}" Margin="123,10,258,85" Grid.ColumnSpan="4">
+                        <ComboBox x:Name="cbxIdRol" Grid.Row="6" Style="{StaticResource ModernComboBox}" Margin="123,10,199,85" Grid.ColumnSpan="4">
                             <ComboBoxItem Content="Administrador"/>
                             <ComboBoxItem Content="Usuario"/>
                             <ComboBoxItem Content="Veterinario"/>
@@ -269,19 +270,19 @@
                         </ComboBox>
 
                         <!-- Campo Buscar (lado derecho) -->
-                        <StackPanel Grid.Row="1" Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,15,0,0"/>
+                        <StackPanel Grid.Row="2" Grid.Column="4" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,48"/>
 
                         <!-- ID (campo pequeño abajo) -->
                         <StackPanel Grid.Row="6" Grid.Column="0" Margin="0,48,0,12">
                             <Label Content="ID" Style="{StaticResource ModernLabel}"/>
-                            <TextBox Style="{StaticResource ModernTextBox}" Width="80" HorizontalAlignment="Left" IsEnabled="False"/>
+                            <TextBox x:Name="txtId" Style="{StaticResource ModernTextBox}" Width="80" HorizontalAlignment="Left" IsEnabled="False"/>
                         </StackPanel>
 
-                        <Button Content="🔍 Buscar" Style="{StaticResource SearchButton}" Margin="202,4,0,4" Grid.Column="3" Grid.Row="2"/>
-                        <Button Content="🔄 Reiniciar" Style="{StaticResource ResetButton}" Margin="92,1,107,7" Grid.Column="3" Grid.Row="2"/>
-                        <Button Content="💾 Guardar" Style="{StaticResource SaveButton}" Margin="134,30,46,14" Grid.Column="3" Grid.Row="3"/>
-                        <Button Content="✏ Modificar" Style="{StaticResource ModifyButton}" Margin="140,12,48,38" Grid.Column="3" Grid.RowSpan="2" Grid.Row="4"/>
-                        <Button Content="🗑 Eliminar" Style="{StaticResource DeleteButton}" Grid.Column="3" Margin="134,39,46,103" Grid.Row="5" Grid.RowSpan="2"/>
+                        <Button x:Name="btnBuscar" Content="🔍 Buscar" Style="{StaticResource SearchButton}" Margin="202,4,0,4" Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="2"/>
+                        <Button x:Name="btnReiniciar" Content="🔄 Reiniciar" Style="{StaticResource ResetButton}" Margin="92,1,48,7" Grid.Column="3" Grid.Row="2"/>
+                        <Button x:Name="btnGuardar" Content="💾 Guardar" Style="{StaticResource SaveButton}" Margin="134,31,46,14" Grid.Column="3" Grid.Row="3" Grid.ColumnSpan="2"/>
+                        <Button x:Name="btnModificar" Content="✏ Modificar" Style="{StaticResource ModifyButton}" Margin="140,12,48,39" Grid.Column="3" Grid.RowSpan="2" Grid.Row="4" Grid.ColumnSpan="2"/>
+                        <Button x:Name="btnEliminar" Content="🗑 Eliminar" Style="{StaticResource DeleteButton}" Grid.Column="3" Margin="134,41,46,105" Grid.Row="5" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
                     </Grid>
                 </Border>
 
@@ -302,7 +303,7 @@
                         <DropShadowEffect Color="Gray" Direction="270" ShadowDepth="3" Opacity="0.1" BlurRadius="10"/>
                     </Border.Effect>
 
-                    <DataGrid Style="{StaticResource ModernDataGrid}" ColumnHeaderStyle="{StaticResource DataGridHeader}" Margin="0,-24,0,58">
+                    <DataGrid x:Name="dgvListarUsuario" Style="{StaticResource ModernDataGrid}" ColumnHeaderStyle="{StaticResource DataGridHeader}" Margin="0,-24,0,58">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="SampleInt" Width="80"/>
                             <DataGridTextColumn Header="SampleStringA" Width="*"/>
@@ -313,8 +314,8 @@
                 </Border>
             </Grid>
         </ScrollViewer>
-        <TextBox Style="{StaticResource ModernTextBox}" VerticalAlignment="Top" Margin="530,99,70,0"/>
-        <TextBox Style="{StaticResource ModernTextBox}" HorizontalAlignment="Left" Width="316" Height="38" Margin="150,0,0,591" VerticalAlignment="Bottom"/>
+        <TextBox x:Name="txtBuscar" Style="{StaticResource ModernTextBox}" VerticalAlignment="Top" Margin="533,82,67,0"/>
+        <TextBox x:Name="txtNombre" Style="{StaticResource ModernTextBox}" HorizontalAlignment="Left" Width="316" Height="38" Margin="150,0,0,591" VerticalAlignment="Bottom"/>
         <Label Content="Label" HorizontalAlignment="Left" Margin="913,70,0,0" VerticalAlignment="Top"/>
     </Grid>
 

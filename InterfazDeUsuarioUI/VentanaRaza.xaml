@@ -148,14 +148,14 @@
                             <!-- ID -->
                             <StackPanel Grid.Column="0" Grid.Row="0">
                                 <Label Content="ID:" Style="{StaticResource LabelPastel}"/>
-                                <TextBox Style="{StaticResource TextBoxPastel}" 
+                                <TextBox x:Name="txtId" Style="{StaticResource TextBoxPastel}" 
                                     Background="{StaticResource RosaPastelClaro}"/>
                             </StackPanel>
 
                             <!-- Tipo de Raza -->
                             <StackPanel Grid.Column="2" Grid.Row="0">
                                 <Label Content="Tipo de Raza:" Style="{StaticResource LabelPastel}"/>
-                                <TextBox Style="{StaticResource TextBoxPastel}"
+                                <TextBox x:Name="txtTipoRaza" Style="{StaticResource TextBoxPastel}"
                                     Background="{StaticResource RosaPastelClaro}"/>
                             </StackPanel>
                         </Grid>
@@ -179,26 +179,26 @@
                             </Grid.RowDefinitions>
 
                             <!-- Primera fila de botones -->
-                            <Button Grid.Column="0" Grid.Row="0" 
+                            <Button x:Name="btnGuardar" Grid.Column="0" Grid.Row="0" 
                                Content="💾 Guardar" 
                                Style="{StaticResource BotonPastel}"
                                Background="{StaticResource VerdePastel}"
                                Margin="0,0,4,4"/>
 
-                            <Button Grid.Column="1" Grid.Row="0" 
+                            <Button x:Name="btnBuscar" Grid.Column="1" Grid.Row="0" 
                                Content="🔍 Buscar" 
                                Style="{StaticResource BotonPastel}"
                                Background="{StaticResource AzulPastel}"
                                Margin="4,0,0,4"/>
 
                             <!-- Segunda fila de botones -->
-                            <Button Grid.Column="0" Grid.Row="1" 
+                            <Button x:Name="btnModificar" Grid.Column="0" Grid.Row="1" 
                                Content="✏️ Modificar" 
                                Style="{StaticResource BotonPastel}"
                                Background="{StaticResource NaranjaPastel}"
                                Margin="0,4,4,0"/>
 
-                            <Button Grid.Column="1" Grid.Row="1" 
+                            <Button x:Name="btnEliminar" Grid.Column="1" Grid.Row="1" 
                                Content="🗑️ Eliminar" 
                                Style="{StaticResource BotonPastel}"
                                Background="{StaticResource RosaPastelPrincipal}"
@@ -225,7 +225,7 @@
                         Background="{StaticResource RosaPastelMedio}"
                         Height="35"/>
 
-                    <Button Grid.Column="2" 
+                    <Button x:Name="btnReiniciar" Grid.Column="2" 
                        Background="{StaticResource RosaPastelPrincipal}"
                        Style="{StaticResource BotonPastel}"
                        Width="40" Height="35"
@@ -252,7 +252,7 @@
                                     <GradientStop Color="#C084FC" Offset="1"/>
                                 </LinearGradientBrush>
                             </Border.Background>
-                            <TextBlock Text="REGISTROS DE RAZAS" 
+                            <TextBlock x:Name="dgvListarRaza" Text="REGISTROS DE RAZAS" 
                                   FontWeight="Bold" FontSize="14" 
                                   Foreground="White" 
                                   HorizontalAlignment="Center"
