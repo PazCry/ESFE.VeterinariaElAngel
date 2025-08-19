@@ -211,35 +211,35 @@
                         <!-- Primera fila -->
                         <StackPanel Grid.Row="0" Grid.Column="0">
                             <Label Content="Num Cita:" Style="{StaticResource ModernLabel}"/>
-                            <TextBox Style="{StaticResource ModernTextBox}"/>
+                            <TextBox x:Name="txtNumCita" Style="{StaticResource ModernTextBox}"/>
                         </StackPanel>
 
                         <StackPanel Grid.Row="0" Grid.Column="2">
                             <Label Content="Fecha de la Cita:" Style="{StaticResource ModernLabel}"/>
-                            <DatePicker Style="{StaticResource ModernDatePicker}"/>
+                            <DatePicker x:Name="dpFechaCita" Style="{StaticResource ModernDatePicker}"/>
                         </StackPanel>
 
                         <StackPanel Grid.Row="0" Grid.Column="4">
                             <Label Content="Buscar Cita (Por Nombre):" Style="{StaticResource ModernLabel}"/>
-                            <TextBox Style="{StaticResource ModernTextBox}"/>
+                            <TextBox x:Name="txtBuscar" Style="{StaticResource ModernTextBox}"/>
                         </StackPanel>
 
                         <!-- Segunda fila -->
                         <StackPanel Grid.Row="1" Grid.Column="0" Margin="0,15,0,0">
                             <Label Content="Num Expediente:" Style="{StaticResource ModernLabel}"/>
-                            <TextBox Style="{StaticResource ModernTextBox}"/>
+                            <TextBox x:Name="txtNumExpediente" Style="{StaticResource ModernTextBox}"/>
                         </StackPanel>
 
                         <!-- Tercera fila -->
                         <StackPanel Grid.Row="2" Grid.Column="0" Margin="0,15,0,0">
                             <Label Content="Hora:" Style="{StaticResource ModernLabel}"/>
-                            <TextBox Style="{StaticResource ModernTextBox}" Text="Hora.."/>
+                            <TextBox x:Name="txtHora" Style="{StaticResource ModernTextBox}" Text="Hora.."/>
                         </StackPanel>
-                        <Button Content="📋 Expediente" Style="{StaticResource AccessButton}" Margin="127,15,10,28" Grid.Row="1" Grid.Column="2"/>
-                        <Button Content="🐾 Mascota" Style="{StaticResource AccessButton}" Margin="4,16,4,27" Grid.Row="1" Grid.Column="4"/>
-                        <Button Content="👤 Cliente" Style="{StaticResource AccessButton}" Margin="257,21,171,22" Grid.ColumnSpan="3" Grid.Row="1"/>
-                        <Button Content="📅 Ver Calendario" Style="{StaticResource AccessButton}" Margin="5,2,159,41" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2"/>
-                        <Button Content="🗑 Eliminar" Style="{StaticResource DeleteButton}" Grid.Column="2" Margin="144,2,0,41" Grid.Row="2"/>
+                        <Button x:Name="btnExpediente" Content="📋 Expediente" Style="{StaticResource AccessButton}" Margin="127,15,10,28" Grid.Row="1" Grid.Column="2"/>
+                        <Button x:Name="btnMascota" Content="🐾 Mascota" Style="{StaticResource AccessButton}" Margin="4,16,4,27" Grid.Row="1" Grid.Column="4"/>
+                        <Button x:Name="btnCliente" Content="👤 Cliente" Style="{StaticResource AccessButton}" Margin="257,21,171,22" Grid.ColumnSpan="3" Grid.Row="1"/>
+                        <Button x:Name="btnVerCalendario" Content="📅 Ver Calendario" Style="{StaticResource AccessButton}" Margin="5,2,159,41" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2" Cursor="Hand"/>
+                        <Button x:Name="btnEliminar" Content="🗑 Eliminar" Style="{StaticResource DeleteButton}" Grid.Column="2" Margin="144,2,0,41" Grid.Row="2"/>
                     </Grid>
                 </Border>
 
@@ -249,7 +249,7 @@
 
                 <!-- Tabla de Datos -->
                 <Border Grid.Row="2" Background="White" CornerRadius="15" Padding="20" Margin="0,158,0,190" Grid.RowSpan="2">
-                    <DataGrid Style="{StaticResource ModernDataGrid}" 
+                    <DataGrid x:Name="dgvCita" Style="{StaticResource ModernDataGrid}" 
                               ColumnHeaderStyle="{StaticResource DataGridHeader}" 
                               Margin="0,-79,0,-79" 
                               SelectionChanged="DataGrid_SelectionChanged">
@@ -261,10 +261,10 @@
                         </DataGrid.Columns>
                     </DataGrid>
                 </Border>
-                <Button Content="🔍 Buscar" Style="{StaticResource SearchButton}" Margin="219,288,429,457" Grid.RowSpan="4"/>
-                <Button Content="🔄 Reiniciar" Style="{StaticResource ResetButton}" RenderTransformOrigin="1.695,4.119" Margin="357,288,285,457" Grid.RowSpan="4" Click="Button_Click"/>
-                <Button Content="✏ Modificar" Style="{StaticResource ModifyButton}" RenderTransformOrigin="1.074,0.558" Margin="481,288,156,462" Grid.RowSpan="4"/>
-                <Button Content="💾 Guardar" Style="{StaticResource SaveButton}" Margin="600,290,27,460" Grid.RowSpan="4"/>
+                <Button x:Name="btnBuscar" Content="🔍 Buscar" Style="{StaticResource SearchButton}" Margin="219,288,429,457" Grid.RowSpan="4"/>
+                <Button x:Name="btnReiniciar" Content="🔄 Reiniciar" Style="{StaticResource ResetButton}" RenderTransformOrigin="1.695,4.119" Margin="357,288,285,457" Grid.RowSpan="4" Click="Button_Click"/>
+                <Button x:Name="btnModificar" Content="✏ Modificar" Style="{StaticResource ModifyButton}" RenderTransformOrigin="1.074,0.558" Margin="481,288,156,462" Grid.RowSpan="4"/>
+                <Button x:Name="btnGuardar" Content="💾 Guardar" Style="{StaticResource SaveButton}" Margin="600,290,27,460" Grid.RowSpan="4"/>
             </Grid>
         </ScrollViewer>
     </Grid>

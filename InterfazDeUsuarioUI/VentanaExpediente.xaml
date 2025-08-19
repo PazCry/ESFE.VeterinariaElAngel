@@ -208,7 +208,7 @@
                     <!-- Primera fila -->
                     <StackPanel Grid.Row="0" Grid.Column="0" Margin="5">
                         <TextBlock Text="Num Expediente:" Foreground="#666" FontSize="11" Margin="0,0,0,3"/>
-                        <TextBox Style="{StaticResource PinkTextBoxStyle}"/>
+                        <TextBox x:Name="txtId" Style="{StaticResource PinkTextBoxStyle}"/>
                     </StackPanel>
 
                     <StackPanel Grid.Row="0" Grid.Column="1" Margin="5">
@@ -219,18 +219,18 @@
                     <!-- Segunda fila -->
                     <StackPanel Grid.Row="1" Grid.Column="0" Margin="5">
                         <TextBlock Text="Cliente:" Foreground="#666" FontSize="11" Margin="0,0,0,3"/>
-                        <TextBox Style="{StaticResource PinkTextBoxStyle}"/>
+                        <TextBox x:Name="cbxIdCliente" Style="{StaticResource PinkTextBoxStyle}"/>
                     </StackPanel>
 
                     <StackPanel Grid.Row="1" Grid.Column="1" Margin="5">
                         <TextBlock Text="Estado:" Foreground="#666" FontSize="11" Margin="0,0,0,3"/>
-                        <ComboBox Style="{StaticResource PinkComboBoxStyle}"/>
+                        <ComboBox x:Name="txtEstado" Style="{StaticResource PinkComboBoxStyle}"/>
                     </StackPanel>
 
                     <!-- Tercera fila -->
                     <StackPanel Grid.Row="2" Grid.Column="0" Margin="5">
                         <TextBlock Text="Fecha Inicio:" Foreground="#666" FontSize="11" Margin="0,0,0,3"/>
-                        <DatePicker Margin="5" Padding="10,8" BorderThickness="0" FontSize="12">
+                        <DatePicker x:Name="dtpFechaAtencion" Margin="5" Padding="10,8" BorderThickness="0" FontSize="12">
                             <DatePicker.Template>
                                 <ControlTemplate TargetType="DatePicker">
                                     <Border Background="#FFB5C5" CornerRadius="15" BorderThickness="0">
@@ -255,13 +255,13 @@
 
                     <StackPanel Grid.Row="2" Grid.Column="1" Margin="5">
                         <TextBlock Text="Prioridad:" Foreground="#666" FontSize="11" Margin="0,0,0,3"/>
-                        <ComboBox Style="{StaticResource PinkComboBoxStyle}"/>
+                        <ComboBox x:Name="txtPrioridad" Style="{StaticResource PinkComboBoxStyle}"/>
                     </StackPanel>
 
                     <!-- Cuarta fila - Descripción (span completo) -->
                     <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="5">
                         <TextBlock Text="Descripción:" Foreground="#666" FontSize="11" Margin="0,0,0,3"/>
-                        <TextBox Height="60" 
+                        <TextBox x:Name="txtDescripcionConsulta" Height="60" 
                                 TextWrapping="Wrap" 
                                 AcceptsReturn="True" 
                                 VerticalScrollBarVisibility="Auto"
@@ -284,23 +284,23 @@
 
                 <!-- Action Buttons -->
                 <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0">
-                    <Button Content="✓ Guardar" 
+                    <Button x:Name="btnGuardar" Content="✓ Guardar" 
                            Background="{StaticResource GreenGradient}" 
                            Style="{StaticResource GradientButtonStyle}" Height="44" Width="109"/>
-                    <Button Content="🔍 Buscar" 
+                    <Button x:Name="btnBuscar" Content="🔍 Buscar" 
                            Background="{StaticResource BlueGradient}" 
                            Style="{StaticResource GradientButtonStyle}" Height="42" Width="108"/>
-                    <Button Content="✏ Modificar" 
+                    <Button x:Name="btnModificar" Content="✏ Modificar" 
                            Background="{StaticResource OrangeGradient}" 
                            Style="{StaticResource GradientButtonStyle}" Width="101"/>
-                    <Button Content="🗑 Eliminar" 
+                    <Button x:Name="btnEliminar" Content="🗑 Eliminar" 
                            Background="{StaticResource RedGradient}" 
                            Style="{StaticResource GradientButtonStyle}" Height="48" Width="101"/>
                 </StackPanel>
             </Grid>
 
             <!-- Search Bar -->
-            <Border Grid.Row="2" Background="#E8EAF6" CornerRadius="8" Margin="20,0,20,10" Padding="15">
+            <Border x:Name="txtBuscar" Grid.Row="2" Background="#E8EAF6" CornerRadius="8" Margin="20,0,20,10" Padding="15">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -327,7 +327,7 @@
                         </TextBox.Template>
                     </TextBox>
 
-                    <Button Grid.Column="1" 
+                    <Button x:Name="btnBuscar1" Grid.Column="1" 
                            Content="🔍" 
                            Background="{StaticResource PurpleGradient}" 
                            Foreground="White"
@@ -350,7 +350,7 @@
             </Border>
 
             <!-- Records Section Header -->
-            <Border Grid.Row="3" Background="{StaticResource PurpleGradient}" Margin="20,0,20,10" CornerRadius="5" Padding="15">
+            <Border x:Name="btnRegistroExpediente" Grid.Row="3" Background="{StaticResource PurpleGradient}" Margin="20,0,20,10" CornerRadius="5" Padding="15">
                 <TextBlock Text="REGISTROS DE EXPEDIENTES" 
                           Foreground="White" 
                           FontWeight="Bold" 
@@ -364,7 +364,7 @@
                     <DropShadowEffect Color="Gray" BlurRadius="5" ShadowDepth="2" Opacity="0.2"/>
                 </Border.Effect>
 
-                <DataGrid x:Name="ExpedientesDataGrid" 
+                <DataGrid x:Name="dgvListarExpediente" 
                          AutoGenerateColumns="False" 
                          HeadersVisibility="Column"
                          GridLinesVisibility="Horizontal"
