@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+
 namespace InterfazDeUsuarioUI
 {
     /// <summary>
@@ -118,7 +119,7 @@ namespace InterfazDeUsuarioUI
 
             if (confirm == MessageBoxResult.Yes)
             {
-                _clienteEN.Id = Convert.ToInt32(txtNumCliente.Text);
+                _clienteEN.Id = Convert.ToByte(txtNumCliente.Text);
                 _clienteBL.EliminarCliente(_clienteEN);
 
                 MessageBox.Show("Cliente eliminado correctamente.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);

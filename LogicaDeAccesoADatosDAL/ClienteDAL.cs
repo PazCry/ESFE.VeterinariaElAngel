@@ -42,7 +42,7 @@ namespace LogicaDeAccesoADatosDAL
                         {
                             _Lista.Add(new ClienteEN
                             {
-                                Id = _reader.GetByte(0),
+                                Id = _reader.GetInt32(0),
                                 Nombre = _reader.GetString(1),
                                 Apellido = _reader.GetString(2),
                                 Telefono = Convert.ToInt64(_reader.GetValue(3)), // si es varchar en la BD

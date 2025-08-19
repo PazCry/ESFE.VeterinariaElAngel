@@ -8,7 +8,7 @@ namespace EntidadDeNegociosEN
 {
     public class ClienteEN
     {
-        public byte Id { get; set; }
+        public int Id { get; set; }
             public string Nombre { get; set; } = string.Empty;
             public string Apellido { get; set; } = string.Empty;
             public long Telefono { get; set; }

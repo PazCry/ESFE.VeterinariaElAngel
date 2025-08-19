@@ -93,7 +93,7 @@ namespace InterfazDeUsuarioUI
             btnEliminar.IsEnabled = false;
             _modoModificacion = false;
 
-            dgvListarRaza.UnselectAll();
+            dgvListarRaza.UnselectAll ();
         }
 
         private void Campos_TextChanged(object sender, TextChangedEventArgs e)
