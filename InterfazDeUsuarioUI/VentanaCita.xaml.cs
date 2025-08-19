@@ -24,5 +24,14 @@ namespace InterfazDeUsuarioUI
             InitializeComponent();
         }
 
+        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // Lógica para manejar el evento SelectionChanged
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

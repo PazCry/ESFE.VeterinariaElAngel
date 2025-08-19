@@ -249,21 +249,20 @@
 
                 <!-- Tabla de Datos -->
                 <Border Grid.Row="2" Background="White" CornerRadius="15" Padding="20" Margin="0,158,0,190" Grid.RowSpan="2">
-
-
-                    <DataGrid Style="{StaticResource ModernDataGrid}" ColumnHeaderStyle="{StaticResource DataGridHeader}" Margin="0,-79,0,-79" SelectionChanged="DataGrid_SelectionChanged">
+                    <DataGrid Style="{StaticResource ModernDataGrid}" 
+                              ColumnHeaderStyle="{StaticResource DataGridHeader}" 
+                              Margin="0,-79,0,-79" 
+                              SelectionChanged="DataGrid_SelectionChanged">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="SampleInt" Width="80" Binding="{Binding SampleInt}"/>
                             <DataGridTextColumn Header="SampleStringA" Width="*" Binding="{Binding SampleStringA}"/>
                             <DataGridTextColumn Header="SampleStringB" Width="*" Binding="{Binding SampleStringB}"/>
                             <DataGridCheckBoxColumn Header="SampleBool" Width="100" Binding="{Binding SampleBool}"/>
                         </DataGrid.Columns>
-
-
                     </DataGrid>
                 </Border>
                 <Button Content="🔍 Buscar" Style="{StaticResource SearchButton}" Margin="219,288,429,457" Grid.RowSpan="4"/>
-                <Button Content="🔄 Reiniciar" Style="{StaticResource ResetButton}" RenderTransformOrigin="1.695,4.119" Click="Button_Click" Margin="357,288,285,457" Grid.RowSpan="4"/>
+                <Button Content="🔄 Reiniciar" Style="{StaticResource ResetButton}" RenderTransformOrigin="1.695,4.119" Margin="357,288,285,457" Grid.RowSpan="4" Click="Button_Click"/>
                 <Button Content="✏ Modificar" Style="{StaticResource ModifyButton}" RenderTransformOrigin="1.074,0.558" Margin="481,288,156,462" Grid.RowSpan="4"/>
                 <Button Content="💾 Guardar" Style="{StaticResource SaveButton}" Margin="600,290,27,460" Grid.RowSpan="4"/>
             </Grid>

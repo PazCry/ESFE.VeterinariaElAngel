@@ -167,7 +167,7 @@
 
                 <!-- Etiqueta Usuario -->
                 <TextBlock Grid.Row="4"
-                          Text="Usuario:"
+                          Text="Correo:"
                           FontSize="12"
                           FontWeight="SemiBold"
                           FontFamily="Segoe UI"
@@ -175,9 +175,44 @@
                           Margin="0,0,0,5"/>
 
                 <!-- Campo de texto Usuario -->
-                <TextBox x:Name="txtUsuario"
-                        Grid.Row="6"
-                        Style="{StaticResource ModernTextBox}" Height="37" VerticalAlignment="Top" Grid.RowSpan="2" BorderBrush="Orchid" Background="{x:Null}"/>
+                <TextBox x:Name="txtCorreo"
+         Grid.Row="6"
+         Height="37"
+         VerticalAlignment="Top"
+         Grid.RowSpan="2"
+         BorderBrush="Orchid"
+         Background="{x:Null}"
+         Style="{StaticResource ModernTextBox}">
+                    <TextBox.Template>
+                        <ControlTemplate TargetType="TextBox">
+                            <Grid>
+                                <!-- Caja de texto real -->
+                                <ScrollViewer x:Name="PART_ContentHost"/>
+
+                                <!-- Texto de Watermark -->
+                                <TextBlock Text="Ingrese Correo @"
+                           Foreground="Gray"
+                           Margin="5,0,0,0"
+                           IsHitTestVisible="False"
+                           VerticalAlignment="Center">
+                                    <TextBlock.Style>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Style.Triggers>
+                                                <!-- Mostrar watermark cuando el texto está vacío -->
+                                                <DataTrigger Binding="{Binding Text, RelativeSource={RelativeSource TemplatedParent}}" Value="">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                            </Grid>
+                        </ControlTemplate>
+                    </TextBox.Template>
+                </TextBox>
+
+
 
                 <!-- Etiqueta Contraseña -->
                 <TextBlock Grid.Row="8"
@@ -190,14 +225,50 @@
 
                 <!-- Campo de contraseña -->
                 <PasswordBox x:Name="txtPassword"
-                            Grid.Row="9"
-                            Style="{StaticResource ModernPasswordBox}" Height="38" VerticalAlignment="Top" Margin="0,31,0,0" Grid.RowSpan="3" BorderBrush="Orchid" Background="{x:Null}"/>
+             Grid.Row="9"
+             Height="38"
+             VerticalAlignment="Top"
+             Margin="0,31,0,0"
+             Grid.RowSpan="3"
+             BorderBrush="Orchid"
+             Background="{x:Null}"
+             Style="{StaticResource ModernPasswordBox}">
+                    <PasswordBox.Template>
+                        <ControlTemplate TargetType="PasswordBox">
+                            <Grid>
+                                <!-- Caja de password real -->
+                                <ScrollViewer x:Name="PART_ContentHost"/>
+
+                                <!-- Watermark -->
+                                <TextBlock Text="Contraseña"
+                           Foreground="Gray"
+                           Margin="5,0,0,0"
+                           IsHitTestVisible="False"
+                           VerticalAlignment="Center">
+                                    <TextBlock.Style>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Style.Triggers>
+                                                <!-- Si Password está vacío, mostrar watermark -->
+                                                <Trigger Property="Tag" Value="">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                            </Grid>
+                        </ControlTemplate>
+                    </PasswordBox.Template>
+                </PasswordBox>
+
 
                 <!-- Botón de inicio de sesión -->
-                <Button
+                <Button x:Name="btnIngresar"
                        Content="INICIAR SESIÓN"
                        Style="{StaticResource LoginButton}"
-                       Margin="46,50,46,0" Grid.Row="11" Height="54" VerticalAlignment="Top"/>
+                       Margin="46,50,46,0" Grid.Row="11" Height="54" VerticalAlignment="Top"
+                       Click="btnIngresar_Click"/>
             </Grid>
         </Border>
 
