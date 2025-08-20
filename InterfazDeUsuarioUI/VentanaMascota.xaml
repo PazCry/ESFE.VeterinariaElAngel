@@ -216,18 +216,18 @@
                     <!-- Primera fila -->
                     <StackPanel Grid.Row="0" Grid.Column="0" Margin="5">
                         <TextBlock Text="Num Mascota:" Foreground="#666" FontSize="11" Margin="0,0,0,3"/>
-                        <TextBox Style="{StaticResource PinkTextBoxStyle}"/>
+                        <TextBox x:Name="txtId" Style="{StaticResource PinkTextBoxStyle}"/>
                     </StackPanel>
 
                     <StackPanel Grid.Row="0" Grid.Column="1" Margin="5">
                         <TextBlock Text="Nombre:" Foreground="#666" FontSize="11" Margin="0,0,0,3"/>
-                        <TextBox Style="{StaticResource PinkTextBoxStyle}"/>
+                        <TextBox x:Name="txtNombre" Style="{StaticResource PinkTextBoxStyle}"/>
                     </StackPanel>
 
                     <!-- Segunda fila -->
                     <StackPanel Grid.Row="1" Grid.Column="0" Margin="5">
                         <TextBlock Text="Especie:" 
-           Foreground="#666" 
+                        Foreground="#666" 
            FontSize="11" 
            Margin="0,0,0,3"/>
 
@@ -245,18 +245,26 @@
 
                     <StackPanel Grid.Row="1" Grid.Column="1" Margin="5">
                         <TextBlock Text="Raza:" Foreground="#666" FontSize="11" Margin="0,0,0,3"/>
-                        <TextBox Style="{StaticResource PinkTextBoxStyle}"/>
+                        <ComboBox x:Name="cbxRaza" Style="{StaticResource PinkComboBoxStyle}">
+                            <ComboBoxItem Content="Labrador" Foreground="Black"/>
+                            <ComboBoxItem Content="Golden Retriever" Foreground="Black"/>
+                            <ComboBoxItem Content="Pastor Alemán" Foreground="Black"/>
+                            <ComboBoxItem Content="Bulldog Francés" Foreground="Black"/>
+                            <ComboBoxItem Content="Chihuahua" Foreground="Black"/>
+                            <ComboBoxItem Content="Poodle" Foreground="Black"/>
+                            <ComboBoxItem Content="Mestizo" Foreground="Black"/>
+                            <ComboBoxItem Content="Otra" Foreground="Black"/>
+                        </ComboBox>
                     </StackPanel>
-
                     <StackPanel Grid.Row="2" Grid.Column="1" Margin="5">
                         <TextBlock Text="Color:" Foreground="#666" FontSize="11" Margin="0,0,0,3"/>
-                        <TextBox Style="{StaticResource PinkTextBoxStyle}"/>
+                        <TextBox x:Name="txtColor" Style="{StaticResource PinkTextBoxStyle}"/>
                     </StackPanel>
 
                     <!-- Cuarta fila -->
                     <StackPanel Grid.Row="2" Grid.Column="0" Margin="10,18,0,61" Grid.RowSpan="2">
                         <TextBlock Text="Fecha Nacimiento:" Foreground="#666" FontSize="11" Margin="0,0,0,3"/>
-                        <DatePicker Margin="5" Padding="10,8" BorderThickness="0" FontSize="12">
+                        <DatePicker x:Name="dtpFechaNacimiento" Margin="5" Padding="10,8" BorderThickness="0" FontSize="12">
                             <DatePicker.Template>
                                 <ControlTemplate TargetType="DatePicker">
                                     <Border Background="#FFB5C5" CornerRadius="10" BorderThickness="0">
@@ -281,7 +289,7 @@
 
                     <StackPanel Grid.Row="3" Grid.Column="1" Margin="5">
                         <TextBlock Text="Género:" Foreground="#666" FontSize="11" Margin="0,0,0,3"/>
-                        <ComboBox Style="{StaticResource PinkComboBoxStyle}">
+                        <ComboBox x:Name="cbxGenero" Style="{StaticResource PinkComboBoxStyle}">
                             <ComboBoxItem Content="Macho" Foreground="Black"/>
                             <ComboBoxItem Content="Hembra" Foreground="Black"/>
                         </ComboBox>
@@ -293,13 +301,13 @@
 
                 <!-- Action Buttons con colores exactos -->
                 <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0"/>
-                <Button Content="✓ Guardar" 
+                <Button x:Name="btnGuardar" Content="✓ Guardar" 
                        Background="{StaticResource GreenGradient}" 
                        Style="{StaticResource GradientButtonStyle}" Margin="46,50,568,-68" Grid.Row="2"/>
-                <Button Content="🔍 Buscar" 
+                <Button x:Name="btnBuscar" Content="🔍 Buscar" 
                        Background="{StaticResource BlueGradient}" 
                        Style="{StaticResource GradientButtonStyle}" Margin="213,50,394,-68" Grid.Row="2" Click="Button_Click"/>
-                <Button Content="✏ Modificar" 
+                <Button x:Name="btnModificar" Content="✏ Modificar" 
                        Background="{StaticResource OrangeGradient}" 
                        Style="{StaticResource GradientButtonStyle}" Margin="390,0,212,-68" Grid.Row="2" Height="38" VerticalAlignment="Bottom"/>
             </Grid>
@@ -418,7 +426,7 @@
                     </DataGrid.Columns>
                 </DataGrid>
             </Border>
-            <Button Content="🗑 Eliminar" 
+            <Button x:Name="btnEliminar" Content="🗑 Eliminar" 
                        Background="{StaticResource RedGradient}" 
                        Style="{StaticResource GradientButtonStyle}" Margin="572,0,73,108" Grid.Row="2"/>
         </Grid>

@@ -21,14 +21,14 @@ namespace InterfazDeUsuarioUI
     public partial class InicioAdministración : Window
     {
         private Button currentActiveButton;
+
         public InicioAdministración()
         {
             InitializeComponent();
 
-
-            // Establecer el botón de Usuario como activo por defecto
-            currentActiveButton = btnUsuario;
-
+            // 🔧 CORRECCIÓN: Establecer el botón de Inicio como activo por defecto
+            currentActiveButton = btnInicio;
+            SetActiveButton(btnInicio); // Aplicar el estilo activo
             // Cargar la vista inicial
             LoadDashboardView();
         }
@@ -37,20 +37,27 @@ namespace InterfazDeUsuarioUI
 
         /// <summary>
         /// Método para cambiar el botón activo visualmente
-        /// </summary>
+        /// </summary>y>
         private void SetActiveButton(Button clickedButton)
         {
-            // Quitar el estilo activo del botón anterior
-            if (currentActiveButton != null)
+            try
             {
-                currentActiveButton.Style = (Style)FindResource("SidebarButton");
+                // Quitar el estilo activo del botón anterior
+                if (currentActiveButton != null)
+                {
+                    currentActiveButton.Style = (Style)FindResource("SidebarButton");
+                }
+
+                // Aplicar el estilo activo al botón clickeado
+                clickedButton.Style = (Style)FindResource("ActiveSidebarButton");
+
+                // Actualizar la referencia del botón activo
+                currentActiveButton = clickedButton;
             }
-
-            // Aplicar el estilo activo al botón clickeado
-            clickedButton.Style = (Style)FindResource("ActiveSidebarButton");
-
-            // Actualizar la referencia del botón activo
-            currentActiveButton = clickedButton;
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cambiar botón activo: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
 
         /// <summary>
@@ -58,7 +65,14 @@ namespace InterfazDeUsuarioUI
         /// </summary>
         private void ClearMainContent()
         {
-            MainContent.Children.Clear();
+            try
+            {
+                MainContent.Children.Clear();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al limpiar contenido: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
 
         /// <summary>
@@ -115,46 +129,52 @@ namespace InterfazDeUsuarioUI
 
         #endregion
 
-        #region Event Handlers de Navegación
+        #region Event Handlers de Navegación - CORREGIDOS
 
         private void Dashboard_Click(object sender, RoutedEventArgs e)
         {
-            SetActiveButton(btnInicio);
+            SetActiveButton(btnInicio); // 🔧 CORRECCIÓN: Usar btnInicio
             PageTitle.Text = "🏥 Panel Principal - Sistema El Ángel";
             LoadDashboardView();
         }
 
         private void Usuarios_Click(object sender, RoutedEventArgs e)
         {
+            SetActiveButton(btnUsuario); // 🔧 CORRECCIÓN: Agregar SetActiveButton
             CambiarPagina("Usuarios", "👤 Gestión de Usuarios");
             MostrarContenidoUsuarios();
         }
+
         private void CambiarPagina(string titulo, string tituloCompleto)
         {
             PageTitle.Text = tituloCompleto;
         }
 
-
         private void Roles_Click(object sender, RoutedEventArgs e)
         {
+            // 🔧 CORRECCIÓN: Necesitas definir un botón para roles o usar uno existente
+            // Como no tienes btnRoles definido, usaré un método alternativo
             CambiarPagina("Roles", "🏷️ Gestión de Roles");
             MostrarContenidoRoles();
         }
 
-
         private void Mascotas_Click(object sender, RoutedEventArgs e)
         {
+            SetActiveButton(btnMascota); // 🔧 CORRECCIÓN: Agregar SetActiveButton
             CambiarPagina("Mascotas", "🐕 Gestión de Mascotas");
             MostrarContenidoMascotas();
         }
 
         private void Generos_Click(object sender, RoutedEventArgs e)
         {
+            SetActiveButton(btnGenero); // 🔧 CORRECCIÓN: Agregar SetActiveButton
             CambiarPagina("Géneros", "⚥ Gestión de Géneros");
             MostrarContenidoGeneros();
         }
+
         private void Razas_Click(object sender, RoutedEventArgs e)
         {
+            SetActiveButton(btnRaza); // 🔧 CORRECCIÓN: Agregar SetActiveButton
             CambiarPagina("Razas", "🐕‍🦺 Gestión de Razas");
             MostrarContenidoRazas();
         }
@@ -163,28 +183,32 @@ namespace InterfazDeUsuarioUI
         {
             SetActiveButton(btnEspecie);
             PageTitle.Text = "🦮 Gestión de Especies - El Ángel";
-           MostrarContenidoEspecies();
+            MostrarContenidoEspecies();
         }
 
         private void Citas_Click(object sender, RoutedEventArgs e)
         {
+            SetActiveButton(btnCita); // 🔧 CORRECCIÓN: Agregar SetActiveButton
             CambiarPagina("Citas", "📅 Gestión de Citas");
             MostrarContenidoCitas();
         }
 
 
-        private void CitaCalendario_Click(object sender, RoutedEventArgs e)
+
+        private void Historial_Click(object sender, RoutedEventArgs e)
         {
-            SetActiveButton(btnCitaCalendario);
-            PageTitle.Text = "🗓️ Calendario de Citas - El Ángel";
-            LoadCalendarioView();
+            SetActiveButton(btnExpediente); // 🔧 CORRECCIÓN: Agregar SetActiveButton
+            CambiarPagina("Expedientes", "📋 Expedientes Médicos");
+            MostrarContenidoExpedientes();
         }
 
         private void Clientes_Click(object sender, RoutedEventArgs e)
         {
+            SetActiveButton(btnCliente); // 🔧 CORRECCIÓN: Agregar SetActiveButton
             CambiarPagina("Clientes", "👥 Gestión de Clientes");
             MostrarContenidoClientes();
         }
+
         private void CerrarSesion_Click(object sender, RoutedEventArgs e)
         {
             var result = MessageBox.Show(
@@ -195,23 +219,19 @@ namespace InterfazDeUsuarioUI
 
             if (result == MessageBoxResult.Yes)
             {
-                // Aquí puedes agregar lógica adicional de cierre de sesión
-                // Como limpiar datos, guardar configuraciones, etc.
-
                 MessageBox.Show(
                     "¡Sesión cerrada exitosamente!\n¡Que tengas un día angelical! 🌸",
                     "Hasta Pronto",
                     MessageBoxButton.OK,
                     MessageBoxImage.Information);
 
-                // Cerrar la aplicación o mostrar ventana de login
                 Application.Current.Shutdown();
             }
         }
 
         #endregion
 
-        #region Métodos para Cargar Vistas
+        #region Métodos para Cargar Vistas - MEJORADOS
 
         private void LoadDashboardView()
         {
@@ -224,7 +244,6 @@ namespace InterfazDeUsuarioUI
                 Opacity = 0.7
             };
 
-            // Título principal
             var titleBlock = new TextBlock
             {
                 Text = "🌸 Bienvenido al Sistema Veterinario El Ángel",
@@ -235,7 +254,6 @@ namespace InterfazDeUsuarioUI
                 Margin = new Thickness(0, 0, 0, 15)
             };
 
-            // Descripción
             var descBlock = new TextBlock
             {
                 Text = "Selecciona una opción del menú lateral para comenzar",
@@ -245,7 +263,6 @@ namespace InterfazDeUsuarioUI
                 Opacity = 0.9
             };
 
-            // Mensaje especial
             var specialBlock = new TextBlock
             {
                 Text = "¡Cuidamos a tus mascotas con amor! 💕",
@@ -264,29 +281,125 @@ namespace InterfazDeUsuarioUI
             MainContent.Children.Add(dashboardPanel);
         }
 
-        private void MostrarContenidoUsuarios()
+        // 🔧 MÉTODO MEJORADO para cargar ventanas con mejor manejo de errores
+        private bool CargarVentanaEnContainer<T>(Func<T> crearVentana, string nombreVentana) where T : Window
         {
-            MainContent.Children.Clear();
-
             try
             {
-                var ventanaUsuarios = new VentanaUsuario();
-                var contenidoVentana = ventanaUsuarios.Content as FrameworkElement;
+                ClearMainContent();
 
-                if (contenidoVentana != null)
+                // Método 1: Intentar cargar el contenido de la ventana
+                var ventana = crearVentana();
+
+                if (ventana?.Content is FrameworkElement contenido)
                 {
-                    ventanaUsuarios.Content = null;
-                    MainContent.Children.Add(contenidoVentana);
+                    ventana.Content = null; // Remover del padre original
+                    MainContent.Children.Add(contenido);
+                    ventana.Close(); // Cerrar la ventana vacía
+                    return true;
                 }
-                ventanaUsuarios.Close();
+                else
+                {
+                    ventana?.Close();
+                    throw new InvalidOperationException($"La ventana {nombreVentana} no tiene contenido válido");
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al cargar la vista de usuarios: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                MostrarPlaceholder("Usuarios no disponibles", "No se pudo cargar la vista de usuarios. Inténtalo más tarde.");
+                // Mostrar error detallado para debugging
+                MessageBox.Show(
+                    $"❌ Error al cargar {nombreVentana}:\n\n{ex.Message}\n\nTipo: {ex.GetType().Name}\n\n" +
+                    $"StackTrace:\n{ex.StackTrace}",
+                    $"Error - {nombreVentana}",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+
+                return false;
             }
         }
 
+        private void MostrarContenidoUsuarios()
+        {
+            if (!CargarVentanaEnContainer(() => new VentanaUsuario(), "VentanaUsuario"))
+            {
+                MostrarPlaceholder("❌ Error en Usuarios",
+                    "No se pudo cargar la ventana de usuarios.\nVerifica que la ventana VentanaUsuario existe y es accesible.");
+            }
+        }
+
+        private void MostrarContenidoRoles()
+        {
+            if (!CargarVentanaEnContainer(() => new VentanaRol(), "VentanaRol"))
+            {
+                MostrarPlaceholder("❌ Error en Roles",
+                    "No se pudo cargar la ventana de roles.\nVerifica que la ventana VentanaRol existe y es accesible.");
+            }
+        }
+
+        private void MostrarContenidoExpedientes()
+        {
+            if (!CargarVentanaEnContainer(() => new VentanaExpediente(), "VentanaExpediente"))
+            {
+                MostrarPlaceholder("📋 Expedientes Médicos",
+                    "• Historiales por mascota\n• Consultas anteriores\n• Tratamientos aplicados\n• Vacunas y medicamentos");
+            }
+        }
+
+        private void MostrarContenidoMascotas()
+        {
+            if (!CargarVentanaEnContainer(() => new VentanaMascota(), "VentanaMascota"))
+            {
+                MostrarPlaceholder("🐕 Gestión de Mascotas",
+                    "• Registrar nuevas mascotas\n• Editar información\n• Ver historial médico\n• Buscar por filtros");
+            }
+        }
+
+        private void MostrarContenidoGeneros()
+        {
+            if (!CargarVentanaEnContainer(() => new VentanaGenero(), "VentanaGenero"))
+            {
+                MostrarPlaceholder("⚥ Gestión de Géneros",
+                    "• Clasificar por género\n• Macho/Hembra\n• Información reproductiva\n• Datos para historiales");
+            }
+        }
+
+        private void MostrarContenidoRazas()
+        {
+            if (!CargarVentanaEnContainer(() => new VentanaRaza(), "VentanaRaza"))
+            {
+                MostrarPlaceholder("🐕‍🦺 Gestión de Razas",
+                    "• Registrar razas por especie\n• Características específicas\n• Editar información\n• Organizar por categorías");
+            }
+        }
+
+        private void MostrarContenidoEspecies()
+        {
+            if (!CargarVentanaEnContainer(() => new VentanaEspecie(), "VentanaEspecie"))
+            {
+                MostrarPlaceholder("🦎 Gestión de Especies",
+                    "• Registrar especies\n• Clasificar animales\n• Editar información\n• Mantener catálogo actualizado");
+            }
+        }
+
+        private void MostrarContenidoCitas()
+        {
+            if (!CargarVentanaEnContainer(() => new VentanaCita(), "VentanaCita"))
+            {
+                MostrarPlaceholder("📅 Gestión de Citas",
+                    "• Agendar nuevas citas\n• Ver calendario\n• Modificar citas existentes\n• Recordatorios automáticos");
+            }
+        }
+
+        private void MostrarContenidoClientes()
+        {
+            if (!CargarVentanaEnContainer(() => new VentanaCliente(), "VentanaCliente"))
+            {
+                MostrarPlaceholder("👥 Gestión de Clientes",
+                    "• Registrar nuevos clientes\n• Editar información de contacto\n• Ver mascotas del cliente\n• Historial de servicios");
+            }
+        }
+
+        // 🔧 CORRECCIÓN: Mejorar LoadCalendarioView
 
 
         private void MostrarPlaceholder(string titulo, string descripcion)
@@ -320,194 +433,10 @@ namespace InterfazDeUsuarioUI
             content.Children.Add(descripcionText);
             MainContent.Children.Add(content);
         }
-        private void MostrarContenidoRoles()
-        {
-            MainContent.Children.Clear();
 
-            try
-            {
-                var ventanaRoles = new VentanaRol();
-                var contenidoVentana = ventanaRoles.Content as FrameworkElement;
-
-                if (contenidoVentana != null)
-                {
-                    ventanaRoles.Content = null;
-                    MainContent.Children.Add(contenidoVentana);
-                }
-                ventanaRoles.Close();
-            }
-            catch (Exception ex)
-            {
-                MostrarPlaceholder("🏷️ Gestión de Roles",
-                    "• Crear roles de usuario\n• Asignar permisos\n• Definir niveles de acceso\n• Administrar jerarquías");
-            }
-        }
-        private void MostrarContenidoMascotas()
-        {
-            MainContent.Children.Clear();
-
-            // 🔥 OPCIÓN 1: Si tienes UserControls creados
-            // var controlMascotas = new MascotasUserControl();
-            // MainContent.Children.Add(controlMascotas);
-
-            // 🔥 OPCIÓN 2: Cargar el contenido de la ventana existente
-            try
-            {
-                var ventanaMascotas = new VentanaMascota();
-                var contenidoVentana = ventanaMascotas.Content as FrameworkElement;
-
-                if (contenidoVentana != null)
-                {
-                    // Remover del padre original
-                    ventanaMascotas.Content = null;
-                    // Agregar al MainContent
-                    MainContent.Children.Add(contenidoVentana);
-                }
-                ventanaMascotas.Close(); // Cerrar la ventana vacía
-            }
-            catch (Exception)
-            {
-                // Si hay error, mostrar mensaje placeholder
-                MostrarPlaceholder("🐕 Gestión de Mascotas",
-                    "• Registrar nuevas mascotas\n• Editar información\n• Ver historial médico\n• Buscar por filtros");
-            }
-        }
-        private void MostrarContenidoGeneros()
-        {
-            MainContent.Children.Clear();
-
-            try
-            {
-                var ventanaGeneros = new VentanaGenero();
-                var contenidoVentana = ventanaGeneros.Content as FrameworkElement;
-
-                if (contenidoVentana != null)
-                {
-                    ventanaGeneros.Content = null;
-                    MainContent.Children.Add(contenidoVentana);
-                }
-                ventanaGeneros.Close();
-            }
-            catch (Exception ex)
-            {
-                MostrarPlaceholder("⚥ Gestión de Géneros",
-                    "• Clasificar por género\n• Macho/Hembra\n• Información reproductiva\n• Datos para historiales");
-            }
-        }
-        private void MostrarContenidoRazas()
-        {
-            MainContent.Children.Clear();
-
-            try
-            {
-                var ventanaRazas = new VentanaRaza();
-                var contenidoVentana = ventanaRazas.Content as FrameworkElement;
-
-                if (contenidoVentana != null)
-                {
-                    ventanaRazas.Content = null;
-                    MainContent.Children.Add(contenidoVentana);
-                }
-                ventanaRazas.Close();
-            }
-            catch (Exception ex)
-            {
-                MostrarPlaceholder("🐕‍🦺 Gestión de Razas",
-                    "• Registrar razas por especie\n• Características específicas\n• Editar información\n• Organizar por categorías");
-            }
-        }
-        private void MostrarContenidoEspecies()
-        {
-            MainContent.Children.Clear();
-
-            try
-            {
-                var ventanaEspecies = new VentanaEspecie();
-                var contenidoVentana = ventanaEspecies.Content as FrameworkElement;
-
-                if (contenidoVentana != null)
-                {
-                    ventanaEspecies.Content = null;
-                    MainContent.Children.Add(contenidoVentana);
-                }
-                ventanaEspecies.Close();
-            }
-            catch (Exception ex)
-            {
-                MostrarPlaceholder("🦎 Gestión de Especies",
-                    "• Registrar especies\n• Clasificar animales\n• Editar información\n• Mantener catálogo actualizado");
-            }
-        }
- private void MostrarContenidoCitas()
- {
-     MainContent.Children.Clear();
-
-     try
-     {
-         var ventanaCitas = new VentanaCita();
-         var contenidoVentana = ventanaCitas.Content as FrameworkElement;
-
-         if (contenidoVentana != null)
-         {
-             ventanaCitas.Content = null;
-             MainContent.Children.Add(contenidoVentana);
-         }
-         ventanaCitas.Close();
-     }
-     catch (Exception ex)
-     {
-         MostrarPlaceholder("📅 Gestión de Citas",
-             "• Agendar nuevas citas\n• Ver calendario\n• Modificar citas existentes\n• Recordatorios automáticos");
-     }
- }
-
-        private void LoadHistorialView()
-        {
-            ClearMainContent();
-            var content = CreateContentPanel(
-                "Expedientes Médicos",
-                "Consulta y administra los historiales médicos de las mascotas",
-                "📋"
-            );
-            MainContent.Children.Add(content);
-        }
-
-        private void LoadCalendarioView()
-        {
-            ClearMainContent();
-            var content = CreateContentPanel(
-                "Calendario de Citas",
-                "Vista de calendario para una mejor gestión de citas",
-                "🗓️"
-            );
-            MainContent.Children.Add(content);
-        }
-
-        private void MostrarContenidoClientes()
-        {
-            MainContent.Children.Clear();
-
-            try
-            {
-                var ventanaClientes = new VentanaCliente();
-                var contenidoVentana = ventanaClientes.Content as FrameworkElement;
-
-                if (contenidoVentana != null)
-                {
-                    ventanaClientes.Content = null;
-                    MainContent.Children.Add(contenidoVentana);
-                }
-                ventanaClientes.Close();
-            }
-            catch (Exception ex)
-            {
-                MostrarPlaceholder("👥 Gestión de Clientes",
-                    "• Registrar nuevos clientes\n• Editar información de contacto\n• Ver mascotas del cliente\n• Historial de servicios");
-            }
-        }
         #endregion
 
-        #region Eventos Adicionales (Opcional)
+        #region Eventos Adicionales
 
         /// <summary>
         /// Evento para manejar el cierre de la ventana

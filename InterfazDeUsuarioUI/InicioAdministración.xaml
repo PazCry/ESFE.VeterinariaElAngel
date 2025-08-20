@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InterfazDeUsuarioUI"
         mc:Ignorable="d"
-        Title="InicioAdministración" Height="665" Width="800">
+        Title="InicioAdministración" Height="913" Width="800">
 
     <Window.Resources>
         <!-- Gradiente de fondo rosado pastel -->
@@ -200,11 +200,11 @@
                                  Content="Usuario" 
                                  Click="Usuarios_Click"/>
 
-                            <Button x:Name="btnRol"
-                                 Style="{StaticResource SidebarButton}"
-                                 Tag="🎭"
-                                 Content="Rol"
-                                 Click="Roles_Click"/>
+                            <Button x:Name="btnRoles"
+                            Style="{StaticResource SidebarButton}"
+                             Tag="🏷️"
+                               Content="Roles"
+                            Click="Roles_Click"/>
 
                             <!-- Separador visual -->
                             <Rectangle Height="1" 
@@ -266,11 +266,6 @@
                                  Content="Expediente"
                                  Click="Historial_Click"/>
 
-                            <Button x:Name="btnCitaCalendario"
-                                 Style="{StaticResource SidebarButton}"
-                                 Tag="🗓️"
-                                 Content="Cita Calendario"
-                                 Click="CitaCalendario_Click"/>
 
                             <!-- Separador visual -->
                             <Rectangle Height="1" 

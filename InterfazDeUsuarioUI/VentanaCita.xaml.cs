@@ -25,7 +25,6 @@ namespace InterfazDeUsuarioUI
         public CitaEN citaParaImprimir;
         private readonly CitaBL _citaBL = new CitaBL();
         private readonly CitaEN _citaEN = new CitaEN();
-        private bool _modoModificacion = false;
         public VentanaCita()
         {
             InitializeComponent();
@@ -151,7 +150,7 @@ namespace InterfazDeUsuarioUI
                 btnModificar.IsEnabled = true;
                 btnEliminar.IsEnabled = true;
                 btnGuardar.IsEnabled = false;
-                _modoModificacion = true;
+
             }
         }
 
@@ -160,14 +159,14 @@ namespace InterfazDeUsuarioUI
             btnGuardar.IsEnabled = false;
             btnModificar.IsEnabled = false;
             btnEliminar.IsEnabled = false;
-            _modoModificacion = false;
+
 
             txtNumCita.Clear();
             txtNumExpediente.Clear();
             txtHora.Clear();
             dgvCita.UnselectAll();
         }
-    
+
 
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
