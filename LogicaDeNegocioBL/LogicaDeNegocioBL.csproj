@@ -44,7 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CitaBl.cs" />
+    <Compile Include="CitaBL.cs" />
     <Compile Include="CitaCalendarioBL.cs" />
     <Compile Include="ClienteBL.cs" />
     <Compile Include="EspecieBL.cs" />

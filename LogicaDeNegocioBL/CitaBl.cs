@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace LogicaDeNegocioBL
 {
-    public class CitaBl
+    public class CitaBL
     {
          
         private readonly CitaDAL _citaDAL;
 
-        public CitaBl()
+        public CitaBL()
         {
             _citaDAL = new CitaDAL();
         }

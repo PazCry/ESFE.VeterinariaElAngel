@@ -23,7 +23,7 @@ namespace InterfazDeUsuarioUI
     public partial class VentanaCita : Window
     {
         public CitaEN citaParaImprimir;
-        private readonly CitaBl _citaBL = new CitaBl();
+        private readonly CitaBL _citaBL = new CitaBL();
         private readonly CitaEN _citaEN = new CitaEN();
         private bool _modoModificacion = false;
         public VentanaCita()
@@ -130,7 +130,7 @@ namespace InterfazDeUsuarioUI
         private void btnBuscar_Click(object sender, RoutedEventArgs e)
         {
             string Id = txtBuscar.Text;
-            List<CitaEN> cita = CitaBl.BuscarCita(Id);
+            List<CitaEN> cita = CitaBL.BuscarCita(Id);
             dgvCita.ItemsSource = cita;
         }
 
