@@ -28,8 +28,9 @@ namespace InterfazDeUsuarioUI
             new CitaCalendarioEN { FechaCita = new DateTime(2025, 8, 20), Hora = new TimeSpan(14, 00, 0), NombreCliente = "Ana Gómez" },
             new CitaCalendarioEN { FechaCita = new DateTime(2025, 8, 23), Hora = new TimeSpan( 9, 00, 0), NombreCliente = "Carlos López" },
             new CitaCalendarioEN { FechaCita = new DateTime(2025, 8, 25), Hora = new TimeSpan(16, 15, 0), NombreCliente = "María Torres" },
+
         };
-        public VentanaCitaCalendario()
+      public VentanaCitaCalendario()
         {
             InitializeComponent();
 
@@ -62,6 +63,18 @@ namespace InterfazDeUsuarioUI
                 {
                     MessageBox.Show("No hay citas en esta fecha.", "Sin citas", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
+            }
+        }
+
+        // MÉTODO FALTANTE: Evento para cuando cambia el modo de visualización del calendario
+        private void CalendarioCitas_DisplayModeChanged(object sender, CalendarModeChangedEventArgs e)
+        {
+            // Cuando el usuario cambia entre Month, Year, Decade
+            // Puedes agregar lógica aquí si necesitas hacer algo específico
+            // Por ejemplo, refrescar las citas cuando regrese a vista mensual
+            if (e.NewMode == CalendarMode.Month)
+            {
+                RefrescarDiasConCitas();
             }
         }
 
@@ -103,10 +116,11 @@ namespace InterfazDeUsuarioUI
                     yield return nested;
             }
         }
+
+
         private void btnVolver_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            this.Close();
         }
     }
 }
-   

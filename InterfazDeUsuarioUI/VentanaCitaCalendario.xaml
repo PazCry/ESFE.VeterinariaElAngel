@@ -150,7 +150,7 @@
                                     <Grid>
                                         <Grid.Resources>
                                             <ControlTemplate x:Key="PreviousButtonTemplate" TargetType="{x:Type Button}">
-                                                <Grid Cursor="Hand" Margin="0,0,-30,-6">
+                                                <Grid Cursor="Hand">
                                                     <VisualStateManager.VisualStateGroups>
                                                         <VisualStateGroup x:Name="CommonStates">
                                                             <VisualState x:Name="Normal"/>
@@ -166,15 +166,7 @@
                                                             </VisualState>
                                                         </VisualStateGroup>
                                                     </VisualStateManager.VisualStateGroups>
-                                                    <!--EL CUADRITO PARA LAS FLECHITAS-->
-                                                    <Grid Margin="188,-12,-212,-4">
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition Height="26*"/>
-                                                            <RowDefinition Height="11*"/>
-                                                        </Grid.RowDefinitions>
-                                                        <!--´-PARA LAS FLECHITAS DE CAMBIO DE MESES-->
-                                                        <Path x:Name="path" Data="M288.75,232.25 L288.75,240.625 L283,236.625 z" Fill="#FF333333" Height="30" Stretch="Fill" Width="30" Margin="20,6,32,6" Grid.RowSpan="2"/>
-                                                    </Grid>
+                                                    <Path x:Name="path" Data="M288.75,232.25 L288.75,240.625 L283,236.625 z" Fill="#FF333333" Height="30" Stretch="Fill" Width="30"/>
                                                 </Grid>
                                             </ControlTemplate>
                                             <ControlTemplate x:Key="NextButtonTemplate" TargetType="{x:Type Button}">
@@ -194,10 +186,7 @@
                                                             </VisualState>
                                                         </VisualStateGroup>
                                                     </VisualStateManager.VisualStateGroups>
-                                                    <Rectangle Fill="#11E5EBF1" Opacity="1" Stretch="Fill" Height="20" VerticalAlignment="Bottom"/>
-                                                    <Grid Margin="-233,-12,199,-11">
-                                                        <Path x:Name="path" Data="M282.875,231.875 L282.875,240.375 L288.625,236 z" Fill="#FF333333" Height="30" Stretch="Fill" Width="30" Margin="20,6,12,7"/>
-                                                    </Grid>
+                                                    <Path x:Name="path" Data="M282.875,231.875 L282.875,240.375 L288.625,236 z" Fill="#FF333333" Height="30" Stretch="Fill" Width="30"/>
                                                 </Grid>
                                             </ControlTemplate>
                                             <ControlTemplate x:Key="HeaderButtonTemplate" TargetType="{x:Type Button}">
@@ -221,51 +210,98 @@
                                                 </Grid>
                                             </ControlTemplate>
                                         </Grid.Resources>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                        </Grid.ColumnDefinitions>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="*"/>
-                                        </Grid.RowDefinitions>
-                                        <Button x:Name="PART_PreviousButton" Grid.Column="0" Focusable="False" HorizontalAlignment="Left" Height="20" Grid.Row="0" Template="{StaticResource PreviousButtonTemplate}" Width="28"/>
-                                        <!--PARA LA LETRA DE LOS MESES-->
-                                        <Button x:Name="PART_HeaderButton" FontFamily="Castellar" Grid.Column="1" Focusable="False" FontWeight="Bold" FontSize="16" Template="{StaticResource HeaderButtonTemplate}" Height="32" Margin="117,0,196,0"/>
-                                        <Button x:Name="PART_NextButton" Grid.Column="2" Focusable="False" HorizontalAlignment="Right" Height="20" Grid.Row="0" Template="{StaticResource NextButtonTemplate}" Width="28"/>
-                                        <Grid x:Name="PART_MonthView" Grid.ColumnSpan="3" HorizontalAlignment="Center" Margin="6,-1,6,6" Grid.Row="1" Visibility="Visible">
+
+                                        <!-- NUEVA ESTRUCTURA CON 7 COLUMNAS PARA MEJOR DISTRIBUCIÓN -->
+                                        <Grid>
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="Auto"/>
-                                                <ColumnDefinition Width="Auto"/>
-                                                <ColumnDefinition Width="Auto"/>
-                                                <ColumnDefinition Width="Auto"/>
-                                                <ColumnDefinition Width="Auto"/>
-                                                <ColumnDefinition Width="Auto"/>
-                                                <ColumnDefinition Width="Auto"/>
+                                                <!-- Columna para flecha izquierda (equivalente a columna Domingo) -->
+                                                <ColumnDefinition Width="50"/>
+                                                <!-- Columnas para el texto del mes (Lunes a Viernes - 5 columnas) -->
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <!-- Columna para flecha derecha (equivalente a columna Sábado) -->
+                                                <ColumnDefinition Width="50"/>
                                             </Grid.ColumnDefinitions>
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="Auto"/>
-                                                <RowDefinition Height="Auto"/>
-                                                <RowDefinition Height="Auto"/>
-                                                <RowDefinition Height="Auto"/>
-                                                <RowDefinition Height="Auto"/>
-                                                <RowDefinition Height="Auto"/>
-                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="*"/>
                                             </Grid.RowDefinitions>
-                                        </Grid>
-                                        <Grid x:Name="PART_YearView" Grid.ColumnSpan="3" HorizontalAlignment="Center" Margin="6,-3,7,6" Grid.Row="1" Visibility="Hidden">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="200"/>
-                                                <ColumnDefinition Width="200"/>
-                                                <ColumnDefinition Width="73"/>
-                                                <ColumnDefinition Width="73"/>
-                                            </Grid.ColumnDefinitions>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="73"/>
-                                                <RowDefinition Height="73"/>
-                                                <RowDefinition Height="73"/>
-                                            </Grid.RowDefinitions>
+
+                                            <!-- Flecha anterior en la primera columna (Domingo) -->
+                                            <Button x:Name="PART_PreviousButton" 
+                                                    Grid.Column="0" 
+                                                    Focusable="False" 
+                                                    HorizontalAlignment="Center" 
+                                                    Height="20" 
+                                                    Grid.Row="0" 
+                                                    Template="{StaticResource PreviousButtonTemplate}" 
+                                                    Width="28"/>
+
+                                            <!-- Texto del mes ocupando las 5 columnas centrales (Lunes a Viernes) -->
+                                            <Button x:Name="PART_HeaderButton" 
+                                                    FontFamily="Castellar" 
+                                                    Grid.Column="1" 
+                                                    Grid.ColumnSpan="5"
+                                                    Focusable="False" 
+                                                    FontWeight="Bold" 
+                                                    FontSize="16" 
+                                                    Template="{StaticResource HeaderButtonTemplate}" 
+                                                    Height="32"
+                                                    HorizontalAlignment="Stretch"
+                                                    Margin="10,0,10,0"/>
+
+                                            <!-- Flecha siguiente en la última columna (Sábado) -->
+                                            <Button x:Name="PART_NextButton" 
+                                                    Grid.Column="6" 
+                                                    Focusable="False" 
+                                                    HorizontalAlignment="Center" 
+                                                    Height="20" 
+                                                    Grid.Row="0" 
+                                                    Template="{StaticResource NextButtonTemplate}" 
+                                                    Width="28"/>
+
+                                            <!-- Grid del mes -->
+                                            <Grid x:Name="PART_MonthView" 
+                                                  Grid.ColumnSpan="7" 
+                                                  HorizontalAlignment="Center" 
+                                                  Margin="6,-1,6,6" 
+                                                  Grid.Row="1" 
+                                                  Visibility="Visible">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                </Grid.RowDefinitions>
+                                            </Grid>
+                                            <Grid x:Name="PART_YearView" Grid.ColumnSpan="7" HorizontalAlignment="Center" Margin="6,-3,7,6" Grid.Row="1" Visibility="Hidden">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                </Grid.RowDefinitions>
+                                            </Grid>
                                         </Grid>
                                     </Grid>
                                 </Border>
@@ -297,9 +333,9 @@
               CalendarDayButtonStyle="{DynamicResource CalendarCalendarDayButtonStyle1}"
               Style="{DynamicResource CalendarItemStyle}"
               SelectedDatesChanged="CalendarioCitas_SelectedDatesChanged"
-              DisplayModeChanged="CalendarioCitas_DisplayModeChanged"/>
+        DisplayModeChanged="CalendarioCitas_DisplayModeChanged"/>
 
 
-        <Button x:Name="btnVolver" Content="VOLVER" Margin="840,556,0,0" Background="#FF9C2A4E" BorderBrush="#FFFFAFDF" Foreground="#FFF1BAD6" FontSize="15" FontFamily="Courier New" FontWeight="Bold" Height="38" VerticalAlignment="Top" HorizontalAlignment="Left" Width="134" Click="Button_Click"/>
+        <Button x:Name="btnVolver" Content="VOLVER" Margin="840,556,0,0" Background="#FF9C2A4E" BorderBrush="#FFFFAFDF" Foreground="#FFF1BAD6" FontSize="15" FontFamily="Courier New" FontWeight="Bold" Height="38" VerticalAlignment="Top" HorizontalAlignment="Left" Width="134" Click="btnVolver_Click"/>
     </Grid>
 </Window>
