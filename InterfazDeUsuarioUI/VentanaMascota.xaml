@@ -184,7 +184,7 @@
             </Border>
 
             <!-- Form Section -->
-            <Grid Grid.Row="1" Margin="25">
+            <Grid Grid.Row="1" Margin="25,25,25,27">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
@@ -289,45 +289,23 @@
 
 
 
-                    <!-- Sexta fila - Observaciones (span completo) -->
-                    <StackPanel Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="5">
-                        <TextBlock Text="Observaciones:" Foreground="#666" FontSize="11" Margin="0,0,0,3"/>
-                        <TextBox Height="60" 
-                            TextWrapping="Wrap" 
-                            AcceptsReturn="True" 
-                            VerticalScrollBarVisibility="Auto"
-                            Padding="10,8"
-                            Margin="5"
-                            BorderThickness="0"
-                            Foreground="White"
-                            FontSize="12">
-                            <TextBox.Template>
-                                <ControlTemplate TargetType="TextBox">
-                                    <Border Background="#FFB5C5" CornerRadius="10" BorderThickness="0">
-                                        <ScrollViewer x:Name="PART_ContentHost" 
-                                                Margin="10"/>
-                                    </Border>
-                                </ControlTemplate>
-                            </TextBox.Template>
-                        </TextBox>
-                    </StackPanel>
                 </Grid>
 
                 <!-- Action Buttons con colores exactos -->
                 <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0"/>
                 <Button Content="✓ Guardar" 
                        Background="{StaticResource GreenGradient}" 
-                       Style="{StaticResource GradientButtonStyle}" Margin="308,5,330,-23" Grid.Row="2"/>
+                       Style="{StaticResource GradientButtonStyle}" Margin="46,50,568,-68" Grid.Row="2"/>
                 <Button Content="🔍 Buscar" 
                        Background="{StaticResource BlueGradient}" 
-                       Style="{StaticResource GradientButtonStyle}" Margin="417,5,226,-23" Grid.Row="2"/>
+                       Style="{StaticResource GradientButtonStyle}" Margin="213,50,394,-68" Grid.Row="2" Click="Button_Click"/>
                 <Button Content="✏ Modificar" 
                        Background="{StaticResource OrangeGradient}" 
-                       Style="{StaticResource GradientButtonStyle}" Margin="529,0,108,-23" Grid.Row="2" Height="38" VerticalAlignment="Bottom"/>
+                       Style="{StaticResource GradientButtonStyle}" Margin="390,0,212,-68" Grid.Row="2" Height="38" VerticalAlignment="Bottom"/>
             </Grid>
 
             <!-- Search Bar con gradiente original -->
-            <Border Grid.Row="2" Background="{StaticResource SearchBarGradient}" CornerRadius="8" Margin="20,0,20,10" Padding="15">
+            <Border Grid.Row="2" Background="{StaticResource SearchBarGradient}" CornerRadius="8" Margin="20,72,10,10" Padding="15">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -442,7 +420,7 @@
             </Border>
             <Button Content="🗑 Eliminar" 
                        Background="{StaticResource RedGradient}" 
-                       Style="{StaticResource GradientButtonStyle}" Margin="664,429,25,0" Grid.Row="1" Height="38" VerticalAlignment="Top"/>
+                       Style="{StaticResource GradientButtonStyle}" Margin="572,0,73,108" Grid.Row="2"/>
         </Grid>
     </Border>
 
