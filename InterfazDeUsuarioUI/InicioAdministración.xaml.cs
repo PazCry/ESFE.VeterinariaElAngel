@@ -137,10 +137,10 @@ namespace InterfazDeUsuarioUI
 
         private void Roles_Click(object sender, RoutedEventArgs e)
         {
-            SetActiveButton(btnRol);
-            PageTitle.Text = "🎭 Gestión de Roles - El Ángel";
-            LoadRolesView();
+            CambiarPagina("Roles", "🏷️ Gestión de Roles");
+            MostrarContenidoRoles();
         }
+
 
         private void Mascotas_Click(object sender, RoutedEventArgs e)
         {
@@ -150,38 +150,28 @@ namespace InterfazDeUsuarioUI
 
         private void Generos_Click(object sender, RoutedEventArgs e)
         {
-            SetActiveButton(btnGenero);
-            PageTitle.Text = "⚧ Gestión de Géneros - El Ángel";
-            LoadGenerosView();
+            CambiarPagina("Géneros", "⚥ Gestión de Géneros");
+            MostrarContenidoGeneros();
         }
-
         private void Razas_Click(object sender, RoutedEventArgs e)
         {
-            SetActiveButton(btnRaza);
-            PageTitle.Text = "🐾 Gestión de Razas - El Ángel";
-            LoadRazasView();
+            CambiarPagina("Razas", "🐕‍🦺 Gestión de Razas");
+            MostrarContenidoRazas();
         }
 
         private void Especies_Click(object sender, RoutedEventArgs e)
         {
             SetActiveButton(btnEspecie);
             PageTitle.Text = "🦮 Gestión de Especies - El Ángel";
-            LoadEspeciesView();
+           MostrarContenidoEspecies();
         }
 
         private void Citas_Click(object sender, RoutedEventArgs e)
         {
-            SetActiveButton(btnCita);
-            PageTitle.Text = "📅 Gestión de Citas - El Ángel";
-            LoadCitasView();
+            CambiarPagina("Citas", "📅 Gestión de Citas");
+            MostrarContenidoCitas();
         }
 
-        private void Historial_Click(object sender, RoutedEventArgs e)
-        {
-            SetActiveButton(btnExpediente);
-            PageTitle.Text = "📋 Expedientes Médicos - El Ángel";
-            LoadHistorialView();
-        }
 
         private void CitaCalendario_Click(object sender, RoutedEventArgs e)
         {
@@ -192,11 +182,9 @@ namespace InterfazDeUsuarioUI
 
         private void Clientes_Click(object sender, RoutedEventArgs e)
         {
-            SetActiveButton(btnCliente);
-            PageTitle.Text = "👥 Gestión de Clientes - El Ángel";
-            LoadClientesView();
+            CambiarPagina("Clientes", "👥 Gestión de Clientes");
+            MostrarContenidoClientes();
         }
-
         private void CerrarSesion_Click(object sender, RoutedEventArgs e)
         {
             var result = MessageBox.Show(
@@ -332,17 +320,28 @@ namespace InterfazDeUsuarioUI
             content.Children.Add(descripcionText);
             MainContent.Children.Add(content);
         }
-        private void LoadRolesView()
+        private void MostrarContenidoRoles()
         {
-            ClearMainContent();
-            var content = CreateContentPanel(
-                "Gestión de Roles",
-                "Define y administra los diferentes roles y permisos del sistema",
-                "🎭"
-            );
-            MainContent.Children.Add(content);
-        }
+            MainContent.Children.Clear();
 
+            try
+            {
+                var ventanaRoles = new VentanaRol();
+                var contenidoVentana = ventanaRoles.Content as FrameworkElement;
+
+                if (contenidoVentana != null)
+                {
+                    ventanaRoles.Content = null;
+                    MainContent.Children.Add(contenidoVentana);
+                }
+                ventanaRoles.Close();
+            }
+            catch (Exception ex)
+            {
+                MostrarPlaceholder("🏷️ Gestión de Roles",
+                    "• Crear roles de usuario\n• Asignar permisos\n• Definir niveles de acceso\n• Administrar jerarquías");
+            }
+        }
         private void MostrarContenidoMascotas()
         {
             MainContent.Children.Clear();
@@ -366,56 +365,101 @@ namespace InterfazDeUsuarioUI
                 }
                 ventanaMascotas.Close(); // Cerrar la ventana vacía
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 // Si hay error, mostrar mensaje placeholder
                 MostrarPlaceholder("🐕 Gestión de Mascotas",
                     "• Registrar nuevas mascotas\n• Editar información\n• Ver historial médico\n• Buscar por filtros");
             }
         }
-        private void LoadGenerosView()
+        private void MostrarContenidoGeneros()
         {
-            ClearMainContent();
-            var content = CreateContentPanel(
-                "Gestión de Géneros",
-                "Configura los diferentes géneros disponibles para las mascotas",
-                "⚧"
-            );
-            MainContent.Children.Add(content);
-        }
+            MainContent.Children.Clear();
 
-        private void LoadRazasView()
-        {
-            ClearMainContent();
-            var content = CreateContentPanel(
-                "Gestión de Razas",
-                "Administra el catálogo de razas de mascotas",
-                "🐾"
-            );
-            MainContent.Children.Add(content);
-        }
+            try
+            {
+                var ventanaGeneros = new VentanaGenero();
+                var contenidoVentana = ventanaGeneros.Content as FrameworkElement;
 
-        private void LoadEspeciesView()
-        {
-            ClearMainContent();
-            var content = CreateContentPanel(
-                "Gestión de Especies",
-                "Configura las diferentes especies de animales atendidas",
-                "🦮"
-            );
-            MainContent.Children.Add(content);
+                if (contenidoVentana != null)
+                {
+                    ventanaGeneros.Content = null;
+                    MainContent.Children.Add(contenidoVentana);
+                }
+                ventanaGeneros.Close();
+            }
+            catch (Exception ex)
+            {
+                MostrarPlaceholder("⚥ Gestión de Géneros",
+                    "• Clasificar por género\n• Macho/Hembra\n• Información reproductiva\n• Datos para historiales");
+            }
         }
+        private void MostrarContenidoRazas()
+        {
+            MainContent.Children.Clear();
 
-        private void LoadCitasView()
-        {
-            ClearMainContent();
-            var content = CreateContentPanel(
-                "Gestión de Citas",
-                "Programa y administra las citas veterinarias",
-                "📅"
-            );
-            MainContent.Children.Add(content);
+            try
+            {
+                var ventanaRazas = new VentanaRaza();
+                var contenidoVentana = ventanaRazas.Content as FrameworkElement;
+
+                if (contenidoVentana != null)
+                {
+                    ventanaRazas.Content = null;
+                    MainContent.Children.Add(contenidoVentana);
+                }
+                ventanaRazas.Close();
+            }
+            catch (Exception ex)
+            {
+                MostrarPlaceholder("🐕‍🦺 Gestión de Razas",
+                    "• Registrar razas por especie\n• Características específicas\n• Editar información\n• Organizar por categorías");
+            }
         }
+        private void MostrarContenidoEspecies()
+        {
+            MainContent.Children.Clear();
+
+            try
+            {
+                var ventanaEspecies = new VentanaEspecie();
+                var contenidoVentana = ventanaEspecies.Content as FrameworkElement;
+
+                if (contenidoVentana != null)
+                {
+                    ventanaEspecies.Content = null;
+                    MainContent.Children.Add(contenidoVentana);
+                }
+                ventanaEspecies.Close();
+            }
+            catch (Exception ex)
+            {
+                MostrarPlaceholder("🦎 Gestión de Especies",
+                    "• Registrar especies\n• Clasificar animales\n• Editar información\n• Mantener catálogo actualizado");
+            }
+        }
+ private void MostrarContenidoCitas()
+ {
+     MainContent.Children.Clear();
+
+     try
+     {
+         var ventanaCitas = new VentanaCita();
+         var contenidoVentana = ventanaCitas.Content as FrameworkElement;
+
+         if (contenidoVentana != null)
+         {
+             ventanaCitas.Content = null;
+             MainContent.Children.Add(contenidoVentana);
+         }
+         ventanaCitas.Close();
+     }
+     catch (Exception ex)
+     {
+         MostrarPlaceholder("📅 Gestión de Citas",
+             "• Agendar nuevas citas\n• Ver calendario\n• Modificar citas existentes\n• Recordatorios automáticos");
+     }
+ }
 
         private void LoadHistorialView()
         {
@@ -439,17 +483,28 @@ namespace InterfazDeUsuarioUI
             MainContent.Children.Add(content);
         }
 
-        private void LoadClientesView()
+        private void MostrarContenidoClientes()
         {
-            ClearMainContent();
-            var content = CreateContentPanel(
-                "Gestión de Clientes",
-                "Administra la información de los propietarios de mascotas",
-                "👥"
-            );
-            MainContent.Children.Add(content);
-        }
+            MainContent.Children.Clear();
 
+            try
+            {
+                var ventanaClientes = new VentanaCliente();
+                var contenidoVentana = ventanaClientes.Content as FrameworkElement;
+
+                if (contenidoVentana != null)
+                {
+                    ventanaClientes.Content = null;
+                    MainContent.Children.Add(contenidoVentana);
+                }
+                ventanaClientes.Close();
+            }
+            catch (Exception ex)
+            {
+                MostrarPlaceholder("👥 Gestión de Clientes",
+                    "• Registrar nuevos clientes\n• Editar información de contacto\n• Ver mascotas del cliente\n• Historial de servicios");
+            }
+        }
         #endregion
 
         #region Eventos Adicionales (Opcional)
