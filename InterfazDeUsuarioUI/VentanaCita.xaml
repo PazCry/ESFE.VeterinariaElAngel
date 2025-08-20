@@ -235,11 +235,11 @@
                             <Label Content="Hora:" Style="{StaticResource ModernLabel}"/>
                             <TextBox x:Name="txtHora" Style="{StaticResource ModernTextBox}" Text="Hora.."/>
                         </StackPanel>
-                        <Button x:Name="btnExpediente" Content="📋 Expediente" Style="{StaticResource AccessButton}" Margin="127,15,10,28" Grid.Row="1" Grid.Column="2"/>
-                        <Button x:Name="btnMascota" Content="🐾 Mascota" Style="{StaticResource AccessButton}" Margin="4,16,4,27" Grid.Row="1" Grid.Column="4"/>
-                        <Button x:Name="btnCliente" Content="👤 Cliente" Style="{StaticResource AccessButton}" Margin="257,21,171,22" Grid.ColumnSpan="3" Grid.Row="1"/>
+                        <Button x:Name="btnExpediente" Content="📋 Expediente" Style="{StaticResource AccessButton}" Margin="127,15,0,28" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" Width="121"/>
+                        <Button x:Name="btnMascota" Content="🐾 Mascota" Style="{StaticResource AccessButton}" Margin="4,16,0,27" Grid.Row="1" Grid.Column="4" HorizontalAlignment="Left" Width="120"/>
+                        <Button x:Name="btnCliente" Content="👤 Cliente" Style="{StaticResource AccessButton}" Margin="257,21,0,22" Grid.ColumnSpan="3" Grid.Row="1" HorizontalAlignment="Left" Width="107"/>
                         <Button x:Name="btnVerCalendario" Content="📅 Ver Calendario" Style="{StaticResource AccessButton}" Margin="5,2,159,41" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2" Cursor="Hand"/>
-                        <Button x:Name="btnEliminar" Content="🗑 Eliminar" Style="{StaticResource DeleteButton}" Grid.Column="2" Margin="144,2,0,41" Grid.Row="2"/>
+                        <Button x:Name="btnEliminar" Content="🗑 Eliminar" Style="{StaticResource DeleteButton}" Grid.Column="2" Margin="144,2,0,41" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Left" Width="114"/>
                     </Grid>
                 </Border>
 
@@ -261,10 +261,10 @@
                         </DataGrid.Columns>
                     </DataGrid>
                 </Border>
-                <Button x:Name="btnBuscar" Content="🔍 Buscar" Style="{StaticResource SearchButton}" Margin="219,288,429,457" Grid.RowSpan="4"/>
-                <Button x:Name="btnReiniciar" Content="🔄 Reiniciar" Style="{StaticResource ResetButton}" RenderTransformOrigin="1.695,4.119" Margin="357,288,285,457" Grid.RowSpan="4" Click="Button_Click"/>
-                <Button x:Name="btnModificar" Content="✏ Modificar" Style="{StaticResource ModifyButton}" RenderTransformOrigin="1.074,0.558" Margin="481,288,156,462" Grid.RowSpan="4"/>
-                <Button x:Name="btnGuardar" Content="💾 Guardar" Style="{StaticResource SaveButton}" Margin="600,290,27,460" Grid.RowSpan="4"/>
+                <Button x:Name="btnBuscar" Content="🔍 Buscar" Style="{StaticResource SearchButton}" Margin="219,290,0,0" Grid.RowSpan="4" HorizontalAlignment="Left" Width="85" Height="40" VerticalAlignment="Top"/>
+                <Button x:Name="btnReiniciar" Content="🔄 Reiniciar" Style="{StaticResource ResetButton}" RenderTransformOrigin="1.695,4.119" Margin="357,290,0,0" Grid.RowSpan="4" Click="Button_Click" HorizontalAlignment="Left" Width="91" Height="40" VerticalAlignment="Top"/>
+                <Button x:Name="btnModificar" Content="✏ Modificar" Style="{StaticResource ModifyButton}" RenderTransformOrigin="1.074,0.558" Margin="481,288,0,0" Grid.RowSpan="4" HorizontalAlignment="Left" Width="96" Height="40" VerticalAlignment="Top"/>
+                <Button x:Name="btnGuardar" Content="💾 Guardar" Style="{StaticResource SaveButton}" Margin="600,290,0,0" Grid.RowSpan="4" HorizontalAlignment="Left" Width="106" Height="40" VerticalAlignment="Top"/>
             </Grid>
         </ScrollViewer>
     </Grid>
