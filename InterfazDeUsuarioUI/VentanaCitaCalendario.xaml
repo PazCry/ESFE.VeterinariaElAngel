@@ -167,13 +167,13 @@
                                                         </VisualStateGroup>
                                                     </VisualStateManager.VisualStateGroups>
                                                     <!--EL CUADRITO PARA LAS FLECHITAS-->
-                                                    <Grid Margin="241,-12,-265,-4">
+                                                    <Grid Margin="188,-12,-212,-4">
                                                         <Grid.RowDefinitions>
                                                             <RowDefinition Height="26*"/>
                                                             <RowDefinition Height="11*"/>
                                                         </Grid.RowDefinitions>
                                                         <!--´-PARA LAS FLECHITAS DE CAMBIO DE MESES-->
-                                                        <Path x:Name="path" Data="M288.75,232.25 L288.75,240.625 L283,236.625 z" Fill="#FF333333" Height="30" Stretch="Fill" Width="30" Margin="26,6,26,6" Grid.RowSpan="2"/>
+                                                        <Path x:Name="path" Data="M288.75,232.25 L288.75,240.625 L283,236.625 z" Fill="#FF333333" Height="30" Stretch="Fill" Width="30" Margin="20,6,32,6" Grid.RowSpan="2"/>
                                                     </Grid>
                                                 </Grid>
                                             </ControlTemplate>
@@ -195,8 +195,8 @@
                                                         </VisualStateGroup>
                                                     </VisualStateManager.VisualStateGroups>
                                                     <Rectangle Fill="#11E5EBF1" Opacity="1" Stretch="Fill" Height="20" VerticalAlignment="Bottom"/>
-                                                    <Grid Margin="-282,-12,248,-11">
-                                                        <Path x:Name="path" Data="M282.875,231.875 L282.875,240.375 L288.625,236 z" Fill="#FF333333" Height="30" Stretch="Fill" Width="30" Margin="16,8,16,6"/>
+                                                    <Grid Margin="-233,-12,199,-11">
+                                                        <Path x:Name="path" Data="M282.875,231.875 L282.875,240.375 L288.625,236 z" Fill="#FF333333" Height="30" Stretch="Fill" Width="30" Margin="20,6,12,7"/>
                                                     </Grid>
                                                 </Grid>
                                             </ControlTemplate>
@@ -232,7 +232,7 @@
                                         </Grid.RowDefinitions>
                                         <Button x:Name="PART_PreviousButton" Grid.Column="0" Focusable="False" HorizontalAlignment="Left" Height="20" Grid.Row="0" Template="{StaticResource PreviousButtonTemplate}" Width="28"/>
                                         <!--PARA LA LETRA DE LOS MESES-->
-                                        <Button x:Name="PART_HeaderButton" FontFamily="Castellar" Grid.Column="1" Focusable="False" FontWeight="Bold" FontSize="30" HorizontalAlignment="Center" Grid.Row="0" Template="{StaticResource HeaderButtonTemplate}" VerticalAlignment="Center"/>
+                                        <Button x:Name="PART_HeaderButton" FontFamily="Castellar" Grid.Column="1" Focusable="False" FontWeight="Bold" FontSize="16" Template="{StaticResource HeaderButtonTemplate}" Height="32" Margin="117,0,196,0"/>
                                         <Button x:Name="PART_NextButton" Grid.Column="2" Focusable="False" HorizontalAlignment="Right" Height="20" Grid.Row="0" Template="{StaticResource NextButtonTemplate}" Width="28"/>
                                         <Grid x:Name="PART_MonthView" Grid.ColumnSpan="3" HorizontalAlignment="Center" Margin="6,-1,6,6" Grid.Row="1" Visibility="Visible">
                                             <Grid.ColumnDefinitions>
@@ -256,15 +256,15 @@
                                         </Grid>
                                         <Grid x:Name="PART_YearView" Grid.ColumnSpan="3" HorizontalAlignment="Center" Margin="6,-3,7,6" Grid.Row="1" Visibility="Hidden">
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="Auto"/>
-                                                <ColumnDefinition Width="Auto"/>
-                                                <ColumnDefinition Width="Auto"/>
-                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="200"/>
+                                                <ColumnDefinition Width="200"/>
+                                                <ColumnDefinition Width="73"/>
+                                                <ColumnDefinition Width="73"/>
                                             </Grid.ColumnDefinitions>
                                             <Grid.RowDefinitions>
-                                                <RowDefinition Height="Auto"/>
-                                                <RowDefinition Height="Auto"/>
-                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="73"/>
+                                                <RowDefinition Height="73"/>
+                                                <RowDefinition Height="73"/>
                                             </Grid.RowDefinitions>
                                         </Grid>
                                     </Grid>
@@ -292,8 +292,14 @@
     </Window.Resources>
 
     <Grid Background="#FFF1BAD6">
-        <Calendar CalendarItemStyle="{DynamicResource CalendarCalendarItemStyle1}" CalendarDayButtonStyle="{DynamicResource CalendarCalendarDayButtonStyle1}"
-                  Style="{DynamicResource CalendarItemStyle}"/>
-        <Button Content="VOLVER" Margin="840,556,0,0" Background="#FF9C2A4E" BorderBrush="#FFFFAFDF" Foreground="#FFF1BAD6" FontSize="15" FontFamily="Courier New" FontWeight="Bold" HorizontalAlignment="Left" Width="134" Height="38" VerticalAlignment="Top"/>
+        <Calendar x:Name="CalendarioCitas"
+              CalendarItemStyle="{DynamicResource CalendarCalendarItemStyle1}"
+              CalendarDayButtonStyle="{DynamicResource CalendarCalendarDayButtonStyle1}"
+              Style="{DynamicResource CalendarItemStyle}"
+              SelectedDatesChanged="CalendarioCitas_SelectedDatesChanged"
+              DisplayModeChanged="CalendarioCitas_DisplayModeChanged"/>
+
+
+        <Button x:Name="btnVolver" Content="VOLVER" Margin="840,556,0,0" Background="#FF9C2A4E" BorderBrush="#FFFFAFDF" Foreground="#FFF1BAD6" FontSize="15" FontFamily="Courier New" FontWeight="Bold" Height="38" VerticalAlignment="Top" HorizontalAlignment="Left" Width="134" Click="Button_Click"/>
     </Grid>
 </Window>
