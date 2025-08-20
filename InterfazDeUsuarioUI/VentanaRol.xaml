@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InterfazDeUsuarioUI"
         mc:Ignorable="d"
-        Title="VentanaRol" Height="450" Width="800">
+        Title="VentanaRol" Height="627" Width="800">
     <Window.Resources>
         <!-- Colores Rosados Pastel -->
         <SolidColorBrush x:Key="RosaPastelPrincipal" Color="#F8BBD9"/>
@@ -230,86 +230,15 @@
                        Content="🔍"
                        Margin="10,0,0,0"/>
             </Grid>
-
             <!-- DataGrid -->
-            <Border Grid.Row="3" Margin="15,20,15,15" 
-                   CornerRadius="8" BorderBrush="#E5E7EB" BorderThickness="1">
+            <Border Grid.Row="3" Margin="20,17,10,17" 
+        CornerRadius="8" BorderBrush="#E5E7EB" BorderThickness="1">
 
                 <!-- Header del DataGrid -->
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-
-                    <!-- Header con gradiente -->
-                    <Border x:Name="dgvListarRol" Grid.Row="0" CornerRadius="8,8,0,0">
-                        <Border.Background>
-                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                                <GradientStop Color="#9333EA" Offset="0"/>
-                                <GradientStop Color="#C084FC" Offset="1"/>
-                            </LinearGradientBrush>
-                        </Border.Background>
-                        <TextBlock Text="REGISTROS DE ROL" 
-                                  FontWeight="Bold" FontSize="14" 
-                                  Foreground="White" 
-                                  HorizontalAlignment="Center"
-                                  Padding="0,12"/>
-                    </Border>
-
-                    <!-- Área del grid -->
-                    <Grid Grid.Row="1" Background="White">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-
-                        <!-- Headers de columnas -->
-                        <Grid Grid.Row="0" Background="{StaticResource RosaPastelMedio}">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="2*"/>
-                            </Grid.ColumnDefinitions>
-
-                            <TextBlock Grid.Column="0" Text="ID" 
-                                      FontWeight="Medium" FontSize="12" 
-                                      Foreground="#4B5563"
-                                      Padding="20,12"
-                                      HorizontalAlignment="Left"/>
-
-                            <Border Grid.Column="0" BorderBrush="#E5E7EB" 
-                                   BorderThickness="0,0,1,0"/>
-
-                            <TextBlock Grid.Column="1" Text="Tipo de Raza" 
-                                      FontWeight="Medium" FontSize="12" 
-                                      Foreground="#4B5563"
-                                      Padding="20,12"
-                                      HorizontalAlignment="Center"/>
-
-                            <Border Grid.Column="1" BorderBrush="#E5E7EB" 
-                                   BorderThickness="0,0,1,0"/>
-
-                            <TextBlock Grid.Column="2" Text="Fecha Creación" 
-                                      FontWeight="Medium" FontSize="12" 
-                                      Foreground="#4B5563"
-                                      Padding="20,12"
-                                      HorizontalAlignment="Center"/>
-                        </Grid>
-
-                        <!-- Área de contenido vacía -->
-                        <Border Grid.Row="1" Background="#FAFAFA" 
-                               MinHeight="200">
-                            <TextBlock Text="No hay registros para mostrar" 
-                                      FontSize="14" 
-                                      Foreground="#9CA3AF"
-                                      HorizontalAlignment="Center"
-                                      VerticalAlignment="Center"
-                                      FontStyle="Italic"/>
-                        </Border>
-                    </Grid>
-                </Grid>
+                <DataGrid x:Name="dgvListarRol" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,122,31,0"/>
             </Border>
+
+
         </Grid>
     </Border>
 

@@ -31,7 +31,7 @@ namespace InterfazDeUsuarioUI
             CargarGrid();
             ReiniciarEstadoInicial();
             txtNombreRol.TextChanged += Campos_TextChanged;
-            dgvListarRol.SelectedInde = -1;
+            dgvListarRol.SelectedIndex = -1;
         }
 
         private void CargarGrid()

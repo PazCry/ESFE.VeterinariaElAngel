@@ -35,7 +35,11 @@ namespace InterfazDeUsuarioUI
 
         private void CargarGrid()
         {
-            dgvListarRaza.ItemSource = _razaBL.MostrarRaza();
+       
+        {
+            dgvListarRaza1.ItemsSource = _razaBL.MostrarRaza();
+        }
+
         }
 
         private void btnGuardar_Click(object sender, RoutedEventArgs e)
@@ -93,7 +97,7 @@ namespace InterfazDeUsuarioUI
             btnEliminar.IsEnabled = false;
             _modoModificacion = false;
 
-            dgvListarRaza.UnselectAll ();
+            dgvListarRaza1.UnselectAll ();
         }
 
         private void Campos_TextChanged(object sender, TextChangedEventArgs e)
@@ -110,7 +114,7 @@ namespace InterfazDeUsuarioUI
 
         private void dgvListarRaza_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (dgvListarRaza.SelectedItem is RazaEN fila)
+            if (dgvListarRaza1.SelectedItem is RazaEN fila)
             {
                 txtId.Text = fila.Id.ToString();
                 txtTipoRaza.Text = fila.TipoRaza;
