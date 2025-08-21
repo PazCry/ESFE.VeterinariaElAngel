@@ -209,7 +209,7 @@
 
         <!-- Encabezado -->
         <Border Grid.Row="0" 
-                Background="#FFE4A5C7" 
+                Background="#FFFFB3D1" 
                 CornerRadius="12" 
                 Margin="0,0,0,20">
             <Border.Effect>
@@ -232,8 +232,7 @@
         <Border Grid.Row="1" 
                 Background="White" 
                 CornerRadius="12" 
-                Padding="25" 
-                Margin="0,0,0,20">
+                Padding="25" Height="170" VerticalAlignment="Center" HorizontalAlignment="Center" Width="760">
             <Border.Effect>
                 <DropShadowEffect Color="#20000000" Direction="270" ShadowDepth="2" BlurRadius="8"/>
             </Border.Effect>
@@ -260,14 +259,10 @@
 
                     <!-- Primera fila de campos -->
                     <StackPanel Grid.Column="0" Margin="0,0,10,0">
-                        <TextBlock Text="ID Especie" FontWeight="SemiBold" Foreground="#666" Margin="0,0,0,5"/>
-                        <TextBox x:Name="txtIdEspecie" Style="{StaticResource ModernTextBox}"/>
+                        <TextBox x:Name="txtIdEspecie" Style="{StaticResource ModernTextBox}" Visibility="Collapsed"/>
                     </StackPanel>
 
-                    <StackPanel Grid.Column="1" Margin="5,0">
-                        <TextBlock Text="Tipo de Especie" FontWeight="SemiBold" Foreground="#666" Margin="0,0,0,5"/>
-                        <TextBox x:Name="txtNombre" Style="{StaticResource ModernTextBox}"/>
-                    </StackPanel>
+                    <StackPanel Grid.Column="1" Margin="5,0"/>
                 </Grid>
 
                 <!-- Botones de acción -->
@@ -277,23 +272,25 @@
                             Margin="0,25,0,0"/>
                 <Button x:Name="btnGuardar" 
                             Content="💾 Guardar" 
-                            Background="{StaticResource SaveButtonGradient}"
-                            Style="{StaticResource ModernButton}" Margin="11,24,535,11" Grid.Row="2"/>
+                            Background="#FFA8E6CF"
+                            Style="{StaticResource ModernButton}" Margin="20,51,0,0" Grid.Row="2" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" Width="164"/>
                 <Button x:Name="btnEliminar" 
                             Content="🗑️ Eliminar" 
-                            Background="{StaticResource DeleteButtonGradient}"
-                            Style="{StaticResource ModernButton}" Margin="531,25,26,10" Grid.Row="2"/>
+                            Background="#FFFFB3D1"
+                            Style="{StaticResource ModernButton}" Margin="531,45,26,-10" Grid.Row="2"/>
                 <Button x:Name="btnModificar" 
                             Content="✏️ Modificar" 
-                            Background="{StaticResource EditButtonGradient}"
-                            Style="{StaticResource ModernButton}" Margin="263,24,291,11" Grid.Row="2" Cursor="Hand"/>
+                            Background="#FFFFD3A5"
+                            Style="{StaticResource ModernButton}" Margin="270,45,284,-10" Grid.Row="2" Cursor="Hand"/>
+                <TextBlock Text="Tipo de Especie" FontWeight="SemiBold" Foreground="#666" Margin="11,-7,472,13"/>
+                <TextBox x:Name="txtNombre" Style="{StaticResource ModernTextBox}" Margin="11,14,0,0" Grid.RowSpan="3" HorizontalAlignment="Left" Width="673" Height="35" VerticalAlignment="Top"/>
             </Grid>
         </Border>
 
         <!-- DataGrid para mostrar especies -->
         <Border Grid.Row="2" 
                 Background="White" 
-                CornerRadius="12" Margin="0,0,0,53">
+                CornerRadius="12" Margin="0,26,0,26">
             <Border.Effect>
                 <DropShadowEffect Color="#20000000" Direction="270" ShadowDepth="2" BlurRadius="8"/>
             </Border.Effect>

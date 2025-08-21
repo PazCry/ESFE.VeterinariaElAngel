@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InterfazDeUsuarioUI"
         mc:Ignorable="d"
-        Title="VentanaCita" Height="747" Width="810">
+        Title="VentanaCita" Height="707" Width="810">
     <Window.Resources>
         <!-- Estilos para TextBox -->
         <Style x:Key="ModernTextBox" TargetType="TextBox">
@@ -162,7 +162,7 @@
         </Style>
     </Window.Resources>
 
-    <Grid Height="745" VerticalAlignment="Top">
+    <Grid Height="829" VerticalAlignment="Top">
         <!-- Header -->
         <Border Height="70" VerticalAlignment="Top" CornerRadius="0,0,15,15">
             <Border.Background>
@@ -179,7 +179,7 @@
         </Border>
 
         <!-- Contenido Principal -->
-        <ScrollViewer Margin="0,72,0,137" VerticalScrollBarVisibility="Auto">
+        <ScrollViewer Margin="0,72,0,137" VerticalScrollBarVisibility="Auto" RenderTransformOrigin="0.5,0.756">
             <Grid Margin="30">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -194,7 +194,7 @@
                         <DropShadowEffect Color="Gray" Direction="270" ShadowDepth="3" Opacity="0.1" BlurRadius="10"/>
                     </Border.Effect>
 
-                    <Grid>
+                    <Grid Margin="0,0,-15,0">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
@@ -210,36 +210,62 @@
 
                         <!-- Primera fila -->
                         <StackPanel Grid.Row="0" Grid.Column="0">
-                            <Label Content="Num Cita:" Style="{StaticResource ModernLabel}"/>
-                            <TextBox x:Name="txtNumCita" Style="{StaticResource ModernTextBox}"/>
+                            <TextBox x:Name="txtNumCita" Style="{StaticResource ModernTextBox}" Visibility="Collapsed"/>
                         </StackPanel>
 
-                        <StackPanel Grid.Row="0" Grid.Column="2">
-                            <Label Content="Fecha de la Cita:" Style="{StaticResource ModernLabel}"/>
-                            <DatePicker x:Name="dpFechaCita" Style="{StaticResource ModernDatePicker}"/>
-                        </StackPanel>
+                        <StackPanel Grid.Row="0" Grid.Column="2"/>
 
-                        <StackPanel Grid.Row="0" Grid.Column="4">
-                            <Label Content="Buscar Cita (Por Nombre):" Style="{StaticResource ModernLabel}"/>
-                            <TextBox x:Name="txtBuscar" Style="{StaticResource ModernTextBox}"/>
-                        </StackPanel>
+                        <StackPanel Grid.Row="0" Grid.Column="4"/>
 
                         <!-- Segunda fila -->
-                        <StackPanel Grid.Row="1" Grid.Column="0" Margin="0,15,0,0">
-                            <Label Content="Num Expediente:" Style="{StaticResource ModernLabel}"/>
-                            <TextBox x:Name="txtNumExpediente" Style="{StaticResource ModernTextBox}"/>
-                        </StackPanel>
+                        <StackPanel Grid.Row="1" Grid.Column="0" Margin="0,15,0,0"/>
 
-                        <!-- Tercera fila -->
-                        <StackPanel Grid.Row="2" Grid.Column="0" Margin="0,15,0,0">
-                            <Label Content="Hora:" Style="{StaticResource ModernLabel}"/>
-                            <TextBox x:Name="txtHora" Style="{StaticResource ModernTextBox}" Text="Hora.."/>
-                        </StackPanel>
-                        <Button x:Name="btnExpediente" Content="📋 Expediente" Style="{StaticResource AccessButton}" Margin="127,15,0,28" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" Width="121"/>
-                        <Button x:Name="btnMascota" Content="🐾 Mascota" Style="{StaticResource AccessButton}" Margin="4,16,0,27" Grid.Row="1" Grid.Column="4" HorizontalAlignment="Left" Width="120"/>
-                        <Button x:Name="btnCliente" Content="👤 Cliente" Style="{StaticResource AccessButton}" Margin="257,21,0,22" Grid.ColumnSpan="3" Grid.Row="1" HorizontalAlignment="Left" Width="107"/>
-                        <Button x:Name="btnVerCalendario" Content="📅 Ver Calendario" Style="{StaticResource AccessButton}" Margin="5,2,159,41" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2" Cursor="Hand"/>
-                        <Button x:Name="btnEliminar" Content="🗑 Eliminar" Style="{StaticResource DeleteButton}" Grid.Column="2" Margin="144,2,0,41" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Left" Width="114"/>
+                        <StackPanel Grid.Row="2" Grid.Column="0" Margin="0,15,0,0"/>
+
+                        <Button x:Name="btnExpediente" 
+                Content="📋 Expediente" 
+                Style="{StaticResource AccessButton}" 
+                Margin="147,20,0,0" 
+                Grid.Row="1" 
+                Grid.Column="2" 
+                HorizontalAlignment="Left" 
+                Width="121" 
+                Grid.ColumnSpan="2" Height="40" VerticalAlignment="Top"/>
+
+                        <Button x:Name="btnMascota" 
+                Content="🐾 Mascota" 
+                Style="{StaticResource AccessButton}" 
+                Margin="5,20,0,0" 
+                Grid.Row="1" 
+                Grid.Column="4" 
+                HorizontalAlignment="Left" 
+                Width="120" Height="40" VerticalAlignment="Top"/>
+
+                        <Button x:Name="btnCliente" 
+                Content="👤 Cliente" 
+                Style="{StaticResource AccessButton}" 
+                Margin="20,20,0,0" 
+                Grid.ColumnSpan="2" 
+                Grid.Row="1" 
+                HorizontalAlignment="Left" 
+                Width="115" 
+                Grid.Column="1" Height="40" VerticalAlignment="Top"/>
+
+                        <Button x:Name="btnVerCalendario" 
+                Content="📅 Ver Calendario" 
+                Style="{StaticResource AccessButton}" 
+                Margin="127,15,0,0" 
+                Grid.Column="2" 
+                Grid.Row="2" 
+                Cursor="Hand" 
+                VerticalAlignment="Top" 
+                Grid.ColumnSpan="3" HorizontalAlignment="Left" Width="157"/>
+
+                        <TextBox x:Name="txtBuscar" 
+                 Style="{StaticResource ModernTextBox}" Grid.Column="2" Grid.ColumnSpan="3" Margin="167,0,0,0" HorizontalAlignment="Left" Width="238" Height="35" VerticalAlignment="Top"/>
+
+                        <Label Content="Fecha de la Cita:" Margin="0,37,0,-20" Grid.Row="2"/>
+
                     </Grid>
                 </Border>
 
@@ -251,7 +277,7 @@
                 <Border Grid.Row="2" Background="White" CornerRadius="15" Padding="20" Margin="0,158,0,190" Grid.RowSpan="2">
                     <DataGrid x:Name="dgvCita" Style="{StaticResource ModernDataGrid}" 
                               ColumnHeaderStyle="{StaticResource DataGridHeader}" 
-                              Margin="0,-79,0,-79" 
+                              Margin="0,-104,0,-73" 
                               SelectionChanged="DataGrid_SelectionChanged">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="SampleInt" Width="80" Binding="{Binding SampleInt}"/>
@@ -261,10 +287,17 @@
                         </DataGrid.Columns>
                     </DataGrid>
                 </Border>
-                <Button x:Name="btnBuscar" Content="🔍 Buscar" Style="{StaticResource SearchButton}" Margin="219,290,0,0" Grid.RowSpan="4" HorizontalAlignment="Left" Width="85" Height="40" VerticalAlignment="Top"/>
-                <Button x:Name="btnReiniciar" Content="🔄 Reiniciar" Style="{StaticResource ResetButton}" RenderTransformOrigin="1.695,4.119" Margin="357,290,0,0" Grid.RowSpan="4" Click="Button_Click" HorizontalAlignment="Left" Width="91" Height="40" VerticalAlignment="Top"/>
-                <Button x:Name="btnModificar" Content="✏ Modificar" Style="{StaticResource ModifyButton}" RenderTransformOrigin="1.074,0.558" Margin="481,288,0,0" Grid.RowSpan="4" HorizontalAlignment="Left" Width="96" Height="40" VerticalAlignment="Top"/>
-                <Button x:Name="btnGuardar" Content="💾 Guardar" Style="{StaticResource SaveButton}" Margin="600,290,0,0" Grid.RowSpan="4" HorizontalAlignment="Left" Width="106" Height="40" VerticalAlignment="Top"/>
+                <Button x:Name="btnBuscar" Content="🔍 Buscar" Style="{StaticResource SearchButton}" Margin="477,23,0,0" HorizontalAlignment="Left" Width="110" Height="40" Grid.Row="3" Background="#FFA8C8EC" VerticalAlignment="Top"/>
+                <Button x:Name="btnReiniciar" Content="🔄 Reiniciar" Style="{StaticResource ResetButton}" RenderTransformOrigin="1.695,4.119" Margin="621,23,0,0" Click="Button_Click" HorizontalAlignment="Left" Width="102" Height="40" Grid.Row="3" VerticalAlignment="Top"/>
+                <Button x:Name="btnModificar" Content="✏ Modificar" Style="{StaticResource ModifyButton}" RenderTransformOrigin="1.074,0.558" Margin="178,23,0,325" HorizontalAlignment="Left" Width="103" Height="NaN" Grid.Row="3" Background="#FFFFD3A5"/>
+                <Button x:Name="btnGuardar" Content="💾 Guardar" Style="{StaticResource SaveButton}" Margin="24,22,0,326" HorizontalAlignment="Left" Width="106" Height="NaN" Grid.Row="3" Background="#FFA8E6CF"/>
+                <Label Content="Num Expediente:" Style="{StaticResource ModernLabel}" Margin="10,0,466,276"/>
+                <TextBox x:Name="txtNumExpediente" Style="{StaticResource ModernTextBox}" Margin="24,38,0,0" Height="35" VerticalAlignment="Top" HorizontalAlignment="Left" Width="257"/>
+                <Label Content="Hora:" Style="{StaticResource ModernLabel}" Margin="24,86,452,189"/>
+                <TextBox x:Name="txtHora" Style="{StaticResource ModernTextBox}" Text="Hora.." Margin="24,124,0,0" Height="35" VerticalAlignment="Top" HorizontalAlignment="Left" Width="257"/>
+                <Button x:Name="btnEliminar" Content="🗑 Eliminar" Style="{StaticResource DeleteButton}" Margin="327,24,0,325" Grid.Row="3" HorizontalAlignment="Left" Width="118" Height="NaN" Background="#FFFFB3D1"/>
+                <Label Content="Buscar Cita (Por Nombre):" Style="{StaticResource ModernLabel}" Margin="335,24,267,252"/>
+                <DatePicker x:Name="dpFechaCita" Style="{StaticResource ModernDatePicker}" HorizontalAlignment="Left" Width="300" Height="48" VerticalAlignment="Top" Margin="24,204,0,0"/>
             </Grid>
         </ScrollViewer>
     </Grid>

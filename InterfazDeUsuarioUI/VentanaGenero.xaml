@@ -131,6 +131,7 @@
                               FontWeight="Bold" FontSize="12" 
                               Foreground="{StaticResource RosaPastelSecundario}" 
                               Margin="0,0,0,15"/>
+                    <Label Content="Tipo de  Genero:" Style="{StaticResource LabelPastel}"/>
 
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -145,17 +146,12 @@
 
                         <!-- ID -->
                         <StackPanel Grid.Column="0" Grid.Row="0">
-                            <Label Content="ID:" Style="{StaticResource LabelPastel}"/>
                             <TextBox x:Name="txtId" Style="{StaticResource TextBoxPastel}" 
-                                    Background="{StaticResource RosaPastelClaro}"/>
+                                    Background="{StaticResource RosaPastelClaro}" Visibility="Collapsed"/>
                         </StackPanel>
 
                         <!-- Tipo de Raza -->
-                        <StackPanel Grid.Column="2" Grid.Row="0">
-                            <Label Content="Tipo de  Genero:" Style="{StaticResource LabelPastel}"/>
-                            <TextBox x:Name="txtTipoGenero" Style="{StaticResource TextBoxPastel}"
-                                    Background="{StaticResource RosaPastelClaro}"/>
-                        </StackPanel>
+                        <StackPanel Grid.Column="2" Grid.Row="0"/>
                     </Grid>
                 </StackPanel>
 
@@ -177,30 +173,29 @@
                         </Grid.RowDefinitions>
 
                         <!-- Primera fila de botones -->
-                        <Button x:Name="btnGuardar" Grid.Column="0" Grid.Row="0" 
+                        <Button x:Name="btnGuardar" Grid.Column="0" 
                                Content="💾 Guardar" 
                                Style="{StaticResource BotonPastel}"
-                               Background="{StaticResource VerdePastel}"
-                               Margin="0,0,4,4"/>
+                               Background="{StaticResource VerdePastel}" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="178" Margin="-6,0,0,0"/>
 
                         <Button x:Name="btnBuscar" Grid.Column="1" Grid.Row="0" 
                                Content="🔍 Buscar" 
                                Style="{StaticResource BotonPastel}"
                                Background="{StaticResource AzulPastel}"
-                               Margin="4,0,0,4" Cursor="Hand"/>
+                               Margin="4,0,0,0" Cursor="Hand" HorizontalAlignment="Left" Width="176" Height="32" VerticalAlignment="Top"/>
 
                         <!-- Segunda fila de botones -->
                         <Button x:Name="btnModificar" Grid.Column="0" Grid.Row="1" 
                                Content="✏️ Modificar" 
                                Style="{StaticResource BotonPastel}"
                                Background="{StaticResource NaranjaPastel}"
-                               Margin="0,4,4,0" Cursor="Hand"/>
+                               Margin="0,4,0,0" Cursor="Hand" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="178"/>
 
                         <Button x:Name="btnEliminar" Grid.Column="1" Grid.Row="1" 
                                Content="🗑️ Eliminar" 
                                Style="{StaticResource BotonPastel}"
                                Background="{StaticResource RosaPastelPrincipal}"
-                               Margin="4,4,0,0" Cursor="Hand"/>
+                               Margin="4,4,0,0" Cursor="Hand" HorizontalAlignment="Left" Width="176" Height="32" VerticalAlignment="Top"/>
                     </Grid>
                 </StackPanel>
             </Grid>
@@ -219,16 +214,16 @@
                           VerticalAlignment="Center"
                           Margin="0,0,20,0"/>
 
-                <TextBox Grid.Column="1" Style="{StaticResource TextBoxPastel}"
+                <TextBox Style="{StaticResource TextBoxPastel}"
                         Background="{StaticResource RosaPastelMedio}"
-                        Height="35"/>
+                        Height="35" VerticalAlignment="Top" HorizontalAlignment="Center" Width="530" Grid.Column="1"/>
 
                 <Button Grid.Column="2" 
                        Background="{StaticResource RosaPastelPrincipal}"
                        Style="{StaticResource BotonPastel}"
                        Width="40" Height="35"
                        Content="🔍"
-                       Margin="10,0,0,0"/>
+                       Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
             </Grid>
 
             <!-- DataGrid -->
@@ -290,6 +285,8 @@
                     </Grid>
                 </Grid>
             </Border>
+            <TextBox x:Name="txtTipoGenero" Style="{StaticResource TextBoxPastel}"
+                                    Background="{StaticResource RosaPastelClaro}" Margin="15,71,0,0" Grid.Row="1" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="340"/>
         </Grid>
     </Border>
 

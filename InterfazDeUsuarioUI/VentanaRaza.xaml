@@ -146,18 +146,9 @@
                         </Grid.RowDefinitions>
 
                         <!-- ID -->
-                        <StackPanel Grid.Column="0" Grid.Row="0">
-                            <Label Content="ID:" Style="{StaticResource LabelPastel}"/>
-                            <TextBox x:Name="txtId" Style="{StaticResource TextBoxPastel}" 
-                                    Background="{StaticResource RosaPastelClaro}"/>
-                        </StackPanel>
 
                         <!-- Tipo de Raza -->
-                        <StackPanel Grid.Column="2" Grid.Row="0">
-                            <Label Content="Tipo de Raza:" Style="{StaticResource LabelPastel}"/>
-                            <TextBox x:Name="txtTipoRaza" Style="{StaticResource TextBoxPastel}"
-                                    Background="{StaticResource RosaPastelClaro}"/>
-                        </StackPanel>
+                        <Label Content="Tipo de Raza:" Style="{StaticResource LabelPastel}" Grid.ColumnSpan="2" Margin="10,0,10,29"/>
                     </Grid>
                 </StackPanel>
 
@@ -252,6 +243,10 @@
                     <DataGridTextColumn Header="Fecha Creación" Binding="{Binding FechaCreacion}" Width="2*" />
                 </DataGrid.Columns>
             </DataGrid>
+            <TextBox x:Name="txtId" Style="{StaticResource TextBoxPastel}" 
+                                    Background="{StaticResource RosaPastelClaro}" Margin="24,3,0,0" Grid.Row="1" Height="15" VerticalAlignment="Top" HorizontalAlignment="Left" Width="51" IsEnabled="False" Visibility="Collapsed"/>
+            <TextBox x:Name="txtTipoRaza" Style="{StaticResource TextBoxPastel}"
+                                    Background="{StaticResource RosaPastelClaro}" Margin="24,74,0,0" Grid.Row="1" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Width="321"/>
 
 
         </Grid>

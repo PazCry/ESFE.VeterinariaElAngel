@@ -80,14 +80,12 @@
             Margin="15" CornerRadius="10">
         <Grid Background="White" Margin="5,5,5,5">
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="263.96"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
             <!-- Header con gradiente rosado -->
-            <Border Grid.Row="0" CornerRadius="8,8,0,0" Margin="15,15,15,0">
+            <Border Grid.Row="0" CornerRadius="8,8,0,0" Margin="15,15,15,193">
                 <Border.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
                         <GradientStop Color="#F8BBD9" Offset="0"/>
@@ -119,7 +117,7 @@
             </Border>
 
             <!-- Sección Formulario y Botones -->
-            <Grid Grid.Row="1" Margin="15,20,15,0">
+            <Grid Margin="15,91,15,70">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
@@ -145,35 +143,24 @@
 
                         <!-- ID -->
                         <StackPanel Grid.Column="0" Grid.Row="0">
-                            <Label Content="ID:" Style="{StaticResource LabelPastel}"/>
                             <TextBox x:Name="txtNumeroRol" Style="{StaticResource TextBoxPastel}" 
-                                    Background="{StaticResource RosaPastelClaro}" Width="148" RenderTransformOrigin="-0.468,0.523"/>
+                                    Background="{StaticResource RosaPastelClaro}" Width="148" RenderTransformOrigin="-0.468,0.523" Visibility="Collapsed"/>
                         </StackPanel>
 
                         <!-- Tipo de Raza -->
-                        <StackPanel Grid.Column="2" Grid.Row="0">
-                            <Label Content="Tipo de Raza:" Style="{StaticResource LabelPastel}"/>
-                            <TextBox x:Name="txtNombreRol" Style="{StaticResource TextBoxPastel}"
-                                    Background="{StaticResource RosaPastelClaro}"/>
-                        </StackPanel>
+                        <StackPanel Grid.Column="2" Grid.Row="0"/>
                     </Grid>
                 </StackPanel>
 
                 <!-- Botones de Acción -->
                 <StackPanel Grid.Column="1">
-                    <TextBlock Text="BOTONES ACCIÓN" 
-                              FontWeight="Bold" FontSize="12" 
-                              Foreground="{StaticResource RosaPastelSecundario}" 
-                              Margin="0,0,0,15"/>
 
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="71.92"/>
                         </Grid.RowDefinitions>
 
                         <!-- Primera fila de botones -->
@@ -181,32 +168,27 @@
                                Content="💾 Guardar" 
                                Style="{StaticResource BotonPastel}"
                                Background="{StaticResource VerdePastel}"
-                               Margin="0,0,4,4"/>
+                               Margin="-5,23,0,0" HorizontalAlignment="Left" Width="178" Height="32" VerticalAlignment="Top"/>
 
-                        <Button x:Name="btnBuscar" Grid.Column="1" Grid.Row="0" 
+                        <Button x:Name="btnBuscar" 
                                Content="🔍 Buscar" 
                                Style="{StaticResource BotonPastel}"
                                Background="{StaticResource AzulPastel}"
-                               Margin="4,0,0,4"/>
+                               Margin="186,0,0,0" Height="32" VerticalAlignment="Center" HorizontalAlignment="Left" Width="177"/>
 
                         <!-- Segunda fila de botones -->
-                        <Button x:Name="btnModificar" Grid.Column="0" Grid.Row="1" 
-                               Content="✏️ Modificar" 
-                               Style="{StaticResource BotonPastel}"
-                               Background="{StaticResource NaranjaPastel}"
-                               Margin="0,4,4,0"/>
 
-                        <Button x:Name="btnEliminar" Grid.Column="1" Grid.Row="1" 
+                        <Button x:Name="btnEliminar" 
                                Content="🗑️ Eliminar" 
                                Style="{StaticResource BotonPastel}"
                                Background="{StaticResource RosaPastelPrincipal}"
-                               Margin="4,4,0,0"/>
+                               Margin="186,69,0,-29" HorizontalAlignment="Left" Width="177"/>
                     </Grid>
                 </StackPanel>
             </Grid>
 
             <!-- Barra de Búsqueda -->
-            <Grid Grid.Row="2" Margin="15,30,15,0">
+            <Grid Margin="15,224,15,303" Grid.RowSpan="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
@@ -219,23 +201,30 @@
                           VerticalAlignment="Center"
                           Margin="0,0,20,0"/>
 
-                <TextBox x:Name="txtBuscar" Grid.Column="1" Style="{StaticResource TextBoxPastel}"
+                <TextBox x:Name="txtBuscar" Style="{StaticResource TextBoxPastel}"
                         Background="{StaticResource RosaPastelMedio}"
-                        Height="35"/>
+                        Height="35" Grid.ColumnSpan="3" Margin="146,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Width="531"/>
 
                 <Button x:Name="btnReiniciar" Grid.Column="2" 
                        Background="{StaticResource RosaPastelPrincipal}"
                        Style="{StaticResource BotonPastel}" Height="40"
                        Content="🔍"
-                       Margin="5,0,-2,0"/>
+                       Margin="5,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Width="46"/>
             </Grid>
             <!-- DataGrid -->
-            <Border Grid.Row="3" Margin="20,50,10,17" 
-        CornerRadius="8" BorderBrush="#E5E7EB" BorderThickness="1">
+            <Border Grid.Row="1" Margin="20,50,0,0" 
+        CornerRadius="8" BorderBrush="#E5E7EB" BorderThickness="1" Height="243" VerticalAlignment="Top" HorizontalAlignment="Left" Width="726">
 
                 <!-- Header del DataGrid -->
-                <DataGrid x:Name="dgvListarRol" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="-1,9,32,113"/>
+                <DataGrid x:Name="dgvListarRol" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="-1,9,0,0" Height="119" VerticalAlignment="Top" HorizontalAlignment="Left" Width="693"/>
             </Border>
+            <Label Content="Tipo de Rol:" Style="{StaticResource LabelPastel}" Margin="15,119,0,0" Height="21" VerticalAlignment="Top" HorizontalAlignment="Left" Width="161"/>
+            <TextBox x:Name="txtNombreRol" Style="{StaticResource TextBoxPastel}"
+                                    Background="{StaticResource RosaPastelClaro}" Margin="15,145,0,0" Height="33" VerticalAlignment="Top" HorizontalAlignment="Left" Width="348"/>
+            <Button x:Name="btnModificar" 
+                               Content="✏️ Modificar" 
+                               Style="{StaticResource BotonPastel}"
+                               Background="{StaticResource NaranjaPastel}" Margin="378,162,200,70"/>
 
 
         </Grid>

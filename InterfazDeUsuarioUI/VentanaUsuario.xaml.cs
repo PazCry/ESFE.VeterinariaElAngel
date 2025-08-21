@@ -215,5 +215,7 @@ namespace InterfazDeUsuarioUI
             btnEliminar.IsEnabled = false;
             btnModificar.IsEnabled = false;
         }
+
+
     }
 }
