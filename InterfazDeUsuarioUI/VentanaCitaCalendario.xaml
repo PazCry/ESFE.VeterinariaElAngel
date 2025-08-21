@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InterfazDeUsuarioUI"
         mc:Ignorable="d"
-        Title="VentanaCitaCalendario" Height="620" Width="1000">
+        Title="VentanaCitaCalendario" Height="656" Width="1028">
 
     <Window.Resources>
         <Style x:Key="CalendarStyle1" TargetType="{x:Type Calendar}">
@@ -111,9 +111,9 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Calendar}">
-                        <StackPanel x:Name="PART_Root" Margin="0,0,0,-20" Width="NaN">
+                        <StackPanel x:Name="PART_Root" Margin="-16,0,0,-28" Width="NaN">
                             <!--PARA EL RECUADRO DEL CALENDARIO-->
-                            <CalendarItem x:Name="PART_CalendarItem" Background="#FFF1BAD6" BorderBrush="#9C2A4E" BorderThickness="{TemplateBinding BorderThickness}" Foreground="White" Height="547" Style="{TemplateBinding CalendarItemStyle}" Width="950"/>
+                            <CalendarItem x:Name="PART_CalendarItem" Background="#FFF1BAD6" BorderBrush="#9C2A4E" BorderThickness="{TemplateBinding BorderThickness}" Foreground="White" Height="561" Style="{TemplateBinding CalendarItemStyle}" Width="951"/>
                         </StackPanel>
                     </ControlTemplate>
                 </Setter.Value>
@@ -232,13 +232,11 @@
 
                                             <!-- Flecha anterior en la primera columna (Domingo) -->
                                             <Button x:Name="PART_PreviousButton" 
-                                                    Grid.Column="0" 
                                                     Focusable="False" 
-                                                    HorizontalAlignment="Center" 
-                                                    Height="20" 
+                                                    Height="32" 
                                                     Grid.Row="0" 
                                                     Template="{StaticResource PreviousButtonTemplate}" 
-                                                    Width="28"/>
+                                                    Width="28" Margin="11,11,11,19"/>
 
                                             <!-- Texto del mes ocupando las 5 columnas centrales (Lunes a Viernes) -->
                                             <Button x:Name="PART_HeaderButton" 
@@ -249,7 +247,7 @@
                                                     FontWeight="Bold" 
                                                     FontSize="16" 
                                                     Template="{StaticResource HeaderButtonTemplate}" 
-                                                    Height="32"
+                                                    Height="50"
                                                     HorizontalAlignment="Stretch"
                                                     Margin="10,0,10,0"/>
 
@@ -258,7 +256,7 @@
                                                     Grid.Column="6" 
                                                     Focusable="False" 
                                                     HorizontalAlignment="Center" 
-                                                    Height="20" 
+                                                    Height="32" 
                                                     Grid.Row="0" 
                                                     Template="{StaticResource NextButtonTemplate}" 
                                                     Width="28"/>
@@ -335,6 +333,6 @@
               SelectedDatesChanged="CalendarioCitas_SelectedDatesChanged"/>
 
 
-        <Button x:Name="btnVolver" Content="VOLVER" Margin="840,556,0,0" Background="#FF9C2A4E" BorderBrush="#FFFFAFDF" Foreground="#FFF1BAD6" FontSize="15" FontFamily="Courier New" FontWeight="Bold" Height="38" VerticalAlignment="Top" HorizontalAlignment="Left" Width="134" Click="btnVolver_Click"/>
+        <Button x:Name="btnVolver" Content="VOLVER" Margin="852,576,0,0" Background="#FF9C2A4E" BorderBrush="#FFFFAFDF" Foreground="#FFF1BAD6" FontSize="15" FontFamily="Courier New" FontWeight="Bold" Height="38" VerticalAlignment="Top" HorizontalAlignment="Left" Width="134" Click="btnVolver_Click"/>
     </Grid>
 </Window>
