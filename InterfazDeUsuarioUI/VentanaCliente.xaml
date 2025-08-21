@@ -116,7 +116,7 @@
 
             <!-- HEADER ROSA -->
             <Border Grid.Row="0" 
-                    Background="#FFB6C1" 
+                    Background="#F8BBD9" 
                     CornerRadius="10" 
                     Padding="15"
                     Margin="0,1,0,0" Height="58" VerticalAlignment="Top">
@@ -172,7 +172,7 @@
                         <StackPanel Grid.Row="1" Grid.Column="2"/>
                         <Label Content="Teléfono:" Style="{StaticResource FormLabelStyle}" Grid.ColumnSpan="2" Margin="7,-27,8,0" Height="24" VerticalAlignment="Top"/>
                         <Label Content="Apellido:" Style="{StaticResource FormLabelStyle}" Grid.Column="2" Margin="18,-90,0,0" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Width="216"/>
-                        <TextBox x:Name="txtTelefono" Style="{StaticResource InputTextBoxStyle}" Grid.ColumnSpan="2" Margin="10,5,0,0" Height="27" VerticalAlignment="Top" HorizontalAlignment="Left" Width="224"/>
+                        <TextBox x:Name="txtTelefono" Style="{StaticResource InputTextBoxStyle}" Grid.ColumnSpan="2" Margin="10,5,0,0" Height="27" VerticalAlignment="Top" HorizontalAlignment="Left" Width="224" Background="#FFFFDBED"/>
                     </Grid>
                 </StackPanel>
 
@@ -309,8 +309,8 @@
                                 x:Name="btnEliminar" HorizontalAlignment="Center" Margin="0,5,0,0" Width="100" Height="35" VerticalAlignment="Top"/>
             </Grid>
             <Label Content="Nombre:" Style="{StaticResource FormLabelStyle}" Margin="7,0,499,163" Height="30" VerticalAlignment="Bottom"/>
-            <TextBox x:Name="txtNombre" Style="{StaticResource InputTextBoxStyle}" Margin="251,118,0,0" Height="28" VerticalAlignment="Top" HorizontalAlignment="Left" Width="222"/>
-            <TextBox x:Name="txtApellido" Style="{StaticResource InputTextBoxStyle}" Margin="6,118,0,0" Height="28" VerticalAlignment="Top" HorizontalAlignment="Left" Width="222"/>
+            <TextBox x:Name="txtNombre" Style="{StaticResource InputTextBoxStyle}" Margin="251,118,0,0" Height="28" VerticalAlignment="Top" HorizontalAlignment="Left" Width="222" Background="#FFFFDBED"/>
+            <TextBox x:Name="txtApellido" Style="{StaticResource InputTextBoxStyle}" Margin="6,118,0,0" Height="28" VerticalAlignment="Top" HorizontalAlignment="Left" Width="222" Background="#FFFFDBED"/>
             <TextBox x:Name="txtNumCliente" Style="{StaticResource InputTextBoxStyle}" Margin="6,118,499,130" Visibility="Collapsed"/>
             <Button Content="🔍" 
                            Style="{StaticResource SearchButtonStyle}"

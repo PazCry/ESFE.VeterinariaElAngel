@@ -221,9 +221,9 @@
                 <Button Grid.Column="2" 
                        Background="{StaticResource RosaPastelPrincipal}"
                        Style="{StaticResource BotonPastel}"
-                       Width="40" Height="35"
+                       Width="54" Height="35"
                        Content="🔍"
-                       Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                       Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
             </Grid>
 
             <!-- DataGrid -->
@@ -241,7 +241,7 @@
                     <Border Grid.Row="0" CornerRadius="8,8,0,0">
                         <Border.Background>
                             <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                                <GradientStop Color="#9333EA" Offset="0"/>
+                                <GradientStop Color="#C084FC" Offset="0"/>
                                 <GradientStop Color="#C084FC" Offset="1"/>
                             </LinearGradientBrush>
                         </Border.Background>

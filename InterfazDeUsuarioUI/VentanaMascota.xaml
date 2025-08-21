@@ -173,7 +173,7 @@
             </Grid.RowDefinitions>
 
             <!-- Header con icono de mascota -->
-            <Border Grid.Row="0" Background="{StaticResource PinkHeaderGradient}" CornerRadius="8,8,0,0" Padding="20">
+            <Border Grid.Row="0" Background="#F8BBD9" CornerRadius="8,8,0,0" Padding="20" Margin="-18,0,0,308" Grid.RowSpan="2">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <TextBlock Text="🐾" FontSize="20" Margin="0,0,10,0"/>
                     <TextBlock Text="GESTIÓN DE MASCOTAS" 
@@ -195,7 +195,7 @@
                       Foreground="#666" 
                       FontSize="11" 
                       FontWeight="Bold" 
-                      Margin="0,0,0,15"/>
+                      Margin="0,6,0,9"/>
 
                 <!-- Form Fields -->
                 <Grid Grid.Row="1" HorizontalAlignment="Center" Width="730" Height="207" VerticalAlignment="Top">
@@ -237,11 +237,11 @@
 
                     <StackPanel Margin="370,203,5,5"/>
                     <TextBlock Text="Nombre:" Foreground="#666" FontSize="11" Margin="4,0,371,184"/>
-                    <TextBox x:Name="txtNombre" Style="{StaticResource PinkTextBoxStyle}" Margin="14,20,0,0" Height="27" VerticalAlignment="Top" HorizontalAlignment="Left" Width="345"/>
+                    <TextBox x:Name="txtNombre" Style="{StaticResource PinkTextBoxStyle}" Margin="10,20,0,0" HorizontalAlignment="Left" Width="345" Height="27" VerticalAlignment="Top"/>
                     <TextBlock Text="Color:" Foreground="#666" FontSize="11" Margin="384,52,-9,125"/>
-                    <TextBox x:Name="txtColor" Style="{StaticResource PinkTextBoxStyle}" Margin="475,137,0,0" Height="28" VerticalAlignment="Top" HorizontalAlignment="Left" Width="346"/>
-                    <TextBlock Text="Género:" Foreground="#666" FontSize="11"/>
-                    <ComboBox x:Name="cbxGenero" Style="{StaticResource PinkComboBoxStyle}" Margin="375,145,0,0"  Height="29" VerticalAlignment="Top" HorizontalAlignment="Left" Width="346">
+                    <TextBox x:Name="txtColor" Style="{StaticResource PinkTextBoxStyle}" Margin="378,141,0,39" HorizontalAlignment="Left" Width="346"/>
+                    <TextBlock Text="Género:" Foreground="#666" FontSize="11" HorizontalAlignment="Left" Width="86" Margin="384,112,0,76"/>
+                    <ComboBox x:Name="cbxGenero" Style="{StaticResource PinkComboBoxStyle}" Margin="384,72,0,0"  Height="29" VerticalAlignment="Top" HorizontalAlignment="Left" Width="336">
                         <ComboBoxItem Content="Macho" Foreground="Black"/>
                         <ComboBoxItem Content="Hembra" Foreground="Black"/>
                     </ComboBox>
@@ -272,7 +272,7 @@
                 <!-- Action Buttons con colores exactos -->
                 <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,227,0,0"/>
                 <TextBlock Text="Raza:" Foreground="#666" FontSize="11" Margin="385,0,-10,213" Grid.Row="1"/>
-                <ComboBox x:Name="cbxRaza" Style="{StaticResource PinkComboBoxStyle}" Margin="385,21,0,0" Grid.Row="1" HorizontalAlignment="Left" Width="335" Height="24" VerticalAlignment="Top">
+                <ComboBox x:Name="cbxRaza" Style="{StaticResource PinkComboBoxStyle}" Margin="381,21,14,0" Grid.Row="1" Height="24" VerticalAlignment="Top">
                     <ComboBoxItem Content="Labrador" Foreground="Black"/>
                     <ComboBoxItem Content="Golden Retriever" Foreground="Black"/>
                     <ComboBoxItem Content="Pastor Alemán" Foreground="Black"/>
@@ -299,7 +299,7 @@
                         Padding="15,10" 
                         FontSize="12"
                         VerticalAlignment="Center"
-                        Text="BARRA DE BÚSQUEDA">
+                        Text="BARRA DE BÚSQUEDA" Margin="0,0,49,0">
                         <TextBox.Template>
                             <ControlTemplate TargetType="TextBox">
                                 <Border Background="{TemplateBinding Background}" 
@@ -313,14 +313,14 @@
                         </TextBox.Template>
                     </TextBox>
 
-                    <Button Grid.Column="1" 
+                    <Button 
                        Content="🔍" 
-                       Background="{StaticResource PurpleGradient}" 
+                       Background="#C084FC" 
                        Foreground="White"
                        BorderThickness="0" 
                        Padding="15,10" 
-                       Margin="10,0,0,0"
-                       Cursor="Hand">
+                       Margin="673,-2,-2,2"
+                       Cursor="Hand" Grid.ColumnSpan="2">
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
                                 <Border Background="{TemplateBinding Background}" 
@@ -336,7 +336,7 @@
             </Border>
 
             <!-- Records Section Header -->
-            <Border Grid.Row="3" Background="{StaticResource PurpleGradient}" Margin="20,0,20,10" CornerRadius="5" Padding="15">
+            <Border Grid.Row="3" Background="#FFC699F3" Margin="20,0,20,10" CornerRadius="5" Padding="15">
                 <TextBlock Text="REGISTROS DE MASCOTAS" 
                       Foreground="White" 
                       FontWeight="Bold" 
@@ -400,7 +400,7 @@
             </Border>
             <Button x:Name="btnEliminar" Content="🗑 Eliminar" 
                        Background="#FFFFB3D1" 
-                       Style="{StaticResource GradientButtonStyle}" Margin="576,309,0,0"  Height="50" Grid.RowSpan="2" VerticalAlignment="Top" HorizontalAlignment="Left" Width="135" Grid.Row="1"/>
+                       Style="{StaticResource GradientButtonStyle}" Margin="576,305,0,0"  Height="57" Grid.RowSpan="2" VerticalAlignment="Top" HorizontalAlignment="Left" Width="135" Grid.Row="1"/>
             <Button x:Name="btnGuardar" Content="✓ Guardar" 
                        Background="#FFA8E6CF" 
                        Style="{StaticResource GradientButtonStyle}" Margin="48,303,0,0" Grid.Row="1" Height="56" VerticalAlignment="Top" Grid.RowSpan="2" HorizontalAlignment="Left" Width="116"/>
@@ -409,7 +409,7 @@
                        Style="{StaticResource GradientButtonStyle}" Margin="228,304,0,0" Grid.Row="1" Click="Button_Click" Height="55" VerticalAlignment="Top" HorizontalAlignment="Left" Width="123" Grid.RowSpan="2"/>
             <Button x:Name="btnModificar" Content="✏ Modificar" 
                        Background="#FFFFD3A5" 
-                       Style="{StaticResource GradientButtonStyle}" Grid.Row="1" Height="57" Width="128" HorizontalAlignment="Left" Grid.RowSpan="2" Margin="410,309,0,0" VerticalAlignment="Top"/>
+                       Style="{StaticResource GradientButtonStyle}" Grid.Row="1" Height="57" Width="128" HorizontalAlignment="Left" Grid.RowSpan="2" Margin="410,305,0,0" VerticalAlignment="Top"/>
         </Grid>
     </Border>
 

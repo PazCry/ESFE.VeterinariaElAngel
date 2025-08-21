@@ -166,7 +166,7 @@
             </Grid.RowDefinitions>
 
             <!-- Header -->
-            <Border Grid.Row="0" Background="{StaticResource PinkHeaderGradient}" CornerRadius="8,8,0,0" Padding="20">
+            <Border Grid.Row="0" Background="#F8BBD9" CornerRadius="8,8,0,0" Padding="20">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <TextBlock Text="📁" FontSize="20" Margin="0,0,10,0"/>
                     <TextBlock Text="GESTIÓN DE EXPEDIENTES" 
@@ -211,10 +211,10 @@
                     <!-- Primera fila -->
                     <StackPanel Grid.Row="0" Margin="0,5,0,0" HorizontalAlignment="Center" Width="377" Height="53" VerticalAlignment="Top">
                         <TextBlock Text="Num Expediente:" Foreground="#666" FontSize="11" Margin="0,0,0,3"/>
-                        <TextBox x:Name="txtId" Style="{StaticResource PinkTextBoxStyle}" Height="25" Foreground="Black"/>
+                        <TextBox x:Name="txtId" Style="{StaticResource PinkTextBoxStyle}" Height="25" Foreground="Black" Background="#FFFFD4E9"/>
                     </StackPanel>
 
-                    <StackPanel Grid.Column="1" Margin="6,0,0,0" Height="53" VerticalAlignment="Center" HorizontalAlignment="Left" Width="376">
+                    <StackPanel Grid.Column="1" Margin="0,2,0,2" HorizontalAlignment="Center" Width="376">
                         <TextBlock Foreground="#666" FontSize="11"><Run Language="es-sv" Text="Mascota"/><Run Text=":"/></TextBlock>
 
                     </StackPanel>
@@ -269,7 +269,7 @@
                                 FontSize="12">
                             <TextBox.Template>
                                 <ControlTemplate TargetType="TextBox">
-                                    <Border Background="#FFB5C5" CornerRadius="10" BorderThickness="0">
+                                    <Border Background="#FFFFD4E9" CornerRadius="10" BorderThickness="0">
                                         <ScrollViewer x:Name="PART_ContentHost" 
                                                     Margin="10"/>
                                     </Border>
@@ -327,7 +327,7 @@
                             BorderThickness="0" 
                             Padding="15,10" 
                             FontSize="12"
-                            VerticalAlignment="Center" HorizontalAlignment="Left" Width="706">
+                            VerticalAlignment="Center" Margin="0,0,47,0">
                         <TextBox.Template>
                             <ControlTemplate TargetType="TextBox">
                                 <Border Background="{TemplateBinding Background}" 
@@ -343,7 +343,7 @@
 
                     <Button x:Name="btnBuscar1" 
                            Content="🔍" 
-                           Background="{StaticResource PurpleGradient}" 
+                           Background="#FFA97BCA" 
                            Foreground="White"
                            BorderThickness="0" 
                            Padding="15,10" 
@@ -364,7 +364,7 @@
             </Border>
 
             <!-- Records Section Header -->
-            <Border x:Name="btnRegistroExpediente" Grid.Row="3" Background="{StaticResource PurpleGradient}" Margin="20,0,20,10" CornerRadius="5" Padding="15">
+            <Border x:Name="btnRegistroExpediente" Grid.Row="3" Background="#FFA97BCA" Margin="20,0,20,10" CornerRadius="5" Padding="15">
                 <TextBlock Text="REGISTROS DE EXPEDIENTES" 
                           Foreground="White" 
                           FontWeight="Bold" 

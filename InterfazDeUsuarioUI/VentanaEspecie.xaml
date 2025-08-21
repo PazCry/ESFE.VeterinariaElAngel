@@ -209,7 +209,7 @@
 
         <!-- Encabezado -->
         <Border Grid.Row="0" 
-                Background="#FFFFB3D1" 
+                Background="#F8BBD9" 
                 CornerRadius="12" 
                 Margin="0,0,0,20">
             <Border.Effect>

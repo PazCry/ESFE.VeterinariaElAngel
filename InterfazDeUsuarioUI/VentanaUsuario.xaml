@@ -173,8 +173,8 @@
         <Border Height="65" VerticalAlignment="Top" CornerRadius="0,0,15,15">
             <Border.Background>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="#FF9A9E" Offset="0"/>
-                    <GradientStop Color="#FAD0C4" Offset="1"/>
+                    <GradientStop Color="#F8BBD9" Offset="0"/>
+                    <GradientStop Color="#E4A5C7" Offset="1"/>
                 </LinearGradientBrush>
             </Border.Background>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
