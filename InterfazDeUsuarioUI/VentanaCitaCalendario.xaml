@@ -332,8 +332,7 @@
               CalendarItemStyle="{DynamicResource CalendarCalendarItemStyle1}"
               CalendarDayButtonStyle="{DynamicResource CalendarCalendarDayButtonStyle1}"
               Style="{DynamicResource CalendarItemStyle}"
-              SelectedDatesChanged="CalendarioCitas_SelectedDatesChanged"
-        DisplayModeChanged="CalendarioCitas_DisplayModeChanged"/>
+              SelectedDatesChanged="CalendarioCitas_SelectedDatesChanged"/>
 
 
         <Button x:Name="btnVolver" Content="VOLVER" Margin="840,556,0,0" Background="#FF9C2A4E" BorderBrush="#FFFFAFDF" Foreground="#FFF1BAD6" FontSize="15" FontFamily="Courier New" FontWeight="Bold" Height="38" VerticalAlignment="Top" HorizontalAlignment="Left" Width="134" Click="btnVolver_Click"/>
