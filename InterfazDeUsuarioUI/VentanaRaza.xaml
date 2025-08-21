@@ -6,78 +6,78 @@
         xmlns:local="clr-namespace:InterfazDeUsuarioUI"
         mc:Ignorable="d"
         Title="VentanaRaza" Height="450" Width="800">
-   
 
-        <Window.Resources>
-            <!-- Colores Rosados Pastel -->
-            <SolidColorBrush x:Key="RosaPastelPrincipal" Color="#F8BBD9"/>
-            <SolidColorBrush x:Key="RosaPastelSecundario" Color="#E4A5C7"/>
-            <SolidColorBrush x:Key="RosaPastelClaro" Color="#FDE2F3"/>
-            <SolidColorBrush x:Key="RosaPastelMedio" Color="#F3E8FF"/>
-            <SolidColorBrush x:Key="AzulPastel" Color="#BFDBFE"/>
-            <SolidColorBrush x:Key="VerdePastel" Color="#BBF7D0"/>
-            <SolidColorBrush x:Key="NaranjaPastel" Color="#FED7AA"/>
 
-            <!-- Estilo para botones -->
-            <Style x:Key="BotonPastel" TargetType="Button">
-                <Setter Property="FontWeight" Value="Medium"/>
-                <Setter Property="FontSize" Value="12"/>
-                <Setter Property="BorderThickness" Value="0"/>
-                <Setter Property="Padding" Value="15,8"/>
-                <Setter Property="Margin" Value="8,4"/>
-                <Setter Property="Cursor" Value="Hand"/>
-                <Setter Property="Foreground" Value="White"/>
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="Button">
-                            <Border Background="{TemplateBinding Background}"
+    <Window.Resources>
+        <!-- Colores Rosados Pastel -->
+        <SolidColorBrush x:Key="RosaPastelPrincipal" Color="#F8BBD9"/>
+        <SolidColorBrush x:Key="RosaPastelSecundario" Color="#E4A5C7"/>
+        <SolidColorBrush x:Key="RosaPastelClaro" Color="#FDE2F3"/>
+        <SolidColorBrush x:Key="RosaPastelMedio" Color="#F3E8FF"/>
+        <SolidColorBrush x:Key="AzulPastel" Color="#BFDBFE"/>
+        <SolidColorBrush x:Key="VerdePastel" Color="#BBF7D0"/>
+        <SolidColorBrush x:Key="NaranjaPastel" Color="#FED7AA"/>
+
+        <!-- Estilo para botones -->
+        <Style x:Key="BotonPastel" TargetType="Button">
+            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="15,8"/>
+            <Setter Property="Margin" Value="8,4"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
                                 CornerRadius="8"
                                 Padding="{TemplateBinding Padding}">
-                                <ContentPresenter HorizontalAlignment="Center" 
+                            <ContentPresenter HorizontalAlignment="Center" 
                                             VerticalAlignment="Center"/>
-                            </Border>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Opacity" Value="0.8"/>
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="0.8"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
 
-            <!-- Estilo para TextBox -->
-            <Style x:Key="TextBoxPastel" TargetType="TextBox">
-                <Setter Property="Padding" Value="10,8"/>
-                <Setter Property="BorderBrush" Value="#E5E7EB"/>
-                <Setter Property="BorderThickness" Value="1"/>
-                <Setter Property="Background" Value="White"/>
-                <Setter Property="FontSize" Value="12"/>
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="TextBox">
-                            <Border Background="{TemplateBinding Background}"
+        <!-- Estilo para TextBox -->
+        <Style x:Key="TextBoxPastel" TargetType="TextBox">
+            <Setter Property="Padding" Value="10,8"/>
+            <Setter Property="BorderBrush" Value="#E5E7EB"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 CornerRadius="6">
-                                <ScrollViewer x:Name="PART_ContentHost"
+                            <ScrollViewer x:Name="PART_ContentHost"
                                         Margin="{TemplateBinding Padding}"/>
-                            </Border>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
 
-            <!-- Estilo para Labels -->
-            <Style x:Key="LabelPastel" TargetType="Label">
-                <Setter Property="FontWeight" Value="Medium"/>
-                <Setter Property="FontSize" Value="12"/>
-                <Setter Property="Foreground" Value="#6B7280"/>
-                <Setter Property="Padding" Value="0,0,0,5"/>
-            </Style>
-        </Window.Resources>
+        <!-- Estilo para Labels -->
+        <Style x:Key="LabelPastel" TargetType="Label">
+            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Foreground" Value="#6B7280"/>
+            <Setter Property="Padding" Value="0,0,0,5"/>
+        </Style>
+    </Window.Resources>
 
-        <!-- Contenedor principal con bordes punteados -->
+    <!-- Contenedor principal con bordes punteados -->
     <Border BorderBrush="#4F46E5" BorderThickness="2" 
             Margin="15" CornerRadius="10">
         <Grid x:Name="dgvListarRaza" Background="White" Margin="5">
@@ -227,10 +227,9 @@
 
                 <Button x:Name="btnReiniciar" Grid.Column="2" 
                        Background="{StaticResource RosaPastelPrincipal}"
-                       Style="{StaticResource BotonPastel}"
-                       Width="40" Height="35"
+                       Style="{StaticResource BotonPastel}" Height="35"
                        Content="🔍"
-                       Margin="10,0,0,0"/>
+                       Margin="10,0,-9,0"/>
             </Grid>
             <!-- DataGrid de Razas -->
             <DataGrid x:Name="dgvListarRaza1"
@@ -257,6 +256,6 @@
 
         </Grid>
     </Border>
-            
+
 
 </Window>

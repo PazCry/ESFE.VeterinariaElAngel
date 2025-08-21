@@ -138,5 +138,7 @@ namespace InterfazDeUsuarioUI
                 btnGuardar.IsEnabled = !string.IsNullOrWhiteSpace(txtNombreRol.Text);
             }
         }
+
+       
     }
 }

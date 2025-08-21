@@ -78,7 +78,7 @@
     <!-- Contenedor principal con bordes punteados -->
     <Border BorderBrush="#4F46E5" BorderThickness="2" 
             Margin="15" CornerRadius="10">
-        <Grid Background="White" Margin="5">
+        <Grid Background="White" Margin="5,5,5,5">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -147,7 +147,7 @@
                         <StackPanel Grid.Column="0" Grid.Row="0">
                             <Label Content="ID:" Style="{StaticResource LabelPastel}"/>
                             <TextBox x:Name="txtNumeroRol" Style="{StaticResource TextBoxPastel}" 
-                                    Background="{StaticResource RosaPastelClaro}"/>
+                                    Background="{StaticResource RosaPastelClaro}" Width="148" RenderTransformOrigin="-0.468,0.523"/>
                         </StackPanel>
 
                         <!-- Tipo de Raza -->
@@ -225,17 +225,16 @@
 
                 <Button x:Name="btnReiniciar" Grid.Column="2" 
                        Background="{StaticResource RosaPastelPrincipal}"
-                       Style="{StaticResource BotonPastel}"
-                       Width="40" Height="35"
+                       Style="{StaticResource BotonPastel}" Height="40"
                        Content="🔍"
-                       Margin="10,0,0,0"/>
+                       Margin="5,0,-2,0"/>
             </Grid>
             <!-- DataGrid -->
-            <Border Grid.Row="3" Margin="20,17,10,17" 
+            <Border Grid.Row="3" Margin="20,50,10,17" 
         CornerRadius="8" BorderBrush="#E5E7EB" BorderThickness="1">
 
                 <!-- Header del DataGrid -->
-                <DataGrid x:Name="dgvListarRol" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,122,31,0"/>
+                <DataGrid x:Name="dgvListarRol" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="-1,9,32,113"/>
             </Border>
 
 
