@@ -174,26 +174,26 @@
                                Content="💾 Guardar" 
                                Style="{StaticResource BotonPastel}"
                                Background="{StaticResource VerdePastel}"
-                               Margin="0,0,4,4"/>
+                               Margin="0,0,4,4" Click="btnGuardar_Click_1"/>
 
                         <Button x:Name="btnBuscar" Grid.Column="1" Grid.Row="0" 
                                Content="🔍 Buscar" 
                                Style="{StaticResource BotonPastel}"
                                Background="{StaticResource AzulPastel}"
-                               Margin="4,0,0,4"/>
+                               Margin="4,0,0,4" Click="btnBuscar_Click"/>
 
                         <!-- Segunda fila de botones -->
                         <Button x:Name="btnModificar" Grid.Column="0" Grid.Row="1" 
                                Content="✏️ Modificar" 
                                Style="{StaticResource BotonPastel}"
                                Background="{StaticResource NaranjaPastel}"
-                               Margin="0,4,4,0"/>
+                               Margin="0,4,4,0" Click="btnModificar_Click_1"/>
 
                         <Button x:Name="btnEliminar" Grid.Column="1" Grid.Row="1" 
                                Content="🗑️ Eliminar" 
                                Style="{StaticResource BotonPastel}"
                                Background="{StaticResource RosaPastelPrincipal}"
-                               Margin="4,4,0,0"/>
+                               Margin="4,4,0,0" Click="btnEliminar_Click_1"/>
                     </Grid>
                 </StackPanel>
             </Grid>
@@ -221,6 +221,7 @@
                        Style="{StaticResource BotonPastel}" Height="35"
                        Content="🔍"
                        Margin="10,0,-9,0"/>
+                <TextBox x:Name="txtBuscar" Grid.Column="1" HorizontalAlignment="Left" Margin="21,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="470" Height="25"/>
             </Grid>
             <!-- DataGrid de Razas -->
             <DataGrid x:Name="dgvListarRaza1"

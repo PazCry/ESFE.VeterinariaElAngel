@@ -23,15 +23,13 @@ namespace InterfazDeUsuarioUI
     {
         RolBL _rolBL = new RolBL();
         RolEN _rolEN = new RolEN();
-        private bool _modoModificacion = false;
+
 
         public VentanaRol()
         {
             InitializeComponent();
             CargarGrid();
             ReiniciarEstadoInicial();
-            txtNombreRol.TextChanged += Campos_TextChanged;
-            dgvListarRol.SelectedIndex = -1;
         }
 
         private void CargarGrid()
@@ -39,7 +37,43 @@ namespace InterfazDeUsuarioUI
             dgvListarRol.ItemsSource = _rolBL.MostrarRol();
         }
 
-        private void btnGuardar_Click(object sender, RoutedEventArgs e)
+
+
+
+
+        private void txtNombreRol_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            if (!char.IsLetter(e.Text, 0) && !char.IsWhiteSpace(e.Text, 0))
+            {
+                MessageBox.Show("Solo se permiten letras.", "Entrada inválida", MessageBoxButton.OK, MessageBoxImage.Warning);
+                e.Handled = true;
+            }
+        }
+
+        private void dgvListarRol_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (dgvListarRol.SelectedItem is RolEN rol)
+            {
+                txtNumeroRol.Text = rol.Id.ToString();
+                txtNombreRol.Text = rol.TipoRol;
+
+
+            }
+        }
+
+        private void ReiniciarEstadoInicial()
+        {
+            txtNombreRol.Clear();
+            txtNumeroRol.Clear();
+
+
+
+            dgvListarRol.SelectedIndex = -1;
+        }
+
+
+
+        private void btnGuardar_Click_1(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtNombreRol.Text))
             {
@@ -56,7 +90,7 @@ namespace InterfazDeUsuarioUI
             ReiniciarEstadoInicial();
         }
 
-        private void btnModificar_Click(object sender, RoutedEventArgs e)
+        private void btnModificar_Click_1(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtNumeroRol.Text))
             {
@@ -72,7 +106,7 @@ namespace InterfazDeUsuarioUI
             ReiniciarEstadoInicial();
         }
 
-        private void btnEliminar_Click(object sender, RoutedEventArgs e)
+        private void btnEliminar_Click_1(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtNumeroRol.Text))
             {
@@ -91,54 +125,24 @@ namespace InterfazDeUsuarioUI
             }
         }
 
-        private void txtNombreRol_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        private void dgvListarRol_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
-            if (!char.IsLetter(e.Text, 0) && !char.IsWhiteSpace(e.Text, 0))
-            {
-                MessageBox.Show("Solo se permiten letras.", "Entrada inválida", MessageBoxButton.OK, MessageBoxImage.Warning);
-                e.Handled = true;
-            }
-        }
 
-        private void dgvListarRol_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
             if (dgvListarRol.SelectedItem is RolEN rol)
             {
                 txtNumeroRol.Text = rol.Id.ToString();
                 txtNombreRol.Text = rol.TipoRol;
 
-                btnModificar.IsEnabled = true;
-                btnEliminar.IsEnabled = true;
-                btnGuardar.IsEnabled = false;
-                _modoModificacion = true;
+
             }
         }
 
-        private void ReiniciarEstadoInicial()
+        private void btnBuscar_Click(object sender, RoutedEventArgs e)
         {
-            txtNombreRol.Clear();
-            txtNumeroRol.Clear();
-
-            btnGuardar.IsEnabled = false;
-            btnModificar.IsEnabled = false;
-            btnEliminar.IsEnabled = false;
-            _modoModificacion = false;
-
-            dgvListarRol.SelectedIndex = -1;
+            string Id = txtBuscar.Text;
+            List<CitaEN> cita = CitaBL.BuscarCita(Id);
+            dgvListarRol.ItemsSource = cita;
         }
-
-        private void Campos_TextChanged(object sender, EventArgs e)
-        {
-            if (_modoModificacion)
-            {
-                btnGuardar.IsEnabled = false;
-            }
-            else
-            {
-                btnGuardar.IsEnabled = !string.IsNullOrWhiteSpace(txtNombreRol.Text);
-            }
-        }
-
-       
     }
+
 }

@@ -153,38 +153,7 @@
                 </StackPanel>
 
                 <!-- Botones de Acción -->
-                <StackPanel Grid.Column="1">
-
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="71.92"/>
-                        </Grid.RowDefinitions>
-
-                        <!-- Primera fila de botones -->
-                        <Button x:Name="btnGuardar" Grid.Column="0" Grid.Row="0" 
-                               Content="💾 Guardar" 
-                               Style="{StaticResource BotonPastel}"
-                               Background="{StaticResource VerdePastel}"
-                               Margin="-5,23,0,0" HorizontalAlignment="Left" Width="178" Height="32" VerticalAlignment="Top"/>
-
-                        <Button x:Name="btnBuscar" 
-                               Content="🔍 Buscar" 
-                               Style="{StaticResource BotonPastel}"
-                               Background="{StaticResource AzulPastel}"
-                               Margin="186,0,0,0" Height="32" VerticalAlignment="Center" HorizontalAlignment="Left" Width="177"/>
-
-                        <!-- Segunda fila de botones -->
-
-                        <Button x:Name="btnEliminar" 
-                               Content="🗑️ Eliminar" 
-                               Style="{StaticResource BotonPastel}"
-                               Background="{StaticResource RosaPastelPrincipal}"
-                               Margin="186,69,0,-29" HorizontalAlignment="Left" Width="177"/>
-                    </Grid>
-                </StackPanel>
+                <StackPanel Grid.Column="1"/>
             </Grid>
 
             <!-- Barra de Búsqueda -->
@@ -221,10 +190,16 @@
             <Label Content="Tipo de Rol:" Style="{StaticResource LabelPastel}" Margin="15,119,0,0" Height="21" VerticalAlignment="Top" HorizontalAlignment="Left" Width="161"/>
             <TextBox x:Name="txtNombreRol" Style="{StaticResource TextBoxPastel}"
                                     Background="{StaticResource RosaPastelClaro}" Margin="15,145,0,0" Height="33" VerticalAlignment="Top" HorizontalAlignment="Left" Width="348"/>
-            <Button x:Name="btnModificar" 
-                               Content="✏️ Modificar" 
-                               Style="{StaticResource BotonPastel}"
-                               Background="{StaticResource NaranjaPastel}" Margin="378,162,200,70"/>
+<Button
+            Width="178" VerticalAlignment="Top" Style="{StaticResource BotonPastel}" x:Name="btnGuardar" Margin="381,96,0,0" Height="32" HorizontalAlignment="Left" Content="💾 Guardar" Grid.Column="0" Background="{StaticResource VerdePastel}"/>
+<Button
+
+
+        Width="178" VerticalAlignment="Top" Style="{StaticResource BotonPastel}" x:Name="btnModificar" Margin="379,156,0,0" Height="35" HorizontalAlignment="Left" Content="✏️ Modificar" Background="{StaticResource NaranjaPastel}"/>
+<Button
+            Width="177" Style="{StaticResource BotonPastel}" x:Name="btnEliminar" Margin="572,159,0,0" HorizontalAlignment="Left" Content="🗑️ Eliminar" Background="{StaticResource RosaPastelPrincipal}" Height="32" VerticalAlignment="Top"/>
+<Button
+            Width="177" VerticalAlignment="Top" Style="{StaticResource BotonPastel}" x:Name="btnBuscar" Margin="571,100,0,0" Height="32" HorizontalAlignment="Left" Content="🔍 Buscar" Background="{StaticResource AzulPastel}"/>
 
 
         </Grid>

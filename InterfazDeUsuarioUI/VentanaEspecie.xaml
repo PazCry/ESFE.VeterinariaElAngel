@@ -273,15 +273,15 @@
                 <Button x:Name="btnGuardar" 
                             Content="💾 Guardar" 
                             Background="#FFA8E6CF"
-                            Style="{StaticResource ModernButton}" Margin="20,51,0,0" Grid.Row="2" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" Width="164"/>
+                            Style="{StaticResource ModernButton}" Margin="20,51,0,0" Grid.Row="2" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" Width="164" Click="btnGuardar_Click_1"/>
                 <Button x:Name="btnEliminar" 
                             Content="🗑️ Eliminar" 
                             Background="#FFFFB3D1"
-                            Style="{StaticResource ModernButton}" Margin="531,45,26,-10" Grid.Row="2"/>
+                            Style="{StaticResource ModernButton}" Margin="531,45,26,-10" Grid.Row="2" Click="btnEliminar_Click_1"/>
                 <Button x:Name="btnModificar" 
                             Content="✏️ Modificar" 
                             Background="#FFFFD3A5"
-                            Style="{StaticResource ModernButton}" Margin="270,45,284,-10" Grid.Row="2" Cursor="Hand"/>
+                            Style="{StaticResource ModernButton}" Margin="270,45,284,-10" Grid.Row="2" Cursor="Hand" Click="btnModificar_Click_1"/>
                 <TextBlock Text="Tipo de Especie" FontWeight="SemiBold" Foreground="#666" Margin="11,-7,472,13"/>
                 <TextBox x:Name="txtNombre" Style="{StaticResource ModernTextBox}" Margin="11,14,0,0" Grid.RowSpan="3" HorizontalAlignment="Left" Width="673" Height="35" VerticalAlignment="Top"/>
             </Grid>
@@ -318,7 +318,7 @@
                 <!-- DataGrid -->
                 <DataGrid x:Name="dgEspecies"
                           Style="{StaticResource ModernDataGrid}"
-                          AutoGenerateColumns="False" Margin="0,-19,0,0" Grid.ColumnSpan="3" Height="145" VerticalAlignment="Top" Grid.RowSpan="2">
+                          AutoGenerateColumns="False" Margin="0,-19,0,0" Grid.ColumnSpan="3" Height="145" VerticalAlignment="Top" Grid.RowSpan="2" SelectionChanged="dgEspecies_SelectionChanged_1">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="ID" 
                                             Binding="{Binding Id}" 

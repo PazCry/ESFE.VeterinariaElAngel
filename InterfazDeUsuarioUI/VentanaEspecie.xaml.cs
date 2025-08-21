@@ -27,7 +27,7 @@ namespace InterfazDeUsuarioUI
         public VentanaEspecie()
         {
             InitializeComponent();
-            ReiniciarEstadoInicial();
+
             CargarGrid();
 
             txtNombre.TextChanged += Campos_TextChanged;
@@ -38,8 +38,33 @@ namespace InterfazDeUsuarioUI
             dgEspecies.ItemsSource = _especieBL.MostrarEspecie();
         }
 
-        private void btnGuardar_Click(object sender, RoutedEventArgs e)
+        private void txtNombre_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
+            if (!char.IsLetter(e.Text, 0) && !char.IsWhiteSpace(e.Text, 0))
+            {
+                MessageBox.Show("Solo se permiten letras.", "Entrada inválida", MessageBoxButton.OK, MessageBoxImage.Warning);
+                e.Handled = true;
+            }
+        }
+
+
+
+        private void Campos_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (_modoModificacion)
+            {
+                btnGuardar.IsEnabled = false;
+            }
+            else
+            {
+                btnGuardar.IsEnabled = !string.IsNullOrWhiteSpace(txtNombre.Text);
+            }
+        }
+
+
+        private void btnGuardar_Click_1(object sender, RoutedEventArgs e)
+        {
+
             if (string.IsNullOrWhiteSpace(txtNombre.Text))
             {
                 MessageBox.Show("Por favor, complete todos los campos antes de guardar.", "Campos requeridos", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -54,11 +79,12 @@ namespace InterfazDeUsuarioUI
             txtNombre.Text = "";
 
             MessageBox.Show("Especie guardada correctamente.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
-            ReiniciarEstadoInicial();
+
         }
 
-        private void btnModificar_Click(object sender, RoutedEventArgs e)
+        private void btnModificar_Click_1(object sender, RoutedEventArgs e)
         {
+
             if (string.IsNullOrWhiteSpace(txtIdEspecie.Text)) return;
 
             _especieEN.Id = Convert.ToByte(txtIdEspecie.Text);
@@ -70,10 +96,10 @@ namespace InterfazDeUsuarioUI
             txtNombre.Text = "";
 
             MessageBox.Show("Registro modificado correctamente.", "Modificación", MessageBoxButton.OK, MessageBoxImage.Information);
-            ReiniciarEstadoInicial();
+
         }
 
-        private void btnEliminar_Click(object sender, RoutedEventArgs e)
+        private void btnEliminar_Click_1(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtIdEspecie.Text)) return;
 
@@ -87,21 +113,13 @@ namespace InterfazDeUsuarioUI
                 txtIdEspecie.Text = "";
                 txtNombre.Text = "";
                 CargarGrid();
-                ReiniciarEstadoInicial();
+
             }
         }
 
-        private void txtNombre_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        private void dgEspecies_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
-            if (!char.IsLetter(e.Text, 0) && !char.IsWhiteSpace(e.Text, 0))
-            {
-                MessageBox.Show("Solo se permiten letras.", "Entrada inválida", MessageBoxButton.OK, MessageBoxImage.Warning);
-                e.Handled = true;
-            }
-        }
 
-        private void dgEspecies_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
             if (dgEspecies.SelectedItem is EspecieEN especie)
             {
                 txtIdEspecie.Text = especie.Id.ToString();
@@ -113,30 +131,9 @@ namespace InterfazDeUsuarioUI
                 _modoModificacion = true;
             }
         }
-
-        private void Campos_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (_modoModificacion)
-            {
-                btnGuardar.IsEnabled = false;
-            }
-            else
-            {
-                btnGuardar.IsEnabled = !string.IsNullOrWhiteSpace(txtNombre.Text);
-            }
-        }
-
-        private void ReiniciarEstadoInicial()
-        {
-            btnGuardar.IsEnabled = false;
-            btnModificar.IsEnabled = false;
-            btnEliminar.IsEnabled = false;
-            _modoModificacion = false;
-
-            txtIdEspecie.Text = "";
-            txtNombre.Text = "";
-            dgEspecies.SelectedIndex = -1;
-        }
     }
 }
+
+
+
 

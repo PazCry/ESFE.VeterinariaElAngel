@@ -37,7 +37,64 @@ namespace InterfazDeUsuarioUI
             dgvCita.ItemsSource = _citaBL.MostrarCita();
         }
 
-        private void btnGuardar_Click(object sender, RoutedEventArgs e)
+        private void btnBuscar_Click(object sender, RoutedEventArgs e)
+        {
+            string Id = txtBuscar.Text;
+            List<CitaEN> cita = CitaBL.BuscarCita(Id);
+            dgvCita.ItemsSource = cita;
+        }
+
+        private void btnReiniciar_Click(object sender, RoutedEventArgs e)
+        {
+            CargarGrid();
+        }
+
+        private void dgvCita_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (dgvCita.SelectedItem is CitaEN fila)
+            {
+                txtNumCita.Text = fila.Id.ToString();
+                txtNumExpediente.Text = fila.IdExpediente.ToString();
+                dpFechaCita.SelectedDate = fila.FechaCita;
+                txtHora.Text = fila.Hora?.ToString(@"hh\:mm");
+            }
+        }
+
+        private void ReiniciarEstadoInicial()
+        {
+            txtNumCita.Clear();
+            txtNumExpediente.Clear();
+            txtHora.Clear();
+            dgvCita.UnselectAll();
+        }
+
+        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (dgvCita.SelectedItem != null)
+            {
+                // Asumiendo que tienes una clase CitaEN o similar
+                if (dgvCita.SelectedItem is CitaEN fila)
+                {
+                    txtNumCita.Text = fila.Id.ToString();
+                    txtNumExpediente.Text = fila.IdExpediente.ToString();
+
+                    // Para fecha
+                    if (fila.FechaCita != null)
+                    {
+                        dpFechaCita.SelectedDate = fila.FechaCita;
+                    }
+
+                    // Para hora (si usas DatePicker para hora)
+                    if (fila.Hora != null)
+                    {
+                        txtHora.Text = fila.Hora.Value.ToString(@"hh\:mm");
+                    }
+                }
+
+            }
+        }
+
+        private void btnGuardar_Click_1(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtNumCita.Text) || dpFechaCita.SelectedDate == null || string.IsNullOrWhiteSpace(txtHora.Text))
             {
@@ -96,7 +153,7 @@ namespace InterfazDeUsuarioUI
             ReiniciarEstadoInicial();
         }
 
-        private void btnModificar_Click(object sender, RoutedEventArgs e)
+        private void btnMModificar_Click(object sender, RoutedEventArgs e)
         {
             _citaEN.Id = Convert.ToByte(txtNumCita.Text);
             _citaEN.IdExpediente = Convert.ToByte(txtNumExpediente.Text);
@@ -126,57 +183,28 @@ namespace InterfazDeUsuarioUI
             }
         }
 
-        private void btnBuscar_Click(object sender, RoutedEventArgs e)
+        private void btnCliente_Click(object sender, RoutedEventArgs e)
         {
-            string Id = txtBuscar.Text;
-            List<CitaEN> cita = CitaBL.BuscarCita(Id);
-            dgvCita.ItemsSource = cita;
+            VentanaCliente ventana = new VentanaCliente();
+            ventana.Show();
         }
 
-        private void btnReiniciar_Click(object sender, RoutedEventArgs e)
+        private void btnExpediente_Click(object sender, RoutedEventArgs e)
         {
-            CargarGrid();
+            VentanaExpediente ventana = new VentanaExpediente();
+            ventana.Show();
         }
 
-        private void dgvCita_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void btnMascota_Click(object sender, RoutedEventArgs e)
         {
-            if (dgvCita.SelectedItem is CitaEN fila)
-            {
-                txtNumCita.Text = fila.Id.ToString();
-                txtNumExpediente.Text = fila.IdExpediente.ToString();
-                dpFechaCita.SelectedDate = fila.FechaCita;
-                txtHora.Text = fila.Hora?.ToString(@"hh\:mm");
-
-                btnModificar.IsEnabled = true;
-                btnEliminar.IsEnabled = true;
-                btnGuardar.IsEnabled = false;
-
-            }
+            VentanaMascota ventana = new VentanaMascota();
+            ventana.Show();
         }
 
-        private void ReiniciarEstadoInicial()
+        private void btnVerCalendario_Click(object sender, RoutedEventArgs e)
         {
-            btnGuardar.IsEnabled = false;
-            btnModificar.IsEnabled = false;
-            btnEliminar.IsEnabled = false;
-
-
-            txtNumCita.Clear();
-            txtNumExpediente.Clear();
-            txtHora.Clear();
-            dgvCita.UnselectAll();
-        }
-
-
-
-        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            // Lógica para manejar el evento SelectionChanged
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
+            VentanaCitaCalendario ventana = new VentanaCitaCalendario();
+            ventana.Show();
         }
     }
 }

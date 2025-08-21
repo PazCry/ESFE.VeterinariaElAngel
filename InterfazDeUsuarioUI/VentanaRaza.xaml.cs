@@ -35,57 +35,18 @@ namespace InterfazDeUsuarioUI
 
         private void CargarGrid()
         {
-       
-        {
-            dgvListarRaza1.ItemsSource = _razaBL.MostrarRaza();
-        }
 
-        }
-
-        private void btnGuardar_Click(object sender, RoutedEventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtTipoRaza.Text))
             {
-                MessageBox.Show("Por favor, ingrese el tipo de raza.", "Campo requerido", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
+                dgvListarRaza1.ItemsSource = _razaBL.MostrarRaza();
             }
 
-            _razaEN.TipoRaza = txtTipoRaza.Text.Trim();
-            _razaBL.GuardarRaza(_razaEN);
-
-            MessageBox.Show("Raza guardada correctamente.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
-
-            CargarGrid();
-            ReiniciarEstadoInicial();
         }
 
-        private void btnModificar_Click(object sender, RoutedEventArgs e)
-        {
-            _razaEN.Id = Convert.ToByte(txtId.Text);
-            _razaEN.TipoRaza = txtTipoRaza.Text.Trim();
 
-            _razaBL.ModificarRaza(_razaEN);
 
-            MessageBox.Show("Raza modificada correctamente.", "Modificación", MessageBoxButton.OK, MessageBoxImage.Information);
 
-            CargarGrid();
-            ReiniciarEstadoInicial();
-        }
 
-        private void btnEliminar_Click(object sender, RoutedEventArgs e)
-        {
-            var confirm = MessageBox.Show("¿Realmente desea eliminar esta raza?", "Confirmar eliminación", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (confirm == MessageBoxResult.Yes)
-            {
-                _razaEN.Id = Convert.ToByte(txtId.Text);
-                _razaBL.EliminarRaza(_razaEN);
 
-                MessageBox.Show("Raza eliminada correctamente.", "Eliminación", MessageBoxButton.OK, MessageBoxImage.Information);
-
-                CargarGrid();
-                ReiniciarEstadoInicial();
-            }
-        }
 
         private void ReiniciarEstadoInicial()
         {
@@ -97,7 +58,7 @@ namespace InterfazDeUsuarioUI
             btnEliminar.IsEnabled = false;
             _modoModificacion = false;
 
-            dgvListarRaza1.UnselectAll ();
+            dgvListarRaza1.UnselectAll();
         }
 
         private void Campos_TextChanged(object sender, TextChangedEventArgs e)
@@ -135,6 +96,59 @@ namespace InterfazDeUsuarioUI
                 MessageBox.Show("Solo se permiten letras.", "Entrada inválida", MessageBoxButton.OK, MessageBoxImage.Warning);
                 e.Handled = true;
             }
+        }
+
+        private void btnGuardar_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtTipoRaza.Text))
+            {
+                MessageBox.Show("Por favor, ingrese el tipo de raza.", "Campo requerido", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            _razaEN.TipoRaza = txtTipoRaza.Text.Trim();
+            _razaBL.GuardarRaza(_razaEN);
+
+            MessageBox.Show("Raza guardada correctamente.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
+
+            CargarGrid();
+            ReiniciarEstadoInicial();
+        }
+
+        private void btnModificar_Click_1(object sender, RoutedEventArgs e)
+        {
+            _razaEN.Id = Convert.ToByte(txtId.Text);
+            _razaEN.TipoRaza = txtTipoRaza.Text.Trim();
+
+            _razaBL.ModificarRaza(_razaEN);
+
+            MessageBox.Show("Raza modificada correctamente.", "Modificación", MessageBoxButton.OK, MessageBoxImage.Information);
+
+            CargarGrid();
+            ReiniciarEstadoInicial();
+        }
+
+        private void btnEliminar_Click_1(object sender, RoutedEventArgs e)
+        {
+            var confirm = MessageBox.Show("¿Realmente desea eliminar esta raza?", "Confirmar eliminación", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (confirm == MessageBoxResult.Yes)
+            {
+                _razaEN.Id = Convert.ToByte(txtId.Text);
+                _razaBL.EliminarRaza(_razaEN);
+
+                MessageBox.Show("Raza eliminada correctamente.", "Eliminación", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                CargarGrid();
+                ReiniciarEstadoInicial();
+            }
+        }
+
+        private void btnBuscar_Click(object sender, RoutedEventArgs e)
+        {
+            string Id = txtBuscar.Text;
+            List<CitaEN> cita = CitaBL.BuscarCita(Id);
+            dgvListarRaza1.ItemsSource = cita;
+
         }
     }
 }

@@ -45,107 +45,13 @@ namespace InterfazDeUsuarioUI
             dgvListarExpediente.ItemsSource = _expedienteBL.MostrarExpe();
         }
 
-        private void btnGuardar_Click(object sender, RoutedEventArgs e)
-        {
-            if (cbxIdCliente.SelectedIndex == -1 ||
-                cbxIdMascota.SelectedIndex == -1 ||
-                string.IsNullOrWhiteSpace(cbxEstado.Text) ||
-                string.IsNullOrWhiteSpace(txtDescripcionConsulta.Text))
-            {
-                MessageBox.Show("Por favor, complete todos los campos y seleccione todas las opciones.",
-                                "Campos incompletos", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
 
-            if (dtpFechaAtencion.SelectedDate.HasValue && dtpFechaAtencion.SelectedDate.Value.Date < DateTime.Today)
-            {
-                MessageBox.Show("La fecha de atención no puede ser anterior a hoy.",
-                                "Fecha inválida", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
 
-            _expedienteEN.IdCliente = Convert.ToByte(cbxIdCliente.Text);
-            _expedienteEN.IdMascota = Convert.ToByte(cbxIdMascota.Text);
-            _expedienteEN.Estado = cbxEstado.Text;
-            _expedienteEN.DescripcionConsulta = txtDescripcionConsulta.Text;
-            _expedienteEN.Fecha = dtpFechaAtencion.SelectedDate.Value;
 
-            _expedienteBL.GuardarExpe(_expedienteEN);
 
-            CargarGrid();
 
-            txtId.Clear();
-            txtDescripcionConsulta.Clear();
 
-            MessageBox.Show("Expediente guardado correctamente.",
-                            "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
-        }
 
-        private void btnModificar_Click(object sender, RoutedEventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtId.Text) ||
-                string.IsNullOrWhiteSpace(cbxEstado.Text) ||
-                string.IsNullOrWhiteSpace(txtDescripcionConsulta.Text))
-            {
-                MessageBox.Show("Por favor, complete todos los campos antes de modificar.",
-                                "Campos incompletos", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
-
-            if (MessageBox.Show("¿Está seguro de que desea modificar este registro?",
-                                "Confirmar modificación", MessageBoxButton.OKCancel,
-                                MessageBoxImage.Question) == MessageBoxResult.OK)
-            {
-                _expedienteEN.Id = Convert.ToByte(txtId.Text);
-                _expedienteEN.IdCliente = Convert.ToByte(cbxIdCliente.Text);
-                _expedienteEN.IdMascota = Convert.ToByte(cbxIdMascota.Text);
-                _expedienteEN.Estado = cbxEstado.Text;
-                _expedienteEN.DescripcionConsulta = txtDescripcionConsulta.Text;
-
-                _expedienteBL.ModificarExpe(_expedienteEN);
-
-                txtDescripcionConsulta.Clear();
-                txtId.Clear();
-                CargarGrid();
-
-                MessageBox.Show("Expediente modificado correctamente.",
-                                "Modificación", MessageBoxButton.OK, MessageBoxImage.Information);
-                ReiniciarEstadoInicial();
-            }
-        }
-
-        private void btnEliminar_Click(object sender, RoutedEventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtId.Text))
-            {
-                MessageBox.Show("Debe seleccionar un registro antes de eliminar.",
-                                "Campo requerido", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
-
-            if (MessageBox.Show("¿Está seguro de que desea eliminar este registro?",
-                                "Confirmar eliminación", MessageBoxButton.OKCancel,
-                                MessageBoxImage.Question) == MessageBoxResult.OK)
-            {
-                _expedienteEN.Id = Convert.ToByte(txtId.Text);
-                _expedienteBL.EliminarExpe(_expedienteEN);
-
-                txtDescripcionConsulta.Clear();
-                txtId.Clear();
-                ReiniciarEstadoInicial();
-                CargarGrid();
-
-                MessageBox.Show("Registro eliminado correctamente.",
-                                "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-        }
-
-        private void btnBuscar_Click(object sender, RoutedEventArgs e)
-        {
-            string Id = SearchTextBox.Text;
-            List<ExpedienteEN> registros = ExpedeinteBL.BuscarExpe(Id);
-            dgvListarExpediente.ItemsSource = registros;
-        }
 
         private void btnReiniciar_Click(object sender, RoutedEventArgs e)
         {
@@ -222,6 +128,110 @@ namespace InterfazDeUsuarioUI
                     break;
                 }
             }
+        }
+
+        private void btnGuardar_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (cbxIdCliente.SelectedIndex == -1 ||
+                           cbxIdMascota.SelectedIndex == -1 ||
+                           string.IsNullOrWhiteSpace(cbxEstado.Text) ||
+                           string.IsNullOrWhiteSpace(txtDescripcionConsulta.Text))
+            {
+                MessageBox.Show("Por favor, complete todos los campos y seleccione todas las opciones.",
+                                "Campos incompletos", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            if (dtpFechaAtencion.SelectedDate.HasValue && dtpFechaAtencion.SelectedDate.Value.Date < DateTime.Today)
+            {
+                MessageBox.Show("La fecha de atención no puede ser anterior a hoy.",
+                                "Fecha inválida", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            _expedienteEN.IdCliente = Convert.ToByte(cbxIdCliente.Text);
+            _expedienteEN.IdMascota = Convert.ToByte(cbxIdMascota.Text);
+            _expedienteEN.Estado = cbxEstado.Text;
+            _expedienteEN.DescripcionConsulta = txtDescripcionConsulta.Text;
+            _expedienteEN.Fecha = dtpFechaAtencion.SelectedDate.Value;
+
+            _expedienteBL.GuardarExpe(_expedienteEN);
+
+            CargarGrid();
+
+            txtId.Clear();
+            txtDescripcionConsulta.Clear();
+
+            MessageBox.Show("Expediente guardado correctamente.",
+                            "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
+
+        }
+
+        private void btnModificar_Click_1(object sender, RoutedEventArgs e)
+        {
+
+            if (string.IsNullOrWhiteSpace(txtId.Text) ||
+                string.IsNullOrWhiteSpace(cbxEstado.Text) ||
+                string.IsNullOrWhiteSpace(txtDescripcionConsulta.Text))
+            {
+                MessageBox.Show("Por favor, complete todos los campos antes de modificar.",
+                                "Campos incompletos", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            if (MessageBox.Show("¿Está seguro de que desea modificar este registro?",
+                                "Confirmar modificación", MessageBoxButton.OKCancel,
+                                MessageBoxImage.Question) == MessageBoxResult.OK)
+            {
+                _expedienteEN.Id = Convert.ToByte(txtId.Text);
+                _expedienteEN.IdCliente = Convert.ToByte(cbxIdCliente.Text);
+                _expedienteEN.IdMascota = Convert.ToByte(cbxIdMascota.Text);
+                _expedienteEN.Estado = cbxEstado.Text;
+                _expedienteEN.DescripcionConsulta = txtDescripcionConsulta.Text;
+
+                _expedienteBL.ModificarExpe(_expedienteEN);
+
+                txtDescripcionConsulta.Clear();
+                txtId.Clear();
+                CargarGrid();
+
+                MessageBox.Show("Expediente modificado correctamente.",
+                                "Modificación", MessageBoxButton.OK, MessageBoxImage.Information);
+                ReiniciarEstadoInicial();
+            }
+        }
+
+        private void btnEliminar_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtId.Text))
+            {
+                MessageBox.Show("Debe seleccionar un registro antes de eliminar.",
+                                "Campo requerido", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            if (MessageBox.Show("¿Está seguro de que desea eliminar este registro?",
+                                "Confirmar eliminación", MessageBoxButton.OKCancel,
+                                MessageBoxImage.Question) == MessageBoxResult.OK)
+            {
+                _expedienteEN.Id = Convert.ToByte(txtId.Text);
+                _expedienteBL.EliminarExpe(_expedienteEN);
+
+                txtDescripcionConsulta.Clear();
+                txtId.Clear();
+                ReiniciarEstadoInicial();
+                CargarGrid();
+
+                MessageBox.Show("Registro eliminado correctamente.",
+                                "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
+
+        private void btnBuscar_Click_1(object sender, RoutedEventArgs e)
+        {
+            string Id = txtBuscar1.Text;
+            List<CitaEN> cita = CitaBL.BuscarCita(Id);
+            dgvListarExpediente.ItemsSource = cita;
         }
     }
 }
