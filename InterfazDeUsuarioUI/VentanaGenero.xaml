@@ -224,7 +224,7 @@
                        Width="54" Height="35"
                        Content="🔍"
                        Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                <TextBox x:Name="txtBuscar" Grid.Column="1" HorizontalAlignment="Left" Margin="17,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="450"/>
+                <TextBox x:Name="txtBuscar" Grid.Column="1" HorizontalAlignment="Left" Margin="17,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="450" Height="18"/>
             </Grid>
 
             <!-- DataGrid -->

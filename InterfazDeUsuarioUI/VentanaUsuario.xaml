@@ -199,7 +199,7 @@
                         <DropShadowEffect Color="Gray" Direction="270" ShadowDepth="3" Opacity="0.1" BlurRadius="10"/>
                     </Border.Effect>
 
-                    <Grid HorizontalAlignment="Left" Width="673">
+                    <Grid HorizontalAlignment="Center" Width="673" Margin="0,4,0,-22">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="485.93125"/>
                         </Grid.RowDefinitions>
@@ -214,11 +214,11 @@
 
                         <!-- Apellido -->
                         <Label Grid.Column="0" Content="Apellido" Style="{StaticResource ModernLabel}" Margin="0,84,473,368"/>
-                        <TextBox x:Name="txtApellido" Style="{StaticResource ModernTextBox}" Margin="96,83,0,0" HorizontalAlignment="Left" Width="356" Height="44" VerticalAlignment="Top"/>
+                        <TextBox x:Name="txtApellido" Style="{StaticResource ModernTextBox}" Margin="96,83,0,0" HorizontalAlignment="Left" Width="356" Height="53" VerticalAlignment="Top"/>
 
                         <!-- Correo -->
                         <Label Grid.Column="0" Content="Correo" Style="{StaticResource ModernLabel}" Margin="-4,153,477,299"/>
-                        <TextBox x:Name="txtCorreo" Style="{StaticResource ModernTextBox}" Margin="98,151,0,0" HorizontalAlignment="Left" Width="354" Height="44" VerticalAlignment="Top"/>
+                        <TextBox x:Name="txtCorreo" Style="{StaticResource ModernTextBox}" Margin="98,151,0,0" HorizontalAlignment="Left" Width="354" Height="36" VerticalAlignment="Top"/>
 
                         <!-- Contraseña -->
                         <Label Grid.Column="0" Content="Contraseña" Style="{StaticResource ModernLabel}" Margin="-4,210,477,237"/>
@@ -267,11 +267,11 @@
                             <TextBox x:Name="txtId" Style="{StaticResource ModernTextBox}" Width="80" HorizontalAlignment="Left" IsEnabled="False" Visibility="Collapsed"/>
                         </StackPanel>
 
-                        <Button x:Name="btnBuscar" Content="🔍 Buscar" Style="{StaticResource SearchButton}" Margin="458,13,0,0" HorizontalAlignment="Left" Width="92" Height="40" VerticalAlignment="Top" Click="btnBuscar_Click_1"/>
+                        <Button x:Name="btnBuscar" Content="🔍 Buscar" Style="{StaticResource SearchButton}" Margin="466,15,0,0" HorizontalAlignment="Left" Width="92" Height="40" VerticalAlignment="Top" Click="btnBuscar_Click_1"/>
                         <Button x:Name="btnReiniciar" Content="🔄 Reiniciar" Style="{StaticResource ResetButton}" Margin="568,13,0,0" HorizontalAlignment="Left" Width="96" Height="40" VerticalAlignment="Top" Click="btnReiniciar_Click_1"/>
-                        <Button x:Name="btnGuardar" Content="💾 Guardar" Style="{StaticResource SaveButton}" Margin="504,116,0,0" Background="#FFA8E6CF" HorizontalAlignment="Left" Width="145" Height="40" VerticalAlignment="Top" Click="btnGuardar_Click_1"/>
-                        <Button x:Name="btnModificar" Content="✏ Modificar" Style="{StaticResource ModifyButton}" Margin="504,196,0,0" Background="#FFFFD3A5" HorizontalAlignment="Left" Width="145" Height="40" VerticalAlignment="Top" Click="btnModificar_Click_1"/>
-                        <Button x:Name="btnEliminar" Content="🗑 Eliminar" Style="{StaticResource DeleteButton}" Margin="504,271,0,0" Background="#FFFFB3D1" HorizontalAlignment="Left" Width="145" Height="40" VerticalAlignment="Top" Click="btnEliminar_Click_1"/>
+                        <Button x:Name="btnGuardar" Content="💾 Guardar" Style="{StaticResource SaveButton}" Margin="504,101,0,0" Background="#FFA8E6CF" HorizontalAlignment="Left" Width="145" Height="55" VerticalAlignment="Top" Click="btnGuardar_Click_1"/>
+                        <Button x:Name="btnModificar" Content="✏ Modificar" Style="{StaticResource ModifyButton}" Margin="504,186,0,0" Background="#FFFFD3A5" HorizontalAlignment="Left" Width="145" Height="50" VerticalAlignment="Top" Click="btnModificar_Click_1"/>
+                        <Button x:Name="btnEliminar" Content="🗑 Eliminar" Style="{StaticResource DeleteButton}" Margin="504,271,0,0" Background="#FFFFB3D1" HorizontalAlignment="Left" Width="145" Height="55" VerticalAlignment="Top" Click="btnEliminar_Click_1"/>
                     </Grid>
                 </Border>
 
@@ -279,7 +279,7 @@
                 <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,20"/>
 
                 <!-- Tabla de Datos -->
-                <Border Grid.Row="1" Background="White" CornerRadius="15" Padding="20" RenderTransformOrigin="0.5,0.5" Margin="0,198,0,0" Grid.RowSpan="2" Height="319" VerticalAlignment="Top">
+                <Border Grid.Row="2" Background="White" CornerRadius="15" Padding="20" RenderTransformOrigin="0.5,0.5" Margin="0,19,0,0" Height="280" VerticalAlignment="Top">
                     <Border.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
@@ -303,7 +303,7 @@
                 </Border>
             </Grid>
         </ScrollViewer>
-        <TextBox x:Name="txtBuscar" Style="{StaticResource ModernTextBox}" Margin="0,82,0,0" HorizontalAlignment="Center" Width="666" Height="35" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtBuscar" Style="{StaticResource ModernTextBox}" Margin="0,82,0,0" HorizontalAlignment="Center" Width="666" Height="52" VerticalAlignment="Top"/>
         <TextBox x:Name="txtNombre" Style="{StaticResource ModernTextBox}" Height="51" Margin="150,139,0,0" HorizontalAlignment="Left" Width="354" VerticalAlignment="Top"/>
         <Label Content="Label" HorizontalAlignment="Left" Margin="913,70,0,0" VerticalAlignment="Top"/>
     </Grid>

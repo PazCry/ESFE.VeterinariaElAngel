@@ -9,8 +9,8 @@
     <Window.Resources>
         <!-- Gradientes y estilos -->
         <LinearGradientBrush x:Key="HeaderGradient" StartPoint="0,0" EndPoint="0,1">
-            <GradientStop Color="#E91E63" Offset="0"/>
-            <GradientStop Color="#C2185B" Offset="1"/>
+            <GradientStop Color="#FFC699F3" Offset="0"/>
+            <GradientStop Color="#FFC699F3" Offset="1"/>
         </LinearGradientBrush>
 
         <LinearGradientBrush x:Key="ButtonGradient" StartPoint="0,0" EndPoint="0,1">
@@ -283,7 +283,7 @@
                             Background="#FFFFD3A5"
                             Style="{StaticResource ModernButton}" Margin="270,45,284,-10" Grid.Row="2" Cursor="Hand" Click="btnModificar_Click_1"/>
                 <TextBlock Text="Tipo de Especie" FontWeight="SemiBold" Foreground="#666" Margin="11,-7,472,13"/>
-                <TextBox x:Name="txtNombre" Style="{StaticResource ModernTextBox}" Margin="11,14,0,0" Grid.RowSpan="3" HorizontalAlignment="Left" Width="673" Height="35" VerticalAlignment="Top"/>
+                <TextBox x:Name="txtNombre" Style="{StaticResource ModernTextBox}" Margin="11,14,0,0" Grid.RowSpan="3" HorizontalAlignment="Left" Width="673" Height="46" VerticalAlignment="Top"/>
             </Grid>
         </Border>
 

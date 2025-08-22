@@ -212,16 +212,15 @@
                           VerticalAlignment="Center"
                           Margin="0,0,20,0"/>
 
-                <TextBox Grid.Column="1" Style="{StaticResource TextBoxPastel}"
-                        Background="{StaticResource RosaPastelMedio}"
-                        Height="35"/>
+                <TextBox Style="{StaticResource TextBoxPastel}"
+                        Background="{StaticResource RosaPastelMedio}" Grid.ColumnSpan="3" Margin="146,-12,47,0"/>
 
                 <Button x:Name="btnReiniciar" Grid.Column="2" 
                        Background="{StaticResource RosaPastelPrincipal}"
                        Style="{StaticResource BotonPastel}" Height="35"
                        Content="🔍"
                        Margin="10,0,-9,0"/>
-                <TextBox x:Name="txtBuscar" Grid.Column="1" HorizontalAlignment="Left" Margin="21,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="470" Height="25"/>
+                <TextBox x:Name="txtBuscar" Grid.Column="1" HorizontalAlignment="Left" Margin="21,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="470" Height="37"/>
             </Grid>
             <!-- DataGrid de Razas -->
             <DataGrid x:Name="dgvListarRaza1"
@@ -247,7 +246,7 @@
             <TextBox x:Name="txtId" Style="{StaticResource TextBoxPastel}" 
                                     Background="{StaticResource RosaPastelClaro}" Margin="24,3,0,0" Grid.Row="1" Height="15" VerticalAlignment="Top" HorizontalAlignment="Left" Width="51" IsEnabled="False" Visibility="Collapsed"/>
             <TextBox x:Name="txtTipoRaza" Style="{StaticResource TextBoxPastel}"
-                                    Background="{StaticResource RosaPastelClaro}" Margin="24,74,0,0" Grid.Row="1" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Width="321"/>
+                                    Background="{StaticResource RosaPastelClaro}" Margin="24,74,0,0" Grid.Row="1" Height="49" VerticalAlignment="Top" HorizontalAlignment="Left" Width="321" Grid.RowSpan="2"/>
 
 
         </Grid>
