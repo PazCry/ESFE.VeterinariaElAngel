@@ -208,14 +208,9 @@
                     </Grid.RowDefinitions>
 
                     <!-- Primera fila -->
-                    <StackPanel Grid.Row="0" Margin="5,5,0,0" HorizontalAlignment="Left" Width="377" Height="53" VerticalAlignment="Top">
-                        <TextBox x:Name="txtId" Style="{StaticResource PinkTextBoxStyle}" Height="49" Foreground="Black" Background="#FFFFD4E9" Width="368"/>
-                    </StackPanel>
+                    <StackPanel Grid.Row="0" Margin="5,5,0,0" HorizontalAlignment="Left" Width="377" Height="53" VerticalAlignment="Top"/>
 
-                    <StackPanel Margin="392,2,0,2" HorizontalAlignment="Left" Width="376">
-                        <TextBlock Foreground="#666" FontSize="11" Width="209"><Run Language="es-sv" Text="Mascota"/><Run Text=":"/></TextBlock>
-
-                    </StackPanel>
+                    <StackPanel Margin="392,2,0,2" HorizontalAlignment="Left" Width="376"/>
 
                     <!-- Segunda fila -->
                     <StackPanel Grid.Row="1" Grid.Column="0" Margin="5,5,391,5"/>
@@ -227,8 +222,7 @@
 
                     <!-- Cuarta fila - Descripción (span completo) -->
                     <StackPanel Grid.Row="3" Margin="0,5,0,0" Height="88" VerticalAlignment="Top" HorizontalAlignment="Center" Width="763"/>
-
-                    <ComboBox x:Name="cbxEstado" Margin="470,10,0,0" Grid.Row="2" BorderBrush="#FFF4A6CD" HorizontalAlignment="Left" Width="372" Height="54" VerticalAlignment="Top" Grid.RowSpan="2">
+                    <ComboBox x:Name="cbxIdCliente" HorizontalAlignment="Left" Margin="28,13,0,0" Grid.Row="2" Width="372" Height="38" VerticalAlignment="Top">
                         <ComboBox.Background>
                             <LinearGradientBrush EndPoint="0,1">
                                 <GradientStop Color="#FFF0F0F0"/>
@@ -236,59 +230,19 @@
                             </LinearGradientBrush>
                         </ComboBox.Background>
                     </ComboBox>
-                    <ComboBox x:Name="cbxIdCliente" HorizontalAlignment="Left" Margin="9,17,0,0" Grid.Row="1" Width="372" Height="38" VerticalAlignment="Top" Grid.RowSpan="2">
-                        <ComboBox.Background>
-                            <LinearGradientBrush EndPoint="0,1">
-                                <GradientStop Color="#FFF0F0F0"/>
-                                <GradientStop Color="#FFF4A6CD" Offset="1"/>
-                            </LinearGradientBrush>
-                        </ComboBox.Background>
-                    </ComboBox>
-                    <TextBlock Text="Estado:" Foreground="#666" FontSize="11" RenderTransformOrigin="0.504,0.616" Margin="470,40,163,56" Grid.RowSpan="2" Grid.Row="1"/>
-                    <DatePicker x:Name="dtpFechaAtencion" Margin="10,40,387,87" Padding="10,8" BorderThickness="0" FontSize="12" Grid.RowSpan="2" Grid.Row="2">
-                        <DatePicker.Template>
-                            <ControlTemplate TargetType="{x:Type DatePicker}">
-                                <Border Background="#FFB5C5" CornerRadius="15" BorderThickness="0">
-                                    <Grid>
-                                        <Button x:Name="PART_Button" 
-                                                   HorizontalAlignment="Stretch" 
-                                                   VerticalAlignment="Stretch" 
-                                                   Background="Transparent" 
-                                                   BorderThickness="0"/>
-                                        <DatePickerTextBox x:Name="PART_TextBox" 
-                                                             Foreground="White" 
-                                                             Background="Transparent" 
-                                                             BorderThickness="0" 
-                                                             Margin="10,0"/>
-                                        <Popup x:Name="PART_Popup"/>
-                                    </Grid>
-                                </Border>
-                            </ControlTemplate>
-                        </DatePicker.Template>
-                    </DatePicker>
-                    <TextBlock Text="Fecha Inicio:" Foreground="#666" FontSize="11" Margin="15,24,381,77" Grid.Row="2" Grid.RowSpan="2"/>
+                    <TextBlock Text="Estado:" Foreground="#666" FontSize="11" RenderTransformOrigin="0.504,0.616" Margin="533,4,100,72" Grid.Row="1" Grid.RowSpan="2"/>
+                    <TextBlock Text="Fecha Inicio:" Foreground="#666" FontSize="11" Margin="34,57,0,0" Grid.Row="2" Height="23"VerticalAlignment="Top"gnment="Top" Width="328"lignment="Left" Width="377" Grid.RowSpan="2"/>
+                    <DatePicker x:Name="dtpFechaAtencion" HorizontalAlignment="Left" Height="34" Margin="24,13,0,0" Grid.Row="3" VerticalAlignment="Top" Width="358"/>
                 </Grid>
 
                 <!-- Action Buttons -->
                 <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left" Margin="304,196,0,0" Height="137" VerticalAlignment="Top"/>
-                <ComboBox x:Name="cbxIdMascota" Margin="474,25,0,0" Grid.Row="2" Background="#FFFFB5C5" Height="54" VerticalAlignment="Top" HorizontalAlignment="Left" Width="370"/>
-                <Button x:Name="btnGuardar" Content="✓ Guardar" 
-                           Background="#FFA8E6CF" 
-                           Style="{StaticResource GradientButtonStyle}" Margin="37,299,0,0" Grid.Row="2" HorizontalAlignment="Left" Width="134" Height="49" VerticalAlignment="Top" Click="btnGuardar_Click_1"/>
-                <Button x:Name="btnBuscar" Content="🔍 Buscar" 
-                           Background="#FFA8C8EC" 
-                           Style="{StaticResource GradientButtonStyle}" Margin="232,299,0,0" Grid.Row="2" HorizontalAlignment="Left" Width="144" Height="51" VerticalAlignment="Top" Click="btnBuscar_Click_1"/>
-                <Button x:Name="btnModificar" Content="✏ Modificar" 
-                           Background="#FFFFD3A5" 
-                           Style="{StaticResource GradientButtonStyle}" Margin="414,299,0,0" Grid.Row="2" HorizontalAlignment="Left" Width="144" Height="50" VerticalAlignment="Top" Click="btnModificar_Click_1"/>
-                <Button x:Name="btnEliminar" Content="🗑 Eliminar" 
-                           Background="#FFFFB3D1" 
-                           Style="{StaticResource GradientButtonStyle}" Margin="628,301,0,0" Grid.Row="2" HorizontalAlignment="Left" Width="134" Height="48" VerticalAlignment="Top" Click="btnEliminar_Click_1"/>
-                <TextBlock Text="Num Expediente:" Foreground="#666" FontSize="11" Margin="1,9,395,6"/>
+                <TextBlock Text="Num Expediente:" Foreground="#666" FontSize="11" Margin="17,-1,379,16"/>
+                        <TextBox x:Name="txtId" Style="{StaticResource PinkTextBoxStyle}" Foreground="Black" Background="#FFFFD4E9" Margin="27,25,0,0" Grid.RowSpan="3" Height="54" VerticalAlignment="Top" HorizontalAlignment="Left" Width="368"/>
             </Grid>
 
             <!-- Search Bar -->
-            <Border x:Name="txtBuscar" Grid.Row="1" Background="#E8EAF6" CornerRadius="8" Margin="25,410,15,0" Padding="15" Height="66" Grid.RowSpan="2" VerticalAlignment="Top">
+            <Border x:Name="txtBuscar" Grid.Row="4" Background="#E8EAF6" CornerRadius="8" Margin="25,8,15,0" Padding="15" Height="66" VerticalAlignment="Top">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="588*"/>
@@ -337,9 +291,18 @@
                     </Button>
                 </Grid>
             </Border>
+            <Border
+
+            Margin="15,95,25,533" Grid.Row="4" Padding="15" x:Name="btnRegistroExpediente" CornerRadius="5" Background="#FFA97BCA">
+
+                <TextBlock
+
+            Text="REGISTROS DE EXPEDIENTES" HorizontalAlignment="Center" FontSize="14" FontWeight="Bold" Foreground="White"/>
+
+            </Border>
 
             <!-- Records Section Header -->
-            <Border x:Name="btnRegistroExpediente" Grid.Row="3" Background="#FFA97BCA" Margin="20,9,20,1" CornerRadius="5" Padding="15">
+            <Border x:Name="btnRegistroExpediente" Grid.Row="3" Background="#FFA97BCA" Margin="20,59,20,533" CornerRadius="5" Padding="15">
                 <TextBlock Text="REGISTROS DE EXPEDIENTES" 
                           Foreground="White" 
                           FontWeight="Bold" 
@@ -348,7 +311,7 @@
             </Border>
 
             <!-- Data Grid -->
-            <Border Grid.Row="4" Background="White" CornerRadius="5" Margin="20,0,20,20">
+            <Border Grid.Row="4" Background="White" CornerRadius="5" Margin="20,166,20,0" Height="455" VerticalAlignment="Top">
                 <Border.Effect>
                     <DropShadowEffect Color="Gray" BlurRadius="5" ShadowDepth="2" Opacity="0.2"/>
                 </Border.Effect>
@@ -360,7 +323,7 @@
                          RowHeaderWidth="0"
                          BorderThickness="0"
                          FontSize="12"
-                         RowHeight="35" Height="345" VerticalAlignment="Top" Background="#FFF0F0F0" Margin="-10,10,10,0">
+                         RowHeight="35" Height="345" VerticalAlignment="Top" Background="#FFF0F0F0" Margin="-3,7,3,0">
 
                     <DataGrid.ColumnHeaderStyle>
                         <Style TargetType="DataGridColumnHeader">
@@ -402,10 +365,10 @@
                                 AcceptsReturn="True" 
                                 VerticalScrollBarVisibility="Auto"
                                 Padding="10,8"
-                                Margin="35,265,35,123"
+                                Margin="37,284,0,0"
                                 BorderThickness="0"
                                 Foreground="Black"
-                                FontSize="12" Grid.Row="1">
+                                FontSize="12" Grid.Row="1" HorizontalAlignment="Left" Width="954" Height="78" VerticalAlignment="Top">
                 <TextBox.Template>
                     <ControlTemplate TargetType="{x:Type TextBox}">
                         <Border Background="#FFFFD4E9" CornerRadius="10" BorderThickness="0">
@@ -415,8 +378,30 @@
                     </ControlTemplate>
                 </TextBox.Template>
             </TextBox>
-            <TextBlock Text="Descripción:" Foreground="#666" FontSize="11" Margin="35,241,322,202" Grid.Row="1"/>
+            <TextBlock Text="Descripción:" Foreground="#666" FontSize="11" Margin="35,254,322,189" Grid.Row="1"/>
             <TextBlock Text="Cliente:" Foreground="#666" FontSize="11" Margin="39,116,704,336" Grid.Row="1"/>
+            <ComboBox x:Name="cbxIdMascota" Margin="554,41,100,0" Background="#FFFFB5C5" Height="54" VerticalAlignment="Top" Grid.Row="1"/>
+            <TextBlock Foreground="#666" FontSize="11" Margin="573,13,243,432" Grid.Row="1"><Run Language="es-sv" Text="Mascota"/><Run Text=":"/></TextBlock>
+            <ComboBox x:Name="cbxEstado" Margin="561,162,0,0" Grid.Row="1" BorderBrush="#FFF4A6CD" Height="54" VerticalAlignment="Top" HorizontalAlignment="Left" Width="372">
+                <ComboBox.Background>
+                    <LinearGradientBrush EndPoint="0,1">
+                        <GradientStop Color="#FFF0F0F0"/>
+                        <GradientStop Color="#FFF4A6CD" Offset="1"/>
+                    </LinearGradientBrush>
+                </ComboBox.Background>
+            </ComboBox>
+            <Button x:Name="btnGuardar" Content="✓ Guardar" 
+                           Background="#FFA8E6CF" 
+                           Style="{StaticResource GradientButtonStyle}" Margin="76,400,0,0" Grid.Row="1" Height="49" VerticalAlignment="Top" Click="btnGuardar_Click_1" HorizontalAlignment="Left" Width="164"/>
+                <Button x:Name="btnBuscar" Content="🔍 Buscar" 
+                           Background="#FFA8C8EC" 
+                           Style="{StaticResource GradientButtonStyle}" Margin="288,398,0,0" Grid.Row="1" Height="51" VerticalAlignment="Top" Click="btnBuscar_Click_1" HorizontalAlignment="Left" Width="165"/>
+                <Button x:Name="btnModificar" Content="✏ Modificar" 
+                           Background="#FFFFD3A5" 
+                           Style="{StaticResource GradientButtonStyle}" Margin="528,400,0,0" Grid.Row="1" HorizontalAlignment="Left" Width="168" Height="50" VerticalAlignment="Top" Click="btnModificar_Click_1"/>
+                <Button x:Name="btnEliminar" Content="🗑 Eliminar" 
+                           Background="#FFFFB3D1" 
+                           Style="{StaticResource GradientButtonStyle}" Margin="783,395,0,0" Grid.Row="1" HorizontalAlignment="Left" Width="152" Height="48" VerticalAlignment="Top" Click="btnEliminar_Click_1"/>
         </Grid>
     </Border>
 

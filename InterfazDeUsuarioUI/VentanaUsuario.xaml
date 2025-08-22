@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InterfazDeUsuarioUI"
         mc:Ignorable="d"
-        Title="VentanaUsuario" Height="756" Width="800">
+        Title="VentanaUsuario" Height="813" Width="800">
     <Window.Resources>
         <!-- Estilos para TextBox -->
         <Style x:Key="ModernTextBox" TargetType="TextBox">
@@ -188,18 +188,17 @@
         <ScrollViewer Margin="0,70,0,41" VerticalScrollBarVisibility="Auto">
             <Grid Margin="30">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="416"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
                 <!-- Formulario de Datos -->
-                <Border Grid.Row="0" Background="White" CornerRadius="15" Padding="25" Height="416" VerticalAlignment="Top" Grid.RowSpan="2">
+                <Border Background="White" CornerRadius="15" Padding="25" HorizontalAlignment="Left" Width="723" Margin="0,-49,0,279" Grid.RowSpan="2">
                     <Border.Effect>
                         <DropShadowEffect Color="Gray" Direction="270" ShadowDepth="3" Opacity="0.1" BlurRadius="10"/>
                     </Border.Effect>
 
-                    <Grid HorizontalAlignment="Center" Width="673" Margin="0,4,0,-22">
+                    <Grid HorizontalAlignment="Left" Width="727" Margin="-27,4,0,0" Height="412" VerticalAlignment="Top">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="485.93125"/>
                         </Grid.RowDefinitions>
@@ -210,19 +209,19 @@
 
 
                         <!-- Nombre -->
-                        <Label Grid.Column="0" Content="Nombre" Style="{StaticResource ModernLabel}" Margin="0,19,550,416"/>
+                        <Label Grid.Column="0" Content="Nombre" Style="{StaticResource ModernLabel}" Margin="0,19,0,0" HorizontalAlignment="Left" Width="123" Height="51" VerticalAlignment="Top"/>
 
                         <!-- Apellido -->
-                        <Label Grid.Column="0" Content="Apellido" Style="{StaticResource ModernLabel}" Margin="0,84,473,368"/>
-                        <TextBox x:Name="txtApellido" Style="{StaticResource ModernTextBox}" Margin="96,83,0,0" HorizontalAlignment="Left" Width="356" Height="53" VerticalAlignment="Top"/>
+                        <Label Grid.Column="0" Content="Apellido" Style="{StaticResource ModernLabel}" Margin="0,84,0,0" Height="34" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200"/>
+                        <TextBox x:Name="txtApellido" Style="{StaticResource ModernTextBox}" Margin="120,83,0,0" HorizontalAlignment="Left" Width="356" Height="53" VerticalAlignment="Top"/>
 
                         <!-- Correo -->
-                        <Label Grid.Column="0" Content="Correo" Style="{StaticResource ModernLabel}" Margin="-4,153,477,299"/>
-                        <TextBox x:Name="txtCorreo" Style="{StaticResource ModernTextBox}" Margin="98,151,0,0" HorizontalAlignment="Left" Width="354" Height="36" VerticalAlignment="Top"/>
+                        <Label Grid.Column="0" Content="Correo" Style="{StaticResource ModernLabel}" Margin="-4,153,0,0" Height="34" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200"/>
+                        <TextBox x:Name="txtCorreo" Style="{StaticResource ModernTextBox}" Margin="127,150,0,0" HorizontalAlignment="Left" Width="354" Height="47" VerticalAlignment="Top"/>
 
                         <!-- Contraseña -->
-                        <Label Grid.Column="0" Content="Contraseña" Style="{StaticResource ModernLabel}" Margin="-4,210,477,237"/>
-                        <PasswordBox x:Name="txtContra" Height="43" Margin="106,209,0,0" FontSize="13" 
+                        <Label Grid.Column="0" Content="Contraseña" Style="{StaticResource ModernLabel}" Margin="2,227,0,0" Height="39" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200"/>
+                        <PasswordBox x:Name="txtContra" Height="55" Margin="129,219,0,0" FontSize="13" 
                                    BorderThickness="2" BorderBrush="#E9ECEF" Background="#F8F9FA" VerticalAlignment="Top" HorizontalAlignment="Left" Width="346">
                             <PasswordBox.Style>
                                 <Style TargetType="PasswordBox">
@@ -247,12 +246,12 @@
                         </PasswordBox>
 
                         <!-- Teléfono -->
-                        <Label Grid.Column="0" Content="Teléfono" Style="{StaticResource ModernLabel}" Margin="-2,270,475,160"/>
-                        <TextBox x:Name="txtTelefono" Style="{StaticResource ModernTextBox}" Margin="110,269,0,0" Height="48" VerticalAlignment="Top" HorizontalAlignment="Left" Width="342"/>
+                        <Label Grid.Column="0" Content="Teléfono" Style="{StaticResource ModernLabel}" Margin="4,289,0,0" Height="56" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200"/>
+                        <TextBox x:Name="txtTelefono" Style="{StaticResource ModernTextBox}" Margin="128,284,0,0" Height="55" VerticalAlignment="Top" HorizontalAlignment="Left" Width="342"/>
 
                         <!-- Nombre del Rol -->
-                        <Label Grid.Column="0" Content="Nombre del Rol" Style="{StaticResource ModernLabel}" Margin="-2,335,0,0" Height="38" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200"/>
-                        <ComboBox x:Name="cbxIdRol" Style="{StaticResource ModernComboBox}" Margin="115,328,0,0" Height="50" VerticalAlignment="Top" HorizontalAlignment="Left" Width="337">
+                        <Label Grid.Column="0" Content="Nombre del Rol" Style="{StaticResource ModernLabel}" Margin="3,369,0,0" Height="38" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200"/>
+                        <ComboBox x:Name="cbxIdRol" Style="{StaticResource ModernComboBox}" Margin="130,356,0,0" Height="50" VerticalAlignment="Top" HorizontalAlignment="Left" Width="337">
                             <ComboBoxItem Content="Administrador"/>
                             <ComboBoxItem Content="Usuario"/>
                             <ComboBoxItem Content="Veterinario"/>
@@ -266,20 +265,17 @@
                         <StackPanel Grid.Column="0" Margin="0,302,473,47">
                             <TextBox x:Name="txtId" Style="{StaticResource ModernTextBox}" Width="80" HorizontalAlignment="Left" IsEnabled="False" Visibility="Collapsed"/>
                         </StackPanel>
-
-                        <Button x:Name="btnBuscar" Content="🔍 Buscar" Style="{StaticResource SearchButton}" Margin="466,15,0,0" HorizontalAlignment="Left" Width="92" Height="40" VerticalAlignment="Top" Click="btnBuscar_Click_1"/>
-                        <Button x:Name="btnReiniciar" Content="🔄 Reiniciar" Style="{StaticResource ResetButton}" Margin="568,13,0,0" HorizontalAlignment="Left" Width="96" Height="40" VerticalAlignment="Top" Click="btnReiniciar_Click_1"/>
-                        <Button x:Name="btnGuardar" Content="💾 Guardar" Style="{StaticResource SaveButton}" Margin="504,101,0,0" Background="#FFA8E6CF" HorizontalAlignment="Left" Width="145" Height="55" VerticalAlignment="Top" Click="btnGuardar_Click_1"/>
-                        <Button x:Name="btnModificar" Content="✏ Modificar" Style="{StaticResource ModifyButton}" Margin="504,186,0,0" Background="#FFFFD3A5" HorizontalAlignment="Left" Width="145" Height="50" VerticalAlignment="Top" Click="btnModificar_Click_1"/>
-                        <Button x:Name="btnEliminar" Content="🗑 Eliminar" Style="{StaticResource DeleteButton}" Margin="504,271,0,0" Background="#FFFFB3D1" HorizontalAlignment="Left" Width="145" Height="55" VerticalAlignment="Top" Click="btnEliminar_Click_1"/>
+                        <Button x:Name="btnGuardar" Content="💾 Guardar" Style="{StaticResource SaveButton}" Margin="498,65,0,0" Background="#FFA8E6CF" HorizontalAlignment="Left" Width="165" Height="55" VerticalAlignment="Top" Click="btnGuardar_Click_1"/>
+                        <Button x:Name="btnModificar" Content="✏ Modificar" Style="{StaticResource ModifyButton}" Margin="496,188,0,0" Background="#FFFFD3A5" HorizontalAlignment="Left" Width="162" Height="50" VerticalAlignment="Top" Click="btnModificar_Click_1"/>
+                        <Button x:Name="btnEliminar" Content="🗑 Eliminar" Style="{StaticResource DeleteButton}" Margin="502,304,0,0" Background="#FFFFB3D1" HorizontalAlignment="Left" Width="155" Height="55" VerticalAlignment="Top" Click="btnEliminar_Click_1"/>
                     </Grid>
                 </Border>
 
                 <!-- Botones de Acción -->
-                <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,198,0,20"/>
 
                 <!-- Tabla de Datos -->
-                <Border Grid.Row="2" Background="White" CornerRadius="15" Padding="20" RenderTransformOrigin="0.5,0.5" Margin="0,19,0,0" Height="280" VerticalAlignment="Top">
+                <Border Grid.Row="1" Background="White" CornerRadius="15" Padding="20" RenderTransformOrigin="0.5,0.5" Margin="0,49,0,0" Height="250" VerticalAlignment="Top">
                     <Border.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
@@ -292,7 +288,7 @@
                         <DropShadowEffect Color="Gray" Direction="270" ShadowDepth="3" Opacity="0.1" BlurRadius="10"/>
                     </Border.Effect>
 
-                    <DataGrid x:Name="dgvListarUsuario" Style="{StaticResource ModernDataGrid}" ColumnHeaderStyle="{StaticResource DataGridHeader}" Height="161" VerticalAlignment="Top" HorizontalAlignment="Center" Width="683" Margin="0,26,0,0">
+                    <DataGrid x:Name="dgvListarUsuario" Style="{StaticResource ModernDataGrid}" ColumnHeaderStyle="{StaticResource DataGridHeader}" Height="160" VerticalAlignment="Top" HorizontalAlignment="Left" Width="683" Margin="0,26,0,0">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="SampleInt" Width="80"/>
                             <DataGridTextColumn Header="SampleStringA" Width="*"/>
@@ -301,10 +297,12 @@
                         </DataGrid.Columns>
                     </DataGrid>
                 </Border>
+                <Button x:Name="btnBuscar" Content="🔍 Buscar" Style="{StaticResource SearchButton}" Margin="524,32,0,0" HorizontalAlignment="Left" Width="92" Height="40" VerticalAlignment="Top" Click="btnBuscar_Click_1" Grid.Row="1"/>
+                <Button x:Name="btnReiniciar" Content="🔄 Reiniciar" Style="{StaticResource ResetButton}" Margin="629,32,0,0" HorizontalAlignment="Left" Width="86" Height="40" VerticalAlignment="Top" Click="btnReiniciar_Click_1" Grid.Row="1"/>
             </Grid>
         </ScrollViewer>
-        <TextBox x:Name="txtBuscar" Style="{StaticResource ModernTextBox}" Margin="0,82,0,0" HorizontalAlignment="Center" Width="666" Height="52" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtNombre" Style="{StaticResource ModernTextBox}" Height="51" Margin="150,139,0,0" HorizontalAlignment="Left" Width="354" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtBuscar" Style="{StaticResource ModernTextBox}" Margin="40,543,0,0" HorizontalAlignment="Left" Width="498" Height="52" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtNombre" Style="{StaticResource ModernTextBox}" Height="51" Margin="148,91,0,0" HorizontalAlignment="Left" Width="354" VerticalAlignment="Top"/>
         <Label Content="Label" HorizontalAlignment="Left" Margin="913,70,0,0" VerticalAlignment="Top"/>
     </Grid>
 

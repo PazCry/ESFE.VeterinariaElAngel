@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InterfazDeUsuarioUI"
         mc:Ignorable="d"
-        Title="VentanaGenero" Height="450" Width="800">
+        Title="VentanaGenero" Height="557" Width="800">
     <Window.Resources>
         <!-- Colores Rosados Pastel -->
         <SolidColorBrush x:Key="RosaPastelPrincipal" Color="#F8BBD9"/>
@@ -81,8 +81,7 @@
         <Grid Background="White" Margin="5">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="205.96"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
@@ -119,7 +118,7 @@
             </Border>
 
             <!-- Sección Formulario y Botones -->
-            <Grid Grid.Row="1" Margin="15,20,15,0">
+            <Grid Grid.Row="1" Margin="15,20,15,87">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
@@ -189,7 +188,7 @@
                                Content="✏️ Modificar" 
                                Style="{StaticResource BotonPastel}"
                                Background="{StaticResource NaranjaPastel}"
-                               Margin="0,4,0,0" Cursor="Hand" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="178"/>
+                               Margin="-4,23,0,0" Cursor="Hand" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="178"/>
 
                         <Button x:Name="btnEliminar" Grid.Column="1" Grid.Row="1" 
                                Content="🗑️ Eliminar" 
@@ -201,7 +200,7 @@
             </Grid>
 
             <!-- Barra de Búsqueda -->
-            <Grid Grid.Row="2" Margin="15,30,15,0">
+            <Grid Grid.Row="1" Margin="15,149,15,220" Grid.RowSpan="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
@@ -216,7 +215,7 @@
 
                 <TextBox Style="{StaticResource TextBoxPastel}"
                         Background="{StaticResource RosaPastelMedio}"
-                        Height="35" VerticalAlignment="Top" HorizontalAlignment="Center" Width="530" Grid.Column="1"/>
+                        Height="57" VerticalAlignment="Top" HorizontalAlignment="Center" Width="530" Grid.Column="1"/>
 
                 <Button Grid.Column="2" 
                        Background="{StaticResource RosaPastelPrincipal}"
@@ -224,11 +223,11 @@
                        Width="54" Height="35"
                        Content="🔍"
                        Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                <TextBox x:Name="txtBuscar" Grid.Column="1" HorizontalAlignment="Left" Margin="17,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="450" Height="18"/>
+                <TextBox x:Name="txtBuscar" Grid.Column="1" HorizontalAlignment="Left" Margin="29,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="450" Height="33"/>
             </Grid>
 
             <!-- DataGrid -->
-            <Border Grid.Row="3" Margin="15,20,15,15" 
+            <Border Grid.Row="2" Margin="15,20,15,15" 
                    CornerRadius="8" BorderBrush="#E5E7EB" BorderThickness="1">
 
                 <!-- Header del DataGrid -->
@@ -238,56 +237,64 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
-                    <!-- Header con gradiente -->
-                    <Border Grid.Row="0" CornerRadius="8,8,0,0">
-                        <Border.Background>
-                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                                <GradientStop Color="#C084FC" Offset="0"/>
-                                <GradientStop Color="#C084FC" Offset="1"/>
-                            </LinearGradientBrush>
-                        </Border.Background>
-                        <TextBlock Text="REGISTROS DE GENERO" 
-                                  FontWeight="Bold" FontSize="14" 
-                                  Foreground="White" 
-                                  HorizontalAlignment="Center"
-                                  Padding="0,12"/>
-                    </Border>
-
                     <!-- Área del grid -->
-                    <Grid Grid.Row="1" Background="White">
+                    <Grid Grid.Row="1" Background="White" Margin="0,5,0,0">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
 
-                        <DataGrid x:Name="dgvListarGenero"
-                          Grid.Row="0"
+                        <!-- Área de contenido vacía -->
+                        <Border Grid.Row="1" Background="#FAFAFA" 
+                               MinHeight="200" Margin="0,77,0,0" Height="168" VerticalAlignment="Top">
+                            <DataGrid x:Name="dgvListarGenero"
                           AutoGenerateColumns="False"
                           CanUserAddRows="False"
                           HeadersVisibility="Column"
-                          Background="{StaticResource RosaPastelMedio}">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="*" />
-                                <DataGridTextColumn Header="Tipo de Género" Binding="{Binding TipoGenero}" Width="2*" />
-                                <DataGridTextColumn Header="Fecha Creación" Binding="{Binding FechaCreacion}" Width="2*" />
-                            </DataGrid.Columns>
-                        </DataGrid>
-
-                        <!-- Área de contenido vacía -->
-                        <Border Grid.Row="1" Background="#FAFAFA" 
-                               MinHeight="200">
-                            <TextBlock Text="No hay registros para mostrar" 
-                                      FontSize="14" 
-                                      Foreground="#9CA3AF"
-                                      HorizontalAlignment="Center"
-                                      VerticalAlignment="Center"
-                                      FontStyle="Italic"/>
+                          Background="{StaticResource RosaPastelMedio}" Margin="2,41,0,0" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Width="724">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="*" />
+                                    <DataGridTextColumn Header="Tipo de Género" Binding="{Binding TipoGenero}" Width="2*" />
+                                    <DataGridTextColumn Header="Fecha Creación" Binding="{Binding FechaCreacion}" Width="2*" />
+                                </DataGrid.Columns>
+                            </DataGrid>
                         </Border>
+<Border
+
+                    Grid.Row="0" CornerRadius="8,8,0,0" Margin="-8,47,8,97" Grid.RowSpan="2">
+
+                    <Border.Background
+
+                    >
+
+                    <LinearGradientBrush
+
+                    EndPoint="1,0" StartPoint="0,0">
+
+                    <GradientStop
+
+                    Color="#C084FC" Offset="0"/>
+
+                    <GradientStop
+
+                    Color="#C084FC" Offset="1"/>
+
+                    </LinearGradientBrush>
+
+                    </Border.Background>
+
+                    <TextBlock
+
+                    Text="REGISTROS DE GENERO" Padding="0,12" HorizontalAlignment="Center" FontSize="14" FontWeight="Bold" Foreground="White"/>
+
+                    </Border>
                     </Grid>
+
+                    <!-- Header con gradiente -->
                 </Grid>
             </Border>
             <TextBox x:Name="txtTipoGenero" Style="{StaticResource TextBoxPastel}"
-                                    Background="{StaticResource RosaPastelClaro}" Margin="15,71,0,0" Grid.Row="1" Height="41" VerticalAlignment="Top" HorizontalAlignment="Left" Width="340"/>
+                                    Background="{StaticResource RosaPastelClaro}" Margin="15,71,0,0" Grid.Row="1" Height="50" VerticalAlignment="Top" HorizontalAlignment="Left" Width="340"/>
         </Grid>
     </Border>
 

@@ -222,18 +222,14 @@
 
                     <StackPanel Margin="370,203,5,5"/>
                     <TextBlock Text="Nombre:" Foreground="#666" FontSize="11" Margin="4,0,371,184"/>
-                    <TextBox x:Name="txtNombre" Style="{StaticResource PinkTextBoxStyle}" Margin="10,20,0,0" HorizontalAlignment="Left" Width="345" Height="37" VerticalAlignment="Top" Foreground="Black"/>
-                    <TextBlock Text="Color:" Foreground="#666" FontSize="11" Margin="384,60,-9,117"/>
-                    <TextBox x:Name="txtColor" Style="{StaticResource PinkTextBoxStyle}" Margin="379,89,0,0" HorizontalAlignment="Left" Width="346" Height="34" VerticalAlignment="Top"/>
-                    <TextBlock Text="Género:" Foreground="#666" FontSize="11" HorizontalAlignment="Left" Width="86" Margin="384,128,0,60"/>
-                    <ComboBox x:Name="cbxGenero" Style="{StaticResource PinkComboBoxStyle}" Margin="380,151,0,0"  Height="41" VerticalAlignment="Top" HorizontalAlignment="Left" Width="336" Foreground="Black">
-                        <ComboBoxItem Content="Macho" Foreground="Black"/>
-                        <ComboBoxItem Content="Hembra" Foreground="Black"/>
-                    </ComboBox>
+                    <TextBox x:Name="txtNombre" Style="{StaticResource PinkTextBoxStyle}" Margin="10,20,0,0" HorizontalAlignment="Left" Width="345" Height="43" VerticalAlignment="Top" Foreground="Black"/>
+                    <TextBlock Text="Color:" Foreground="#666" FontSize="11" Margin="389,73,-14,104"/>
+                    <TextBox x:Name="txtColor" Style="{StaticResource PinkTextBoxStyle}" Margin="383,97,0,0" HorizontalAlignment="Left" Width="346" Height="45" VerticalAlignment="Top"/>
+                    <TextBlock Text="Género:" Foreground="#666" FontSize="11" HorizontalAlignment="Left" Width="86" Margin="393,149,0,0" Height="20" VerticalAlignment="Top"/>
                     <TextBlock Text="Fecha Nacimiento:" Foreground="#666" FontSize="11" Margin="18,144,357,49"/>
                     <DatePicker x:Name="dtpFechaNacimiento" HorizontalAlignment="Left" Margin="12,174,0,0" VerticalAlignment="Top" Width="327"/>
                     <ComboBox x:Name="cbxEspecie"
-          Style="{StaticResource PinkComboBoxStyle}" Foreground="Black" Margin="12,88,373,81">
+          Style="{StaticResource PinkComboBoxStyle}" Foreground="Black" Margin="12,88,373,72">
                         <ComboBoxItem Content="Perro" Foreground="Black"/>
                         <ComboBoxItem Content="Gato" Foreground="Black"/>
                         <ComboBoxItem Content="Ave" Foreground="Black"/>
@@ -246,7 +242,7 @@
                 <!-- Action Buttons con colores exactos -->
                 <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,227,0,0"/>
                 <TextBlock Text="Raza:" Foreground="#666" FontSize="11" Margin="385,0,-10,213" Grid.Row="1"/>
-                <ComboBox x:Name="cbxRaza" Style="{StaticResource PinkComboBoxStyle}" Margin="381,21,0,0" Grid.Row="1" Height="36" VerticalAlignment="Top" HorizontalAlignment="Left" Width="335" Foreground="Black">
+                <ComboBox x:Name="cbxRaza" Style="{StaticResource PinkComboBoxStyle}" Margin="381,21,0,0" Grid.Row="1" Height="46" VerticalAlignment="Top" HorizontalAlignment="Left" Width="335" Foreground="Black">
                     <ComboBoxItem Content="Labrador" Foreground="Black"/>
                     <ComboBoxItem Content="Golden Retriever" Foreground="Black"/>
                     <ComboBoxItem Content="Pastor Alemán" Foreground="Black"/>
@@ -255,6 +251,10 @@
                     <ComboBoxItem Content="Poodle" Foreground="Black"/>
                     <ComboBoxItem Content="Mestizo" Foreground="Black"/>
                     <ComboBoxItem Content="Otra" Foreground="Black"/>
+                </ComboBox>
+                <ComboBox x:Name="cbxGenero" Style="{StaticResource PinkComboBoxStyle}" Margin="385,179,0,0"  Height="41" VerticalAlignment="Top" HorizontalAlignment="Left" Width="336" Foreground="Black" Grid.Row="1">
+                    <ComboBoxItem Content="Macho" Foreground="Black"/>
+                    <ComboBoxItem Content="Hembra" Foreground="Black"/>
                 </ComboBox>
             </Grid>
 
@@ -272,7 +272,7 @@
                         BorderThickness="0" 
                         Padding="15,10" 
                         FontSize="12"
-                        VerticalAlignment="Center" Margin="0,0,49,0">
+                        VerticalAlignment="Top" HorizontalAlignment="Left" Width="671">
                         <TextBox.Template>
                             <ControlTemplate TargetType="TextBox">
                                 <Border Background="{TemplateBinding Background}" 
@@ -322,7 +322,7 @@
                 <Border.Effect>
                     <DropShadowEffect Color="Gray" BlurRadius="5" ShadowDepth="2" Opacity="0.2"/>
                 </Border.Effect>
-                <DataGrid x:Name="MascotasDataGrid" d:ItemsSource="{d:SampleData ItemCount=5}" Height="168" VerticalAlignment="Top" HorizontalAlignment="Center" Width="609" Margin="0,-2,0,0" SelectionChanged="MascotasDataGrid_SelectionChanged_1"/>
+                <DataGrid x:Name="MascotasDataGrid" d:ItemsSource="{d:SampleData ItemCount=5}" Height="168" VerticalAlignment="Top" HorizontalAlignment="Left" Width="610" Margin="84,-2,0,0" SelectionChanged="MascotasDataGrid_SelectionChanged_1"/>
 
 
             </Border>
