@@ -23,14 +23,12 @@ namespace InterfazDeUsuarioUI
     {
         private readonly EspecieBL _especieBL = new EspecieBL();
         private readonly EspecieEN _especieEN = new EspecieEN();
-        private bool _modoModificacion = false;
+
         public VentanaEspecie()
         {
             InitializeComponent();
 
             CargarGrid();
-
-            txtNombre.TextChanged += Campos_TextChanged;
             txtNombre.PreviewTextInput += txtNombre_PreviewTextInput;
         }
         private void CargarGrid()
@@ -49,17 +47,6 @@ namespace InterfazDeUsuarioUI
 
 
 
-        private void Campos_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (_modoModificacion)
-            {
-                btnGuardar.IsEnabled = false;
-            }
-            else
-            {
-                btnGuardar.IsEnabled = !string.IsNullOrWhiteSpace(txtNombre.Text);
-            }
-        }
 
 
         private void btnGuardar_Click_1(object sender, RoutedEventArgs e)
@@ -125,10 +112,7 @@ namespace InterfazDeUsuarioUI
                 txtIdEspecie.Text = especie.Id.ToString();
                 txtNombre.Text = especie.TipoEspecie;
 
-                btnModificar.IsEnabled = true;
-                btnEliminar.IsEnabled = true;
-                btnGuardar.IsEnabled = false;
-                _modoModificacion = true;
+
             }
         }
     }

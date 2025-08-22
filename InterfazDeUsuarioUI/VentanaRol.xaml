@@ -191,15 +191,15 @@
             <TextBox x:Name="txtNombreRol" Style="{StaticResource TextBoxPastel}"
                                     Background="{StaticResource RosaPastelClaro}" Margin="15,145,0,0" Height="49" VerticalAlignment="Top" HorizontalAlignment="Left" Width="348"/>
             <Button
-            Width="178" VerticalAlignment="Top" Style="{StaticResource BotonPastel}" x:Name="btnGuardar" Margin="381,96,0,0" Height="32" HorizontalAlignment="Left" Content="💾 Guardar" Grid.Column="0" Background="{StaticResource VerdePastel}"/>
+            Width="178" VerticalAlignment="Top" Style="{StaticResource BotonPastel}" x:Name="btnGuardar" Margin="381,96,0,0" Height="32" HorizontalAlignment="Left" Content="💾 Guardar" Grid.Column="0" Background="{StaticResource VerdePastel}" Click="btnGuardar_Click"/>
             <Button
 
 
-        Width="178" VerticalAlignment="Top" Style="{StaticResource BotonPastel}" x:Name="btnModificar" Margin="379,156,0,0" Height="35" HorizontalAlignment="Left" Content="✏️ Modificar" Background="{StaticResource NaranjaPastel}"/>
+        Width="178" VerticalAlignment="Top" Style="{StaticResource BotonPastel}" x:Name="btnModificar" Margin="379,156,0,0" Height="35" HorizontalAlignment="Left" Content="✏️ Modificar" Background="{StaticResource NaranjaPastel}" Click="btnModificar_Click"/>
             <Button
-            Width="177" Style="{StaticResource BotonPastel}" x:Name="btnEliminar" Margin="572,159,0,0" HorizontalAlignment="Left" Content="🗑️ Eliminar" Background="{StaticResource RosaPastelPrincipal}" Height="32" VerticalAlignment="Top"/>
+            Width="177" Style="{StaticResource BotonPastel}" x:Name="btnEliminar" Margin="572,159,0,0" HorizontalAlignment="Left" Content="🗑️ Eliminar" Background="{StaticResource RosaPastelPrincipal}" Height="32" VerticalAlignment="Top" Click="btnEliminar_Click"/>
             <Button
-            Width="177" VerticalAlignment="Top" Style="{StaticResource BotonPastel}" x:Name="btnBuscar" Margin="571,100,0,0" Height="32" HorizontalAlignment="Left" Content="🔍 Buscar" Background="{StaticResource AzulPastel}"/>
+            Width="177" VerticalAlignment="Top" Style="{StaticResource BotonPastel}" x:Name="btnBuscar" Margin="571,100,0,0" Height="32" HorizontalAlignment="Left" Content="🔍 Buscar" Background="{StaticResource AzulPastel}" Click="btnBuscar_Click_1"/>
 
 
         </Grid>

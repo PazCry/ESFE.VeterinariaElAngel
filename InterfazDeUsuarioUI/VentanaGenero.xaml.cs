@@ -36,52 +36,6 @@ namespace InterfazDeUsuarioUI
             dgvListarGenero.ItemsSource = _generoBL.MostrarGenero();
         }
 
-        private void btnGuardar_Click(object sender, RoutedEventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtTipoGenero.Text))
-            {
-                MessageBox.Show("Por favor, complete todos los campos antes de guardar.", "Campos requeridos", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
-
-            string nuevoGenero = txtTipoGenero.Text.Trim().ToLower();
-
-            // Verificar duplicados en DataGrid
-            if (dgvListarGenero.Items.Cast<GeneroEN>().Any(x => x.TipoGenero.Trim().ToLower() == nuevoGenero))
-            {
-                MessageBox.Show("Este género ya está registrado.", "Duplicado", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
-
-            _generoEN.TipoGenero = txtTipoGenero.Text;
-            _generoBL.GuardarGenero(_generoEN);
-
-            CargarGrid();
-            txtId.Text = string.Empty;
-            txtTipoGenero.Text = string.Empty;
-
-            MessageBox.Show("Género guardado correctamente.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
-        }
-
-        private void btnModificar_Click(object sender, RoutedEventArgs e)
-        {
-            _generoEN.Id = Convert.ToByte(txtId.Text);
-            _generoEN.TipoGenero = txtTipoGenero.Text;
-            _generoBL.ModificarGenero(_generoEN);
-
-            CargarGrid();
-            ReiniciarEstadoInicial();
-        }
-
-        private void btnEliminar_Click(object sender, RoutedEventArgs e)
-        {
-            _generoEN.Id = Convert.ToByte(txtId.Text);
-            _generoBL.EliminarGenero(_generoEN);
-
-            CargarGrid();
-            ReiniciarEstadoInicial();
-        }
-
         private void txtTipoGenero_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             // Solo letras y espacios
@@ -113,8 +67,68 @@ namespace InterfazDeUsuarioUI
                 btnGuardar.IsEnabled = !string.IsNullOrWhiteSpace(txtTipoGenero.Text);
         }
 
-        private void dgvListarGenero_SelectionChanged(object sender, SelectionChangedEventArgs e)
+
+
+        private void btnGuardar_Click_1(object sender, RoutedEventArgs e)
         {
+
+            if (string.IsNullOrWhiteSpace(txtTipoGenero.Text))
+            {
+                MessageBox.Show("Por favor, complete todos los campos antes de guardar.", "Campos requeridos", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            string nuevoGenero = txtTipoGenero.Text.Trim().ToLower();
+
+            // Verificar duplicados en DataGrid
+            if (dgvListarGenero.Items.Cast<GeneroEN>().Any(x => x.TipoGenero.Trim().ToLower() == nuevoGenero))
+            {
+                MessageBox.Show("Este género ya está registrado.", "Duplicado", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            _generoEN.TipoGenero = txtTipoGenero.Text;
+            _generoBL.GuardarGenero(_generoEN);
+
+            CargarGrid();
+            txtId.Text = string.Empty;
+            txtTipoGenero.Text = string.Empty;
+
+            MessageBox.Show("Género guardado correctamente.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void btnModificar_Click_1(object sender, RoutedEventArgs e)
+        {
+
+            _generoEN.Id = Convert.ToByte(txtId.Text);
+            _generoEN.TipoGenero = txtTipoGenero.Text;
+            _generoBL.ModificarGenero(_generoEN);
+
+            CargarGrid();
+            ReiniciarEstadoInicial();
+        }
+
+        private void btnBuscar_Click(object sender, RoutedEventArgs e)
+        {
+
+            string Id = txtBuscar.Text;
+            List<CitaEN> cita = CitaBL.BuscarCita(Id);
+            dgvListarGenero.ItemsSource = cita;
+        }
+
+        private void btnEliminar_Click_1(object sender, RoutedEventArgs e)
+        {
+
+            _generoEN.Id = Convert.ToByte(txtId.Text);
+            _generoBL.EliminarGenero(_generoEN);
+
+            CargarGrid();
+            ReiniciarEstadoInicial();
+        }
+
+        private void dgvListarGenero_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+
             if (dgvListarGenero.SelectedItem is GeneroEN fila)
             {
                 txtId.Text = fila.Id.ToString();
@@ -127,5 +141,10 @@ namespace InterfazDeUsuarioUI
             }
         }
     }
+
+
+
+
+
 }
 

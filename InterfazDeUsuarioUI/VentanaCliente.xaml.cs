@@ -23,11 +23,10 @@ namespace InterfazDeUsuarioUI
     /// </summary>
     public partial class VentanaCliente : Window
     {
-        private bool _suspendTextChanged = false;
+
         private readonly ClienteBL _clienteBL = new ClienteBL();
         private readonly ClienteEN _clienteEN = new ClienteEN();
-        private int _idMascotaSeleccionada = 0;
-        private bool _modoModificacion = false;
+
 
         public VentanaCliente()
         {
@@ -74,26 +73,10 @@ namespace InterfazDeUsuarioUI
                 MessageBox.Show("Solo se permiten letras!!.", "Entrada inválida", MessageBoxButton.OK, MessageBoxImage.Warning);
         }
 
-        private void Campos_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (_modoModificacion)
-            {
-                btnGuardar.IsEnabled = false;
-            }
-            else
-            {
-                btnGuardar.IsEnabled = !string.IsNullOrWhiteSpace(txtNombre.Text);
-            }
-        }
+
 
         private void ReiniciarEstadoInicial()
         {
-            _idMascotaSeleccionada = 0;
-
-            btnGuardar.IsEnabled = false;
-            btnModificar.IsEnabled = false;
-            btnEliminar.IsEnabled = false;
-            _modoModificacion = false;
 
             txtNumCliente.Clear();
             txtNombre.Clear();
@@ -112,10 +95,7 @@ namespace InterfazDeUsuarioUI
                 txtApellido.Text = fila.Apellido;
                 txtTelefono.Text = fila.Telefono.ToString();
 
-                btnModificar.IsEnabled = true;
-                btnEliminar.IsEnabled = true;
-                btnGuardar.IsEnabled = false;
-                _modoModificacion = true;
+
             }
         }
 

@@ -175,26 +175,21 @@
                         <Button x:Name="btnGuardar" Grid.Column="0" 
                                Content="💾 Guardar" 
                                Style="{StaticResource BotonPastel}"
-                               Background="{StaticResource VerdePastel}" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="178" Margin="-6,0,0,0"/>
+                               Background="{StaticResource VerdePastel}" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="178" Margin="-6,0,0,0" Click="btnGuardar_Click_1"/>
 
                         <Button x:Name="btnBuscar" Grid.Column="1" Grid.Row="0" 
                                Content="🔍 Buscar" 
                                Style="{StaticResource BotonPastel}"
                                Background="{StaticResource AzulPastel}"
-                               Margin="4,0,0,0" Cursor="Hand" HorizontalAlignment="Left" Width="176" Height="32" VerticalAlignment="Top"/>
+                               Margin="4,0,0,0" Cursor="Hand" HorizontalAlignment="Left" Width="176" Height="32" VerticalAlignment="Top" Click="btnBuscar_Click"/>
 
                         <!-- Segunda fila de botones -->
-                        <Button x:Name="btnModificar" Grid.Column="0" Grid.Row="1" 
-                               Content="✏️ Modificar" 
-                               Style="{StaticResource BotonPastel}"
-                               Background="{StaticResource NaranjaPastel}"
-                               Margin="-4,23,0,0" Cursor="Hand" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="178"/>
 
                         <Button x:Name="btnEliminar" Grid.Column="1" Grid.Row="1" 
                                Content="🗑️ Eliminar" 
                                Style="{StaticResource BotonPastel}"
                                Background="{StaticResource RosaPastelPrincipal}"
-                               Margin="4,4,0,0" Cursor="Hand" HorizontalAlignment="Left" Width="176" Height="32" VerticalAlignment="Top"/>
+                               Margin="4,4,0,0" Cursor="Hand" HorizontalAlignment="Left" Width="176" Height="32" VerticalAlignment="Top" Click="btnEliminar_Click_1"/>
                     </Grid>
                 </StackPanel>
             </Grid>
@@ -251,7 +246,7 @@
                           AutoGenerateColumns="False"
                           CanUserAddRows="False"
                           HeadersVisibility="Column"
-                          Background="{StaticResource RosaPastelMedio}" Margin="2,41,0,0" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Width="724">
+                          Background="{StaticResource RosaPastelMedio}" Margin="2,41,0,0" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Width="724" SelectionChanged="dgvListarGenero_SelectionChanged_1">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="*" />
                                     <DataGridTextColumn Header="Tipo de Género" Binding="{Binding TipoGenero}" Width="2*" />
@@ -259,35 +254,35 @@
                                 </DataGrid.Columns>
                             </DataGrid>
                         </Border>
-<Border
+                        <Border
 
                     Grid.Row="0" CornerRadius="8,8,0,0" Margin="-8,47,8,97" Grid.RowSpan="2">
 
-                    <Border.Background
+                            <Border.Background
 
                     >
 
-                    <LinearGradientBrush
+                                <LinearGradientBrush
 
                     EndPoint="1,0" StartPoint="0,0">
 
-                    <GradientStop
+                                    <GradientStop
 
                     Color="#C084FC" Offset="0"/>
 
-                    <GradientStop
+                                    <GradientStop
 
                     Color="#C084FC" Offset="1"/>
 
-                    </LinearGradientBrush>
+                                </LinearGradientBrush>
 
-                    </Border.Background>
+                            </Border.Background>
 
-                    <TextBlock
+                            <TextBlock
 
                     Text="REGISTROS DE GENERO" Padding="0,12" HorizontalAlignment="Center" FontSize="14" FontWeight="Bold" Foreground="White"/>
 
-                    </Border>
+                        </Border>
                     </Grid>
 
                     <!-- Header con gradiente -->
@@ -295,6 +290,11 @@
             </Border>
             <TextBox x:Name="txtTipoGenero" Style="{StaticResource TextBoxPastel}"
                                     Background="{StaticResource RosaPastelClaro}" Margin="15,71,0,0" Grid.Row="1" Height="50" VerticalAlignment="Top" HorizontalAlignment="Left" Width="340"/>
+            <Button x:Name="btnModificar" Grid.Column="0" Grid.Row="1" 
+                               Content="✏️ Modificar" 
+                               Style="{StaticResource BotonPastel}"
+                               Background="{StaticResource NaranjaPastel}"
+                               Margin="373,95,0,0" Cursor="Hand" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="178" Click="btnModificar_Click_1"/>
         </Grid>
     </Border>
 

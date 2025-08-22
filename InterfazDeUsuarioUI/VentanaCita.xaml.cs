@@ -96,7 +96,7 @@ namespace InterfazDeUsuarioUI
 
         private void btnGuardar_Click_1(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtNumCita.Text) || dpFechaCita.SelectedDate == null || string.IsNullOrWhiteSpace(txtHora.Text))
+            if (string.IsNullOrWhiteSpace(txtNumExpediente.Text) || dpFechaCita.SelectedDate == null || string.IsNullOrWhiteSpace(txtHora.Text))
             {
                 MessageBox.Show("Por favor, complete todos los campos.", "Campos incompletos", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;

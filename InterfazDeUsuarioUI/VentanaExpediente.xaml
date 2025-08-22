@@ -222,7 +222,7 @@
 
                     <!-- Cuarta fila - Descripción (span completo) -->
                     <StackPanel Grid.Row="3" Margin="0,5,0,0" Height="88" VerticalAlignment="Top" HorizontalAlignment="Center" Width="763"/>
-                    <ComboBox x:Name="cbxIdCliente" HorizontalAlignment="Left" Margin="28,13,0,0" Grid.Row="2" Width="372" Height="38" VerticalAlignment="Top">
+                    <ComboBox x:Name="cbxIdCliente" HorizontalAlignment="Left" Margin="28,13,0,0" Grid.Row="2" Width="372" Height="38"  DisplayMemberPath="Nombre" SelectedValuePath="Id" VerticalAlignment="Top">
                         <ComboBox.Background>
                             <LinearGradientBrush EndPoint="0,1">
                                 <GradientStop Color="#FFF0F0F0"/>
@@ -238,7 +238,7 @@
                 <!-- Action Buttons -->
                 <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left" Margin="304,196,0,0" Height="137" VerticalAlignment="Top"/>
                 <TextBlock Text="Num Expediente:" Foreground="#666" FontSize="11" Margin="17,-1,379,16"/>
-                <TextBox x:Name="txtId" Style="{StaticResource PinkTextBoxStyle}" Foreground="Black" Background="#FFFFD4E9" Margin="27,25,0,0" Grid.RowSpan="3" Height="54" VerticalAlignment="Top" HorizontalAlignment="Left" Width="368"/>
+                <TextBox x:Name="txtId" Style="{StaticResource PinkTextBoxStyle}" Foreground="Black" Background="#FFFFD4E9" Margin="27,25,0,0" Grid.RowSpan="3" Height="54" VerticalAlignment="Top" HorizontalAlignment="Left" Width="368" Visibility="Hidden"/>
             </Grid>
 
             <!-- Search Bar -->
@@ -331,7 +331,7 @@
             </TextBox>
             <TextBlock Text="Descripción:" Foreground="#666" FontSize="11" Margin="35,254,322,189" Grid.Row="1"/>
             <TextBlock Text="Cliente:" Foreground="#666" FontSize="11" Margin="39,116,704,336" Grid.Row="1"/>
-            <ComboBox x:Name="cbxIdMascota" Margin="554,41,100,0" Background="#FFFFB5C5" Height="54" VerticalAlignment="Top" Grid.Row="1"/>
+            <ComboBox x:Name="cbxIdMascota" Margin="554,41,100,0" Background="#FFFFB5C5" Height="54" VerticalAlignment="Top" Grid.Row="1" DisplayMemberPath="Nombre" SelectedValuePath="Id"/>
             <TextBlock Foreground="#666" FontSize="11" Margin="573,13,243,432" Grid.Row="1"><Run Language="es-sv" Text="Mascota"/><Run Text=":"/></TextBlock>
             <ComboBox x:Name="cbxEstado" Margin="561,162,0,0" Grid.Row="1" BorderBrush="#FFF4A6CD" Height="54" VerticalAlignment="Top" HorizontalAlignment="Left" Width="372">
                 <ComboBox.Background>

@@ -73,39 +73,6 @@ namespace InterfazDeUsuarioUI
 
 
 
-        private void btnGuardar_Click_1(object sender, RoutedEventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtNombreRol.Text))
-            {
-                MessageBox.Show("Por favor, ingrese el nombre del rol.", "Campo requerido", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
-
-            _rolEN.TipoRol = txtNombreRol.Text.Trim();
-            _rolBL.GuardarRol(_rolEN);
-
-            MessageBox.Show("Rol guardado correctamente.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
-
-            CargarGrid();
-            ReiniciarEstadoInicial();
-        }
-
-        private void btnModificar_Click_1(object sender, RoutedEventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtNumeroRol.Text))
-            {
-                MessageBox.Show("Debe seleccionar un rol para modificar.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
-
-            _rolEN.Id = Convert.ToByte(txtNumeroRol.Text);
-            _rolEN.TipoRol = txtNombreRol.Text.Trim();
-
-            _rolBL.ModificarRol(_rolEN);
-            CargarGrid();
-            ReiniciarEstadoInicial();
-        }
-
         private void btnEliminar_Click_1(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtNumeroRol.Text))
@@ -137,12 +104,72 @@ namespace InterfazDeUsuarioUI
             }
         }
 
-        private void btnBuscar_Click(object sender, RoutedEventArgs e)
+
+
+        private void btnGuardar_Click(object sender, RoutedEventArgs e)
         {
+
+            if (string.IsNullOrWhiteSpace(txtNombreRol.Text))
+            {
+                MessageBox.Show("Por favor, ingrese el nombre del rol.", "Campo requerido", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            _rolEN.TipoRol = txtNombreRol.Text.Trim();
+            _rolBL.GuardarRol(_rolEN);
+
+            MessageBox.Show("Rol guardado correctamente.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
+
+            CargarGrid();
+            ReiniciarEstadoInicial();
+        }
+
+        private void btnModificar_Click(object sender, RoutedEventArgs e)
+        {
+
+            if (string.IsNullOrWhiteSpace(txtNumeroRol.Text))
+            {
+                MessageBox.Show("Debe seleccionar un rol para modificar.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            _rolEN.Id = Convert.ToByte(txtNumeroRol.Text);
+            _rolEN.TipoRol = txtNombreRol.Text.Trim();
+
+            _rolBL.ModificarRol(_rolEN);
+            CargarGrid();
+            ReiniciarEstadoInicial();
+        }
+
+        private void btnEliminar_Click(object sender, RoutedEventArgs e)
+        {
+
+            if (string.IsNullOrWhiteSpace(txtNumeroRol.Text))
+            {
+                MessageBox.Show("Debe seleccionar un rol para eliminar.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            var confirm = MessageBox.Show("¿Realmente desea eliminar este rol?", "Confirmar eliminación", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (confirm == MessageBoxResult.Yes)
+            {
+                _rolEN.Id = Convert.ToByte(txtNumeroRol.Text);
+                _rolBL.EliminarRol(_rolEN);
+
+                CargarGrid();
+                ReiniciarEstadoInicial();
+            }
+        }
+
+        private void btnBuscar_Click_1(object sender, RoutedEventArgs e)
+        {
+
             string Id = txtBuscar.Text;
             List<CitaEN> cita = CitaBL.BuscarCita(Id);
             dgvListarRol.ItemsSource = cita;
         }
     }
+
+
 
 }
