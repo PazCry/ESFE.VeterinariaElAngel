@@ -56,7 +56,7 @@ namespace LogicaDeAccesoADatosDAL
             using (IDbConnection _conn = ComunBD.ObtenerConexion(ComunBD.TipoBD.SqlServer))
             {
                 _conn.Open();
-                SqlCommand _comando = new SqlCommand("GuardarRoles", _conn as SqlConnection);
+                SqlCommand _comando = new SqlCommand("GuardarRol", _conn as SqlConnection);
                 _comando.CommandType = CommandType.StoredProcedure;
                 _comando.Parameters.Add(new SqlParameter("@TipoRol", pRolEN.TipoRol));
                 int resultado = _comando.ExecuteNonQuery();
@@ -72,7 +72,7 @@ namespace LogicaDeAccesoADatosDAL
             {
                 _conn.Open();
                 SqlCommand _comando =
-                new SqlCommand("EliminarRoles", _conn as SqlConnection);
+                new SqlCommand("EliminarRol", _conn as SqlConnection);
                 _comando.CommandType = CommandType.StoredProcedure;
                 _comando.Parameters.Add(new SqlParameter("@Id", pRolEN.Id));
                 int resultado = _comando.ExecuteNonQuery();
@@ -88,7 +88,7 @@ namespace LogicaDeAccesoADatosDAL
             {
                 _conn.Open();
                 SqlCommand _comando =
-                    new SqlCommand("ModificarRoles", _conn as SqlConnection);
+                    new SqlCommand("ModificarRol", _conn as SqlConnection);
                 _comando.CommandType = CommandType.StoredProcedure;
                 _comando.Parameters.Add(new SqlParameter("@Id", pRolEN.Id));
                 _comando.Parameters.Add(new SqlParameter("@TipoRol", pRolEN.TipoRol));

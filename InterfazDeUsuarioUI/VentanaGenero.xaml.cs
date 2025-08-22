@@ -23,7 +23,7 @@ namespace InterfazDeUsuarioUI
     {
         private readonly GeneroBL _generoBL = new GeneroBL();
         private readonly GeneroEN _generoEN = new GeneroEN();
-        private bool _modoModificacion = false;
+
 
         public VentanaGenero()
         {
@@ -48,55 +48,39 @@ namespace InterfazDeUsuarioUI
 
         private void ReiniciarEstadoInicial()
         {
-            txtId.Text = string.Empty;
-            txtTipoGenero.Text = string.Empty;
 
-            btnGuardar.IsEnabled = false;
-            btnModificar.IsEnabled = false;
-            btnEliminar.IsEnabled = false;
-            _modoModificacion = false;
 
             dgvListarGenero.SelectedIndex = -1;
         }
 
-        private void txtTipoGenero_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (_modoModificacion)
-                btnGuardar.IsEnabled = false;
-            else
-                btnGuardar.IsEnabled = !string.IsNullOrWhiteSpace(txtTipoGenero.Text);
-        }
 
 
 
         private void btnGuardar_Click_1(object sender, RoutedEventArgs e)
         {
-
             if (string.IsNullOrWhiteSpace(txtTipoGenero.Text))
             {
                 MessageBox.Show("Por favor, complete todos los campos antes de guardar.", "Campos requeridos", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
-            string nuevoGenero = txtTipoGenero.Text.Trim().ToLower();
-
             // Verificar duplicados en DataGrid
-            if (dgvListarGenero.Items.Cast<GeneroEN>().Any(x => x.TipoGenero.Trim().ToLower() == nuevoGenero))
+            if (dgvListarGenero.Items.Cast<GeneroEN>().Any(x =>
+                string.Equals(x.TipoGenero.Trim(), txtTipoGenero.Text.Trim(),
+                StringComparison.OrdinalIgnoreCase)))
             {
                 MessageBox.Show("Este género ya está registrado.", "Duplicado", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
             _generoEN.TipoGenero = txtTipoGenero.Text;
-            _generoBL.GuardarGenero(_generoEN);
+            _generoBL.GuardarGenero(_generoEN);  // ← Aquí estaba el error
 
             CargarGrid();
             txtId.Text = string.Empty;
             txtTipoGenero.Text = string.Empty;
-
             MessageBox.Show("Género guardado correctamente.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
         }
-
         private void btnModificar_Click_1(object sender, RoutedEventArgs e)
         {
 
@@ -126,25 +110,26 @@ namespace InterfazDeUsuarioUI
             ReiniciarEstadoInicial();
         }
 
-        private void dgvListarGenero_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+
+
+        private void dgvListarGenero_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+
 
             if (dgvListarGenero.SelectedItem is GeneroEN fila)
             {
                 txtId.Text = fila.Id.ToString();
                 txtTipoGenero.Text = fila.TipoGenero;
 
-                btnModificar.IsEnabled = true;
-                btnEliminar.IsEnabled = true;
-                btnGuardar.IsEnabled = false;
-                _modoModificacion = true;
+
             }
         }
     }
-
-
-
-
-
 }
+
+
+
+
+
+
 
