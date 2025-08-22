@@ -163,7 +163,7 @@
 
     <Border Background="White" CornerRadius="8" Margin="10" >
 
-        <Grid Margin="10,-74,-10,39">
+        <Grid Margin="8,-5,-8,-30">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -173,7 +173,7 @@
             </Grid.RowDefinitions>
 
             <!-- Header con icono de mascota -->
-            <Border Grid.Row="0" Background="#F8BBD9" CornerRadius="8,8,0,0" Padding="20" Margin="-18,0,0,308" Grid.RowSpan="2">
+            <Border Grid.Row="0" Background="#F8BBD9" CornerRadius="8,8,0,0" Padding="20" Margin="-18,0,0,0" Grid.RowSpan="2" Height="67" VerticalAlignment="Top" HorizontalAlignment="Left" Width="798">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <TextBlock Text="🐾" FontSize="20" Margin="0,0,10,0"/>
                     <TextBlock Text="GESTIÓN DE MASCOTAS" 
@@ -184,18 +184,13 @@
             </Border>
 
             <!-- Form Section -->
-            <Grid Grid.Row="1" Margin="25,25,25,27">
+            <Grid Grid.Row="1" Margin="25,80,25,120" Grid.RowSpan="2">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="227"/>
                 </Grid.RowDefinitions>
 
                 <!-- Form Title -->
-                <TextBlock Grid.Row="0" Text="FORMULARIO DE DATOS" 
-                      Foreground="#666" 
-                      FontSize="11" 
-                      FontWeight="Bold" 
-                      Margin="0,12,0,3"/>
 
                 <!-- Form Fields -->
                 <Grid Grid.Row="1" HorizontalAlignment="Left" Width="730" Height="207" VerticalAlignment="Top">
@@ -341,7 +336,7 @@
             <TextBlock Text="Especie:" 
                         Foreground="#666" 
            FontSize="11" 
-           Margin="40,120,385,187" Grid.Row="1" 
+           Margin="40,145,385,163" Grid.Row="1" 
            />
         </Grid>
     </Border>

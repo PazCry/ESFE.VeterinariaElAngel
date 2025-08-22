@@ -217,7 +217,7 @@
 
                         <!-- Correo -->
                         <Label Grid.Column="0" Content="Correo" Style="{StaticResource ModernLabel}" Margin="-4,153,0,0" Height="34" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200"/>
-                        <TextBox x:Name="txtCorreo" Style="{StaticResource ModernTextBox}" Margin="127,150,0,0" HorizontalAlignment="Left" Width="354" Height="47" VerticalAlignment="Top"/>
+                        <TextBox x:Name="txtCorreo" Style="{StaticResource ModernTextBox}" Margin="127,150,0,0" HorizontalAlignment="Left" Width="354" Height="56" VerticalAlignment="Top"/>
 
                         <!-- Contraseña -->
                         <Label Grid.Column="0" Content="Contraseña" Style="{StaticResource ModernLabel}" Margin="2,227,0,0" Height="39" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200"/>
@@ -297,12 +297,12 @@
                         </DataGrid.Columns>
                     </DataGrid>
                 </Border>
-                <Button x:Name="btnBuscar" Content="🔍 Buscar" Style="{StaticResource SearchButton}" Margin="524,32,0,0" HorizontalAlignment="Left" Width="92" Height="40" VerticalAlignment="Top" Click="btnBuscar_Click_1" Grid.Row="1"/>
+                <Button x:Name="btnBuscar" Content="🔍 Buscar" Style="{StaticResource SearchButton}" Margin="524,32,0,0" HorizontalAlignment="Left" Width="92" Height="40" Click="btnBuscar_Click_1" Grid.Row="1" VerticalAlignment="Top"/>
                 <Button x:Name="btnReiniciar" Content="🔄 Reiniciar" Style="{StaticResource ResetButton}" Margin="629,32,0,0" HorizontalAlignment="Left" Width="86" Height="40" VerticalAlignment="Top" Click="btnReiniciar_Click_1" Grid.Row="1"/>
+                <TextBox x:Name="txtBuscar" Style="{StaticResource ModernTextBox}" Margin="12,27,0,220" HorizontalAlignment="Left" Width="498" Height="NaN" Grid.Row="1"/>
             </Grid>
         </ScrollViewer>
-        <TextBox x:Name="txtBuscar" Style="{StaticResource ModernTextBox}" Margin="40,543,0,0" HorizontalAlignment="Left" Width="498" Height="52" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtNombre" Style="{StaticResource ModernTextBox}" Height="51" Margin="148,91,0,0" HorizontalAlignment="Left" Width="354" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtNombre" Style="{StaticResource ModernTextBox}" Height="56" Margin="148,91,0,0" HorizontalAlignment="Left" Width="354" VerticalAlignment="Top"/>
         <Label Content="Label" HorizontalAlignment="Left" Margin="913,70,0,0" VerticalAlignment="Top"/>
     </Grid>
 
