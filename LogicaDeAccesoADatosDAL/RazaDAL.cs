@@ -33,8 +33,39 @@ namespace LogicaDeAccesoADatosDAL
                 }
                 return _Lista;
             }
+        public static List<RazaEN> BuscarRaza(string tipoRaza)
+        {
+            List<RazaEN> lista = new List<RazaEN>();
 
-            public static int AgregarRaza(RazaEN pRazaEN)
+            using (IDbConnection _conn = ComunBD.ObtenerConexion(ComunBD.TipoBD.SqlServer))
+            {
+                _conn.Open();
+                SqlCommand _comando = new SqlCommand("BuscarRaza", _conn as SqlConnection);
+                _comando.CommandType = CommandType.StoredProcedure;
+                _comando.Parameters.Add(new SqlParameter("@TipoRaza", tipoRaza));
+
+                using (SqlDataReader dr = _comando.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        RazaEN raza = new RazaEN
+                        {
+                            Id = Convert.ToByte(dr["Id"]),
+                            TipoRaza = dr["TipoRaza"].ToString(),
+                            FechaCreacion = Convert.ToDateTime(dr["FechaCreacion"])
+                        };
+
+                        lista.Add(raza);
+                    }
+                }
+
+                _conn.Close();
+            }
+
+            return lista;
+        }
+
+        public static int AgregarRaza(RazaEN pRazaEN)
             {
                 using (IDbConnection _conn = ComunBD.ObtenerConexion(ComunBD.TipoBD.SqlServer))
                 {

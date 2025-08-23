@@ -40,7 +40,7 @@ namespace LogicaDeAccesoADatosDAL
                 using (IDbConnection _conn = ComunBD.ObtenerConexion(ComunBD.TipoBD.SqlServer))
                 {
                     _conn.Open();
-                    SqlCommand _comando = new SqlCommand("GuardarGen", _conn as SqlConnection);
+                    SqlCommand _comando = new SqlCommand("GuardarGenero", _conn as SqlConnection);
                     _comando.CommandType = CommandType.StoredProcedure;
                     _comando.Parameters.Add(new SqlParameter("@TipoGen", pSexoEN.TipoGenero));
                     int resultado = _comando.ExecuteNonQuery();

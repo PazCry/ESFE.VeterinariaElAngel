@@ -39,7 +39,7 @@ namespace LogicaDeAccesoADatosDAL
                 {
                     _conn.Open();
                     SqlCommand _comando =
-                    new SqlCommand("ListarUsuario", _conn as SqlConnection);
+                    new SqlCommand("ListarUsuarioDE", _conn as SqlConnection);
                     _comando.CommandType = CommandType.StoredProcedure;
                     IDataReader _reader = _comando.ExecuteReader();
                     while (_reader.Read())

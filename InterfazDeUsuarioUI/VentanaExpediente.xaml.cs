@@ -23,20 +23,12 @@ namespace InterfazDeUsuarioUI
     {
         ExpedeinteBL _expedienteBL = new ExpedeinteBL();
         ExpedienteEN _expedienteEN = new ExpedienteEN();
-        private bool _modoModificacion = false;
+
         public VentanaExpediente()
         {
             InitializeComponent();
             CargarGrid();
             ReiniciarEstadoInicial();
-
-            // Eventos para detectar cambios
-            cbxIdCliente.SelectionChanged += Campos_TextChanged;
-            cbxIdMascota.SelectionChanged += Campos_TextChanged;
-            cbxEstado.SelectionChanged += Campos_TextChanged;
-            dtpFechaAtencion.SelectedDateChanged += Campos_TextChanged;
-            txtDescripcionConsulta.TextChanged += Campos_TextChanged;
-
             dgvListarExpediente.SelectedIndex = -1;
         }
 
@@ -46,71 +38,32 @@ namespace InterfazDeUsuarioUI
         }
 
 
-
-
-
-
-
-
-
         private void btnReiniciar_Click(object sender, RoutedEventArgs e)
         {
             CargarGrid();
         }
 
-        private void Campos_TextChanged(object sender, EventArgs e)
-        {
-            if (!_modoModificacion)
-                btnGuardar.IsEnabled = CamposCompletos();
-        }
+       
 
-        private bool CamposCompletos()
-        {
-            return cbxIdCliente.SelectedIndex != -1 &&
-                   cbxIdMascota.SelectedIndex != -1 &&
-                   !string.IsNullOrWhiteSpace(cbxEstado.Text) &&
-                   !string.IsNullOrWhiteSpace(txtDescripcionConsulta.Text);
-        }
-
+     
         private void ReiniciarEstadoInicial()
         {
-            cbxIdCliente.SelectionChanged -= Campos_TextChanged;
-            cbxIdMascota.SelectionChanged -= Campos_TextChanged;
+          
 
-            cbxIdCliente.SelectedIndex = -1;
-            cbxIdMascota.SelectedIndex = -1;
-            cbxEstado.SelectedIndex = -1;
+            txtCliente.Clear();
+            txtMascota.Clear();
+            txtEstado.Clear();
             dtpFechaAtencion.SelectedDate = DateTime.Today;
             txtDescripcionConsulta.Clear();
 
-            btnGuardar.IsEnabled = false;
-            btnModificar.IsEnabled = false;
-            btnEliminar.IsEnabled = false;
-            _modoModificacion = false;
+          
 
             dgvListarExpediente.SelectedIndex = -1;
 
-            cbxIdCliente.SelectionChanged += Campos_TextChanged;
-            cbxIdMascota.SelectionChanged += Campos_TextChanged;
+           
         }
 
-        private void ExpedientesDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (dgvListarExpediente.SelectedItem is ExpedienteEN fila)
-            {
-                cbxIdCliente.SelectedValue = fila.IdCliente;
-                cbxIdMascota.SelectedValue = fila.IdMascota;
-                cbxEstado.SelectedItem = fila.Estado;
-                dtpFechaAtencion.SelectedDate = fila.Fecha;
-                txtDescripcionConsulta.Text = fila.DescripcionConsulta;
-                txtId.Text = fila.Id.ToString();
-
-                btnModificar.IsEnabled = true;
-                btnEliminar.IsEnabled = true;
-                btnGuardar.IsEnabled = false;
-                _modoModificacion = true;
-            }
-        }
+       
 
         // Restricciones de entrada en TextBox y ComboBox (similar a KeyPress en WinForms)
         private void SoloNumeros(object sender, TextCompositionEventArgs e)
@@ -132,9 +85,9 @@ namespace InterfazDeUsuarioUI
 
         private void btnGuardar_Click_1(object sender, RoutedEventArgs e)
         {
-            if (cbxIdCliente.SelectedIndex == -1 ||
-                           cbxIdMascota.SelectedIndex == -1 ||
-                           string.IsNullOrWhiteSpace(cbxEstado.Text) ||
+            if            (string.IsNullOrWhiteSpace(txtCliente.Text) ||
+                           string.IsNullOrWhiteSpace(txtMascota.Text) ||
+                           string.IsNullOrWhiteSpace(txtEstado.Text) ||
                            string.IsNullOrWhiteSpace(txtDescripcionConsulta.Text))
             {
                 MessageBox.Show("Por favor, complete todos los campos y seleccione todas las opciones.",
@@ -149,9 +102,9 @@ namespace InterfazDeUsuarioUI
                 return;
             }
 
-            _expedienteEN.IdCliente = Convert.ToByte(cbxIdCliente.Text);
-            _expedienteEN.IdMascota = Convert.ToByte(cbxIdMascota.Text);
-            _expedienteEN.Estado = cbxEstado.Text;
+            _expedienteEN.IdCliente = Convert.ToByte(txtCliente.Text);
+            _expedienteEN.IdMascota = Convert.ToByte(txtMascota.Text);
+            _expedienteEN.Estado = txtEstado.Text;
             _expedienteEN.DescripcionConsulta = txtDescripcionConsulta.Text;
             _expedienteEN.Fecha = dtpFechaAtencion.SelectedDate.Value;
 
@@ -171,7 +124,7 @@ namespace InterfazDeUsuarioUI
         {
 
             if (string.IsNullOrWhiteSpace(txtId.Text) ||
-                string.IsNullOrWhiteSpace(cbxEstado.Text) ||
+                string.IsNullOrWhiteSpace(txtEstado.Text) ||
                 string.IsNullOrWhiteSpace(txtDescripcionConsulta.Text))
             {
                 MessageBox.Show("Por favor, complete todos los campos antes de modificar.",
@@ -184,9 +137,9 @@ namespace InterfazDeUsuarioUI
                                 MessageBoxImage.Question) == MessageBoxResult.OK)
             {
                 _expedienteEN.Id = Convert.ToByte(txtId.Text);
-                _expedienteEN.IdCliente = Convert.ToByte(cbxIdCliente.Text);
-                _expedienteEN.IdMascota = Convert.ToByte(cbxIdMascota.Text);
-                _expedienteEN.Estado = cbxEstado.Text;
+                _expedienteEN.IdCliente = Convert.ToByte(txtCliente.Text);
+                _expedienteEN.IdMascota = Convert.ToByte(txtMascota.Text);
+                _expedienteEN.Estado = txtEstado.Text;
                 _expedienteEN.DescripcionConsulta = txtDescripcionConsulta.Text;
 
                 _expedienteBL.ModificarExpe(_expedienteEN);
@@ -233,6 +186,21 @@ namespace InterfazDeUsuarioUI
             List<CitaEN> cita = CitaBL.BuscarCita(Id);
             dgvListarExpediente.ItemsSource = cita;
         }
+
+        private void dgvListarExpediente_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (dgvListarExpediente.SelectedItem is ExpedienteEN fila)
+            {
+                txtCliente.Text = fila.IdCliente.ToString();
+                txtMascota.Text = fila.IdMascota.ToString();
+                txtEstado.Text = fila.Estado;
+                dtpFechaAtencion.SelectedDate = fila.Fecha;
+                txtDescripcionConsulta.Text = fila.DescripcionConsulta;
+                txtId.Text = fila.Id.ToString();
+
+           
+        }
+    }
     }
 }
 

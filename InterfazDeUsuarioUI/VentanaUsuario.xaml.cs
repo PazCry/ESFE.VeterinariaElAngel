@@ -67,22 +67,7 @@ namespace InterfazDeUsuarioUI
             CargarGrid();
         }
 
-        private void dgvListarUsuario_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (dgvListarUsuario.SelectedItem is UsuarioEN usuario)
-            {
-                txtId.Text = usuario.Id.ToString();
-                txtNombre.Text = usuario.Nombre;
-                txtApellido.Text = usuario.Apellido;
-                txtCorreo.Text = usuario.Correo;
-                txtContra.Password = usuario.Contra;
-                txtTelefono.Text = usuario.Telefono;
-                cbxIdRol.SelectedIndex = usuario.IdRol - 1;
-
-                btnEliminar.IsEnabled = true;
-                btnModificar.IsEnabled = true;
-            }
-        }
+       
 
         private void txtTelefono_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
         {
@@ -246,6 +231,25 @@ namespace InterfazDeUsuarioUI
 
             CargarGrid();
         }
+
+        private void dgvListarUsuario_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+           
+            if (dgvListarUsuario.SelectedItem is UsuarioEN usuario)
+            {
+                txtId.Text = usuario.Id.ToString();
+                txtNombre.Text = usuario.Nombre;
+                txtApellido.Text = usuario.Apellido;
+                txtCorreo.Text = usuario.Correo;
+                txtContra.Password = usuario.Contra;
+                txtTelefono.Text = usuario.Telefono;
+                cbxIdRol.SelectedIndex = usuario.IdRol - 1;
+
+                btnEliminar.IsEnabled = true;
+                btnModificar.IsEnabled = true;
+            }
+        }
     }
+    
 
 }

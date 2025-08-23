@@ -15,6 +15,15 @@ namespace LogicaDeNegocioBL
             return EspecieDAL.MostrarEspecie();
         }
 
+        public static List<EspecieEN> BuscarEspecie(string tipoEspecie)
+        {
+            if (string.IsNullOrWhiteSpace(tipoEspecie))
+            {
+                return new List<EspecieEN>(); 
+            }
+
+            return EspecieDAL.BuscarEspecie(tipoEspecie);
+        }
         public int GuardarEspecie(EspecieEN pEspecieEN)
         {
             return EspecieDAL.AgregarEspecie(pEspecieEN);

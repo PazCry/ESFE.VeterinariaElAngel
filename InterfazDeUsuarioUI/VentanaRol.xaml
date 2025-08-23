@@ -185,7 +185,7 @@
         CornerRadius="8" BorderBrush="#E5E7EB" BorderThickness="1" Height="243" VerticalAlignment="Top" HorizontalAlignment="Left" Width="726">
 
                 <!-- Header del DataGrid -->
-                <DataGrid x:Name="dgvListarRol" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="-1,9,0,0" Height="119" VerticalAlignment="Top" HorizontalAlignment="Left" Width="693"/>
+                <DataGrid x:Name="dgvListarRol" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="-1,9,0,0" Height="119" VerticalAlignment="Top" HorizontalAlignment="Left" Width="693" SelectionChanged="dgvListarRol_SelectionChanged_2"/>
             </Border>
             <Label Content="Tipo de Rol:" Style="{StaticResource LabelPastel}" Margin="15,119,0,0" Height="21" VerticalAlignment="Top" HorizontalAlignment="Left" Width="161"/>
             <TextBox x:Name="txtNombreRol" Style="{StaticResource TextBoxPastel}"

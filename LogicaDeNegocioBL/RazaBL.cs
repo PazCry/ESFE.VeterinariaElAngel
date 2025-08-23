@@ -15,6 +15,17 @@ namespace LogicaDeNegocioBL
             return RazaDAL.MostrarRazaEN();
         }
 
+        public static List<RazaEN> BuscarRaza(string tipoRaza)
+        {
+            if (string.IsNullOrWhiteSpace(tipoRaza))
+            {
+                return new List<RazaEN>(); // retorna vacío si no se escribe nada
+            }
+
+            return RazaDAL.BuscarRaza(tipoRaza);
+        }
+    
+
         public int GuardarRaza(RazaEN pRazaEN)
         {
             return RazaDAL.AgregarRaza(pRazaEN);

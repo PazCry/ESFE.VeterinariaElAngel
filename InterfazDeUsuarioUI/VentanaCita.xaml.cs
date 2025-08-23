@@ -49,16 +49,7 @@ namespace InterfazDeUsuarioUI
             CargarGrid();
         }
 
-        private void dgvCita_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (dgvCita.SelectedItem is CitaEN fila)
-            {
-                txtNumCita.Text = fila.Id.ToString();
-                txtNumExpediente.Text = fila.IdExpediente.ToString();
-                dpFechaCita.SelectedDate = fila.FechaCita;
-                txtHora.Text = fila.Hora?.ToString(@"hh\:mm");
-            }
-        }
+        
 
         private void ReiniciarEstadoInicial()
         {
@@ -68,31 +59,7 @@ namespace InterfazDeUsuarioUI
             dgvCita.UnselectAll();
         }
 
-        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (dgvCita.SelectedItem != null)
-            {
-                // Asumiendo que tienes una clase CitaEN o similar
-                if (dgvCita.SelectedItem is CitaEN fila)
-                {
-                    txtNumCita.Text = fila.Id.ToString();
-                    txtNumExpediente.Text = fila.IdExpediente.ToString();
-
-                    // Para fecha
-                    if (fila.FechaCita != null)
-                    {
-                        dpFechaCita.SelectedDate = fila.FechaCita;
-                    }
-
-                    // Para hora (si usas DatePicker para hora)
-                    if (fila.Hora != null)
-                    {
-                        txtHora.Text = fila.Hora.Value.ToString(@"hh\:mm");
-                    }
-                }
-
-            }
-        }
+       
 
         private void btnGuardar_Click_1(object sender, RoutedEventArgs e)
         {
@@ -125,7 +92,7 @@ namespace InterfazDeUsuarioUI
                 return;
             }
 
-            if (!byte.TryParse(txtNumCita.Text, out byte idRegistro))
+            if (!byte.TryParse(txtNumExpediente.Text, out byte idRegistro))
             {
                 MessageBox.Show("El ID del expediente debe ser un número válido.", "Dato inválido", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
@@ -206,5 +173,18 @@ namespace InterfazDeUsuarioUI
             VentanaCitaCalendario ventana = new VentanaCitaCalendario();
             ventana.Show();
         }
+
+        private void dgvCita_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+          
+            if (dgvCita.SelectedItem is CitaEN fila)
+            {
+                txtNumCita.Text = fila.Id.ToString();
+                txtNumExpediente.Text = fila.IdExpediente.ToString();
+                dpFechaCita.SelectedDate = fila.FechaCita;
+                txtHora.Text = fila.Hora?.ToString(@"hh\:mm");
+            }
+        }
     }
+    
 }

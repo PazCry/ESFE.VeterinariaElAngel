@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InterfazDeUsuarioUI"
         mc:Ignorable="d"
-        Title="VentanaGenero" Height="638" Width="800">
+        Title="VentanaGenero" Height="541" Width="800">
     <Window.Resources>
         <!-- Colores Rosados Pastel -->
         <SolidColorBrush x:Key="RosaPastelPrincipal" Color="#F8BBD9"/>
@@ -185,49 +185,26 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-
-                <TextBlock Grid.Column="0" Text="BARRA DE BÚSQUEDA" 
-                          FontWeight="Bold" FontSize="12" 
-                          Foreground="{StaticResource RosaPastelSecundario}" 
-                          VerticalAlignment="Center"
-                          Margin="0,0,20,0"/>
-
-                <TextBox Style="{StaticResource TextBoxPastel}"
-                        Background="{StaticResource RosaPastelMedio}"
-                        Height="57" VerticalAlignment="Top" HorizontalAlignment="Left" Width="530" Margin="139,46,0,0" Grid.ColumnSpan="3"/>
-
-                <Button Grid.Column="2" 
-                       Background="{StaticResource RosaPastelPrincipal}"
-                       Style="{StaticResource BotonPastel}"
-                       Width="54" Height="35"
-                       Content="🔍"
-                       Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                <TextBox x:Name="txtBuscar" Grid.Column="1" HorizontalAlignment="Left" Margin="29,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="450" Height="33"/>
             </Grid>
 
             <!-- DataGrid -->
             <TextBox x:Name="txtTipoGenero" Style="{StaticResource TextBoxPastel}"
-                                    Background="{StaticResource RosaPastelClaro}" Margin="15,71,0,0" Grid.Row="1" Height="50" VerticalAlignment="Top" HorizontalAlignment="Left" Width="340"/>
+                                    Background="{StaticResource RosaPastelClaro}" Margin="15,87,0,0" Grid.Row="1" Height="50" VerticalAlignment="Top" HorizontalAlignment="Left" Width="340"/>
             <Button x:Name="btnModificar" Grid.Column="0" Grid.Row="1" 
                                Content="✏️ Modificar" 
                                Style="{StaticResource BotonPastel}"
                                Background="{StaticResource NaranjaPastel}"
                                Margin="373,95,0,0" Cursor="Hand" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="178" Click="btnModificar_Click_1"/>
-            <DataGrid x:Name="dgvListarGenero" HorizontalAlignment="Left" Height="178" Margin="10,106,0,0" Grid.Row="2" VerticalAlignment="Top" Width="707" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="dgvListarGenero_SelectionChanged"/>
+            <DataGrid x:Name="dgvListarGenero" HorizontalAlignment="Left" Height="178" Grid.Row="2" VerticalAlignment="Top" Width="708" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="dgvListarGenero_SelectionChanged" Margin="33,15,0,0"/>
             <Button x:Name="btnEliminar" Grid.Row="1" 
                                Content="🗑️ Eliminar" 
                                Style="{StaticResource BotonPastel}"
                                Background="{StaticResource RosaPastelPrincipal}"
-                               Margin="565,90,0,0" Cursor="Hand" HorizontalAlignment="Left" Width="176" Height="32" VerticalAlignment="Top" Click="btnEliminar_Click_1"/>
+                               Margin="565,96,0,0" Cursor="Hand" HorizontalAlignment="Left" Width="176" Height="32" VerticalAlignment="Top" Click="btnEliminar_Click_1"/>
             <Button x:Name="btnGuardar" Grid.Column="0" 
                                Content="💾 Guardar" 
                                Style="{StaticResource BotonPastel}"
-                               Background="{StaticResource VerdePastel}" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="178" Margin="374,53,0,0" Click="btnGuardar_Click_1" Grid.Row="1"/>
-            <Button x:Name="btnBuscar" Grid.Row="1" 
-                               Content="🔍 Buscar" 
-                               Style="{StaticResource BotonPastel}"
-                               Background="{StaticResource AzulPastel}"
-                               Margin="562,52,0,0" Cursor="Hand" HorizontalAlignment="Left" Width="176" Height="32" VerticalAlignment="Top" Click="btnBuscar_Click"/>
+                               Background="{StaticResource VerdePastel}" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="178" Margin="462,49,0,0" Click="btnGuardar_Click_1" Grid.Row="1"/>
         </Grid>
     </Border>
 

@@ -24,7 +24,7 @@ namespace InterfazDeUsuarioUI
     {
         RazaBL _razaBL = new RazaBL();
         RazaEN _razaEN = new RazaEN();
-        private bool _modoModificacion = false;
+  
 
         public VentanaRaza()
         {
@@ -52,40 +52,12 @@ namespace InterfazDeUsuarioUI
         {
             txtId.Clear();
             txtTipoRaza.Clear();
-
-            btnGuardar.IsEnabled = false;
-            btnModificar.IsEnabled = false;
-            btnEliminar.IsEnabled = false;
-            _modoModificacion = false;
-
             dgvListarRaza1.UnselectAll();
         }
 
-        private void Campos_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (_modoModificacion)
-            {
-                btnGuardar.IsEnabled = false;
-            }
-            else
-            {
-                btnGuardar.IsEnabled = !string.IsNullOrWhiteSpace(txtTipoRaza.Text);
-            }
-        }
+       
 
-        private void dgvListarRaza_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (dgvListarRaza1.SelectedItem is RazaEN fila)
-            {
-                txtId.Text = fila.Id.ToString();
-                txtTipoRaza.Text = fila.TipoRaza;
-
-                btnModificar.IsEnabled = true;
-                btnEliminar.IsEnabled = true;
-                btnGuardar.IsEnabled = false;
-                _modoModificacion = true;
-            }
-        }
+       
 
         private void txtTipoRaza_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
@@ -145,10 +117,23 @@ namespace InterfazDeUsuarioUI
 
         private void btnBuscar_Click(object sender, RoutedEventArgs e)
         {
-            string Id = txtBuscar.Text;
-            List<CitaEN> cita = CitaBL.BuscarCita(Id);
-            dgvListarRaza1.ItemsSource = cita;
+            string Nombre = txtBuscar.Text;
+            List<RazaEN> raza = RazaBL.BuscarRaza(Nombre);
+            dgvListarRaza1.ItemsSource = raza;
 
         }
+
+        private void dgvListarRaza1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+     
+            if (dgvListarRaza1.SelectedItem is RazaEN fila)
+            {
+                txtId.Text = fila.Id.ToString();
+                txtTipoRaza.Text = fila.TipoRaza;
+
+             
+            }
+        }
     }
+    
 }

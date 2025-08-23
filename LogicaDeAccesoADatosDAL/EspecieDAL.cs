@@ -33,8 +33,38 @@ namespace LogicaDeAccesoADatosDAL
                 }
                 return _Lista;
             }
+        public static List<EspecieEN> BuscarEspecie(string tipoEspecie)
+        {
+            List<EspecieEN> lista = new List<EspecieEN>();
 
-            public static int AgregarEspecie(EspecieEN pEspecieEN)
+            using (IDbConnection _conn = ComunBD.ObtenerConexion(ComunBD.TipoBD.SqlServer))
+            {
+                _conn.Open();
+                SqlCommand _comando = new SqlCommand("BuscarEspecie", _conn as SqlConnection);
+                _comando.CommandType = CommandType.StoredProcedure;
+                _comando.Parameters.Add(new SqlParameter("@TipoEspecie", tipoEspecie));
+
+                using (SqlDataReader dr = _comando.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        EspecieEN especie = new EspecieEN
+                        {
+                            Id = Convert.ToByte(dr["Id"]),
+                            TipoEspecie = dr["TipoEspecie"].ToString(),
+                            FechaCreacion = Convert.ToDateTime(dr["FechaCreacion"])
+                        };
+
+                        lista.Add(especie);
+                    }
+                }
+
+                _conn.Close();
+            }
+
+            return lista;
+        }
+        public static int AgregarEspecie(EspecieEN pEspecieEN)
             {
                 using (IDbConnection _conn = ComunBD.ObtenerConexion(ComunBD.TipoBD.SqlServer))
                 {
@@ -74,7 +104,6 @@ namespace LogicaDeAccesoADatosDAL
                     _comando.CommandType = CommandType.StoredProcedure;
                     _comando.Parameters.Add(new SqlParameter("@Id", pEspecieEN.Id));
                     _comando.Parameters.Add(new SqlParameter("@TipoEspecie", pEspecieEN.TipoEspecie));
-                    _comando.Parameters.Add(new SqlParameter("@FechaCreacion", pEspecieEN.FechaCreacion));
 
                     int resultado = _comando.ExecuteNonQuery();
                     _conn.Close();

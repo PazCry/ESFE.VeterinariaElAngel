@@ -200,84 +200,8 @@
             </Border>
 
             <!-- TÍTULO REGISTROS -->
-            <Border Grid.Row="1"
-                    Background="#9370DB" 
-                    CornerRadius="8" 
-                    Padding="12"
-                    Margin="6,33,-6,32">
-                <TextBlock Text="REGISTROS DE CLIENTES" 
-                         Foreground="White" 
-                         FontWeight="Bold" 
-                         FontSize="12" 
-                         HorizontalAlignment="Center"/>
-            </Border>
 
             <!-- DATAGRID -->
-            <DataGrid Grid.Row="1" 
-                     Name="dgClientes"
-                     AutoGenerateColumns="False"
-                     CanUserAddRows="False"
-                     CanUserDeleteRows="False"
-                     GridLinesVisibility="All"
-                     HeadersVisibility="Column"
-                     Background="White"
-                     BorderBrush="#ddd"
-                     BorderThickness="1"
-                     FontSize="10" Margin="0,82,0,-6">
-
-                <DataGrid.Resources>
-                    <Style TargetType="DataGridColumnHeader">
-                        <Setter Property="Background" Value="#f8f9fa"/>
-                        <Setter Property="Foreground" Value="#495057"/>
-                        <Setter Property="FontWeight" Value="SemiBold"/>
-                        <Setter Property="FontSize" Value="10"/>
-                        <Setter Property="Padding" Value="8,5"/>
-                        <Setter Property="BorderBrush" Value="#ddd"/>
-                        <Setter Property="BorderThickness" Value="0,0,1,1"/>
-                    </Style>
-
-                    <Style TargetType="DataGridRow">
-                        <Setter Property="Background" Value="White"/>
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#f8f9fa"/>
-                            </Trigger>
-                            <Trigger Property="IsSelected" Value="True">
-                                <Setter Property="Background" Value="#e3f2fd"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-
-                    <Style TargetType="DataGridCell">
-                        <Setter Property="Padding" Value="8,4"/>
-                        <Setter Property="BorderBrush" Value="#ddd"/>
-                        <Setter Property="BorderThickness" Value="0,0,1,1"/>
-                        <Setter Property="VerticalAlignment" Value="Center"/>
-                        <Setter Property="FontSize" Value="10"/>
-                    </Style>
-                </DataGrid.Resources>
-
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID" 
-                                       Binding="{Binding Id}" 
-                                       Width="50"/>
-                    <DataGridTextColumn Header="Num Cliente" 
-                                       Binding="{Binding NumCliente}" 
-                                       Width="100"/>
-                    <DataGridTextColumn Header="Nombre" 
-                                       Binding="{Binding Nombre}" 
-                                       Width="120"/>
-                    <DataGridTextColumn Header="Apellido" 
-                                       Binding="{Binding Apellido}" 
-                                       Width="120"/>
-                    <DataGridTextColumn Header="Teléfono" 
-                                       Binding="{Binding Telefono}" 
-                                       Width="100"/>
-                    <DataGridTextColumn Header="Fecha Creación" 
-                                       Binding="{Binding FechaCreacion}" 
-                                       Width="*"/>
-                </DataGrid.Columns>
-            </DataGrid>
             <Label Content="FORMULARIO DE DATOS" 
                            Style="{StaticResource SectionTitleStyle}" Margin="0,0,270,181" Height="36" VerticalAlignment="Bottom"/>
             <Label Content="BOTONES ACCIÓN" 
@@ -316,6 +240,7 @@
             <Button Content="🔍" 
                            Style="{StaticResource SearchButtonStyle}"
                            x:Name="btnBuscarTabla" Margin="703,261,0,0" HorizontalAlignment="Left" Width="25" Height="25" VerticalAlignment="Top" Grid.RowSpan="2"/>
+            <DataGrid x:Name="dgClientes" HorizontalAlignment="Left" Height="124" Margin="25,24,0,0" Grid.Row="1" VerticalAlignment="Top" Width="693" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="dgClientes_SelectionChanged"/>
         </Grid>
     </Border>
 </Window>

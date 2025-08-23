@@ -210,35 +210,26 @@
                     <!-- Primera fila -->
                     <StackPanel Grid.Row="0" Margin="5,5,0,0" HorizontalAlignment="Left" Width="377" Height="53" VerticalAlignment="Top"/>
 
-                    <StackPanel Margin="392,2,0,2" HorizontalAlignment="Left" Width="376"/>
-
                     <!-- Segunda fila -->
                     <StackPanel Grid.Row="1" Grid.Column="0" Margin="5,5,391,5"/>
 
                     <StackPanel Grid.Row="1" Margin="392,5,5,5"/>
 
                     <!-- Tercera fila -->
-                    <StackPanel Grid.Row="2" Margin="5,5,0,0" HorizontalAlignment="Left" Width="377" Height="54" VerticalAlignment="Top"/>
 
                     <!-- Cuarta fila - Descripción (span completo) -->
                     <StackPanel Grid.Row="3" Margin="0,5,0,0" Height="88" VerticalAlignment="Top" HorizontalAlignment="Center" Width="763"/>
-                    <ComboBox x:Name="cbxIdCliente" HorizontalAlignment="Left" Margin="28,13,0,0" Grid.Row="2" Width="372" Height="38"  DisplayMemberPath="Nombre" SelectedValuePath="Id" VerticalAlignment="Top">
-                        <ComboBox.Background>
-                            <LinearGradientBrush EndPoint="0,1">
-                                <GradientStop Color="#FFF0F0F0"/>
-                                <GradientStop Color="#FFF4A6CD" Offset="1"/>
-                            </LinearGradientBrush>
-                        </ComboBox.Background>
-                    </ComboBox>
                     <TextBlock Text="Estado:" Foreground="#666" FontSize="11" RenderTransformOrigin="0.504,0.616" Margin="533,4,100,72" Grid.Row="1" Grid.RowSpan="2"/>
-                    <TextBlock Text="Fecha Inicio:" Foreground="#666" FontSize="11" Margin="34,57,0,0" Grid.Row="2" Height="23" Grid.RowSpan="2"/>
+                    <TextBlock Text="Fecha Inicio:" Foreground="#666" FontSize="11" Margin="21,31,13,80" Grid.Row="2" Height="23" Grid.RowSpan="2"/>
                     <DatePicker x:Name="dtpFechaAtencion" HorizontalAlignment="Left" Height="34" Margin="24,13,0,0" Grid.Row="3" VerticalAlignment="Top" Width="358"/>
+                    <TextBox x:Name="txtEstado" HorizontalAlignment="Left" Height="66" Margin="548,5,0,0" Grid.RowSpan="2" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="215"/>
                 </Grid>
 
                 <!-- Action Buttons -->
                 <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left" Margin="304,196,0,0" Height="137" VerticalAlignment="Top"/>
-                <TextBlock Text="Num Expediente:" Foreground="#666" FontSize="11" Margin="17,-1,379,16"/>
                 <TextBox x:Name="txtId" Style="{StaticResource PinkTextBoxStyle}" Foreground="Black" Background="#FFFFD4E9" Margin="27,25,0,0" Grid.RowSpan="3" Height="54" VerticalAlignment="Top" HorizontalAlignment="Left" Width="368" Visibility="Hidden"/>
+                <TextBox x:Name="txtCliente" TextWrapping="Wrap" Margin="27,88,410,203" Grid.Row="2"/>
+                <TextBox x:Name="txtMascota" HorizontalAlignment="Left" Height="69" Margin="536,10,0,0" Grid.RowSpan="3" TextWrapping="Wrap" VerticalAlignment="Top" Width="207"/>
             </Grid>
 
             <!-- Search Bar -->
@@ -302,13 +293,6 @@
             </Border>
 
             <!-- Records Section Header -->
-            <Border x:Name="btnRegistro" Grid.Row="3" Background="#FFA97BCA" Margin="20,59,20,0" CornerRadius="5" Padding="15" Height="49" VerticalAlignment="Top">
-                <TextBlock Text="REGISTROS DE EXPEDIENTES" 
-                          Foreground="White" 
-                          FontWeight="Bold" 
-                          HorizontalAlignment="Center" 
-                          FontSize="14"/>
-            </Border>
 
             <!-- Data Grid -->
             <TextBox x:Name="txtDescripcionConsulta" 
@@ -330,17 +314,8 @@
                 </TextBox.Template>
             </TextBox>
             <TextBlock Text="Descripción:" Foreground="#666" FontSize="11" Margin="35,254,322,189" Grid.Row="1"/>
-            <TextBlock Text="Cliente:" Foreground="#666" FontSize="11" Margin="39,116,704,336" Grid.Row="1"/>
-            <ComboBox x:Name="cbxIdMascota" Margin="554,41,100,0" Background="#FFFFB5C5" Height="54" VerticalAlignment="Top" Grid.Row="1" DisplayMemberPath="Nombre" SelectedValuePath="Id"/>
+            <TextBlock Text="Cliente:" Foreground="#666" FontSize="11" Margin="60,114,683,338" Grid.Row="1"/>
             <TextBlock Foreground="#666" FontSize="11" Margin="573,13,243,432" Grid.Row="1"><Run Language="es-sv" Text="Mascota"/><Run Text=":"/></TextBlock>
-            <ComboBox x:Name="cbxEstado" Margin="561,162,0,0" Grid.Row="1" BorderBrush="#FFF4A6CD" Height="54" VerticalAlignment="Top" HorizontalAlignment="Left" Width="372">
-                <ComboBox.Background>
-                    <LinearGradientBrush EndPoint="0,1">
-                        <GradientStop Color="#FFF0F0F0"/>
-                        <GradientStop Color="#FFF4A6CD" Offset="1"/>
-                    </LinearGradientBrush>
-                </ComboBox.Background>
-            </ComboBox>
             <Button x:Name="btnGuardar" Content="✓ Guardar" 
                            Background="#FFA8E6CF" 
                            Style="{StaticResource GradientButtonStyle}" Margin="76,400,0,0" Grid.Row="1" Height="49" VerticalAlignment="Top" Click="btnGuardar_Click_1" HorizontalAlignment="Left" Width="164"/>
@@ -353,49 +328,7 @@
             <Button x:Name="btnEliminar" Content="🗑 Eliminar" 
                            Background="#FFFFB3D1" 
                            Style="{StaticResource GradientButtonStyle}" Margin="783,395,0,0" Grid.Row="1" HorizontalAlignment="Left" Width="152" Height="48" VerticalAlignment="Top" Click="btnEliminar_Click_1"/>
-            <DataGrid x:Name="dgvListarExpediente" 
-                         AutoGenerateColumns="False" 
-                         HeadersVisibility="Column"
-                         GridLinesVisibility="Horizontal"
-                         RowHeaderWidth="0"
-                         BorderThickness="0"
-                         FontSize="12"
-                         RowHeight="35" Background="#FFF0F0F0" Margin="11,9,0,0" HorizontalAlignment="Left" Width="984" Height="217" VerticalAlignment="Top" Grid.Row="4">
-
-                <DataGrid.ColumnHeaderStyle>
-                    <Style TargetType="{x:Type DataGridColumnHeader}">
-                        <Setter Property="Background" Value="#F5F5F5"/>
-                        <Setter Property="Foreground" Value="#666"/>
-                        <Setter Property="FontWeight" Value="Bold"/>
-                        <Setter Property="FontSize" Value="11"/>
-                        <Setter Property="Padding" Value="12,10"/>
-                        <Setter Property="BorderThickness" Value="0,0,1,1"/>
-                        <Setter Property="BorderBrush" Value="#DDD"/>
-                    </Style>
-                </DataGrid.ColumnHeaderStyle>
-
-                <DataGrid.RowStyle>
-                    <Style TargetType="{x:Type DataGridRow}">
-                        <Setter Property="Background" Value="White"/>
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#F8F9FF"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </DataGrid.RowStyle>
-
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="60"/>
-                    <DataGridTextColumn Header="Num Expediente" Binding="{Binding NumExpediente}" Width="120"/>
-                    <DataGridTextColumn Header="Cliente" Binding="{Binding Cliente}" Width="150"/>
-                    <DataGridTextColumn Header="Tipo" Binding="{Binding Tipo}" Width="100"/>
-                    <DataGridTextColumn Header="Estado" Binding="{Binding Estado}" Width="100"/>
-                    <DataGridTextColumn Header="Fecha Inicio" Binding="{Binding FechaInicio}" Width="100"/>
-                    <DataGridTextColumn Header="Prioridad" Binding="{Binding Prioridad}" Width="100"/>
-                    <DataGridTextColumn Header="Descripción" Binding="{Binding Descripcion}" Width="*"/>
-                </DataGrid.Columns>
-            </DataGrid>
+            <DataGrid x:Name="dgvListarExpediente" HorizontalAlignment="Left" Height="275" Margin="25,34,0,0" Grid.Row="4" VerticalAlignment="Top" Width="966" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="dgvListarExpediente_SelectionChanged"/>
         </Grid>
     </Border>
 

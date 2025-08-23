@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InterfazDeUsuarioUI"
         mc:Ignorable="d"
-        Title="VentanaRaza" Height="450" Width="800">
+        Title="VentanaRaza" Height="482" Width="800">
 
 
     <Window.Resources>
@@ -209,44 +209,25 @@
                 <TextBlock Grid.Column="0" Text="BARRA DE BÚSQUEDA" 
                           FontWeight="Bold" FontSize="12" 
                           Foreground="{StaticResource RosaPastelSecundario}" 
-                          VerticalAlignment="Center"
-                          Margin="0,0,20,0"/>
+                          VerticalAlignment="Top"
+                          Margin="0,-3,20,0"/>
 
                 <TextBox Style="{StaticResource TextBoxPastel}"
-                        Background="{StaticResource RosaPastelMedio}" Grid.ColumnSpan="3" Margin="146,-12,47,0"/>
+                        Background="{StaticResource RosaPastelMedio}" Grid.ColumnSpan="3" Margin="146,-12,47,0" />
 
                 <Button x:Name="btnReiniciar" Grid.Column="2" 
                        Background="{StaticResource RosaPastelPrincipal}"
                        Style="{StaticResource BotonPastel}" Height="35"
                        Content="🔍"
                        Margin="10,0,-9,0"/>
-                <TextBox x:Name="txtBuscar" Grid.Column="1" HorizontalAlignment="Left" Margin="21,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="470" Height="37"/>
+                <TextBox x:Name="txtBuscar" Grid.Column="1" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="470" Height="34" Margin="0,-6,0,0"/>
             </Grid>
             <!-- DataGrid de Razas -->
-            <DataGrid x:Name="dgvListarRaza1"
-          Grid.Row="3"
-          Margin="10,14,20,10"
-          AutoGenerateColumns="False"
-          CanUserAddRows="False"
-          CanUserDeleteRows="False"
-          SelectionMode="Single"
-          SelectionChanged="dgvListarRaza_SelectionChanged"
-          Background="White"
-          BorderBrush="#E5E7EB"
-          HeadersVisibility="Column"
-          GridLinesVisibility="All">
-
-
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="*" />
-                    <DataGridTextColumn Header="Tipo de Raza" Binding="{Binding Tipo}" Width="2*" />
-                    <DataGridTextColumn Header="Fecha Creación" Binding="{Binding FechaCreacion}" Width="2*" />
-                </DataGrid.Columns>
-            </DataGrid>
             <TextBox x:Name="txtId" Style="{StaticResource TextBoxPastel}" 
                                     Background="{StaticResource RosaPastelClaro}" Margin="24,3,0,0" Grid.Row="1" Height="15" VerticalAlignment="Top" HorizontalAlignment="Left" Width="51" IsEnabled="False" Visibility="Collapsed"/>
             <TextBox x:Name="txtTipoRaza" Style="{StaticResource TextBoxPastel}"
                                     Background="{StaticResource RosaPastelClaro}" Margin="24,74,0,0" Grid.Row="1" Height="49" VerticalAlignment="Top" HorizontalAlignment="Left" Width="321" Grid.RowSpan="2"/>
+            <DataGrid x:Name="dgvListarRaza1" HorizontalAlignment="Center" Height="123" Margin="0,5,0,0" Grid.Row="3" VerticalAlignment="Top" Width="726" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="dgvListarRaza1_SelectionChanged"/>
 
 
         </Grid>

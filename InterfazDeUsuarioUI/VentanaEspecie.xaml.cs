@@ -104,9 +104,10 @@ namespace InterfazDeUsuarioUI
             }
         }
 
-        private void dgEspecies_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
-        {
+      
 
+        private void dgEspecies_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
             if (dgEspecies.SelectedItem is EspecieEN especie)
             {
                 txtIdEspecie.Text = especie.Id.ToString();
@@ -115,7 +116,15 @@ namespace InterfazDeUsuarioUI
 
             }
         }
+
+        private void btnBuscar_Click(object sender, RoutedEventArgs e)
+        {
+            string nombre = txtBuscar.Text;
+            List<EspecieEN> especie = EspecieBL.BuscarEspecie(nombre);
+            dgEspecies.ItemsSource = especie;
+        }
     }
+    
 }
 
 

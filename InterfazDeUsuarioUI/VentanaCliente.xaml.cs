@@ -86,18 +86,7 @@ namespace InterfazDeUsuarioUI
             dgClientes.UnselectAll();
         }
 
-        private void dgvListarCliente_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (dgClientes.SelectedItem is ClienteEN fila)
-            {
-                txtNumCliente.Text = fila.Id.ToString();
-                txtNombre.Text = fila.Nombre;
-                txtApellido.Text = fila.Apellido;
-                txtTelefono.Text = fila.Telefono.ToString();
-
-
-            }
-        }
+       
 
         private void btnGuardar_Click_1(object sender, RoutedEventArgs e)
         {
@@ -196,7 +185,22 @@ namespace InterfazDeUsuarioUI
             List<CitaEN> cita = CitaBL.BuscarCita(Id);
             dgClientes.ItemsSource = cita;
         }
+
+        private void dgClientes_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+            if (dgClientes.SelectedItem is ClienteEN fila)
+            {
+                txtNumCliente.Text = fila.Id.ToString();
+                txtNombre.Text = fila.Nombre;
+                txtApellido.Text = fila.Apellido;
+                txtTelefono.Text = fila.Telefono.ToString();
+
+
+            }
+        }
     }
+    
 }
 
 

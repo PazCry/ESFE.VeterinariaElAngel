@@ -1,19 +1,12 @@
 ﻿using EntidadDeNegociosEN;
+using LogicaDeAccesoADatosDAL;
 using LogicaDeNegocioBL;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-
 
 namespace InterfazDeUsuarioUI
 {
@@ -22,32 +15,45 @@ namespace InterfazDeUsuarioUI
     /// </summary>
     public partial class VentanaMascota : Window
     {
-        MascotaBL _mascotaBL = new MascotaBL();
-        MascotaEN _mascotaEN = new MascotaEN();
+        public ObservableCollection<RazaEN> ListaRaza { get; set; }
+        private RazaDAL _razaDAL = new RazaDAL();
+        private MascotaBL _mascotaBL = new MascotaBL();
+        private MascotaEN _mascotaEN = new MascotaEN();
         private bool _modoModificacion = false;
         private int _idMascotaSeleccionada = 0;
+
         public VentanaMascota()
         {
             InitializeComponent();
             CargarGrid();
+            CargarRazas();
             ReiniciarEstadoInicial();
         }
+
+        private void CargarRazas()
+        {
+            //ListaRaza = new ObservableCollection<RazaEN>(RazaDAL.MostrarRazaEN());
+
+            // Si tu XAML tiene ItemsSource="{Binding ListaRaza}", deja el DataContext:
+            this.DataContext = this;
+
+            // —O— si prefieres asignar por código en lugar de binding en XAML, usa esto:
+            // cbxRaza.ItemsSource = ListaRaza;
+            // cbxRaza.DisplayMemberPath = "TipoRaza";  // ajusta al nombre real en RazaEN
+            // cbxRaza.SelectedValuePath = "Id";        // ajusta a la clave real en RazaEN
+        }
+
         private void CargarGrid()
         {
-            MascotasDataGrid.ItemsSource = _mascotaBL.MostrarMascota();
+            dgvListarMascota.ItemsSource = _mascotaBL.MostrarMascota();
         }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
             string nombre = txtBuscar.Text;
             List<MascotaEN> mascotas = MascotaBL.BuscarMascota(nombre);
-            MascotasDataGrid.ItemsSource = mascotas;
+            dgvListarMascota.ItemsSource = mascotas;
         }
-
-
-
-
-
 
         private void ReiniciarEstadoInicial()
         {
@@ -55,19 +61,16 @@ namespace InterfazDeUsuarioUI
 
             txtNombre.Clear();
             txtColor.Clear();
-            cbxRaza.SelectedIndex = -1;
+            txtRaza.Clear();
             dtpFechaNacimiento.SelectedDate = DateTime.Today;
-            cbxGenero.SelectedIndex = -1;
-            cbxEspecie.SelectedIndex = -1;
+            txtGenero.Clear();
+            txtEspecie.Clear();
 
             _modoModificacion = false;
-
-            MascotasDataGrid.SelectedIndex = -1;
+            dgvListarMascota.SelectedIndex = -1;
         }
 
-
-
-        // Solo letras
+        // Validación: Solo letras
         private void SoloLetras(object sender, TextCompositionEventArgs e)
         {
             foreach (char c in e.Text)
@@ -82,23 +85,25 @@ namespace InterfazDeUsuarioUI
         private void btnGuardar_Click_1(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtNombre.Text) ||
+                string.IsNullOrWhiteSpace(txtColor.Text) ||
                string.IsNullOrWhiteSpace(txtColor.Text) ||
-               cbxGenero.SelectedIndex == -1 ||
-               cbxRaza.SelectedIndex == -1 ||
-               cbxEspecie.SelectedIndex == -1)
+               string.IsNullOrWhiteSpace(txtGenero.Text) ||   
+               string.IsNullOrWhiteSpace(txtRaza.Text) ||     
+               string.IsNullOrWhiteSpace(txtEspecie.Text))
             {
                 MessageBox.Show("Por favor, complete todos los campos.", "Campos incompletos", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
-            // Crear una nueva instancia para guardar
-            MascotaEN nuevaMascota = new MascotaEN();
-            nuevaMascota.Nombre = txtNombre.Text;
-            nuevaMascota.Color = txtColor.Text;
-            nuevaMascota.FechaNacimiento = dtpFechaNacimiento.SelectedDate ?? DateTime.Today;
-            nuevaMascota.IdGenero = Convert.ToByte(cbxGenero.SelectedIndex + 1);
-            nuevaMascota.IdRaza = 1; // si tienes catálogo real de razas, cámbialo
-            nuevaMascota.IdEspecie = Convert.ToByte(cbxEspecie.SelectedIndex + 1);
+            MascotaEN nuevaMascota = new MascotaEN
+            {
+                Nombre = txtNombre.Text,
+                Color = txtColor.Text,
+                FechaNacimiento = dtpFechaNacimiento.SelectedDate ?? DateTime.Today,
+                IdGenero = Convert.ToByte(txtGenero.Text),
+                IdRaza = Convert.ToByte(txtRaza.Text),
+                IdEspecie = Convert.ToByte(txtEspecie.Text)
+            };
 
             _mascotaBL.GuardarMascota(nuevaMascota);
             MessageBox.Show("Mascota guardada correctamente.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -106,9 +111,14 @@ namespace InterfazDeUsuarioUI
             ReiniciarEstadoInicial();
         }
 
-
         private void btnEliminar_Click_1(object sender, RoutedEventArgs e)
         {
+            if (_idMascotaSeleccionada == 0)
+            {
+                MessageBox.Show("Seleccione una mascota para eliminar.", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
             var confirm = MessageBox.Show("¿Realmente desea eliminar esta mascota?", "Confirmar eliminación", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (confirm == MessageBoxResult.Yes)
             {
@@ -119,31 +129,21 @@ namespace InterfazDeUsuarioUI
             }
         }
 
-        private void MascotasDataGrid_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
-        {
-            if (MascotasDataGrid.SelectedItem is MascotaEN fila)
-            {
-                _idMascotaSeleccionada = fila.Id;
-                txtNombre.Text = fila.Nombre;
-                txtColor.Text = fila.Color;
-                cbxRaza.Text = fila.IdRaza.ToString();
-                dtpFechaNacimiento.SelectedDate = fila.FechaNacimiento;
-                cbxGenero.SelectedIndex = fila.IdGenero - 1;
-                cbxEspecie.SelectedIndex = fila.IdEspecie - 1;
-
-                _modoModificacion = true;
-            }
-        }
-
         private void btnModificar_Click_1(object sender, RoutedEventArgs e)
         {
+            if (_idMascotaSeleccionada == 0)
+            {
+                MessageBox.Show("Seleccione una mascota para modificar.", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
             _mascotaEN.Id = (byte)_idMascotaSeleccionada;
             _mascotaEN.Nombre = txtNombre.Text;
             _mascotaEN.Color = txtColor.Text;
             _mascotaEN.FechaNacimiento = dtpFechaNacimiento.SelectedDate ?? DateTime.Today;
-            _mascotaEN.IdGenero = Convert.ToByte(cbxGenero.SelectedIndex + 1);
-            _mascotaEN.IdRaza = 1;
-            _mascotaEN.IdEspecie = Convert.ToByte(cbxEspecie.SelectedIndex + 1);
+            _mascotaEN.IdGenero = Convert.ToByte(txtGenero.Text);
+            _mascotaEN.IdRaza = Convert.ToByte(txtRaza.Text);
+            _mascotaEN.IdEspecie = Convert.ToByte(txtEspecie.Text);
 
             _mascotaBL.ModificarMascota(_mascotaEN);
 
@@ -151,10 +151,23 @@ namespace InterfazDeUsuarioUI
             MessageBox.Show("Registro modificado correctamente.", "Modificación", MessageBoxButton.OK, MessageBoxImage.Information);
             ReiniciarEstadoInicial();
         }
+
+        private void dgvListarMascota_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+          
+            if (dgvListarMascota.SelectedItem is MascotaEN mascotaSeleccionada)
+            {
+                _idMascotaSeleccionada = mascotaSeleccionada.Id;
+
+                txtNombre.Text = mascotaSeleccionada.Nombre;
+                txtColor.Text = mascotaSeleccionada.Color;
+                dtpFechaNacimiento.SelectedDate = mascotaSeleccionada.FechaNacimiento;
+
+                txtGenero.Text = mascotaSeleccionada.IdGenero.ToString();
+                txtRaza.Text = mascotaSeleccionada.IdRaza.ToString();
+                txtEspecie.Text = mascotaSeleccionada.IdEspecie.ToString();
+            }
+        }
     }
-
+    
 }
-
-
-
-

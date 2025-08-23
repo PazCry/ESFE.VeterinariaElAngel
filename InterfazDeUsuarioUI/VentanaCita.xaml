@@ -237,72 +237,53 @@
 
                     <!-- Tercera fila - Botones de navegación -->
                     <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.ColumnSpan="3" 
-                               HorizontalAlignment="Center" Margin="0,20,0,0">
-                        <Button x:Name="btnCliente" Content="👤 Cliente" 
+                               HorizontalAlignment="Center" Margin="0,20,0,0"/>
+                    <Button x:Name="btnVerCalendario" Content="📅 Ver Calendario" 
+                               Style="{StaticResource AccessButton}" 
+                               Background="#FFFFD3A5" Click="btnVerCalendario_Click" Grid.Column="2" Margin="212,10,0,0" Grid.Row="2" HorizontalAlignment="Left" Width="107" Height="40" VerticalAlignment="Top"/>
+                    <Button x:Name="btnCliente" Content="👤 Cliente" 
                                Style="{StaticResource AccessButton}" 
                                Background="#FFA8E6CF" Click="btnCliente_Click" 
-                               Margin="0,0,10,0"/>
-
-                        <Button x:Name="btnExpediente" Content="📋 Expediente" 
+                               Margin="81,14,0,0" Grid.Row="2" HorizontalAlignment="Left" Width="94" Height="40" VerticalAlignment="Top"/>
+                    <Button x:Name="btnExpediente" Content="📋 Expediente" 
                                Style="{StaticResource AccessButton}" 
                                Background="#FFFFB3D1" Click="btnExpediente_Click" 
-                               Margin="0,0,10,0" Cursor="Hand"/>
-
-                        <Button x:Name="btnMascota" Content="🐾 Mascota" 
+                               Margin="238,10,0,0" Cursor="Hand" Grid.Row="2" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" Width="102"/>
+                    <Button x:Name="btnMascota" Content="🐾 Mascota" 
                                Style="{StaticResource AccessButton}" 
                                Background="#FFA8C8EC" Click="btnMascota_Click" 
-                               Margin="0,0,10,0"/>
-
-                        <Button x:Name="btnVerCalendario" Content="📅 Ver Calendario" 
-                               Style="{StaticResource AccessButton}" 
-                               Background="#FFFFD3A5" Click="btnVerCalendario_Click"/>
-                    </StackPanel>
+                               Margin="46,10,0,0" Grid.Column="2" Grid.Row="2" HorizontalAlignment="Left" Width="93" Height="40" VerticalAlignment="Top"/>
                 </Grid>
             </Border>
 
             <!-- Botones de Acción -->
-            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,20">
-                <Button x:Name="btnGuardar" Content="💾 Guardar" 
-                       Style="{StaticResource SaveButton}" 
-                       Background="#FFA8E6CF" Click="btnGuardar_Click_1" 
-                       Margin="0,0,10,0"/>
-
-                <Button x:Name="btnModificar" Content="✏ Modificar" 
-                       Style="{StaticResource ModifyButton}" 
-                       Background="#FFFFD3A5" Click="btnMModificar_Click" 
-                       Margin="0,0,10,0"/>
-
-                <Button x:Name="btnEliminar" Content="🗑 Eliminar" 
-                       Style="{StaticResource DeleteButton}" 
-                       Background="#FFFFB3D1" Click="btnEliminar_Click" 
-                       Margin="0,0,10,0"/>
-
-                <Button x:Name="btnBuscar" Content="🔍 Buscar" 
-                       Style="{StaticResource SearchButton}" 
-                       Background="#FFA8C8EC" Click="btnBuscar_Click" 
-                       Margin="0,0,10,0"/>
-
-                <Button x:Name="btnReiniciar" Content="🔄 Reiniciar" 
-                       Style="{StaticResource ResetButton}" Click="btnReiniciar_Click"/>
-            </StackPanel>
+            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,20"/>
 
             <!-- Tabla de Datos -->
             <Border Grid.Row="3" Background="White" CornerRadius="15" Padding="20">
                 <Border.Effect>
                     <DropShadowEffect Color="Gray" Direction="270" ShadowDepth="3" Opacity="0.1" BlurRadius="10"/>
                 </Border.Effect>
-
-                <DataGrid x:Name="dgvCita" Style="{StaticResource ModernDataGrid}" 
-                          ColumnHeaderStyle="{StaticResource DataGridHeader}" 
-                          SelectionChanged="DataGrid_SelectionChanged">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="ID" Width="60" Binding="{Binding Id}"/>
-                        <DataGridTextColumn Header="ID Expediente" Width="120" Binding="{Binding IdExpediente}"/>
-                        <DataGridTextColumn Header="Fecha Cita" Width="120" Binding="{Binding FechaCita, StringFormat='{}{0:dd/MM/yyyy}'}"/>
-                        <DataGridTextColumn Header="Hora" Width="100" Binding="{Binding Hora, StringFormat='{}{0:hh\\:mm}'}"/>
-                    </DataGrid.Columns>
-                </DataGrid>
+                <DataGrid x:Name="dgvCita" HorizontalAlignment="Left" Height="165" Margin="53,0,0,0" VerticalAlignment="Center" Width="587" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="dgvCita_SelectionChanged_1"/>
             </Border>
+            <Button x:Name="btnGuardar" Content="💾 Guardar" 
+                       Style="{StaticResource SaveButton}" 
+                       Background="#FFA8E6CF" Click="btnGuardar_Click_1" 
+                       Margin="50,10,0,0" Grid.Row="1" HorizontalAlignment="Left" Width="100" Height="40" VerticalAlignment="Top"/>
+            <Button x:Name="btnReiniciar" Content="🔄 Reiniciar" 
+                       Style="{StaticResource ResetButton}" Click="btnReiniciar_Click" Margin="644,14,0,0" Grid.Row="1" HorizontalAlignment="Left" Width="90" Height="40" VerticalAlignment="Top"/>
+            <Button x:Name="btnBuscar" Content="🔍 Buscar" 
+                       Style="{StaticResource SearchButton}" 
+                       Background="#FFA8C8EC" Click="btnBuscar_Click" 
+                       Margin="509,14,0,0" Grid.Row="1" HorizontalAlignment="Left" Width="96" Height="40" VerticalAlignment="Top"/>
+            <Button x:Name="btnModificar" Content="✏ Modificar" 
+                       Style="{StaticResource ModifyButton}" 
+                       Background="#FFFFD3A5" Click="btnMModificar_Click" 
+                       Margin="201,10,0,0" Grid.Row="1" HorizontalAlignment="Left" Width="96" Height="40" VerticalAlignment="Top"/>
+            <Button x:Name="btnEliminar" Content="🗑 Eliminar" 
+                       Style="{StaticResource DeleteButton}" 
+                       Background="#FFFFB3D1" Click="btnEliminar_Click" 
+                       Margin="355,10,0,0" Grid.Row="1" HorizontalAlignment="Left" Width="84" Height="40" VerticalAlignment="Top"/>
         </Grid>
     </Grid>
 </Window>

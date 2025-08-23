@@ -65,13 +65,15 @@ namespace InterfazDeUsuarioUI
             }
 
             // Verificar duplicados en DataGrid
-            if (dgvListarGenero.Items.Cast<GeneroEN>().Any(x =>
-                string.Equals(x.TipoGenero.Trim(), txtTipoGenero.Text.Trim(),
-                StringComparison.OrdinalIgnoreCase)))
+            if (dgvListarGenero.Items.OfType<GeneroEN>()
+    .Any(x => string.Equals(x.TipoGenero.Trim(),
+                            txtTipoGenero.Text.Trim(),
+                            StringComparison.OrdinalIgnoreCase)))
             {
-                MessageBox.Show("Este género ya está registrado.", "Duplicado", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Duplicado", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
+
 
             _generoEN.TipoGenero = txtTipoGenero.Text;
             _generoBL.GuardarGenero(_generoEN);  // ← Aquí estaba el error
@@ -92,14 +94,7 @@ namespace InterfazDeUsuarioUI
             ReiniciarEstadoInicial();
         }
 
-        private void btnBuscar_Click(object sender, RoutedEventArgs e)
-        {
-
-            string Id = txtBuscar.Text;
-            List<CitaEN> cita = CitaBL.BuscarCita(Id);
-            dgvListarGenero.ItemsSource = cita;
-        }
-
+      
         private void btnEliminar_Click_1(object sender, RoutedEventArgs e)
         {
 

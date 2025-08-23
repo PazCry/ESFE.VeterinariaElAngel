@@ -92,18 +92,6 @@ namespace InterfazDeUsuarioUI
             }
         }
 
-        private void dgvListarRol_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
-        {
-
-            if (dgvListarRol.SelectedItem is RolEN rol)
-            {
-                txtNumeroRol.Text = rol.Id.ToString();
-                txtNombreRol.Text = rol.TipoRol;
-
-
-            }
-        }
-
 
 
         private void btnGuardar_Click(object sender, RoutedEventArgs e)
@@ -168,8 +156,24 @@ namespace InterfazDeUsuarioUI
             List<CitaEN> cita = CitaBL.BuscarCita(Id);
             dgvListarRol.ItemsSource = cita;
         }
+
+        private void dgvListarRol_SelectionChanged_2(object sender, SelectionChangedEventArgs e)
+        {
+
+
+    
+
+            if (dgvListarRol.SelectedItem is RolEN rol)
+            {
+                txtNumeroRol.Text = rol.Id.ToString();
+                txtNombreRol.Text = rol.TipoRol;
+
+
+            }
+        }
+
     }
-
-
-
 }
+
+
+

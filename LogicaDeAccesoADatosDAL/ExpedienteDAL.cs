@@ -17,7 +17,7 @@ namespace LogicaDeAccesoADatosDAL
                 using (IDbConnection _conn = ComunBD.ObtenerConexion(ComunBD.TipoBD.SqlServer))
                 {
                     _conn.Open();
-                    SqlCommand _comando = new SqlCommand("ListarExpe", _conn as SqlConnection);
+                    SqlCommand _comando = new SqlCommand("ListarExpediente", _conn as SqlConnection);
                     _comando.CommandType = CommandType.StoredProcedure;
                     IDataReader _reader = _comando.ExecuteReader();
                     while (_reader.Read())
