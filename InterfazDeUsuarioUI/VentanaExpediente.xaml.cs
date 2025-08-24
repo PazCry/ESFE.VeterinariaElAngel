@@ -1,4 +1,5 @@
 ﻿using EntidadDeNegociosEN;
+using LogicaDeAccesoADatosDAL;
 using LogicaDeNegocioBL;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,9 @@ namespace InterfazDeUsuarioUI
     /// </summary>
     public partial class VentanaExpediente : Window
     {
+        private ClienteBL _clienteBL = new ClienteBL();
+        private MascotaBL _mascotaBL = new MascotaBL();
+
         ExpedeinteBL _expedienteBL = new ExpedeinteBL();
         ExpedienteEN _expedienteEN = new ExpedienteEN();
 
@@ -28,6 +32,7 @@ namespace InterfazDeUsuarioUI
         {
             InitializeComponent();
             CargarGrid();
+            CargarCombos();
             ReiniciarEstadoInicial();
             dgvListarExpediente.SelectedIndex = -1;
         }
@@ -37,33 +42,49 @@ namespace InterfazDeUsuarioUI
             dgvListarExpediente.ItemsSource = _expedienteBL.MostrarExpe();
         }
 
+        private void CargarCombos()
+        {
+            // Cliente
+            cbxCliente.ItemsSource = _clienteBL.ListarCliente();
+            cbxCliente.DisplayMemberPath = "Nombre";   // lo que se muestra
+            cbxCliente.SelectedValuePath = "Id";       // lo que se guarda
 
+            // Mascota
+            cbxMascota.ItemsSource = _mascotaBL.MostrarMascota();
+            cbxMascota.DisplayMemberPath = "Nombre";
+            cbxMascota.SelectedValuePath = "Id";
+
+            // Estado de Expediente
+            cbxEstado.ItemsSource = _expedienteBL.MostrarExpe();
+            cbxEstado.DisplayMemberPath = "Estado";    // o "Descripcion", según tu tabla
+            cbxEstado.SelectedValuePath = "Id";
+        }
         private void btnReiniciar_Click(object sender, RoutedEventArgs e)
         {
             CargarGrid();
         }
 
-       
 
-     
+
+
         private void ReiniciarEstadoInicial()
         {
-          
 
-            txtCliente.Clear();
-            txtMascota.Clear();
-            txtEstado.Clear();
+
+            cbxCliente.SelectedIndex = -1;
+            cbxMascota.SelectedIndex = -1;
+            cbxEstado.SelectedIndex = -1;
             dtpFechaAtencion.SelectedDate = DateTime.Today;
             txtDescripcionConsulta.Clear();
 
-          
+
 
             dgvListarExpediente.SelectedIndex = -1;
 
-           
+
         }
 
-       
+
 
         // Restricciones de entrada en TextBox y ComboBox (similar a KeyPress en WinForms)
         private void SoloNumeros(object sender, TextCompositionEventArgs e)
@@ -85,10 +106,10 @@ namespace InterfazDeUsuarioUI
 
         private void btnGuardar_Click_1(object sender, RoutedEventArgs e)
         {
-            if            (string.IsNullOrWhiteSpace(txtCliente.Text) ||
-                           string.IsNullOrWhiteSpace(txtMascota.Text) ||
-                           string.IsNullOrWhiteSpace(txtEstado.Text) ||
-                           string.IsNullOrWhiteSpace(txtDescripcionConsulta.Text))
+            if (cbxCliente.SelectedIndex == -1 ||
+        cbxMascota.SelectedIndex == -1 ||
+        cbxEstado.SelectedIndex == -1 ||
+        string.IsNullOrWhiteSpace(txtDescripcionConsulta.Text))
             {
                 MessageBox.Show("Por favor, complete todos los campos y seleccione todas las opciones.",
                                 "Campos incompletos", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -102,9 +123,10 @@ namespace InterfazDeUsuarioUI
                 return;
             }
 
-            _expedienteEN.IdCliente = Convert.ToByte(txtCliente.Text);
-            _expedienteEN.IdMascota = Convert.ToByte(txtMascota.Text);
-            _expedienteEN.Estado = txtEstado.Text;
+            // Ahora sacamos los IDs directamente de los ComboBox
+            _expedienteEN.IdCliente = Convert.ToByte(cbxCliente.SelectedValue);
+            _expedienteEN.IdMascota = Convert.ToByte(cbxMascota.SelectedValue);
+            _expedienteEN.Estado = cbxEstado.Text; // asegúrate que tu entidad tenga este campo
             _expedienteEN.DescripcionConsulta = txtDescripcionConsulta.Text;
             _expedienteEN.Fecha = dtpFechaAtencion.SelectedDate.Value;
 
@@ -114,6 +136,9 @@ namespace InterfazDeUsuarioUI
 
             txtId.Clear();
             txtDescripcionConsulta.Clear();
+            cbxCliente.SelectedIndex = -1;
+            cbxMascota.SelectedIndex = -1;
+            cbxEstado.SelectedIndex = -1;
 
             MessageBox.Show("Expediente guardado correctamente.",
                             "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -124,7 +149,7 @@ namespace InterfazDeUsuarioUI
         {
 
             if (string.IsNullOrWhiteSpace(txtId.Text) ||
-                string.IsNullOrWhiteSpace(txtEstado.Text) ||
+                string.IsNullOrWhiteSpace(cbxEstado.Text) ||
                 string.IsNullOrWhiteSpace(txtDescripcionConsulta.Text))
             {
                 MessageBox.Show("Por favor, complete todos los campos antes de modificar.",
@@ -137,9 +162,9 @@ namespace InterfazDeUsuarioUI
                                 MessageBoxImage.Question) == MessageBoxResult.OK)
             {
                 _expedienteEN.Id = Convert.ToByte(txtId.Text);
-                _expedienteEN.IdCliente = Convert.ToByte(txtCliente.Text);
-                _expedienteEN.IdMascota = Convert.ToByte(txtMascota.Text);
-                _expedienteEN.Estado = txtEstado.Text;
+                _expedienteEN.IdCliente = Convert.ToByte(cbxCliente.Text);
+                _expedienteEN.IdMascota = Convert.ToByte(cbxMascota.Text);
+                _expedienteEN.Estado = cbxEstado.Text;
                 _expedienteEN.DescripcionConsulta = txtDescripcionConsulta.Text;
 
                 _expedienteBL.ModificarExpe(_expedienteEN);
@@ -191,16 +216,16 @@ namespace InterfazDeUsuarioUI
         {
             if (dgvListarExpediente.SelectedItem is ExpedienteEN fila)
             {
-                txtCliente.Text = fila.IdCliente.ToString();
-                txtMascota.Text = fila.IdMascota.ToString();
-                txtEstado.Text = fila.Estado;
+                cbxCliente.Text = fila.IdCliente.ToString();
+                cbxMascota.Text = fila.IdMascota.ToString();
+                cbxEstado.Text = fila.Estado;
                 dtpFechaAtencion.SelectedDate = fila.Fecha;
                 txtDescripcionConsulta.Text = fila.DescripcionConsulta;
                 txtId.Text = fila.Id.ToString();
 
-           
+
+            }
         }
-    }
     }
 }
 

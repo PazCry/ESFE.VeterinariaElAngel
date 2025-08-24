@@ -42,7 +42,7 @@ namespace InterfazDeUsuarioUI
 
             cmbRaza.ItemsSource = _razaBL.MostrarRaza();
             cmbRaza.DisplayMemberPath = "TipoRaza";     // ajusta si tu propiedad cambia
-            cmbRaza.SelectedValuePath = "IdEspecie";
+            cmbRaza.SelectedValuePath = "IdRaza";
 
 
 
@@ -149,9 +149,9 @@ namespace InterfazDeUsuarioUI
             _mascotaEN.Nombre = txtNombre.Text;
             _mascotaEN.Color = txtColor.Text;
             _mascotaEN.FechaNacimiento = dtpFechaNacimiento.SelectedDate ?? DateTime.Today;
-            _mascotaEN.IdGenero = Convert.ToByte(cbxGenero.Text);
-            _mascotaEN.IdRaza = Convert.ToByte(cmbRaza.Text);
-            _mascotaEN.IdEspecie = Convert.ToByte(cbxEspecie.Text);
+            _mascotaEN.IdGenero = Convert.ToByte(cbxGenero.SelectedValue);
+            _mascotaEN.IdRaza = Convert.ToByte(cmbRaza.SelectedValue);
+            _mascotaEN.IdEspecie = Convert.ToByte(cbxEspecie.SelectedValue);
 
             _mascotaBL.ModificarMascota(_mascotaEN);
 
@@ -171,9 +171,10 @@ namespace InterfazDeUsuarioUI
                 txtColor.Text = mascotaSeleccionada.Color;
                 dtpFechaNacimiento.SelectedDate = mascotaSeleccionada.FechaNacimiento;
 
-                cbxGenero.Text = mascotaSeleccionada.IdGenero.ToString();
-                cmbRaza.Text = mascotaSeleccionada.IdRaza.ToString();
-                cbxEspecie.Text = mascotaSeleccionada.IdEspecie.ToString();
+                cbxGenero.SelectedValue = mascotaSeleccionada.IdGenero;
+                cmbRaza.SelectedValue = mascotaSeleccionada.IdRaza;
+                cbxEspecie.SelectedValue = mascotaSeleccionada.IdEspecie;
+
             }
         }
     }
