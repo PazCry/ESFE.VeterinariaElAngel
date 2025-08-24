@@ -222,12 +222,14 @@
                     <TextBlock Text="Fecha Nacimiento:" Foreground="#666" FontSize="11" Margin="18,144,357,49"/>
                     <DatePicker x:Name="dtpFechaNacimiento" HorizontalAlignment="Left" Margin="12,174,0,0" VerticalAlignment="Top" Width="327"/>
                     <TextBox x:Name="txtColor" HorizontalAlignment="Left" Height="49" Margin="390,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="314" Background="#FFFFB5C5"/>
+                    <ComboBox x:Name="cbxEspecie" Margin="18,87,0,0" Background="Pink" Height="38" VerticalAlignment="Top" HorizontalAlignment="Left" Width="336"/>
+                    <ComboBox x:Name="cmbRaza" Margin="390,31,0,0" HorizontalAlignment="Left" Width="320" Height="34" VerticalAlignment="Top"/>
                 </Grid>
 
                 <!-- Action Buttons con colores exactos -->
                 <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,227,0,0"/>
                 <TextBlock Text="Raza:"  Foreground="#666" FontSize="11" Margin="385,0,-11,213" Grid.Row="1"/>
-                <TextBox x:Name="txtGenero" TextWrapping="Wrap" Margin="385,184,0,0" Grid.Row="1" Background="#FFFFB5C5" Height="43" VerticalAlignment="Top" HorizontalAlignment="Left" Width="317"/>
+                <ComboBox x:Name="cbxGenero" Margin="389,184,0,0" Grid.Row="1" HorizontalAlignment="Left" Width="326" Height="35" VerticalAlignment="Top"/>
             </Grid>
 
             <!-- Search Bar con gradiente original -->
@@ -300,10 +302,8 @@
            FontSize="11" 
            Margin="40,145,385,163" Grid.Row="1" 
            />
-            <TextBox x:Name="txtEspecie" TextWrapping="Wrap" Margin="40,180,0,0" Grid.Row="1" Background="#FFFFB5C5" HorizontalAlignment="Left" Width="303" Height="35" VerticalAlignment="Top"/>
-            <TextBox x:Name="txtRaza" TextWrapping="Wrap" Background="#FFFFB5C5" Margin="417,108,0,0" Grid.Row="1" HorizontalAlignment="Left" Width="309" Height="44" VerticalAlignment="Top"/>
             <DataGrid x:Name="dgvListarMascota" Margin="40,67,0,0" Grid.Row="3" d:ItemsSource="{d:SampleData ItemCount=5}" Height="175" VerticalAlignment="Top" HorizontalAlignment="Left" Width="686" SelectionChanged="dgvListarMascota_SelectionChanged"/>
-            
+
         </Grid>
     </Border>
 
