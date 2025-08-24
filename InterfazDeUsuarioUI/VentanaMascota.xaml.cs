@@ -109,9 +109,9 @@ namespace InterfazDeUsuarioUI
             nuevaMascota.Nombre = txtNombre.Text;
             nuevaMascota.Color = txtColor.Text;
             nuevaMascota.FechaNacimiento = dtpFechaNacimiento.SelectedDate ?? DateTime.Today;
-            nuevaMascota.IdGenero = Convert.ToByte(cbxGenero.SelectedIndex + 1);
-            nuevaMascota.IdRaza = 1; // si tienes catálogo real de razas, cámbialo
-            nuevaMascota.IdEspecie = Convert.ToByte(cbxEspecie.SelectedIndex + 1);
+            nuevaMascota.IdGenero = Convert.ToByte(cbxGenero.SelectedValue);
+            nuevaMascota.IdRaza = Convert.ToByte(cmbRaza.SelectedValue);
+            nuevaMascota.IdEspecie = Convert.ToByte(cbxEspecie.SelectedValue);
 
             _mascotaBL.GuardarMascota(nuevaMascota);
             MessageBox.Show("Mascota guardada correctamente.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
